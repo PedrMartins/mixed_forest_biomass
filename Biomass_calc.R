@@ -1,5 +1,5 @@
 
-setwd ("C:/Users/Pedro/Dropbox/Mestrado/DAdos/Novos dados artigo/Ultrapassados")
+setwd ("C:/Users/caminho/dos/dados")
 
 #dir ()
 #getwd()
