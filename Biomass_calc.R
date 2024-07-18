@@ -4,36 +4,34 @@ setwd ("C:/Users/caminho/dos/dados")
 #dir ()
 #getwd()
 
-library ("BIOMASS")
+library (BIOMASS)
 library(tidyverse)
 library(dplyr)
 library(stringr)
-library (vegan)#fun�ao disponibiliza os pacotes 
+library (vegan) #funcao disponibiliza os pacotes 
 
 
 
 ##################################################################################################
-## 																##
-## 																##
-## função média ponderada terminar											##
-meanp=function (v,w,pop,as_numeric=FALSE)	# v=variável							##
-						#w=peso									##
-						#pop=população								##
-						#count-> caso esteja usando a função count para 		##
-						#peso										##
-{	if (class (v)!="numeric")											##
-		{ stop("Variável não numérica")}									##
-	if (as_numeric==TRUE)												##
-		{w=as.numeric (w)}											##
-	if (class (w) !="numeric")											##
-		{stop ("Peso não numérico")}										##
-	if (length (v)!= length (w))											##
-		{stop("colunas não tem \n com tamananho diferente")}						##
-	m_p=sum (v*w)/length (pop)											##
-	return (m_p)													##
-																##
-}																##
-##																##
+## weighted average function									##
+												##
+meanp=function (v,w,pop,as_numeric=FALSE)	# v=variável					##
+						#w=peso						##
+						#pop=população					##
+						#count-> caso esteja usando a função count para ##
+						#peso						##
+{	if (class (v)!="numeric")								##
+		{ stop("Variável não numérica")}						##
+	if (as_numeric==TRUE)									##
+		{w=as.numeric (w)}								##
+	if (class (w) !="numeric")								##
+		{stop ("Peso não numérico")}							##
+	if (length (v)!= length (w))								##
+		{stop("colunas não tem \n com tamananho diferente")}				##
+	m_p=sum (v*w)/length (pop)								##
+	return (m_p)										##
+												##
+}												##
 ##################################################################################################
 
 
@@ -69,9 +67,9 @@ colnames (bio.BC)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
 
 
  
-####CALCULAR DAP A PARTIR DE PAP OU CAP######
+####Conversão CAP para DAP / convertion CBH to DBH######
 c=100
-bio.cj$DAP=c(bio.cj$D)*c
+bio.cj$DAP=c(bio.cj$D)*c #convertion CBH to DBH
 bio.cj<- bio.cj[bio.cj$DAP>=4.7,]
 
 bio.bp$DAP=c(bio.bp$D)*c
@@ -96,10 +94,10 @@ bio.BC<- bio.BC[bio.BC$DAP>=4.7,]
 ############################################################
 ############################################################
 ############################################################
-#####################CAMPOS DO JORD�O#######################
+#####################CAMPOS DO JORDAO#######################
 
 #############
-###Limpeza dados
+###Limpeza dados/processing data
 #############
 bio.cj <- bio.cj [!str_ends(bio.cj$Gen,"aceae"),]
 dads.gim.cj<- bio.cj[bio.cj$Filo=="Gim",]#separa gimnosperma
@@ -110,17 +108,18 @@ dads.ang.cj<- dads.ang.cj[dads.ang.cj$Filo!="Saman",]#retirando samambaia
 #View (dads.ang.cj)
 
 
-#############################################################
-##########################classes DAP########################
+##############################################################
+################DBH class/classes DAP#########################
+#for DBH class < 10 cm / >= 10 to < 30 / >= 30 to < 50 />= 50# 
 
 
-clas_gim_cj.10<-dads.gim.cj [dads.gim.cj$DAP<10,]
+clas_gim_cj.10<-dads.gim.cj [dads.gim.cj$DAP<10,] #DBH < 10
 g.smal=length(clas_gim_cj.10$DAP)
-clas_gim_cj.10.30<-dads.gim.cj [dads.gim.cj$DAP>=10 & dads.gim.cj$DAP<30,]
+clas_gim_cj.10.30<-dads.gim.cj [dads.gim.cj$DAP>=10 & dads.gim.cj$DAP<30,] #DBH >= 10 to <30
 g.med=length(clas_gim_cj.10.30$DAP)
-clas_gim_cj.30.50<-dads.gim.cj [dads.gim.cj$DAP>=30 & dads.gim.cj$DAP<50,]
+clas_gim_cj.30.50<-dads.gim.cj [dads.gim.cj$DAP>=30 & dads.gim.cj$DAP<50,] #DBH >= 30 to <50
 g.lar=length(clas_gim_cj.30.50$DAP)
-clas_gim_cj.50<-dads.gim.cj [dads.gim.cj$DAP>=50,]
+clas_gim_cj.50<-dads.gim.cj [dads.gim.cj$DAP>=50,] #DBH >= 50 
 g.x.larg=length(clas_gim_cj.50$DAP)
 
 clas_ang_cj.10<-dads.ang.cj [dads.ang.cj$DAP<10,]
@@ -143,7 +142,7 @@ a.b.g=sum(dads.gim.cj$DAP)
 ############################################################
 ############################################################
 ############################################################
-##Est.Altura
+##Est.Altura / equation to estimate tree height 
 #Ang
 #weibull
 a=27.188
@@ -164,8 +163,9 @@ dads.gim.cj$Alt.E = (1.3+a.g*exp(-(b.g/g.D.1)))
 ############################################################
 ############################################################
 ############################################################
-##Densidade
+##Densidade / wood density
 
+#density from GWD
 Dens.cj= getWoodDensity(genus=dads.ang.cj$Gen, 
 		species=dads.ang.cj$Spp)
 
@@ -177,13 +177,14 @@ dads.ang.cj$Lvl.D <- Dens.cj$levelWD
 #caso queira comparar densidade
 #com outro banco de dados
 
-##################################################
-#####inserindo densidade (Doutorado Gabriel 
-#####Martocos Oliveira "Densidade da madeira 
+########################################################
+#####inserindo densidade / density from (Doutorado / PhD
+##### Gabriel Marcos Oliveira "Densidade da madeira 
 #####em minas gerais")
-##################################################
+#####<http://repositorio.ufla.br/jspui/bitstream/1/4880/1/TESE_Densidade%20da%20madeira%20em%20Minas%20Gerais%20%20amostragem%2C%20espacializa%C3%A7%C3%A3o%20e%20rela%C3%A7%C3%A3o%20com%20vari%C3%A1veis%20ambientais.pdf>
+########################################################
 
-
+#Density from Gabriel Marcos Oliveira PhD
 dads.ang.cj [dads.ang.cj$Gen == "Callisthene",11] <- 0.604  # pg 48 linha 55
 dads.ang.cj [dads.ang.cj$Gen == "Casearia",11] <- 0.492 #pg 48 linha 63
 dads.ang.cj [dads.ang.cj$Gen == "Clethra",11] <- 0.404 #pg 49 linha 78
@@ -239,18 +240,18 @@ dads.gim.cj$Lvl.D <- Dens.cj.2$levelWD
 ##Biomassa
 
 
-##Gim
-x=0.4141 #Souza e Longhi
+##Gymnosperms
+x=0.4141 #converstion to dry biomass (Souza e Longhi) 
 a= 111.7988
 b= -15.5317
 c.2= 0.8544
 d = 0.0180
 g.D.1= c(dads.gim.cj$DAP)
 g.H.1=c(dads.gim.cj$Alt)
-dads.gim.cj$biom= (x*(a+b*c(g.D.1)+c.2*c(g.D.1^2)+d*((c(g.D.1^2))*g.H.1)))
+dads.gim.cj$biom= (x*(a+b*c(g.D.1)+c.2*c(g.D.1^2)+d*((c(g.D.1^2))*g.H.1))) #alometric equation biomass (Sanqueta )
 
-##Ang
-
+##Angiosperms
+#alometric equation Chaves et. al 2015 from BIOMASS package
 dads.ang.cj$biom= (computeAGB(D=dads.ang.cj$DAP, 
 			WD=dads.ang.cj$DensM,
 			H=dads.ang.cj$Alt.E))*1000
