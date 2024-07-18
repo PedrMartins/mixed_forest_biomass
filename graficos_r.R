@@ -15,26 +15,13 @@ library(factoextra)
 ###DAP class porcentagem ind
 ###Suplementar
 
-setwd("C:/Users/Pedro/Dropbox/Mestrado/DAdos/Novos dados artigo")
+setwd("C:/Users/caminho/para/scriptR/dadosprocessados")
 #dir ()
 source ("Biomass_calc.R")
 
+setwd("C:/Users/Pedro/caminho/para/salvar/plots")
 
-View (lbio[1])
-lbio = list (bio.bc, bio.bp, bio.cj, bio.Fbar, bio.Fsf, bio.It) 
-
-
-
-for(i in seq_along(lbio)) {
-
- write.table(lbio[i],paste("bioma",i,sep=".","csv"),sep=" ", dec=",")
-
-}
-
-
-setwd("C:/Users/Pedro/Dropbox/Mestrado/DAdos/Novos dados artigo/Graficos")
-
-jpeg(filename = "Classe DAP_ind.jpg", width = 850, height = 500, # fun��o salva gr�ficos em .jpg
+jpeg(filename = "Classe DAP_ind.jpg", width = 850, height = 500, # function to save plots salva .jpg
      units = "px", quality = 75, 
      bg = "white", restoreConsole = TRUE)
 
