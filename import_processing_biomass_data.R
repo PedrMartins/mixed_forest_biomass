@@ -20,25 +20,24 @@ library (vegan) #funcao disponibiliza os pacotes
 
 
 ##################################################################
-## weighted average function									                  ##
-                                                                ##
-meanp=function (v,w,pop,as_numeric=FALSE)	# v=variável					##
-  #w=peso						                                            ##
-  #pop=população					                                      ##
-  #count-> caso esteja usando a função count para               ##
-  #peso						                                              ##
-{	if (class (v)!="numeric")								                      ##
-{ stop("Variável não numérica")}						                    ##
-  if (as_numeric==TRUE)									                        ##
-  {w=as.numeric (w)}								                            ##
-  if (class (w) !="numeric")								                    ##
-  {stop ("Peso não numérico")}							                    ##
-  if (length (v)!= length (w))								                  ##
-  {stop("colunas não tem \n com tamananho diferente")}			  	##
-  m_p=sum (v*w)/length (pop)                    								##
-  return (m_p)									                                ##
-                                                                ##
-}												                                        ##
+## weighted average function	
+
+meanp=function (v,w,pop,as_numeric=FALSE)	# v=wood density	
+  #w=weight					
+  #pop=population					
+ 				
+{	
+if (class (v)!="numeric")			
+         {stop("wood density non numeric")}			
+if (as_numeric==TRUE)				
+         {w=as.numeric (w)}				
+if (class (w) !="numeric")			
+         {stop ("weight non  numeric")}			
+if (length (v)!= length (w))			
+         {stop("coluns unmatching")}	
+m_p=sum (v*w)/length (pop)                    		
+return (m_p)							
+}							
 ##################################################################
 
 
