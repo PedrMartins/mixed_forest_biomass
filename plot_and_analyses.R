@@ -12,7 +12,7 @@ library(factoextra)
 ############################################################
 
 
-###DAP class porcentagem ind
+###DBG class porcentagem ind
 ###Suplementar
 
 #dir ()
