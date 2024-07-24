@@ -20,5 +20,5 @@
 
 <!-- badges: end -->
 
-   
+![Araucaria](https://www.google.com/url?sa=i&url=https%3A%2F%2Fferdinandodesousa.com%2F2020%2F10%2F02%2Fo-dramatico-panorama-da-destruicao-da-mata-das-araucarias%2F&psig=AOvVaw3wCW2MUi0TxtaUukVGg2jH&ust=1721918317510000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNi9jt_zv4cDFQAAAAAdAAAAABAE)   
 
