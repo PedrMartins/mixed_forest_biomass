@@ -11,9 +11,9 @@
 * [Leonardo Dias Meireles](https://orcid.org/0000-0001-5723-0593)
 * [Luciana Ferreira Alves](https://orcid.org/0000-0002-8944-1851)
 * [Natália Macedo Ivanauskas](https://search.scielo.org/?lang=en&q=au:IVANAUSKAS,+NATALIA+MACEDO)
-* Renato Lima
+* [Renato Lima]()
 * [Fabrício Alvim Carvalho](https://orcid.org/0000-0001-7301-9448)
-* Lucas Desiderio Santana 
+* [Lucas Desiderio Santana]() 
 
 <!-- badges: end -->
 
