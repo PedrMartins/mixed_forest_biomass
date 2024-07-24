@@ -15,10 +15,6 @@
 * [Fabrício Alvim Carvalho](https://orcid.org/0000-0001-7301-9448)
 * [Lucas Desiderio Santana]() 
 
-```php
-x <- rnorm(n = 10, mean = 100, sd = 5)
-hist(x, main = "")
-```
 
 <!-- badges: start -->
 
