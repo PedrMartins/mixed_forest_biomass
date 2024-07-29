@@ -503,7 +503,7 @@ jpeg(filename = "biomas_temp__xtrop.jpg", width = 700, height = 900, # fun��
 par(mfrow=c(1,1),mar=c(3,5,2,2), cex.axis=1, cex.lab=1.5, mgp=c(3.5,1.6,0),
     family="serif",las=1, tcl=0.3, bg="grey95")
 
-color <- colorRampPalette(c("saddlebrown","lightgreen"))
+color <- colorRampPalette(c("sandybrown","lightgreen"))
 
 barplot (bio.temp.trop, col=color (4),
          ylim=c(0,120), ylab="Biomass %")
