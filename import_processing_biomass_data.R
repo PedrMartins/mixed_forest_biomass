@@ -61,7 +61,7 @@ colnames (bio.bp)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
 
 biomassa_faz_bartira = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQH6MiSv8vZDf5yWIIumiHWGTN3H0NF9yZ26P4Kw4J6nyUNe73PwHCJXLX33GUK4A/pub?output=csv"
 biomassa_faz_bartira_raw = read.csv(biomassa_faz_bartira, row.names = 1)
-bio.Fbar=biomassa_baependi_raw
+bio.Fbar=biomassa_faz_bartira_raw
 colnames (bio.Fbar)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
 #bio.Fbar =  read.table ("Faz batira.txt", header = TRUE,
 #                        sep = "\t", row.names=1, dec = ",")
