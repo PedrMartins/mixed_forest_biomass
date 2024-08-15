@@ -21,7 +21,7 @@
 
 <!-- badges: end -->
 
-<div align="right">
+<div align="center">
   
   ![](https://conexaoplaneta.com.br/wp-content/uploads/2020/06/1_Floresta-com-arauc%C3%A1ria-Turvo-PR.jpg)
 
