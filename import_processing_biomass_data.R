@@ -20,24 +20,25 @@ library (vegan) #funcao disponibiliza os pacotes
 
 
 ##################################################################
-## weighted average function	
-
-meanp=function (v,w,pop,as_numeric=FALSE)	# v=wood density	
-  #w=weight					
-  #pop=population					
- 				
-{	
-if (class (v)!="numeric")			
-         {stop("wood density non numeric")}			
-if (as_numeric==TRUE)				
-         {w=as.numeric (w)}				
-if (class (w) !="numeric")			
-         {stop ("weight non  numeric")}			
-if (length (v)!= length (w))			
-         {stop("coluns unmatching")}	
-m_p=sum (v*w)/length (pop)                    		
-return (m_p)							
-}							
+## weighted average function									                  ##
+                                                                ##
+meanp=function (v,w,pop,as_numeric=FALSE)	# v=variável					##
+  #w=peso						                                            ##
+  #pop=população					                                      ##
+  #count-> caso esteja usando a função count para               ##
+  #peso						                                              ##
+{	if (class (v)!="numeric")								                      ##
+{ stop("Variável não numérica")}						                    ##
+  if (as_numeric==TRUE)									                        ##
+  {w=as.numeric (w)}								                            ##
+  if (class (w) !="numeric")								                    ##
+  {stop ("Peso não numérico")}							                    ##
+  if (length (v)!= length (w))								                  ##
+  {stop("colunas não tem \n com tamananho diferente")}			  	##
+  m_p=sum (v*w)/length (pop)                    								##
+  return (m_p)									                                ##
+                                                                ##
+}												                                        ##
 ##################################################################
 
 
@@ -45,6 +46,7 @@ biomassa_campos_do_jordao = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRU
 biomassa_campos_do_jordao_raw = read.csv(biomassa_campos_do_jordao, row.names = 1,)
 bio.cj=biomassa_campos_do_jordao_raw
 colnames (bio.cj)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
+
 
 #bio.cj =  read.table ("Campos do jordão.txt", header = TRUE,
 #                      sep = "\t", row.names=1, dec = ",")
@@ -55,6 +57,8 @@ biomassa_baependi = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKa8azcr4A
 biomassa_baependi_raw = read.csv(biomassa_baependi, row.names = 1)
 bio.bp=biomassa_baependi_raw
 colnames (bio.bp)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
+
+
 #bio.bp =  read.table ("Baependi.txt" , header = TRUE,
 #                      sep = "\t", row.names=1, dec = ",")
 
@@ -63,12 +67,15 @@ biomassa_faz_bartira = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQH6MiSv
 biomassa_faz_bartira_raw = read.csv(biomassa_faz_bartira, row.names = 1)
 bio.Fbar=biomassa_faz_bartira_raw
 colnames (bio.Fbar)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
+
+
 #bio.Fbar =  read.table ("Faz batira.txt", header = TRUE,
 #                        sep = "\t", row.names=1, dec = ",")
 
 biomassa_faz_sao_fran = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTfXCGR2nwhacCPwyN88NADG0g9KIH3KQ5KwO9luxWZz6YLlFTZIdrsLGAkGTHXoQ/pub?output=csv"
 biomassa_faz_sao_fran_raw = read.csv(biomassa_faz_sao_fran, row.names = 1)
 bio.Fsf=biomassa_faz_sao_fran_raw
+
 #bio.Fsf =  read.table ("Faz São Fran.txt", header = TRUE,
 #                       sep = "\t", row.names=1, dec = ",")
 colnames (bio.Fsf)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
@@ -332,7 +339,7 @@ b.p.g=(c(b.g.smal,b.g.med,b.g.lar,b.g.x.larg)/b.s.g)*100
 #############
 ###Limpeza dados
 #############
-#bio.bp < - bio.bp [!str_ends(bio.bp$Gen,"aceae"),]
+bio.bp <- bio.bp [!str_ends(bio.bp$Gen,"aceae"),]
 dads.gim.bp<- bio.bp[bio.bp$Filo=="Gim",]#separa gimnosperma
 dads.ang.bp<- bio.bp[bio.bp$Filo!="Gim",]#retirando gimnosperma
 dads.ang.bp<- dads.ang.bp[dads.ang.bp$Filo!="Saman",]#retirando samambaia
@@ -1219,7 +1226,7 @@ a.b.g_6=sum(dads.gim.bc$DAP)
 ############################################################
 ############################################################
 ############################################################
-##Est.Altura
+#####Est.Altura######
 #Ang
 #weibull
 a_5=27.188
@@ -1240,7 +1247,7 @@ dads.gim.bc$Alt.E = (1.3+a.g_5*exp(-(b.g_5/g.D_6)))
 ############################################################
 ############################################################
 ############################################################
-##Densidade
+########Densidade######
 
 Dens.bc= getWoodDensity(genus=dads.ang.bc$Gen,
                         species=dads.ang.bc$Spp)
@@ -1318,7 +1325,7 @@ dads.gim.bc$Lvl.D <- Dens.bc.2$levelWD
 
 ###########################################################
 ############################################################
-##Biomassa
+########Biomassa######
 
 
 ##Gim
@@ -1347,6 +1354,8 @@ b.p= 2.7483
 D.p_2=palm.bc$DAP
 
 palm.bc$biom = exp(a.p+b.p*log(D.p_2))
+log(3)
+exp (3)
 
 #head (dads.gim.bc)
 #head (ang.bc)
