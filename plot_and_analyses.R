@@ -1,21 +1,20 @@
 ########################GRÁFICOS BIOMASSA##############################
 ###################rodar script biomass_calc antes#####################
-install.packages ("factoextra")
-install.packages ("car")
+
+
 library(corrplot)
 library(car)
 library (vegan)
 library(FactoMineR)
 library(factoextra)
+library (vioplot)
+
 
 
 ############################################################
+###DAP class porcentagem ind########
+###Suplementar########
 
-
-###DBG class porcentagem ind
-###Suplementar
-
-#dir ()
 source ("import_processing_biomass_data.R")
 
 
@@ -27,7 +26,7 @@ par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bg= "grey95")
 color= colorRampPalette(c("lightgreen", "sandybrown"))
 barplot (c(p.a[1],p.g[1],p.a[2],p.g[2],p.a[3],p.g[3],p.a[4],p.g[4]),
-         col=color (2), ylim=c(0,70),ylab="individuals (%)", main="Campos do Jordão")
+         col=color (2), ylim=c(0,70),ylab="individuals (%)", main="Campos do Jordão (MF1)")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -47,7 +46,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 barplot (c(p.a_4[1],p.g_4[1],p.a_4[2],p.g_4[2],p.a_4[3],
            p.g_4[3],p.a_4[4],p.g_4[4]),
          col=color (2), ylim=c(0,70),
-         main="Delfim Moreira \n Faz. São Fran.")#fsf
+         main="Delfim Moreira \n Faz. São Fran. (MF5)")#fsf
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -68,7 +67,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 barplot (c(p.a_3[1],p.g_3[1],p.a_3[2],p.g_3[2],p.a_3[3],
            p.g_3[3],p.a_3[4],p.g_3[4]),
          col=color (2), ylim=c(0,70),
-         main="Delfim Moreira \n Faz. Bart.")#fb
+         main="Delfim Moreira \n Faz. Bart. (MF4)")#fb
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -90,7 +89,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 barplot (c(p.a_2[1],p.g_2[1],p.a_2[2],p.g_2[2],p.a_2[3],
            p.g_2[3],p.a_2[4],p.g_2[4]),ylab="individuals (%)",
          col=color (2),ylim=c(0,70),xlab="DBH Class (cm)",
-         main="Baependi")#bp
+         main="Baependi (MF6)")#bp
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -110,7 +109,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 
 barplot (c(p.a_6[1],p.g_6[1],p.a_6[2],p.g_6[2],p.a_6[3],p.g_6[3],
            p.a_6[4],p.g_6[4]),xlab="DBH Class (cm)",
-         col=color (2), ylim=c(0,70), main="Barra do Chapéu")#bc
+         col=color (2), ylim=c(0,70), main="Barra do Chapéu (MF3)")#bc
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -128,8 +127,8 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
        ,bty = "n") #tipo da fonte
 
 barplot (c(p.a_5[1],p.g_5[1],p.a_5[2],p.g_5[2],p.a_5[3],p.g_5[3]
-           ,p.a_5[4],p.g_5[4]),
-         col=color (2), ylim=c(0,70),main="Itaberá",xlab="DBH Class (cm)")#it
+            ,p.a_5[4],p.g_5[4]),
+         col=color (2), ylim=c(0,70),main="Itaberá (MF2)",xlab="DBH Class (cm)")#it
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -150,15 +149,8 @@ dev.off()
 
 
 ########################################
+###########DAP Class porcentage BIO########
 
-########################################
-
-########################################
-
-#######################################
-########################################
-###DAP Class porcentage BIO
-x11()
 
 jpeg(filename = "Classe DAP_biomas.jpg", width = 1050, height = 700, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 95,
@@ -169,7 +161,7 @@ par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
 
 color= colorRampPalette(c("lightgreen", "sandybrown"))
 barplot (c(b.p.a[1],b.p.g[1],b.p.a[2],b.p.g[2],b.p.a[3],b.p.g[3],b.p.a[4],b.p.g[4]),
-         col=color (2), ylim=c(0,100),ylab="Biomass %", main="Campos do Jordão")#cj
+         col=color (2), ylim=c(0,100),ylab="Biomass %", main="Campos do Jordão (MF1)")#cj
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -191,7 +183,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 barplot (c(b.p.a_4[1],b.p.g_4[1],b.p.a_4[2],b.p.g_4[2],b.p.a_4[3],
            b.p.g_4[3],b.p.a_4[4],b.p.g_4[4]),
          col=color (2), ylim=c(0,100),
-         main="Delfim Moreira \n Faz. São Fran.") #fsf
+         main="Delfim Moreira \n Faz. São Fran. (MF5)") #fsf
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -212,7 +204,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 barplot (c(b.p.a_3[1],b.p.g_3[1],b.p.a_3[2],b.p.g_3[2],b.p.a_3[3],
            b.p.g_3[3],b.p.a_3[4],b.p.g_3[4]),
          col=color (2), ylim=c(0,100),
-         main="Delfim Moreira \n Faz. Bart.")#fb
+         main="Delfim Moreira \n Faz. Bart. (MF4)")#fb
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -234,7 +226,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 barplot (c(b.p.a_2[1],b.p.g_2[1],b.p.a_2[2],b.p.g_2[2],b.p.a_2[3],
            b.p.g_2[3],b.p.a_2[4],b.p.g_2[4]),
          col=color (2), ylim=c(0,100),ylab="Biomass %", xlab="DBH Class (cm)",
-         main="Baependi")#bp
+         main="Baependi (MF6)")#bp
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -254,7 +246,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 
 barplot (c(b.p.a_6[1],b.p.g_6[1],b.p.a_6[2],b.p.g_6[2],b.p.a_6[3],b.p.g_6[3],
            b.p.a_6[4],b.p.g_6[4]), xlab="DBH Class (cm)",
-         col=color (2), ylim=c(0,100), main="Barra do Chapéu")#bc
+         col=color (2), ylim=c(0,100), main="Barra do Chapéu (MF3)")#bc
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -273,7 +265,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 
 barplot (c(b.p.a_5[1],b.p.g_5[1],b.p.a_5[2],b.p.g_5[2],b.p.a_5[3],b.p.g_5[3]
            ,b.p.a_5[4],b.p.g_5[4]),
-         col=color (2), ylim=c(0,100),main="Itaberá",xlab="DBH Class (cm)")#it
+         col=color (2), ylim=c(0,100),main="Itaberá (MF2)",xlab="DBH Class (cm)")#it
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -293,16 +285,9 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 dev.off()
 
 
-########################################
-
-########################################
-
-########################################
-
-
 ##########################
 ###
-### bio gmin/ arauc
+### bio gmin/ arauc#######
 
 dads.ara.cj<- dads.gim.cj [dads.gim.cj$Gen!="Podocarpus",]
 dads.pod.cj<- dads.gim.cj [dads.gim.cj$Gen!="Araucaria",]
@@ -318,7 +303,7 @@ dads.pod.bp<- dads.gim.bp [dads.gim.bp$Gen!="Araucaria",]
 
 
 #####################################
-#prop. arauc. podo
+########prop. arauc. podo#######
 
 
 bio.podo.ara.pro = data.frame(
@@ -336,14 +321,16 @@ bio.podo.ara.pro = data.frame(
   IT_SP=c((sum(dads.gim.It$biom)/sum(bio.It$biom))*100,0))
 
 rownames(bio.podo.ara.pro) <- c("Araucaria","Podocarpus")
-colnames(bio.podo.ara.pro) <- c("Campos  \n do Jordão","Delfim Moreira \n Faz. São Fran.",
-                                "Delfim Moreira \n Faz. Bart.","Baependi",
-                                "Barra \n do Chapéu", "Itaberá")
-
+colnames(bio.podo.ara.pro) <- c("Campos do Jordão"="MF1",
+                                "Delfim Moreira \n Faz. São Fran."="MF5",
+                                "Delfim Moreira \n Faz. Bart."="MF4",
+                                "Baependi"="MF6",
+                                "Barra \n do Chapéu"="MF3"
+                                ,"Itaberá" = "MF2")
 bio.podo.ara.pro= as.matrix (bio.podo.ara.pro)
 
 
-jpeg(filename = "biomas_arau__podo_prop.jpg", width = 700, height = 850, # fun��o salva gr�ficos em .jpg
+jpeg(filename = "biomas_arau_podo_prop.jpg", width = 850, height = 900, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 75,
      bg = "white")
 
@@ -386,19 +373,21 @@ bio.podo.ara = data.frame(
 
 
 rownames(bio.podo.ara) <- c("Araucaria","Podocarpus")
-colnames (bio.podo.ara)<- c("Campos \n do Jord�o","Delfim Moreira \n Faz. S�o Fran.",
-                            "Delfim Moreira \n Faz. Bart.","Baependi","Barra \n do Chap�u",
-                            "Itaber�")
+colnames(bio.podo.ara) <- c("Campos do Jordão"="MF1",
+                                "Delfim Moreira \n Faz. São Fran."="MF5",
+                                "Delfim Moreira \n Faz. Bart."="MF4",
+                                "Baependi"="MF6",
+                                "Barra \n do Chapéu"="MF3"
+                                ,"Itaberá" = "MF2")
 bio.gim= as.matrix (bio.podo.ara)
-barplot (bio.gim, col=c("grey61","grey85"), ylim=c(0,200),
-         ylab=expression(Mg%.%ha^-1))
+
 #####
 
 
 
 ########################################################################
-######bio_filo
-######bio_geral
+######bio_filo#####
+######bio_geral#####
 
 bio.ang.temp.cj <- bio.cj [bio.cj$Distri == "Temp" & bio.cj$Filo != "Gim",]
 bio.gim.a_cj <- bio.cj [bio.cj$Gen == "Araucaria",]
@@ -472,11 +461,20 @@ bio.tem.trop.pro = data.frame(
 
 
 rownames(bio.tem.trop.pro) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
-colnames(bio.tem.trop.pro) <- c("Campos do Jordão","Delfim Moreira \n Faz. São Fran.",
-                                "Delfim Moreira \n Faz. Bart.","Baependi",
-                                "Barra \n do Chapéu","Itaberá")
-bio.temp.trop= as.matrix (bio.tem.trop.pro)
+colnames(bio.tem.trop.pro) <- c("Campos do Jordão"="MF1",
+                                "Delfim Moreira \n Faz. São Fran."="MF5",
+                                "Delfim Moreira \n Faz. Bart."="MF4",
+                                "Baependi"="MF6",
+                                "Barra \n do Chapéu"="MF3"
+                                ,"Itaberá" = "MF2")
 
+#colnames(bio.tem.trop.pro) <- c("MF1","MF5",
+#                                "MF4","MF6",
+#                                "MF3","MF2")
+
+
+bio.temp.trop= as.matrix (bio.tem.trop.pro)
+colSums(bio.temp.trop)
 
 ######
 #bio.tem.trop = data.frame(
@@ -610,7 +608,7 @@ mag.bc=sum(bio.mag.bc$biom)
 por.b.bc= (c(gim.bc,eud.bc,mag.bc)/
              sum(gim.bc,eud.bc,mag.bc)*100)
 
-bio.filo.pro = data.frame(Gimnosperma
+bio.filo.pro = data.frame(
   CJ_SP=c(por.b.cj),
   FSF_MG=c(por.b.Fsf),
   FB_MG=c(por.b.Fbar),
@@ -620,9 +618,12 @@ bio.filo.pro = data.frame(Gimnosperma
 
 
 rownames(bio.filo.pro) <- c("Gimnosperma","Eudicotiledonia","Magnoliidea")
-colnames(bio.filo.pro) <- c("Campos do Jordão","Delfim Moreira \n Faz. São Fran.",
-                            "Delfim Moreira \n Faz. Bart.","Baependi",
-                            "Barra \n do Chapéu","Itaberá")
+colnames(bio.filo.pro) <- c("Campos do Jordão"="MF1",
+                                "Delfim Moreira \n Faz. São Fran."="MF5",
+                                "Delfim Moreira \n Faz. Bart."="MF4",
+                                "Baependi"="MF6",
+                                "Barra \n do Chapéu"="MF3"
+                                ,"Itaberá" = "MF2")
 bio.filo= as.matrix (bio.filo.pro)
 
 
@@ -654,14 +655,9 @@ dev.off()
 
 
 
-getwd()
-########################################################################################
-########################################################################################
-########################################################################################
 
-########################################################################################
-#ANALISES CORRELAÇÃO
-########################################################################################
+#################ANALISES CORRELAÇÃO#############
+
 #### dads.env -> está no script "Dados de cj estudos" utilizado para o CCA similaridade
 #### similaridade florística. coluna 3 = altitude, 15 = precipitação anual, 4= temperatura média
 #### 8 = temperatura mês mais quente, 9= temp. mes mais frio, 16= mes chuvoso, 17 = mes seco
@@ -760,7 +756,8 @@ str (s)
 
 
 rownames(s) <- c("CJ","F. SãoFran","F. Bar","BP","BC", "It")
-colnames(s) <- c("Biomass_Tot","Biomass_Ang","Biomass_Trop","Biomass_Temp",
+colnames(s) <- c("Biomass_Tot","Biomass_Ang",
+                 "Biomass_Trop","Biomass_Temp",
                  "Biomass_Gim","High","Rain",
                  "Temp","Driest_Month")
 
@@ -794,68 +791,75 @@ corrplot(cor(s), method ='square', diag=FALSE)
 dev.off()
 
 ###################################################################################################
-###################################################################################################
-
+#####################################Densidade Madeira#############################################
 
 jpeg(filename = "Boxplot densmad.jpg", width = 850, height = 500, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 75,
-     bg = "white", restoreConsole = TRUE)
+     bg = "white")
 
-par(mfrow=c(2,3),mar=c(5,5,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
+par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
       family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
 
 color <- colorRampPalette(c("sandybrown","lightgreen"))
 
-boxplot (DensM ~ Distri, data=bio.cj,horizontal = FALSE,
-         main="Campos do Jordão", xlab ="Dristribuição fitogeogŕafica",
-         col = color(2), ylab= "Densidade Madeira")
+boxplot (DensM ~ Distri, data=bio.cj, horizontal = FALSE,
+         main="Campos do Jordão (MF1)", xlab =" ",
+         col = color(2),
+         ylab= expression (paste ("Wood density ", g.cm^-3))
+         )
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperada","tropical"), #primeiro argumento refere oa texto plotado
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
 
-boxplot (DensM ~ Distri, data=bio.Fsf,horizontal = FALSE, main="Delfim Moreira \n Faz. S. Fran."
-         , xlab ="Dristribuição fitogeogŕafica",
-         col = color(2), ylab= "Densidade Madeira")
+boxplot (DensM ~ Distri, data=bio.Fsf,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. S. Fran. (MF5)"
+         , xlab =" ",
+         col = color(2), ylab= "")
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperada","tropical"), #primeiro argumento refere oa texto plotado
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
 
-boxplot (DensM ~ Distri, data=bio.Fbar,horizontal = FALSE, main="Delfim Moreira \n Faz. Bartira",
-         xlab ="Dristribuição fitogeogŕafica",
-         col = color(2), ylab= "Densidade Madeira")
+boxplot (DensM ~ Distri, data=bio.Fbar,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. Bartira (MF4)",
+         xlab =" ",
+         col = color(2), ylab= "")
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperada","tropical"), #primeiro argumento refere oa texto plotado
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
 
-boxplot (DensM ~ Distri, data=bio.bp,horizontal = FALSE, main="Baependi",
-         xlab ="Dristribuição fitogeogŕafica",
-         col = color(2), ylab= "Densidade Madeira")
+boxplot (DensM ~ Distri, data=bio.bp,horizontal = FALSE,
+         main="Baependi(MF6)",
+         xlab ="Phytogeographic distribution",
+         col = color(2),
+         ylab= expression (paste ("Wood density ", g.cm^-3))
+)
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperada","tropical"), #primeiro argumento refere oa texto plotado
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
 
-boxplot (DensM ~ Distri, data=bio.bc,horizontal = FALSE, main="Barra do Chapéu",
-         xlab ="Dristribuição fitogeogŕafica",
-         col = color(2), ylab= "Densidade Madeira")
+boxplot (DensM ~ Distri, data=bio.bc,horizontal = FALSE,
+         main="Barra do Chapéu (MF3)",
+         xlab ="Phytogeographic distribution",
+         col = color(2), ylab= "")
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperada","tropical"), #primeiro argumento refere oa texto plotado
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
 
-boxplot (DensM ~ Distri, data=bio.It,horizontal = FALSE, main="Itaberá",
-         xlab ="Dristribuição fitogeogŕafica",
-         col = color(2), ylab= "Densidade Madeira")
+boxplot (DensM ~ Distri, data=bio.It,horizontal = FALSE, main="Itaberá (MF2)",
+         xlab ="Phytogeographic distribution",
+         col = color(2), ylab= "")
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperada","tropical"), #primeiro argumento refere oa texto plotado
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
@@ -864,19 +868,92 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 dev.off()
 ###################################################################################################
 ###################################################################################################
+################boxplot biomassa################################################
 
 
+jpeg(filename = "Boxplot biomass.jpg", width = 850, height = 500, # fun��o salva gr�ficos em .jpg
+     units = "px", quality = 75,
+     bg = "white")
+
+par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
+    family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
+
+color <- colorRampPalette(c("sandybrown","lightgreen"))
+
+
+vioplot (biom/1000  ~ Distri, data=bio.cj, horizontal = FALSE,
+         main="Campos do Jordão (MF1)", xlab =" ",
+         col = color(2), ylab= "Biomass (Mg)")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+vioplot (biom/1000  ~ Distri, data=bio.Fsf,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. S. Fran. (MF5)"
+         , xlab =" ",
+         col = color(2), ylab= "")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+vioplot (biom/1000  ~ Distri, data=bio.Fbar,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. Bartira (MF4)",
+         xlab =" ",
+         col = color(2), ylab= "")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+vioplot (biom/1000 ~ Distri, data=bio.bp,horizontal = FALSE,
+         main="Baependi(MF6)",
+         xlab ="Phytogeographic distribution",
+         col = color(2), ylab= "Biomass (Mg)", yaxt = "n"
+         )
+axis (2, at = seq (0,3,by=1))
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+
+vioplot (biom/1000  ~ Distri, data=bio.bc,horizontal = FALSE,
+         main="Barra do Chapéu (MF3)",
+         xlab ="Phytogeographic distribution",
+         col = color(2), ylab= "")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+vioplot (biom/1000 ~ Distri, data=bio.It,horizontal = FALSE, main="Itaberá (MF2)",
+         xlab ="Phytogeographic distribution",
+         col = color(2), ylab= "")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+
+dev.off()
+
+################################################################
+################################################################
 
 bio.cj$biom
-sum (bio.tem.trop$BA_SP)
 
-
-sum (bio.tem.trop.pro$IT_SP[1])
-
-chisq.test (bio.tem.trop)
+chisq.test (bio.temp.trop)
 chisq.test (bio.tem.trop.pro)
 
-ang=sum(bio.temp.trop[c(1,2),])
+ang=sum(bio.temp.trop[c(3,4),])
 gim=sum(bio.temp.trop[c(1,2),])
 anova (ang,gim)
 med=mean (bio.temp.trop)
@@ -885,28 +962,78 @@ dqbio=dbio^2
 sqbio=sum(dqbio)
 
 
-
-View (bio.cj)
-
-##################################################################################################################
-##################################################################################################################
-##################################################################################################################
-##################################################################################################################
+###########################################
 ### Estrutura ####
 
-View (bio.cj)
+cjsoma <- sum (count (bio.cj, Lvl.D) [2])
+Itsoma <- sum(count (bio.It, Lvl.D)[2])
+bcsoma <- sum (count (bio.bc, Lvl.D)[2])
+bpsoma <- sum (count (bio.bp, Lvl.D)[2])
+fsfsoma <- sum (count (bio.Fsf, Lvl.D)[2])
+fbarsoma <- sum (count (bio.Fbar, Lvl.D)[2])
+
+count (bio.cj, Lvl.D) [2]/cjsoma * 100
+count (bio.It, Lvl.D) [2]/Itsoma * 100
+count (bio.bc, Lvl.D) [2]/bcsoma * 100
+count (bio.bp, Lvl.D) [2]/bpsoma * 100
+count (bio.Fsf, Lvl.D) [2]/fsfsoma * 100
+count (bio.Fbar, Lvl.D) [2]/fbarsoma * 100
 
 
-count (bio.cj, Lvl.D)
-count (bio.It, Lvl.D)
-count (bio.bc, Lvl.D)
-count (bio.bp, Lvl.D)
-count (bio.Fsf, Lvl.D)
-count (bio.Fbar, Lvl.D)
 
-sum (length (bio.cj$Spp),length(bio.It$Spp),length(bio.bc$Spp),
+range(bio.cj$biom) / 1000
+mean(bio.cj$biom) /1000
+sum (bio.cj$biom) /1000
+
+range(bio.It$DAP)
+mean(bio.It$DAP)
+range(bio.It$biom)/ 1000
+mean(bio.It$biom)/ 1000
+sum (bio.It$biom) /1000
+
+
+range(bio.bc$DAP)
+mean(bio.bc$DAP)
+range(bio.bc$biom)/1000
+mean(bio.bc$biom)/1000
+sum (bio.bc$biom)/1000
+
+range(bio.bp$DAP)
+mean(bio.bp$DAP)
+range(bio.bp$biom)/1000
+mean(bio.bp$biom)/1000
+sum (bio.bp$biom)/1000 *0.5
+
+range(bio.Fsf$DAP)
+mean(bio.Fsf$DAP)
+range(bio.Fsf$biom)/1000
+mean(bio.Fsf$biom)/1000
+sum (bio.Fsf$biom)/1000
+
+range(bio.Fbar$DAP)
+mean(bio.Fbar$DAP)
+range(bio.Fbar$biom)/1000
+mean(bio.Fbar$biom)/1000
+sum(bio.Fbar$biom)/1000
+
+
+
+total_individuos <- sum (length (bio.cj$Spp),length(bio.It$Spp),length(bio.bc$Spp),
      length(bio.bp$Spp),length(bio.Fsf$Spp),length(bio.Fbar$Spp))
 
+individuos_campos <- length (bio.cj$Spp)
+individuos_itabera <- length (bio.It$Spp)
+individuos_barra <- length (bio.bc$Spp)
+individuos_baependi <- length (bio.bp$Spp)
+individuos_faz_saofrancisco <- length (bio.Fsf$Spp)
+individuos_faz_bartira <- length (bio.Fbar$Spp)
+
+(individuos_campos/total_individuos) * 100
+(individuos_itabera/total_individuos) * 100
+(individuos_barra/total_individuos) * 100
+(individuos_faz_bartira/total_individuos) * 100
+(individuos_faz_saofrancisco/total_individuos) * 100
+(individuos_baependi/total_individuos) * 100
 
 sum (bio.cj$biom)/1000
 sum(bio.It$biom)/1000
@@ -915,9 +1042,7 @@ sum ((bio.bp$biom)/1000) /0.5
 sum (bio.Fsf$biom)/1000
 sum (bio.Fbar$biom)/1000
 
-
-
-summary (bio.cj)
+head (bio.cj)
 summary (bio.Fbar)
 summary (bio.Fsf)
 summary (bio.bp)
@@ -925,42 +1050,47 @@ summary (bio.It)
 summary (bio.bc)
 
 
-
-head (bio.bp)
-tail (bio.bp)
-summary (bio.bp)
-
 g_cj=count (bio.cj, Gen, sort=TRUE)
 length (g_cj$Gen)
+length (g_cj$Gen)/length (all_g$n) *100
 
 g_it=count (bio.It, Gen, sort=TRUE)
 length (g_it$Gen)
+length (g_it$Gen)/length (all_g$n) *100
 
 g_bc=count (bio.bc, Gen, sort=TRUE)
 length (g_bc$Gen)
+length (g_bc$Gen)/length (all_g$n) *100
 
-g_bp=count (bio.bp, Gen, sort=TRUE)
-length (g_bp$Gen)
-
-g_Fsf=count (bio.Fsf, Gen, sort=TRUE)
-length (g_Fsf$Gen)
 
 g_Fbar=count (bio.Fbar, Gen, sort=TRUE)
 length (g_Fbar$Gen)
+length (g_Fbar$Gen)/length (all_g$n) *100
+
+
+g_Fsf=count (bio.Fsf, Gen, sort=TRUE)
+length (g_Fsf$Gen)
+length (g_Fsf$Gen)/length (all_g$n) *100
+
+
+g_bp=count (bio.bp, Gen, sort=TRUE)
+length (g_bp$Gen)
+length (g_bp$Gen)/length (all_g$n) *100
 
 F_G=rbind (g_cj,g_it,g_bc,g_bp,g_Fsf,g_Fbar)
+all_g=count (F_G, Gen)
+length (all_g$n)
 
 All=rbind (bio.cj,bio.It,bio.bc,bio.bp,bio.Fsf,bio.Fbar)
 
 All_g=count (All,Gen, Spp)
 
-All_g [order (All_g$n),]
+All_g [order (All_g$n,decreasing = TRUE),]
+
+length(All_g$n)
 
 
-head (All)
-
-cFG= count (F_G$n)
-F_G[order (F_G$n),]
+F_G[order (F_G$n, decreasing = TRUE),]
 
 F_gs <- F_G[!duplicated  (F_G$Gen),]
 
@@ -969,36 +1099,52 @@ length(F_gs$n)
 cj=count (bio.cj, Gen, Spp, sort =TRUE)
 head (cj)
 length (cj$Spp)
+length (cj$Spp)/length(All_g$n)
+
 diversity (cj$n)
 diversity (cj$n, "simpson")
 
 it=count (bio.It, Gen, Spp, sort =TRUE)
 head (it)
 length (it$Spp)
+length (it$Spp)/length(All_g$n)
+
+
 diversity (it$n)
 diversity (it$n, "simpson")
 
 bc=count (bio.bc, Gen, Spp, sort =TRUE)
 head (bc)
 length (bc$Spp)
+length (bc$Spp)/length(All_g$n)
+
 diversity (bc$n)
 diversity (bc$n, "simpson")
 
 bp=count (bio.bp, Gen, Spp, sort =TRUE)
 head (bp)
 length (bp$Spp)
+length (bp$Spp)/length(All_g$n)
+
+
 diversity (bp$n)
 diversity (bp$n, "simpson")
 
 Fsf=count (bio.Fsf, Gen, Spp, sort =TRUE)
 head (Fsf)
 length (Fsf$Spp)
+length (Fsf$Spp)/length(All_g$n)
+
+
 diversity (Fsf$n)
 diversity (Fsf$n, "simpson")
 
 Fbar=count (bio.Fbar, Gen, Spp, sort =TRUE)
 head (Fbar)
 length (Fbar$Spp)
+length (Fbar$Spp)/length(All_g$n)
+
+
 diversity (Fbar$n)
 diversity (Fbar$n, "simpson")
 
@@ -1011,23 +1157,29 @@ length(F_es$Gen)
 
 
 
-F1=count (bio.cj, Fam, Gen, Spp, sort =TRUE)
-F2=count (bio.It, Fam,Gen, Spp, sort =TRUE)
-F3=count (bio.bc, Fam, Gen, Spp, sort =TRUE)
-F4=count (bio.bp, Fam, Gen, Spp, sort =TRUE)
-F5=count (bio.Fsf, Fam, Gen, Spp, sort =TRUE)
-F6=count (bio.Fbar, Fam, Gen, Spp, sort =TRUE)
+F1=count (bio.cj, Fam,  sort =TRUE)
+length (F1$Fam)
+
+F2=count (bio.It, Fam, sort =TRUE)
+length (F2$Fam)
+
+F3=count (bio.bc, Fam,  sort =TRUE)
+length (F3$Fam)
+
+F4=count (bio.bp, Fam, sort =TRUE)
+length (F4$Fam)
+
+F5=count (bio.Fsf, Fam, sort =TRUE)
+length (F5$Fam)
+
+F6=count (bio.Fbar, Fam, sort =TRUE)
+length (F6$Fam)
 
 F_=rbind (F1,F2,F3,F4,F5,F6)
 
 F_fe=count (F_, Fam)
-F_fe <- F_fe[order (F_fe$n),]
-
-
-
-sort (F_$Fam)
+F_fe <- F_fe[order (F_fe$n, decreasing = TRUE),]
+length(F_fe$Fam)
 
 F_s <- F_[!duplicated  (F_$Fam),]
 length(F_s$Fam)
-
-
