@@ -868,7 +868,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 dev.off()
 ###################################################################################################
 ###################################################################################################
-################boxplot biomassa################################################
+################vioplot biomassa################################################
 
 
 jpeg(filename = "Boxplot biomass.jpg", width = 850, height = 500, # fun��o salva gr�ficos em .jpg
@@ -878,12 +878,14 @@ jpeg(filename = "Boxplot biomass.jpg", width = 850, height = 500, # fun��o s
 par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
 
+
 color <- colorRampPalette(c("sandybrown","lightgreen"))
 
 
 vioplot (biom/1000  ~ Distri, data=bio.cj, horizontal = FALSE,
          main="Campos do Jordão (MF1)", xlab =" ",
          col = color(2), ylab= "Biomass (Mg)")
+head (bio.bc)
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("temperate","tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
@@ -947,6 +949,87 @@ dev.off()
 
 ################################################################
 ################################################################
+################################################################
+################vioplot biomassa filo###########################
+
+
+jpeg(filename = "Boxplot biomass_filo.jpg", width = 850, height = 500, # fun��o salva gr�ficos em .jpg
+     units = "px", quality = 75,
+     bg = "white")
+
+par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
+    family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
+
+
+color <- colorRampPalette(c("sandybrown","lightgreen"))
+
+
+vioplot (biom/1000  ~ Filo, data=bio.cj, horizontal = FALSE,
+         main="Campos do Jordão (MF1)", xlab =" ",
+         col = color(3), ylab= "Biomass (Mg)")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2,3))
+
+vioplot (biom/1000  ~ Filo, data=bio.Fsf,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. S. Fran. (MF5)"
+         , xlab =" ",
+         col = color(3), ylab= "")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2,3))
+
+vioplot (biom/1000  ~ Filo, data=bio.Fbar,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. Bartira (MF4)",
+         xlab =" ",
+         col = color(3), ylab= "")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2,3))
+
+vioplot (biom/1000 ~ Filo, data=bio.bp,horizontal = FALSE,
+         main="Baependi(MF6)",
+         xlab ="Phytogeographic distribution",
+         col = color(3), ylab= "Biomass (Mg)", yaxt = "n"
+)
+axis (2, at = seq (0,3,by=1))
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2,3))
+
+
+vioplot (biom/1000  ~ Filo, data=bio.bc,horizontal = FALSE,
+         main="Barra do Chapéu (MF3)",
+         xlab ="Phytogeographic distribution",
+         col = color(3), ylab= "")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2,3))
+
+vioplot (biom/1000 ~ Filo, data=bio.It,horizontal = FALSE, main="Itaberá (MF2)",
+         xlab ="Phytogeographic distribution",
+         col = color(3), ylab= "")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2,3))
+
+
+dev.off()
+
+################################################################
+
 
 bio.cj$biom
 
