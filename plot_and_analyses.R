@@ -1009,21 +1009,21 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 vioplot (biom/1000  ~ Filo, data=bio.bc,horizontal = FALSE,
          main="Barra do Chapéu (MF3)",
          xlab ="Phytogeographic distribution",
-         col = color(3), ylab= "")
+         col = color(4), ylab= "")
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  c("eud","con","mag", "mon"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
-  at=c(1,2,3))
+  at=c(1,2,3,4))
 
 vioplot (biom/1000 ~ Filo, data=bio.It,horizontal = FALSE, main="Itaberá (MF2)",
          xlab ="Phytogeographic distribution",
-         col = color(3), ylab= "")
+         col = color(4), ylab= "")
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  c("eud","con","mag","mon"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
-  at=c(1,2,3))
+  at=c(1,2,3,4))
 
 
 dev.off()
@@ -1043,7 +1043,6 @@ med=mean (bio.temp.trop)
 dbio=bio.temp.trop-med
 dqbio=dbio^2
 sqbio=sum(dqbio)
-
 
 ###########################################
 ### Estrutura ####

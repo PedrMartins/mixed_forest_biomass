@@ -9,7 +9,7 @@ install.packages (pkg)
 
 ########################################################
 
-
+source("Function_biomass.R")
 library (BIOMASS)
 library(tidyverse)
 library(dplyr)
@@ -18,108 +18,21 @@ library (corrplot)
 library (vegan) #funcao disponibiliza os pacotes
 
 
+bio.cj<- import_biomass_rawdata (site="cj")
+bio.bp<- import_biomass_rawdata (site="bp")
+bio.Fbar<- import_biomass_rawdata (site="fb")
+bio.Fsf<- import_biomass_rawdata (site="fsf")
+bio.It<- import_biomass_rawdata (site="it")
+bio.BC<- import_biomass_rawdata (site="bc")
 
-##################################################################
-## weighted average function									                  ##
-                                                                ##
-meanp=function (v,w,pop,as_numeric=FALSE)	# v=variável					##
-  #w=peso						                                            ##
-  #pop=população					                                      ##
-  #count-> caso esteja usando a função count para               ##
-  #peso						                                              ##
-{	if (class (v)!="numeric")								                      ##
-{ stop("Variável não numérica")}						                    ##
-  if (as_numeric==TRUE)									                        ##
-  {w=as.numeric (w)}								                            ##
-  if (class (w) !="numeric")								                    ##
-  {stop ("Peso não numérico")}							                    ##
-  if (length (v)!= length (w))								                  ##
-  {stop("colunas não tem \n com tamananho diferente")}			  	##
-  m_p=sum (v*w)/length (pop)                    								##
-  return (m_p)									                                ##
-                                                                ##
-}												                                        ##
-##################################################################
+bio.cj <- data_processing (bio.cj)
+bio.bp <- data_processing (bio.bp)
+bio.Fbar <- data_processing (bio.Fbar)
+bio.Fsf <- data_processing (bio.Fsf)
+bio.It <- data_processing (bio.It)
+bio.BC <- data_processing (bio.BC)
 
 
-biomassa_campos_do_jordao = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRUXNWvjRvthnn29O8zSDdCDzN7F3ds2oR37xbcExjdzCLMk2TiZBxuBQuCpnNS5g/pub?output=csv"
-biomassa_campos_do_jordao_raw = read.csv(biomassa_campos_do_jordao, row.names = 1,)
-bio.cj=biomassa_campos_do_jordao_raw
-colnames (bio.cj)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
-
-
-#bio.cj =  read.table ("Campos do jordão.txt", header = TRUE,
-#                      sep = "\t", row.names=1, dec = ",")
-
-
-
-biomassa_baependi = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKa8azcr4AD5GI0SG1ay27BVSHkzKAvHdZ0G_5tnzZkObrFy7kdCtLwiuSLPA_Bg/pub?output=csv"
-biomassa_baependi_raw = read.csv(biomassa_baependi, row.names = 1)
-bio.bp=biomassa_baependi_raw
-colnames (bio.bp)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
-
-
-#bio.bp =  read.table ("Baependi.txt" , header = TRUE,
-#                      sep = "\t", row.names=1, dec = ",")
-
-
-biomassa_faz_bartira = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQH6MiSv8vZDf5yWIIumiHWGTN3H0NF9yZ26P4Kw4J6nyUNe73PwHCJXLX33GUK4A/pub?output=csv"
-biomassa_faz_bartira_raw = read.csv(biomassa_faz_bartira, row.names = 1)
-bio.Fbar=biomassa_faz_bartira_raw
-colnames (bio.Fbar)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
-
-
-#bio.Fbar =  read.table ("Faz batira.txt", header = TRUE,
-#                        sep = "\t", row.names=1, dec = ",")
-
-biomassa_faz_sao_fran = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTfXCGR2nwhacCPwyN88NADG0g9KIH3KQ5KwO9luxWZz6YLlFTZIdrsLGAkGTHXoQ/pub?output=csv"
-biomassa_faz_sao_fran_raw = read.csv(biomassa_faz_sao_fran, row.names = 1)
-bio.Fsf=biomassa_faz_sao_fran_raw
-
-#bio.Fsf =  read.table ("Faz São Fran.txt", header = TRUE,
-#                       sep = "\t", row.names=1, dec = ",")
-colnames (bio.Fsf)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
-
-biomassa_itabera = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSC559eIIhyIKCLOtPrVnnrp3JqoXd6AtJX345fURYEWuJpTw3QgyFnIHOp2DKO6Q/pub?output=csv"
-biomassa_itabera_raw = read.csv(biomassa_itabera, row.names = 1)
-bio.It=biomassa_itabera_raw
-#bio.It =  read.table ("Itabera.txt", header = TRUE,
-#                      sep = "\t", row.names=1, dec = ",")
-colnames (bio.It)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
-
-biomassa_barra_do_chapeu = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSQpuHlnRP-dF01wjmY1jGIAZLQYfK6g2NX2cSPKj_TMV5IBHQwpJ-Fwjx0OPXVOQ/pub?output=csv"
-biomassa_barra_do_chapeu_raw = read.csv(biomassa_barra_do_chapeu, row.names = 1)
-bio.BC=biomassa_barra_do_chapeu_raw
-#bio.BC =  read.table ("Barra do cha.txt", header = TRUE,
-#                      sep = "\t", row.names=1, dec = ",")
-colnames (bio.BC)<- c("D","Alt","Vol","Gen","Spp","Fam","Distri","Filo")
-
-
-
-
-
-####Conversão CAP para DAP / convertion CBH to DBH######
-c=100
-bio.cj$DAP=c(bio.cj$D)*c #convertion CBH to DBH
-bio.cj<- bio.cj[bio.cj$DAP>=4.7,]
-
-bio.bp$DAP=c(bio.bp$D)*c
-bio.bp<- bio.bp[bio.bp$DAP>=4.7,]
-
-bio.Fbar$DAP=c(bio.Fbar$D)*c
-bio.Fbar<- bio.Fbar[bio.Fbar$DAP>=4.7,]
-
-bio.Fsf$DAP=c(bio.Fsf$D)*c
-bio.Fsf<- bio.Fsf[bio.Fsf$DAP>=4.7,]
-
-bio.It$DAP=c(bio.It$D)*c
-bio.It<- bio.It[bio.It$DAP>=4.7,]
-
-bio.BC$DAP=c(bio.BC$D)*c
-bio.BC<- bio.BC[bio.BC$DAP>=4.7,]
-
-
-#head (sort(bio.Fsf$DAP))
 
 ############################################################
 ############################################################
@@ -946,6 +859,7 @@ b.p.g_4=(c(b.g.smal_4,b.g.med_4,b.g.lar_4,b.g.x.larg_4)/b.s.g_4)*100
 ###Limpeza dados
 #############
 bio.It <- bio.It [!str_ends(bio.It$Gen,"aceae"),]
+bio.It [bio.It$Fam=="Arecaceae",8] <- "Palm"
 dads.gim.It<- bio.It[bio.It$Filo=="Gim",]#separa gimnosperma
 dads.ang.It<- bio.It[bio.It$Filo!="Gim",]#retirando gimnosperma
 dads.ang.It<- dads.ang.It[dads.ang.It$Filo!="Saman",]#retirando samambaia
@@ -1185,6 +1099,7 @@ b.p.g_5=(c(b.g.smal_5,b.g.med_5,b.g.lar_5,b.g.x.larg_5)/b.s.g_5)*100
 #############
 bio.BC <- bio.BC [!str_ends(bio.BC$Gen,"aceae"),]
 bio.BC[bio.BC$Filo=="Gem",8] <- "Gim"
+bio.BC [bio.BC$Fam=="Arecaceae",8] <- "Palm"
 dads.gim.bc<- bio.BC[bio.BC$Filo=="Gim",]#separa gimnosperma
 dads.ang.bc<- bio.BC[bio.BC$Filo!="Gim",]#retirando gimnosperma
 dads.ang.bc<- dads.ang.bc[dads.ang.bc$Filo!="Saman",]#retirando samambaia
