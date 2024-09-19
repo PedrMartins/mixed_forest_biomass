@@ -25,8 +25,11 @@ jpeg(filename = "Classe DAP_ind.jpg", width = 1050, height = 700, # function to 
 par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bg= "grey95")
 color= colorRampPalette(c("lightgreen", "sandybrown"))
-barplot (c(p.a[1],p.g[1],p.a[2],p.g[2],p.a[3],p.g[3],p.a[4],p.g[4]),
-         col=color (2), ylim=c(0,70),ylab="individuals (%)", main="Campos do Jordão (MF1)")
+
+barplot (c(p.a_6[1],p.g_6[1],p.a_6[2],p.g_6[2],p.a_6[3],p.g_6[3],
+           p.a_6[4],p.g_6[4]), ylab="individuals (%)",
+         col=color (2), ylim=c(0,70), main="Barra do Chapéu (MF1)")#bc
+
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -42,11 +45,31 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
+barplot (c(p.a_5[1],p.g_5[1],p.a_5[2],p.g_5[2],p.a_5[3],p.g_5[3]
+           ,p.a_5[4],p.g_5[4]),
+         col=color (2), ylim=c(0,70),main="Itaberá (MF2)")#it
 
-barplot (c(p.a_4[1],p.g_4[1],p.a_4[2],p.g_4[2],p.a_4[3],
-           p.g_4[3],p.a_4[4],p.g_4[4]),
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1.4,3.5,6,8.5))
+
+legend("topright" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,col=color (2)
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
+
+barplot (c(p.a[1],p.g[1],p.a[2],p.g[2],p.a[3],p.g[3],p.a[4],p.g[4]),
          col=color (2), ylim=c(0,70),
-         main="Delfim Moreira \n Faz. São Fran. (MF5)")#fsf
+         main="Campos do Jordão (MF3)")
+
+
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -66,9 +89,11 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 
 barplot (c(p.a_3[1],p.g_3[1],p.a_3[2],p.g_3[2],p.a_3[3],
            p.g_3[3],p.a_3[4],p.g_3[4]),
-         col=color (2), ylim=c(0,70),
+         col=color (2), ylim=c(0,70), ylab="individuals (%)",
+         xlab="DBH Class (cm)",
          main="Delfim Moreira \n Faz. Bart. (MF4)")#fb
 
+
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
@@ -84,51 +109,32 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
+barplot (c(p.a_4[1],p.g_4[1],p.a_4[2],p.g_4[2],p.a_4[3],
+           p.g_4[3],p.a_4[4],p.g_4[4]),
+         col=color (2), ylim=c(0,70),
+         xlab="DBH Class (cm)",
+         main="Delfim Moreira \n Faz. São Fran. (MF5)")#fsf
 
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1.4,3.5,6,8.5))
+
+legend("topright" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,col=color (2)
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
 
 barplot (c(p.a_2[1],p.g_2[1],p.a_2[2],p.g_2[2],p.a_2[3],
-           p.g_2[3],p.a_2[4],p.g_2[4]),ylab="individuals (%)",
+           p.g_2[3],p.a_2[4],p.g_2[4]),ylab="",
          col=color (2),ylim=c(0,70),xlab="DBH Class (cm)",
          main="Baependi (MF6)")#bp
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-
-barplot (c(p.a_6[1],p.g_6[1],p.a_6[2],p.g_6[2],p.a_6[3],p.g_6[3],
-           p.a_6[4],p.g_6[4]),xlab="DBH Class (cm)",
-         col=color (2), ylim=c(0,70), main="Barra do Chapéu (MF3)")#bc
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-barplot (c(p.a_5[1],p.g_5[1],p.a_5[2],p.g_5[2],p.a_5[3],p.g_5[3]
-            ,p.a_5[4],p.g_5[4]),
-         col=color (2), ylim=c(0,70),main="Itaberá (MF2)",xlab="DBH Class (cm)")#it
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -160,8 +166,52 @@ par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bg="grey95")
 
 color= colorRampPalette(c("lightgreen", "sandybrown"))
+
+barplot (c(b.p.a_6[1],b.p.g_6[1],b.p.a_6[2],b.p.g_6[2],b.p.a_6[3],b.p.g_6[3],
+           b.p.a_6[4],b.p.g_6[4]), ylab="Biomass %",
+         col=color (2), ylim=c(0,100), main="Barra do Chapéu (MF1)")#bc
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1.4,3.5,6,8.5))
+
+legend("topright" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,col=color (2)
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
+
+
+barplot (c(b.p.a_5[1],b.p.g_5[1],b.p.a_5[2],b.p.g_5[2],b.p.a_5[3],b.p.g_5[3]
+           ,b.p.a_5[4],b.p.g_5[4]),
+         col=color (2), ylim=c(0,100),
+         main="Itaberá (MF2)")#it
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no grafico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1.4,3.5,6,8.5))
+
+legend("topright" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,col=color (2)
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
+
 barplot (c(b.p.a[1],b.p.g[1],b.p.a[2],b.p.g[2],b.p.a[3],b.p.g[3],b.p.a[4],b.p.g[4]),
-         col=color (2), ylim=c(0,100),ylab="Biomass %", main="Campos do Jordão (MF1)")#cj
+         col=color (2), ylim=c(0,100), main="Campos do Jordão (MF3)")#cj
+
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -180,30 +230,9 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 
 
 
-barplot (c(b.p.a_4[1],b.p.g_4[1],b.p.a_4[2],b.p.g_4[2],b.p.a_4[3],
-           b.p.g_4[3],b.p.a_4[4],b.p.g_4[4]),
-         col=color (2), ylim=c(0,100),
-         main="Delfim Moreira \n Faz. São Fran. (MF5)") #fsf
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no grafico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-
 barplot (c(b.p.a_3[1],b.p.g_3[1],b.p.a_3[2],b.p.g_3[2],b.p.a_3[3],
            b.p.g_3[3],b.p.a_3[4],b.p.g_3[4]),
-         col=color (2), ylim=c(0,100),
+         col=color (2), ylim=c(0,100), ylab="Biomass %", xlab="DBH Class (cm)",
          main="Delfim Moreira \n Faz. Bart. (MF4)")#fb
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
@@ -221,51 +250,31 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
+barplot (c(b.p.a_4[1],b.p.g_4[1],b.p.a_4[2],b.p.g_4[2],b.p.a_4[3],
+           b.p.g_4[3],b.p.a_4[4],b.p.g_4[4]),
+         col=color (2), ylim=c(0,100),
+         xlab="DBH Class (cm)",
+         main="Delfim Moreira \n Faz. São Fran. (MF5)") #fsf
 
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1.4,3.5,6,8.5))
+
+legend("topright" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,col=color (2)
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
 
 barplot (c(b.p.a_2[1],b.p.g_2[1],b.p.a_2[2],b.p.g_2[2],b.p.a_2[3],
            b.p.g_2[3],b.p.a_2[4],b.p.g_2[4]),
          col=color (2), ylim=c(0,100),ylab="Biomass %", xlab="DBH Class (cm)",
          main="Baependi (MF6)")#bp
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-
-barplot (c(b.p.a_6[1],b.p.g_6[1],b.p.a_6[2],b.p.g_6[2],b.p.a_6[3],b.p.g_6[3],
-           b.p.a_6[4],b.p.g_6[4]), xlab="DBH Class (cm)",
-         col=color (2), ylim=c(0,100), main="Barra do Chapéu (MF3)")#bc
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-barplot (c(b.p.a_5[1],b.p.g_5[1],b.p.a_5[2],b.p.g_5[2],b.p.a_5[3],b.p.g_5[3]
-           ,b.p.a_5[4],b.p.g_5[4]),
-         col=color (2), ylim=c(0,100),main="Itaberá (MF2)",xlab="DBH Class (cm)")#it
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -307,6 +316,10 @@ dads.pod.bp<- dads.gim.bp [dads.gim.bp$Gen!="Araucaria",]
 
 
 bio.podo.ara.pro = data.frame(
+  BC_SP=c((sum(dads.gim.bc$biom)/sum(bio.bc$biom))*100,0),
+
+  IT_SP=c((sum(dads.gim.It$biom)/sum(bio.It$biom))*100,0),
+
   CJ_SP=c((sum(dads.ara.cj$biom)/sum(bio.cj$biom))*100,(sum (dads.pod.cj$biom)/sum(bio.cj$biom))*100),
 
   FSF_MG=c((sum(dads.ara.fsf$biom)/sum(bio.Fsf$biom))*100,(sum(dads.pod.fsf$biom)/sum(bio.Fsf$biom))*100),
@@ -314,19 +327,18 @@ bio.podo.ara.pro = data.frame(
   FB_MG=c((sum(dads.ara.fb$biom)/sum(bio.Fbar$biom))*100,(sum(dads.pod.fb$biom)/sum(bio.Fbar$biom))*100),
 
 
-  BP_MG=c((sum(dads.ara.bp$biom)/sum(bio.bp$biom))*100,(sum(dads.pod.bp$biom)/sum(bio.bp$biom))*100),
+  BP_MG=c((sum(dads.ara.bp$biom)/sum(bio.bp$biom))*100,(sum(dads.pod.bp$biom)/sum(bio.bp$biom))*100)
 
-  BC_SP=c((sum(dads.gim.bc$biom)/sum(bio.bc$biom))*100,0),
-
-  IT_SP=c((sum(dads.gim.It$biom)/sum(bio.It$biom))*100,0))
+  )
 
 rownames(bio.podo.ara.pro) <- c("Araucaria","Podocarpus")
-colnames(bio.podo.ara.pro) <- c("Campos do Jordão"="MF1",
+colnames(bio.podo.ara.pro) <- c("Barra \n do Chapéu"="MF1"
+                                ,"Itaberá" = "MF2",
+                                "Campos do Jordão"="MF3",
                                 "Delfim Moreira \n Faz. São Fran."="MF5",
                                 "Delfim Moreira \n Faz. Bart."="MF4",
-                                "Baependi"="MF6",
-                                "Barra \n do Chapéu"="MF3"
-                                ,"Itaberá" = "MF2")
+                                "Baependi"="MF6"
+                                )
 bio.podo.ara.pro= as.matrix (bio.podo.ara.pro)
 
 
@@ -364,21 +376,24 @@ dev.off()
 
 ######
 bio.podo.ara = data.frame(
+  BC_SP=c(sum(dads.gim.bc$biom)/1000,0),
+  IT_SP=c(sum(dads.gim.It$biom)/1000,0),
   CJ_SP=c(sum(dads.ara.cj$biom)/1000,sum (dads.pod.cj$biom)/1000),
   FSF_MG=c(sum(dads.ara.fsf$biom)/1000,sum(dads.pod.fsf$biom)/1000),
   FB_MG=c(sum(dads.ara.fb$biom)/1000,sum(dads.pod.fb$biom)/1000),
-  BP_MG=(c(sum(dads.ara.bp$biom)/1000,sum(dads.pod.bp$biom)/1000))/0.5,
-  BC_SP=c(sum(dads.gim.bc$biom)/1000,0),
-  IT_SP=c(sum(dads.gim.It$biom)/1000,0))
+  BP_MG=(c(sum(dads.ara.bp$biom)/1000,sum(dads.pod.bp$biom)/1000))/0.5
+  )
 
 
 rownames(bio.podo.ara) <- c("Araucaria","Podocarpus")
-colnames(bio.podo.ara) <- c("Campos do Jordão"="MF1",
+colnames(bio.podo.ara) <- c(
+                              "Barra \n do Chapéu"="MF1"
+                              ,"Itaberá" = "MF2",
+                                "Campos do Jordão"="MF3",
                                 "Delfim Moreira \n Faz. São Fran."="MF5",
                                 "Delfim Moreira \n Faz. Bart."="MF4",
-                                "Baependi"="MF6",
-                                "Barra \n do Chapéu"="MF3"
-                                ,"Itaberá" = "MF2")
+                                "Baependi"="MF6"
+                                )
 bio.gim= as.matrix (bio.podo.ara)
 
 #####
@@ -452,21 +467,23 @@ por.t.t.It= (c(gim.temp.It,0,ang.temp.It,trop.It)/
                sum(gim.temp.It,ang.temp.It,trop.It)*100)
 
 bio.tem.trop.pro = data.frame(
+  BC_SP=c(por.t.t.bc),
+  IT_SP=c(por.t.t.It),
   CJ_SP=c(por.t.t.cj),
   FSF_MG=c(por.t.t.Fsf),
   FB_MG=c(por.t.t.Fbar),
-  BP_MG=c(por.t.t.bp),
-  BC_SP=c(por.t.t.bc),
-  IT_SP=c(por.t.t.It))
+  BP_MG=c(por.t.t.bp)
+  )
 
 
 rownames(bio.tem.trop.pro) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
-colnames(bio.tem.trop.pro) <- c("Campos do Jordão"="MF1",
+colnames(bio.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
+                                ,"Itaberá" = "MF2",
+                                "Campos do Jordão"="MF3",
                                 "Delfim Moreira \n Faz. São Fran."="MF5",
                                 "Delfim Moreira \n Faz. Bart."="MF4",
-                                "Baependi"="MF6",
-                                "Barra \n do Chapéu"="MF3"
-                                ,"Itaberá" = "MF2")
+                                "Baependi"="MF6"
+                                )
 
 #colnames(bio.tem.trop.pro) <- c("MF1","MF5",
 #                                "MF4","MF6",
@@ -1084,7 +1101,7 @@ range(bio.bp$DAP)
 mean(bio.bp$DAP)
 range(bio.bp$biom)/1000
 mean(bio.bp$biom)/1000
-sum (bio.bp$biom)/1000 *0.5
+(sum (bio.bp$biom)/1000) / 0.5
 
 range(bio.Fsf$DAP)
 mean(bio.Fsf$DAP)
@@ -1265,3 +1282,15 @@ length(F_fe$Fam)
 
 F_s <- F_[!duplicated  (F_$Fam),]
 length(F_s$Fam)
+
+palm =bio.It [bio.It$Fam=="Arecaceae",]
+
+palm |>
+  group_by(Alt)|>
+  count (Spp)
+
+palm |>
+  group_by(DAP)|>
+  count (Spp)
+
+
