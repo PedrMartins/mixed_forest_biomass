@@ -12,10 +12,6 @@ rarefacaoRichiness = iNEXT (all_sites, q=0, size = m)
 rarefacaoShannon = iNEXT (all_sites, q=1, size = m)
 rarefacaoSimpson = iNEXT (all_sites, q=2, size = m)
 
-rarefacao$DataInfo
-rarefacao$AsyEst
-View (rarefacao$iNextEst$coverage_based)
-
 gRichiness<- ggiNEXT (rarefacaoRichiness, type= 1) +
   theme_classic() +
   theme(legend.position="right") +
@@ -23,13 +19,15 @@ gRichiness<- ggiNEXT (rarefacaoRichiness, type= 1) +
 
 gShannon<- ggiNEXT (rarefacaoShannon, type= 1) +
   theme_classic() +
-  theme(legend.position="none") +
+  theme(legend.position="right") +
   ylab("Species diversity H'")
 
 gSimpson<- ggiNEXT (rarefacaoSimpson, type= 1) +
   theme_classic() +
-  theme(legend.position="botom") +
+  theme(legend.position="right") +
   ylab("Species diversity 1/D")
 
-?ggsave ()
+ggsave ("rarefação_riqueza.jpg", gRichiness)
+ggsave ("rarefação_Shannon.jpg", gShannon)
+ggsave ("rarefação_Simpson.jpg", gSimpson)
 

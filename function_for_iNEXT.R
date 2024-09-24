@@ -55,3 +55,15 @@ all_sites <-  all_sites [,-1]
 
 all_sites <- t (all_sites)
 
+all_sites <- as.data.frame(all_sites)
+
+colnames(all_sites) <- c("bc"="MF1", "bp"="MF6",
+                         "cj"="MF3", "fb"="MF4"
+                         ,"fsf"="MF5", "it"="MF2")
+
+all_sites=all_sites|>
+  relocate(MF2, .after =MF1)
+all_sites=all_sites|>
+  relocate(MF6, .after =MF5)
+
+
