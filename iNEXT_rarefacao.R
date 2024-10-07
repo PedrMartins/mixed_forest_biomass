@@ -1,5 +1,5 @@
 source("function_for_iNEXT.R")
-install.packages('devtools')
+install.packages('iNEXT')
 
 
 library(iNEXT)
@@ -9,7 +9,7 @@ library(gridExtra)
 str (all_sites)
 class(all_sites)
 all_sites <- as.data.frame(all_sites)
-m= seq(1, 700, by=10)
+m= seq(1, 10, by=1)
 rarefacaoRichiness = iNEXT (all_sites, q=0, size = m)
 rarefacaoShannon = iNEXT (all_sites, q=1, size = m)
 rarefacaoSimpson = iNEXT (all_sites, q=2, size = m)
