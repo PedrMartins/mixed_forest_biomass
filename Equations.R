@@ -36,3 +36,35 @@ computeAGB_gim <- function (x){
   site
 
 }
+
+computeAGB_palm <- function(x){
+
+  site <- x
+  a.p= -3.3488
+  b.p= 2.7483
+  D.p=site$DAP
+
+
+
+  site$biom = exp(a.p+b.p*log(D.p))
+  site
+  }
+
+
+meanp=function (v,w,pop,as_numeric=FALSE)	# v=variável					##
+  #w=peso						                                            ##
+  #pop=população					                                      ##
+  #count-> caso esteja usando a função count para               ##
+  #peso						                                              ##
+{	if (class (v)!="numeric")								                      ##
+{ stop("Variável não numérica")}						                    ##
+  if (as_numeric==TRUE)									                        ##
+  {w=as.numeric (w)}								                            ##
+  if (class (w) !="numeric")								                    ##
+  {stop ("Peso não numérico")}							                    ##
+  if (length (v)!= length (w))								                  ##
+  {stop("colunas não tem \n com tamananho diferente")}			  	##
+  m_p=sum (v*w)/length (pop)                    								##
+  return (m_p)									                                ##
+  ##
+}

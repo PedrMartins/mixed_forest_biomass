@@ -10,6 +10,7 @@ install.packages (pkg)
 ########################################################
 
 source("Function_biomass.R")
+source("Equations.R")
 library (BIOMASS)
 library(tidyverse)
 library(dplyr)
@@ -1027,7 +1028,8 @@ g.H_5=c(dads.gim.It$Alt)
 dads.gim.It$biom= (x_5*(a_5+b_5*c(g.D_5)+c_5*c(g.D_5^2)+d_5*((c(g.D_5^2))*g.H_5)))
 
 ##Ang
-ang.It <-dads.ang.It [dads.ang.It$Gen != "Euterpe" & dads.ang.It$Gen != "Syagrus",]
+ang.It <-dads.ang.It [dads.ang.It$Gen != "Euterpe" &
+                        dads.ang.It$Gen != "Syagrus",]
 
 ang.It$biom= (computeAGB(D=ang.It$DAP,
                          WD=ang.It$DensM,
