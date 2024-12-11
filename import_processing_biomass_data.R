@@ -17,7 +17,7 @@ library(stringr)
 library (corrplot)
 library (vegan) #funcao disponibiliza os pacotes
 
-
+#data import
 bio.cj<- import_biomass_rawdata (site="cj")
 bio.bp<- import_biomass_rawdata (site="bp")
 bio.Fbar<- import_biomass_rawdata (site="fb")
@@ -25,6 +25,7 @@ bio.Fsf<- import_biomass_rawdata (site="fsf")
 bio.It<- import_biomass_rawdata (site="it")
 bio.BC<- import_biomass_rawdata (site="bc")
 
+#data processing
 bio.cj <- data_processing (bio.cj)
 bio.bp <- data_processing (bio.bp)
 bio.Fbar <- data_processing (bio.Fbar)
@@ -32,21 +33,14 @@ bio.Fsf <- data_processing (bio.Fsf)
 bio.It <- data_processing (bio.It)
 bio.BC <- data_processing (bio.BC)
 
-
-
-############################################################
-############################################################
-############################################################
 ############################################################
 #####################CAMPOS DO JORDAO#######################
 
 #############
 ###Limpeza dados/processing data
 #############
-bio.cj <- bio.cj [!str_ends(bio.cj$Gen,"aceae"),]
 dads.gim.cj<- bio.cj[bio.cj$Filo=="Gim",]#separa gimnosperma
 dads.ang.cj<- bio.cj[bio.cj$Filo!="Gim",]#retirando gimnosperma
-dads.ang.cj<- dads.ang.cj[dads.ang.cj$Filo!="Saman",]#retirando samambaia
 
 
 #View (dads.ang.cj)
@@ -89,19 +83,25 @@ a.b.g=sum(dads.gim.cj$DAP)
 ##Est.Altura / equation to estimate tree height
 #Ang
 #weibull
+
+Estimating_higth_Ang ()
 a=27.188
 b=0.091
 c.1=0.738
 D.1=dads.ang.cj$DAP
 dads.ang.cj$Alt.E= a*(1-exp(-b*(D.1^c.1)))
 
+
 ###
 ###
 #Gim
+Estimating_higth_Gim ()
+head (bio.cj)
 a.g=25.9889
 b.g=19.9290
 g.D.1=dads.gim.cj$DAP
 dads.gim.cj$Alt.E = (1.3+a.g*exp(-(b.g/g.D.1)))
+
 
 
 ############################################################
@@ -185,6 +185,7 @@ dads.gim.cj$Lvl.D <- Dens.cj.2$levelWD
 
 
 ##Gymnosperms
+computeAGB_gim ()
 x=0.4141 #converstion to dry biomass (Souza e Longhi)
 a= 111.7988
 b= -15.5317
@@ -193,6 +194,8 @@ d = 0.0180
 g.D.1= c(dads.gim.cj$DAP)
 g.H.1=c(dads.gim.cj$Alt)
 dads.gim.cj$biom= (x*(a+b*c(g.D.1)+c.2*c(g.D.1^2)+d*((c(g.D.1^2))*g.H.1))) #alometric equation biomass (Sanqueta )
+
+
 
 ##Angiosperms
 #alometric equation Chaves et. al 2015 from BIOMASS package
@@ -244,18 +247,13 @@ b.p.g=(c(b.g.smal,b.g.med,b.g.lar,b.g.x.larg)/b.s.g)*100
 
 
 ############################################################
-############################################################
-############################################################
-############################################################
 #####################BAEPENDI###############################
 
 #############
 ###Limpeza dados
 #############
-bio.bp <- bio.bp [!str_ends(bio.bp$Gen,"aceae"),]
 dads.gim.bp<- bio.bp[bio.bp$Filo=="Gim",]#separa gimnosperma
 dads.ang.bp<- bio.bp[bio.bp$Filo!="Gim",]#retirando gimnosperma
-dads.ang.bp<- dads.ang.bp[dads.ang.bp$Filo!="Saman",]#retirando samambaia
 
 
 #############################################################
@@ -445,10 +443,8 @@ b.p.g_2=(c(b.g.smal_2,b.g.med_2,b.g.lar_2,b.g.x.larg_2)/b.s.g_2)*100
 #############
 ###Limpeza dados
 #############
-bio.Fbar <- bio.Fbar [!str_ends(bio.Fbar$Gen,"aceae"),]
 dads.gim.Fbar<- bio.Fbar[bio.Fbar$Filo=="Gim",]#separa gimnosperma
 dads.ang.Fbar<- bio.Fbar[bio.Fbar$Filo!="Gim",]#retirando gimnosperma
-dads.ang.Fbar<- dads.ang.Fbar[dads.ang.Fbar$Filo!="Saman",]#retirando samambaia
 
 
 #############################################################
