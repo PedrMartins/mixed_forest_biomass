@@ -32,17 +32,18 @@ data_processing <-  function (x){
 
   site <- site [!str_ends(site$Gen,"aceae"),]
   site<- site[site$Filo!="Saman",]
+  site[site$Filo=="Gem",8] <- "Gim"
+  site [site$Fam=="Arecaceae",8] <- "Palm"
   site
 
 }
 
 
-separeted_by_filo <- function (x, choice = "ang"){
+separate_by_filo <- function (x, choice = "ang"){
   site <- x
   filo = c("ang", "gim", "palm")
   filo = match(choice, filo)
   if (filo==1){
-    site [site$Fam=="Arecaceae",8] <- "Palm"
     site<- site[site$Filo!="Gim",]
     site<- site[site$Filo!="Palm",]
     return(site)

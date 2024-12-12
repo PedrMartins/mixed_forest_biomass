@@ -1,5 +1,6 @@
 Estimating_higth_Ang <-  function (x){
 
+  #weibull equation
   site <- x
   a=27.188
   b=0.091
