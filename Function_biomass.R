@@ -58,3 +58,39 @@ separate_by_filo <- function (x, choice = "ang"){
   }
 
 }
+
+vegan::vegdist
+
+
+class_DBH_bio_ind <- function (x, choice = "ind", class = 10 ){
+
+  site <-  x
+  chioces <- c ("ind","bio")
+  choice <- match(choice, choices)
+
+
+clas_gim_cj.10<-dads.gim.cj [dads.gim.cj$DAP<10,] #DBH < 10
+g.smal=length(clas_gim_cj.10$DAP)
+clas_gim_cj.10.30<-dads.gim.cj [dads.gim.cj$DAP>=10 & dads.gim.cj$DAP<30,] #DBH >= 10 to <30
+g.med=length(clas_gim_cj.10.30$DAP)
+clas_gim_cj.30.50<-dads.gim.cj [dads.gim.cj$DAP>=30 & dads.gim.cj$DAP<50,] #DBH >= 30 to <50
+g.lar=length(clas_gim_cj.30.50$DAP)
+clas_gim_cj.50<-dads.gim.cj [dads.gim.cj$DAP>=50,] #DBH >= 50
+g.x.larg=length(clas_gim_cj.50$DAP)
+
+clas_ang_cj.10<-dads.ang.cj [dads.ang.cj$DAP<10,]
+smal=length(clas_ang_cj.10$DAP)
+clas_ang_cj.10.30<-dads.ang.cj [dads.ang.cj$DAP>=10 & dads.ang.cj$DAP<30,]
+med=length(clas_ang_cj.10.30$DAP)
+clas_ang_cj.30.50<-dads.ang.cj [dads.ang.cj$DAP>=30 & dads.ang.cj$DAP<50,]
+lar=length(clas_ang_cj.30.50$DAP)
+clas_ang_cj.50<-dads.ang.cj [dads.ang.cj$DAP>=50,]
+x.lar=length(clas_ang_cj.50$DAP)
+s.a=sum(smal,med,lar,x.lar)
+s.g=sum(g.smal,g.med,g.lar,g.x.larg)
+p.a=(c(smal,med,lar,x.lar)/s.a)*100
+p.g=(c(g.smal,g.med,g.lar,g.x.larg)/s.g)*100
+a.b.a=sum(dads.ang.cj$DAP)
+a.b.g=sum(dads.gim.cj$DAP)
+(c(a.b.a,a.b.g)/sum(a.b.a,a.b.g))*100
+}
