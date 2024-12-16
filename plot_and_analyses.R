@@ -2,15 +2,6 @@
 ###################rodar script biomass_calc antes#####################
 
 
-library(corrplot)
-library(car)
-library (vegan)
-library(FactoMineR)
-library(factoextra)
-library (vioplot)
-
-
-
 ############################################################
 ###DAP class porcentagem ind########
 ###Suplementar########

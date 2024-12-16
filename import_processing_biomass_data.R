@@ -1,10 +1,7 @@
 
-
 source("load_packages.R")
 source("Equations.R")
 source("Function_biomass.R")
-
-
 
 
 #########data import#######
