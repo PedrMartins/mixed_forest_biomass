@@ -1,6 +1,6 @@
 pkg <- c('BIOMASS',"tidyverse","dplyr","corrplot",
          "vegan","stringr", "car","FactoMineR",
-         "factoextra", "vioplot")
+         "factoextra", "vioplot","lme4","bbmle")
 
 pkg <- pkg[!pkg%in%installed.packages()]
 pkg
@@ -16,3 +16,5 @@ library(car)
 library(FactoMineR)
 library(factoextra)
 library (vioplot)
+library(lme4)
+library(bbmle)
