@@ -726,14 +726,6 @@ dev.off()
 #### similaridade florística. coluna 3 = altitude, 15 = precipitação anual, 4= temperatura média
 #### 8 = temperatura mês mais quente, 9= temp. mes mais frio, 16= mes chuvoso, 17 = mes seco
 
-#install.packages (c("lme4","bbmle"))
-library(lme4)
-library(bbmle)
-
-
-
-
-
 
 s=data.frame (
   Biot=c(sum(bio.cj$biom),sum(bio.Fsf$biom),sum(bio.Fbar$biom),
