@@ -59,8 +59,6 @@ separate_by_filo <- function (x, choice = "ang"){
 
 }
 
-vegan::vegdist
-
 
 class_DBH_bio_ind <- function (x, choice = "ind", class = 10 ){
 
@@ -94,3 +92,48 @@ a.b.a=sum(dads.ang.cj$DAP)
 a.b.g=sum(dads.gim.cj$DAP)
 (c(a.b.a,a.b.g)/sum(a.b.a,a.b.g))*100
 }
+
+
+#saida do chat gpt
+
+
+class_DBH_bio_ind <- function(x, choice = "ind", class = 10) {
+  # Validate choice
+  choices <- c("ind", "bio")
+  choice <- match.arg(choice, choices)
+
+  # Handle class intervals
+  if (length(class) == 1) {
+    # Single number for class; create equal intervals
+    class <- seq(0, max(x$DAP, na.rm = TRUE), by = class)
+  }
+
+  # Initialize results
+  counts <- numeric(length(class) - 1)
+  percentages <- numeric(length(class) - 1)
+
+  # Loop over intervals
+  for (i in seq_along(class[-1])) {
+    lower_bound <- class[i]
+    upper_bound <- class[i + 1]
+
+    # Subset data based on DBH intervals
+    subset_data <- x[x$DAP >= lower_bound & x$DAP < upper_bound, ]
+    counts[i] <- nrow(subset_data)
+  }
+
+  # Calculate total and percentages
+  total_count <- sum(counts)
+  if (total_count > 0) {
+    percentages <- (counts / total_count) * 100
+  }
+
+  # Return results as a list
+  return(list(
+    class_intervals = paste0(class[-length(class)], "-", class[-1]),
+    counts = counts,
+    percentages = percentages,
+    total_count = total_count
+  ))
+}
+
