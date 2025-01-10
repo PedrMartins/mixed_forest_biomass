@@ -1,28 +1,7 @@
 source("import_processing_biomass_data.R")
-
-site_spp = function(x, site = "cj"){
-
-    sites <-  c("cj", "bp", "bc", "fsf","fb", "it")
-    if (is.na (match(site,sites)) == TRUE)
-      stop ("wrong spell site name")
-    x$bino <- paste (x$Gen, x$Spp, sep = "_")
-    spp_count = x|>
-        group_by ( bino) |>
-        count (bino)
-    tranpon_spp_count= as_tibble(t(spp_count),.name_repair = "minimal")
-    colnames(tranpon_spp_count) <-  tranpon_spp_count [1,]
-    tranpon_spp_count <- tranpon_spp_count [-1,]
-    tranpon_spp_count <- tranpon_spp_count |>
-      mutate(across(everything(), as.numeric))
-    tranpon_spp_count=as.data.frame(tranpon_spp_count)
+source("Function_biomass.R")
 
 
-    site <- site [site %in% sites]
-    rownames(tranpon_spp_count) <- site
-    tranpon_spp_count$id <- site
-    tranpon_spp_count <- tranpon_spp_count |> relocate(id)
-    return(tranpon_spp_count)
-}
 
 spp_site_campos_do_jordao <-  site_spp(bio.cj)
 spp_site_baependi <- site_spp(bio.bp, site="bp")
