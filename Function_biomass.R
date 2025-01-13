@@ -132,7 +132,9 @@ b.p.g=(c(b.g.smal,b.g.med,b.g.lar,b.g.x.larg)/b.s.g)*100
 #saida do chat gpt
 
 x = bio.cj
-class_DBH_bio_ind <- function(x, choice = "ind", class_by = 10) {
+class_DBH_bio_ind <- function(x, choice = "bio",
+                              class_by = 20, min= 10,
+                              max= 50) {
   # Validate choice
   choices <- c("ind", "bio")
   choice <- match.arg(choice, choices)
@@ -140,15 +142,15 @@ class_DBH_bio_ind <- function(x, choice = "ind", class_by = 10) {
   # Handle class intervals
   if (length(class) == 1) {
     # Single number for class; create equal intervals
-    class <- seq(0, max(x$DAP, na.rm = TRUE), by = class_by)
+    class <- seq(min, max, by = class_by)
     }
 
   # Initialize results
-  counts <- numeric(length(class) - 1)
-  percentages <- numeric(length(class) - 1)
+  counts <- numeric(length(class))
+  percentages <- numeric(length(class))
 
   # Loop over intervals
-  for (i in seq_along(class[-1])) {
+  for (i in seq_along(class)) {
     lower_bound <- class[i]
     upper_bound <- class[i + 1]
 
@@ -164,14 +166,17 @@ class_DBH_bio_ind <- function(x, choice = "ind", class_by = 10) {
   }
 
   # Return results as a list
-  return(list(
+  if (choice=="ind"){
+    return(list(
     class_intervals = paste0(class[-length(class)], "-", class[-1]),
     counts = counts,
     percentages = percentages,
     total_count = total_count
-  ))
+    ))
+    }
 }
 
+class_DBH_bio_ind (bio.cj, min = 10, max = 50, class_by = 10)
 
 site_spp = function(x, site = "cj"){
 
