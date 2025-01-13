@@ -94,13 +94,45 @@ p.g=(c(g.smal,g.med,g.lar,g.x.larg)/s.g)*100
 a.b.a=sum(dads.ang.cj$DAP)
 a.b.g=sum(dads.gim.cj$DAP)
 (c(a.b.a,a.b.g)/sum(a.b.a,a.b.g))*100
+
+
+############DAP x BIO (CJ)##########
+
+bio.gim.cj<-bio.cj[bio.cj$Filo=="Gim",]
+bio.ang.cj <-bio.cj[bio.cj$Filo!="Gim",]
+#tail (bio.ang.cj)
+
+b.clas_gim_cj.10<-bio.gim.cj [bio.gim.cj$DAP<10,]
+b.g.smal=sum(b.clas_gim_cj.10$biom)
+b.clas_gim_cj.10.30<-bio.gim.cj [bio.gim.cj$DAP>=10 & bio.gim.cj$DAP<30,]
+b.g.med=sum(b.clas_gim_cj.10.30$biom)
+b.clas_gim_cj.30.50<-bio.gim.cj [bio.gim.cj$DAP>=30 & bio.gim.cj$DAP<50,]
+b.g.lar=sum(b.clas_gim_cj.30.50$biom)
+b.clas_gim_cj.50<-bio.gim.cj [bio.gim.cj$DAP>=50,]
+b.g.x.larg=sum(b.clas_gim_cj.50$biom)
+
+b.clas_ang_cj.10<-bio.ang.cj [bio.ang.cj$DAP<10,]
+b.smal=sum(b.clas_ang_cj.10$biom)
+b.clas_ang_cj.10.30<-bio.ang.cj [bio.ang.cj$DAP>=10 & bio.ang.cj$DAP<30,]
+b.med=sum(b.clas_ang_cj.10.30$biom)
+b.clas_ang_cj.30.50<-bio.ang.cj [bio.ang.cj$DAP>=30 & bio.ang.cj$DAP<50,]
+b.lar=sum(b.clas_ang_cj.30.50$biom)
+b.clas_ang_cj.50<-bio.ang.cj [bio.ang.cj$DAP>=50,]
+b.x.lar=sum(b.clas_ang_cj.50$biom)
+
+
+b.s.a=sum(bio.ang.cj$biom)
+b.s.g=sum(bio.gim.cj$biom)
+b.p.a=(c(b.smal,b.med,b.lar,b.x.lar)/b.s.a)*100
+b.p.g=(c(b.g.smal,b.g.med,b.g.lar,b.g.x.larg)/b.s.g)*100
+
 }
 
 
 #saida do chat gpt
 
-
-class_DBH_bio_ind <- function(x, choice = "ind", class = 10) {
+x = bio.cj
+class_DBH_bio_ind <- function(x, choice = "ind", class_by = 10) {
   # Validate choice
   choices <- c("ind", "bio")
   choice <- match.arg(choice, choices)
@@ -108,8 +140,8 @@ class_DBH_bio_ind <- function(x, choice = "ind", class = 10) {
   # Handle class intervals
   if (length(class) == 1) {
     # Single number for class; create equal intervals
-    class <- seq(0, max(x$DAP, na.rm = TRUE), by = class)
-  }
+    class <- seq(0, max(x$DAP, na.rm = TRUE), by = class_by)
+    }
 
   # Initialize results
   counts <- numeric(length(class) - 1)
