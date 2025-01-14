@@ -62,14 +62,38 @@ separate_by_filo <- function (x, choice = "ang"){
 
 
 ########### data separating by DBH#############
+x=dads.gim.cj
 
-class_DBH_bio_ind <- function (x, choice = "ind", class = 10 ){
+class_DBH_bio_ind <- function (x, choice = "ind",
+                               class =  c(10,20)){
 
   site <-  x
-  chioces <- c ("ind","bio")
+  choices <- c ("ind","bio")
   choice <- match(choice, choices)
 
 
+if (length(class)==1) {
+  site_class<-  site [site$DAP<class,]
+  site_class_number=length(site_class$DAP)
+  site_all_number= length(site$DAP)
+  site_class_percentage = (site_class_number/
+                             site_all_number) *100
+  return (data.frame("Class_DAP"=class, "Ind_number"=site_class_number,
+                     "Ind_percentage"=site_class_percentage,
+                     "Total_ind"=site_all_number))
+} else {
+
+  for (i in seq_along(class)) {
+    lower_bound <- class[i]
+    upper_bound <- class[i + 1]
+    if (is.na(upper_bound)==TRUE) {
+      subset_data <- site[site$DAP < lower_bound,]
+
+    }else { subset_data <- site[site$DAP >= lower_bound &
+                                  site$DAP < upper_bound, ]}
+
+    }
+}
 clas_gim_cj.10<-dads.gim.cj [dads.gim.cj$DAP<10,] #DBH < 10
 g.smal=length(clas_gim_cj.10$DAP)
 clas_gim_cj.10.30<-dads.gim.cj [dads.gim.cj$DAP>=10 & dads.gim.cj$DAP<30,] #DBH >= 10 to <30
@@ -128,7 +152,8 @@ b.p.g=(c(b.g.smal,b.g.med,b.g.lar,b.g.x.larg)/b.s.g)*100
 
 }
 
-
+class_DBH_bio_ind (dads.gim.cj, choice = "ind",
+                               class = 30)
 #saida do chat gpt
 
 x = bio.cj
