@@ -170,8 +170,8 @@ class_DBH_bio_ind <- function (x, choice = "bio",
         lower_bound <- class[i]
         upper_bound <- class[i + 1]
         if (is.na(upper_bound)==TRUE) {
-          subset_data <- site[site$DAP < lower_bound,]
-          site_class_biomass=sum(site_class$biom)
+          subset_data <- site[site$DAP > lower_bound,]
+          site_class_biomass=sum(subset_data$biom)
           site_all_biomass= sum(site$biom)
           site_biomass_percentage = (site_class_biomass/
                                        site_all_biomass) *100
@@ -185,7 +185,7 @@ class_DBH_bio_ind <- function (x, choice = "bio",
         }else {
           subset_data <- site[site$DAP >= lower_bound &
                                 site$DAP < upper_bound, ]
-          site_class_biomass=sum(site_class$biom)
+          site_class_biomass=sum(subset_data$biom)
           site_all_biomass= sum(site$biom)
           site_biomass_percentage = (site_class_biomass/
                                        site_all_biomass) *100
@@ -220,7 +220,7 @@ class_DBH_bio_ind <- function (x, choice = "bio",
 
 
 a=class_DBH_bio_ind (dads.gim.cj, choice = "bio",
-                              class = 20)
+                              class = c(10,30))
 
 
 a
