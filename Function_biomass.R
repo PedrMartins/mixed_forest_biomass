@@ -66,8 +66,8 @@ separate_by_filo <- function (x, choice = "ang"){
 
 
 
-class_DBH_bio_ind <- function (x, choice = "ind",
-                               class =  10){
+class_DBH_bio_ind <- function (x, choice = "bio",
+                               class =  c(10,20)){
 
   site <-  x
   choices <- c ("ind","bio")
@@ -75,7 +75,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
   choice <- match(choice, choices)
 
 
-  if (choice=="ind") {
+  if (choice==1) {
   if (length(class)==1) {
   site_class<-  site [site$DAP<class,]
   site_class_number=length(site_class$DAP)
@@ -129,16 +129,17 @@ class_DBH_bio_ind <- function (x, choice = "ind",
     data_dap <- rbind(subset_data,data_dap)
 
   }
-  colnames(data_dap) <- c("Class_DAP"=class, "Ind_number"=site_class_number,
-             "Ind_percentage"=site_class_percentage,
-             "Total_ind"=site_all_number)
+  colnames(data_dap) <- c("Class_DAP", "Ind_number",
+             "Ind_percentage",
+             "Total_ind")
 
   data_dap <- data_dap[order(data_dap$Class_DAP),]
   }
 
-    return(data_dap)}
+    result <- data_dap
+}
 
-  if (choice=="bio"){
+  if (choice==2){
     if (length(class)==1) {
       site_class<-  site [site$DAP<class,]
       site_class_biomass=sum(site_class$biom)
@@ -148,9 +149,9 @@ class_DBH_bio_ind <- function (x, choice = "ind",
       data_biomass<- data.frame("Class_DAP"=class, "Biomass_ab"=site_class_biomass,
                             "Biomass_percentage"=site_biomass_percentage,
                             "Total_ind"=site_all_biomass)
-      return (data_biomass)
+
     } else {
-      data_joined_biomass <- data.frame ()
+      data_biomass <- data.frame ()
       for (i in seq_along(class)) {
         if (i==1){
           site_class<-  site [site$DAP<class [1],]
@@ -164,7 +165,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
                            site_class_biomass,
                            site_biomass_percentage,
                            site_all_biomass)
-          data_joined_biom <- rbind(subset_data,data_joined_biom)
+          data_biomass <- rbind(subset_data_bio,data_biomass)
         }
         lower_bound <- class[i]
         upper_bound <- class[i + 1]
@@ -197,23 +198,29 @@ class_DBH_bio_ind <- function (x, choice = "ind",
 
         }
 
-        data_joined_biom <- rbind(subset_data,data_joined_biom)
+        data_biomass <- rbind(subset_data_bio,data_biomass)
 
       }
-      colnames(data_joined_biom) <- c("Class_DAP", "Biomass_ab",
+      colnames(data_biomass) <- c("Class_DAP", "Biomass_ab",
                                       "Biomass_percentage",
                                       "Total_ind")
 
-      data_joined_biom <- data_joined_biom[order(data_joined_biom$Class_DAP),]
-      return(data_joined_biom)
+      data_biomass <- data_biomass[order(data_biomass$Class_DAP),]
+
     }
+
+    result <- data_biomass
   }
+
+
+  return (result)
+
 }
 
 
 
-a=class_DBH_bio_ind (dads.gim.cj, choice = "ind",
-                              class = c(10,30))
+a=class_DBH_bio_ind (dads.gim.cj, choice = "bio",
+                              class = 20)
 
 
 a
