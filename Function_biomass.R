@@ -62,146 +62,163 @@ separate_by_filo <- function (x, choice = "ang"){
 
 
 ########### data separating by DBH#############
-x=dads.gim.cj
+
+
+
 
 class_DBH_bio_ind <- function (x, choice = "ind",
-                               class =  c(10,20)){
+                               class =  10){
 
   site <-  x
   choices <- c ("ind","bio")
+  if (choice%in%choices==FALSE) {stop ("Speeled choice wrong. \n Use 'ind' or 'bio'")}
   choice <- match(choice, choices)
 
 
-if (length(class)==1) {
+  if (choice=="ind") {
+  if (length(class)==1) {
   site_class<-  site [site$DAP<class,]
   site_class_number=length(site_class$DAP)
   site_all_number= length(site$DAP)
   site_class_percentage = (site_class_number/
                              site_all_number) *100
-  return (data.frame("Class_DAP"=class, "Ind_number"=site_class_number,
-                     "Ind_percentage"=site_class_percentage,
-                     "Total_ind"=site_all_number))
-} else {
+  data_dap<- data.frame("Class_DAP"=class, "Ind_number"=site_class_number,
+             "Ind_percentage"=site_class_percentage,
+             "Total_ind"=site_all_number)
 
+} else {
+  data_dap <- data.frame ()
   for (i in seq_along(class)) {
+    if (i==1){
+      site_class<-  site [site$DAP<class[1],]
+      site_class_number=length(site_class$DAP)
+      site_all_number= length(site$DAP)
+      site_class_percentage = (site_class_number/
+                                 site_all_number) *100
+      subset_data <- c(class[1],
+                       site_class_number,
+                       site_class_percentage,
+                       site_all_number)
+      data_dap <- rbind(subset_data,data_dap)
+    }
     lower_bound <- class[i]
     upper_bound <- class[i + 1]
     if (is.na(upper_bound)==TRUE) {
       subset_data <- site[site$DAP < lower_bound,]
+      site_class_number=length(subset_data$DAP)
+      site_all_number= length(site$DAP)
+      site_class_percentage = (site_class_number/
+                                 site_all_number) *100
+      subset_data <- c(class[i], site_class_number,
+                       site_class_percentage,
+                       site_all_number)
 
-    }else { subset_data <- site[site$DAP >= lower_bound &
-                                  site$DAP < upper_bound, ]}
-
-    }
-}
-clas_gim_cj.10<-dads.gim.cj [dads.gim.cj$DAP<10,] #DBH < 10
-g.smal=length(clas_gim_cj.10$DAP)
-clas_gim_cj.10.30<-dads.gim.cj [dads.gim.cj$DAP>=10 & dads.gim.cj$DAP<30,] #DBH >= 10 to <30
-g.med=length(clas_gim_cj.10.30$DAP)
-clas_gim_cj.30.50<-dads.gim.cj [dads.gim.cj$DAP>=30 & dads.gim.cj$DAP<50,] #DBH >= 30 to <50
-g.lar=length(clas_gim_cj.30.50$DAP)
-clas_gim_cj.50<-dads.gim.cj [dads.gim.cj$DAP>=50,] #DBH >= 50
-g.x.larg=length(clas_gim_cj.50$DAP)
-
-clas_ang_cj.10<-dads.ang.cj [dads.ang.cj$DAP<10,]
-smal=length(clas_ang_cj.10$DAP)
-clas_ang_cj.10.30<-dads.ang.cj [dads.ang.cj$DAP>=10 & dads.ang.cj$DAP<30,]
-med=length(clas_ang_cj.10.30$DAP)
-clas_ang_cj.30.50<-dads.ang.cj [dads.ang.cj$DAP>=30 & dads.ang.cj$DAP<50,]
-lar=length(clas_ang_cj.30.50$DAP)
-clas_ang_cj.50<-dads.ang.cj [dads.ang.cj$DAP>=50,]
-x.lar=length(clas_ang_cj.50$DAP)
-s.a=sum(smal,med,lar,x.lar)
-s.g=sum(g.smal,g.med,g.lar,g.x.larg)
-p.a=(c(smal,med,lar,x.lar)/s.a)*100
-p.g=(c(g.smal,g.med,g.lar,g.x.larg)/s.g)*100
-a.b.a=sum(dads.ang.cj$DAP)
-a.b.g=sum(dads.gim.cj$DAP)
-(c(a.b.a,a.b.g)/sum(a.b.a,a.b.g))*100
-
-
-############DAP x BIO (CJ)##########
-
-bio.gim.cj<-bio.cj[bio.cj$Filo=="Gim",]
-bio.ang.cj <-bio.cj[bio.cj$Filo!="Gim",]
-#tail (bio.ang.cj)
-
-b.clas_gim_cj.10<-bio.gim.cj [bio.gim.cj$DAP<10,]
-b.g.smal=sum(b.clas_gim_cj.10$biom)
-b.clas_gim_cj.10.30<-bio.gim.cj [bio.gim.cj$DAP>=10 & bio.gim.cj$DAP<30,]
-b.g.med=sum(b.clas_gim_cj.10.30$biom)
-b.clas_gim_cj.30.50<-bio.gim.cj [bio.gim.cj$DAP>=30 & bio.gim.cj$DAP<50,]
-b.g.lar=sum(b.clas_gim_cj.30.50$biom)
-b.clas_gim_cj.50<-bio.gim.cj [bio.gim.cj$DAP>=50,]
-b.g.x.larg=sum(b.clas_gim_cj.50$biom)
-
-b.clas_ang_cj.10<-bio.ang.cj [bio.ang.cj$DAP<10,]
-b.smal=sum(b.clas_ang_cj.10$biom)
-b.clas_ang_cj.10.30<-bio.ang.cj [bio.ang.cj$DAP>=10 & bio.ang.cj$DAP<30,]
-b.med=sum(b.clas_ang_cj.10.30$biom)
-b.clas_ang_cj.30.50<-bio.ang.cj [bio.ang.cj$DAP>=30 & bio.ang.cj$DAP<50,]
-b.lar=sum(b.clas_ang_cj.30.50$biom)
-b.clas_ang_cj.50<-bio.ang.cj [bio.ang.cj$DAP>=50,]
-b.x.lar=sum(b.clas_ang_cj.50$biom)
-
-
-b.s.a=sum(bio.ang.cj$biom)
-b.s.g=sum(bio.gim.cj$biom)
-b.p.a=(c(b.smal,b.med,b.lar,b.x.lar)/b.s.a)*100
-b.p.g=(c(b.g.smal,b.g.med,b.g.lar,b.g.x.larg)/b.s.g)*100
-
-}
-
-class_DBH_bio_ind (dads.gim.cj, choice = "ind",
-                               class = 30)
-#saida do chat gpt
-
-x = bio.cj
-class_DBH_bio_ind <- function(x, choice = "bio",
-                              class_by = 20, min= 10,
-                              max= 50) {
-  # Validate choice
-  choices <- c("ind", "bio")
-  choice <- match.arg(choice, choices)
-
-  # Handle class intervals
-  if (length(class) == 1) {
-    # Single number for class; create equal intervals
-    class <- seq(min, max, by = class_by)
+    }else {
+    subset_data <- site[site$DAP >= lower_bound &
+                                  site$DAP < upper_bound, ]
+    site_class_number=length(subset_data$DAP)
+    site_all_number= length(site$DAP)
+    site_class_percentage = (site_class_number/
+                               site_all_number) *100
+    subset_data <- c(paste (class[i], class[i+1], sep= "_"),
+                    site_class_number,
+                    site_class_percentage,
+                    site_all_number)
     }
 
-  # Initialize results
-  counts <- numeric(length(class))
-  percentages <- numeric(length(class))
+    data_dap <- rbind(subset_data,data_dap)
 
-  # Loop over intervals
-  for (i in seq_along(class)) {
-    lower_bound <- class[i]
-    upper_bound <- class[i + 1]
+  }
+  colnames(data_dap) <- c("Class_DAP"=class, "Ind_number"=site_class_number,
+             "Ind_percentage"=site_class_percentage,
+             "Total_ind"=site_all_number)
 
-    # Subset data based on DBH intervals
-    subset_data <- x[x$DAP >= lower_bound & x$DAP < upper_bound, ]
-    counts[i] <- nrow(subset_data)
+  data_dap <- data_dap[order(data_dap$Class_DAP),]
   }
 
-  # Calculate total and percentages
-  total_count <- sum(counts)
-  if (total_count > 0) {
-    percentages <- (counts / total_count) * 100
-  }
+    return(data_dap)}
 
-  # Return results as a list
-  if (choice=="ind"){
-    return(list(
-    class_intervals = paste0(class[-length(class)], "-", class[-1]),
-    counts = counts,
-    percentages = percentages,
-    total_count = total_count
-    ))
+  if (choice=="bio"){
+    if (length(class)==1) {
+      site_class<-  site [site$DAP<class,]
+      site_class_biomass=sum(site_class$biom)
+      site_all_biomass= sum(site$biom)
+      site_biomass_percentage = (site_class_biomass/
+                                 site_all_biomass) *100
+      data_biomass<- data.frame("Class_DAP"=class, "Biomass_ab"=site_class_biomass,
+                            "Biomass_percentage"=site_biomass_percentage,
+                            "Total_ind"=site_all_biomass)
+      return (data_biomass)
+    } else {
+      data_joined_biomass <- data.frame ()
+      for (i in seq_along(class)) {
+        if (i==1){
+          site_class<-  site [site$DAP<class [1],]
+          site_class_biomass=sum(site_class$biom)
+          site_all_biomass= sum(site$biom)
+          site_biomass_percentage = (site_class_biomass/
+                                       site_all_biomass) *100
+
+
+          subset_data_bio <- c(class[1],
+                           site_class_biomass,
+                           site_biomass_percentage,
+                           site_all_biomass)
+          data_joined_biom <- rbind(subset_data,data_joined_biom)
+        }
+        lower_bound <- class[i]
+        upper_bound <- class[i + 1]
+        if (is.na(upper_bound)==TRUE) {
+          subset_data <- site[site$DAP < lower_bound,]
+          site_class_biomass=sum(site_class$biom)
+          site_all_biomass= sum(site$biom)
+          site_biomass_percentage = (site_class_biomass/
+                                       site_all_biomass) *100
+
+
+          subset_data_bio <- c(class[i],
+                               site_class_biomass,
+                               site_biomass_percentage,
+                               site_all_biomass)
+
+        }else {
+          subset_data <- site[site$DAP >= lower_bound &
+                                site$DAP < upper_bound, ]
+          site_class_biomass=sum(site_class$biom)
+          site_all_biomass= sum(site$biom)
+          site_biomass_percentage = (site_class_biomass/
+                                       site_all_biomass) *100
+
+
+          subset_data_bio <- c(paste (class[i], class[i+1], sep= "_"),
+                               site_class_biomass,
+                               site_biomass_percentage,
+                               site_all_biomass)
+
+        }
+
+        data_joined_biom <- rbind(subset_data,data_joined_biom)
+
+      }
+      colnames(data_joined_biom) <- c("Class_DAP", "Biomass_ab",
+                                      "Biomass_percentage",
+                                      "Total_ind")
+
+      data_joined_biom <- data_joined_biom[order(data_joined_biom$Class_DAP),]
+      return(data_joined_biom)
     }
+  }
 }
 
-class_DBH_bio_ind (bio.cj, min = 10, max = 50, class_by = 10)
+
+
+a=class_DBH_bio_ind (dads.gim.cj, choice = "ind",
+                              class = c(10,30))
+
+
+a
+
+
 
 site_spp = function(x, site = "cj"){
 
