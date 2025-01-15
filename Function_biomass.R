@@ -219,13 +219,6 @@ class_DBH_bio_ind <- function (x, choice = "bio",
 
 
 
-a=class_DBH_bio_ind (dads.gim.cj, choice = "bio",
-                              class = c(10,30))
-
-
-a
-
-
 
 site_spp = function(x, site = "cj"){
 
