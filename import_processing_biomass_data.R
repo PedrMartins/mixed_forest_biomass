@@ -35,32 +35,8 @@ dads.ang.cj<- separate_by_filo (bio.cj, choice = ("ang"))
 #for DBH class < 10 cm / >= 10 to < 30
 #/ >= 30 to < 50 />= 50
 
-clas_gim_cj.10<-dads.gim.cj [dads.gim.cj$DAP<10,] #DBH < 10
-g.smal=length(clas_gim_cj.10$DAP)
-clas_gim_cj.10.30<-dads.gim.cj [dads.gim.cj$DAP>=10 & dads.gim.cj$DAP<30,] #DBH >= 10 to <30
-g.med=length(clas_gim_cj.10.30$DAP)
-clas_gim_cj.30.50<-dads.gim.cj [dads.gim.cj$DAP>=30 & dads.gim.cj$DAP<50,] #DBH >= 30 to <50
-g.lar=length(clas_gim_cj.30.50$DAP)
-clas_gim_cj.50<-dads.gim.cj [dads.gim.cj$DAP>=50,] #DBH >= 50
-g.x.larg=length(clas_gim_cj.50$DAP)
-
-clas_ang_cj.10<-dads.ang.cj [dads.ang.cj$DAP<10,]
-smal=length(clas_ang_cj.10$DAP)
-clas_ang_cj.10.30<-dads.ang.cj [dads.ang.cj$DAP>=10 & dads.ang.cj$DAP<30,]
-med=length(clas_ang_cj.10.30$DAP)
-clas_ang_cj.30.50<-dads.ang.cj [dads.ang.cj$DAP>=30 & dads.ang.cj$DAP<50,]
-lar=length(clas_ang_cj.30.50$DAP)
-clas_ang_cj.50<-dads.ang.cj [dads.ang.cj$DAP>=50,]
-x.lar=length(clas_ang_cj.50$DAP)
-s.a=sum(smal,med,lar,x.lar)
-s.g=sum(g.smal,g.med,g.lar,g.x.larg)
-p.a=(c(smal,med,lar,x.lar)/s.a)*100
-p.g=(c(g.smal,g.med,g.lar,g.x.larg)/s.g)*100
-a.b.a=sum(dads.ang.cj$DAP)
-a.b.g=sum(dads.gim.cj$DAP)
-(c(a.b.a,a.b.g)/sum(a.b.a,a.b.g))*100
-
-
+ind_gim_cj_sep_by_DHB <- class_DBH_bio_ind (dads.gim.cj, class = c(10,30,50) )
+ind_ang_cj_sep_by_DHB <- class_DBH_bio_ind (dads.ang.cj, class = c(10,30,50) )
 
 ######Est.Altura / equation to estimate tree height (CJ)######
 
@@ -167,29 +143,8 @@ bio.gim.cj<-bio.cj[bio.cj$Filo=="Gim",]
 bio.ang.cj <-bio.cj[bio.cj$Filo!="Gim",]
 #tail (bio.ang.cj)
 
-b.clas_gim_cj.10<-bio.gim.cj [bio.gim.cj$DAP<10,]
-b.g.smal=sum(b.clas_gim_cj.10$biom)
-b.clas_gim_cj.10.30<-bio.gim.cj [bio.gim.cj$DAP>=10 & bio.gim.cj$DAP<30,]
-b.g.med=sum(b.clas_gim_cj.10.30$biom)
-b.clas_gim_cj.30.50<-bio.gim.cj [bio.gim.cj$DAP>=30 & bio.gim.cj$DAP<50,]
-b.g.lar=sum(b.clas_gim_cj.30.50$biom)
-b.clas_gim_cj.50<-bio.gim.cj [bio.gim.cj$DAP>=50,]
-b.g.x.larg=sum(b.clas_gim_cj.50$biom)
-
-b.clas_ang_cj.10<-bio.ang.cj [bio.ang.cj$DAP<10,]
-b.smal=sum(b.clas_ang_cj.10$biom)
-b.clas_ang_cj.10.30<-bio.ang.cj [bio.ang.cj$DAP>=10 & bio.ang.cj$DAP<30,]
-b.med=sum(b.clas_ang_cj.10.30$biom)
-b.clas_ang_cj.30.50<-bio.ang.cj [bio.ang.cj$DAP>=30 & bio.ang.cj$DAP<50,]
-b.lar=sum(b.clas_ang_cj.30.50$biom)
-b.clas_ang_cj.50<-bio.ang.cj [bio.ang.cj$DAP>=50,]
-b.x.lar=sum(b.clas_ang_cj.50$biom)
-
-
-b.s.a=sum(bio.ang.cj$biom)
-b.s.g=sum(bio.gim.cj$biom)
-b.p.a=(c(b.smal,b.med,b.lar,b.x.lar)/b.s.a)*100
-b.p.g=(c(b.g.smal,b.g.med,b.g.lar,b.g.x.larg)/b.s.g)*100
+biomass_gim_cj_sep_by_DHB <- class_DBH_bio_ind (bio.gim.cj, class = c(10,30,50), choice = "bio" )
+biomass_ang_cj_sep_by_DHB <- class_DBH_bio_ind (bio.ang.cj, class = c(10,30,50), choice = "bio" )
 
 #####################BAEPENDI###############################
 ###Limpeza dados
@@ -200,34 +155,8 @@ dads.ang.bp<- separate_by_filo(bio.bp, choice = "ang")
 
 ############classes DAP (BP)###########
 
-clas_gim_bp.10<-dads.gim.bp [dads.gim.bp$DAP<10,]
-g.smal_2=length(clas_gim_bp.10$DAP)
-clas_gim_bp.10.30<-dads.gim.bp [dads.gim.bp$DAP>=10 & dads.gim.bp$DAP<30,]
-g.med_2=length(clas_gim_bp.10.30$DAP)
-clas_gim_bp.30.50<-dads.gim.bp [dads.gim.bp$DAP>=30 & dads.gim.bp$DAP<50,]
-g.lar_2=length(clas_gim_bp.30.50$DAP)
-clas_gim_bp.50<-dads.gim.bp [dads.gim.bp$DAP>=50,]
-g.x.larg_2=length(clas_gim_bp.50$DAP)
-
-clas_ang_bp.10<-dads.ang.bp [dads.ang.bp$DAP<10,]
-smal_2=length(clas_ang_bp.10$DAP)
-clas_ang_bp.10.30<-dads.ang.bp [dads.ang.bp$DAP>=10 & dads.ang.bp$DAP<30,]
-med_2=length(clas_ang_bp.10.30$DAP)
-clas_ang_bp.30.50<-dads.ang.bp [dads.ang.bp$DAP>=30 & dads.ang.bp$DAP<50,]
-lar_2=length(clas_ang_bp.30.50$DAP)
-clas_ang_bp.50<-dads.ang.bp [dads.ang.bp$DAP>=50,]
-x.lar_2=length(clas_ang_bp.50$DAP)
-
-s.a_2=sum(smal_2,med_2,lar_2,x.lar_2)
-s.g_2=sum(g.smal_2,g.med_2,g.lar_2,g.x.larg_2)
-p.a_2=(c(smal_2,med_2,lar_2,x.lar_2)/s.a_2)*100
-p.g_2=(c(g.smal_2,g.med_2,g.lar_2,g.x.larg_2)/s.g_2)*100
-a.b.a_2=sum(dads.ang.bp$DAP)
-a.b.g_2=sum(dads.gim.bp$DAP)
-(c(a.b.a_2,a.b.g_2)/sum(a.b.a_2,a.b.g_2))*100
-
-
-
+ind_gim_bp_sep_by_DHB <- class_DBH_bio_ind (dads.gim.bp, class = c(10,30,50) )
+ind_ang_bp_sep_by_DHB <- class_DBH_bio_ind (dads.ang.bp, class = c(10,30,50) )
 
 ############Est.Altura (BP) ########
 
@@ -314,31 +243,8 @@ bio.gim.bp <-bio.bp[bio.bp$Filo=="Gim",]
 bio.ang.bp <-bio.bp[bio.bp$Filo!="Gim",]
 
 #View (bio.ang.bp)
-
-b.clas_gim_bp.10<-bio.gim.bp [bio.gim.bp$DAP<10,]
-b.g.smal_2=sum(b.clas_gim_bp.10$biom)
-b.clas_gim_bp.10.30<-bio.gim.bp [bio.gim.bp$DAP>=10 & bio.gim.bp$DAP<30,]
-b.g.med_2=sum(b.clas_gim_bp.10.30$biom)
-b.clas_gim_bp.30.50<-bio.gim.bp [bio.gim.bp$DAP>=30 & bio.gim.bp$DAP<50,]
-b.g.lar_2=sum(b.clas_gim_bp.30.50$biom)
-b.clas_gim_bp.50<-bio.gim.bp [bio.gim.bp$DAP>=50,]
-b.g.x.larg_2=sum(b.clas_gim_bp.50$biom)
-
-b.clas_ang_bp.10<-bio.ang.bp [bio.ang.bp$DAP<10,]
-b.smal_2=sum(b.clas_ang_bp.10$biom)
-b.clas_ang_bp.10.30<-bio.ang.bp [bio.ang.bp$DAP>=10 & bio.ang.bp$DAP<30,]
-b.med_2=sum(b.clas_ang_bp.10.30$biom)
-b.clas_ang_bp.30.50<-bio.ang.bp [bio.ang.bp$DAP>=30 & bio.ang.bp$DAP<50,]
-b.lar_2=sum(b.clas_ang_bp.30.50$biom)
-b.clas_ang_bp.50<-bio.ang.bp [bio.ang.bp$DAP>=50,]
-b.x.lar_2=sum(b.clas_ang_bp.50$biom)
-
-
-b.s.a_2=sum(bio.ang.bp$biom)
-b.s.g_2=sum(bio.gim.bp$biom)
-b.p.a_2=(c(b.smal_2,b.med_2,b.lar_2,b.x.lar_2)/b.s.a_2)*100
-b.p.g_2=(c(b.g.smal_2,b.g.med_2,b.g.lar_2,b.g.x.larg_2)/b.s.g_2)*100
-
+biomass_gim_bp_sep_by_DHB <- class_DBH_bio_ind(bio.gim.bp, choice = "bio", class = c(10,30,50))
+biomass_ang_bp_sep_by_DHB <- class_DBH_bio_ind(bio.ang.bp, choice = "bio", class = c(10,30,50))
 
 ###########FAZ. BARTIRA#######
 
@@ -350,35 +256,8 @@ dads.ang.Fbar<- separate_by_filo(bio.Fbar, choice = "ang")
 
 #########classes DAP (Faz. Bart)#########
 
-
-clas_gim_Fbar.10<-dads.gim.Fbar [dads.gim.Fbar$DAP<10,]
-g.smal_3=length(clas_gim_Fbar.10$DAP)
-clas_gim_Fbar.10.30<-dads.gim.Fbar [dads.gim.Fbar$DAP>=10 & dads.gim.Fbar$DAP<30,]
-g.med_3=length(clas_gim_Fbar.10.30$DAP)
-clas_gim_Fbar.30.50<-dads.gim.Fbar [dads.gim.Fbar$DAP>=30 & dads.gim.Fbar$DAP<50,]
-g.lar_3=length(clas_gim_Fbar.30.50$DAP)
-clas_gim_Fbar.50<-dads.gim.Fbar [dads.gim.Fbar$DAP>=50,]
-g.x.larg_3=length(clas_gim_Fbar.50$DAP)
-
-clas_ang_Fbar.10<-dads.ang.Fbar [dads.ang.Fbar$DAP<10,]
-smal_3=length(clas_ang_Fbar.10$DAP)
-clas_ang_Fbar.10.30<-dads.ang.Fbar [dads.ang.Fbar$DAP>=10 & dads.ang.Fbar$DAP<30,]
-med_3=length(clas_ang_Fbar.10.30$DAP)
-clas_ang_Fbar.30.50<-dads.ang.Fbar [dads.ang.Fbar$DAP>=30 & dads.ang.Fbar$DAP<50,]
-lar_3=length(clas_ang_Fbar.30.50$DAP)
-clas_ang_Fbar.50<-dads.ang.Fbar [dads.ang.Fbar$DAP>=50,]
-x.lar_3=length(clas_ang_Fbar.50$DAP)
-
-s.a_3=sum(smal_3,med_3,lar_3,x.lar_3)
-s.g_3=sum(g.smal_3,g.med_3,g.lar_3,g.x.larg_3)
-p.a_3=(c(smal_3,med_3,lar_3,x.lar_3)/s.a_3)*100
-p.g_3=(c(g.smal_3,g.med_3,g.lar_3,g.x.larg_3)/s.g_3)*100
-a.b.a_3=sum(dads.ang.Fbar$DAP)
-a.b.g_3=sum(dads.gim.Fbar$DAP)
-(c(a.b.a_3,a.b.g_3)/sum(a.b.a_3,a.b.g_3))*100
-
-
-
+ind_gim_Fbar_sep_by_DHB <- class_DBH_bio_ind(dads.gim.Fbar, class = c(10,30,50))
+ind_ang_Fbar_sep_by_DHB <- class_DBH_bio_ind(dads.ang.Fbar, class = c(10,30,50))
 
 ########Est.Altura (Faz. Bart)######
 
@@ -496,29 +375,8 @@ bio.ang.Fbar<-bio.Fbar[bio.Fbar$Filo!="Gim",]
 
 #View (bio.ang.bp)
 
-b.clas_gim_Fbar.10<-bio.gim.Fbar[bio.gim.Fbar$DAP<10,]
-b.g.smal_3=sum(b.clas_gim_Fbar.10$biom)
-b.clas_gim_Fbar.10.30<-bio.gim.Fbar[bio.gim.Fbar$DAP>=10 & bio.gim.Fbar$DAP<30,]
-b.g.med_3=sum(b.clas_gim_Fbar.10.30$biom)
-b.clas_gim_Fbar.30.50<-bio.gim.Fbar[bio.gim.Fbar$DAP>=30 & bio.gim.Fbar$DAP<50,]
-b.g.lar_3=sum(b.clas_gim_Fbar.30.50$biom)
-b.clas_gim_Fbar.50<-bio.gim.Fbar[bio.gim.Fbar$DAP>=50,]
-b.g.x.larg_3=sum(b.clas_gim_Fbar.50$biom)
-
-b.clas_ang_Fbar.10<-bio.ang.Fbar[bio.ang.Fbar$DAP<10,]
-b.smal_3=sum(b.clas_ang_Fbar.10$biom)
-b.clas_ang_Fbar.10.30<-bio.ang.Fbar[bio.ang.Fbar$DAP>=10 & bio.ang.Fbar$DAP<30,]
-b.med_3=sum(b.clas_ang_Fbar.10.30$biom)
-b.clas_ang_Fbar.30.50<-bio.ang.Fbar[bio.ang.Fbar$DAP>=30 & bio.ang.Fbar$DAP<50,]
-b.lar_3=sum(b.clas_ang_Fbar.30.50$biom)
-b.clas_ang_Fbar.50<-bio.ang.Fbar[bio.ang.Fbar$DAP>=50,]
-b.x.lar_3=sum(b.clas_ang_Fbar.50$biom)
-
-
-b.s.a_3=sum(bio.ang.Fbar$biom)
-b.s.g_3=sum(bio.gim.Fbar$biom)
-b.p.a_3=(c(b.smal_3,b.med_3,b.lar_3,b.x.lar_3)/b.s.a_3)*100
-b.p.g_3=(c(b.g.smal_3,b.g.med_3,b.g.lar_3,b.g.x.larg_3)/b.s.g_3)*100
+biomass_gim_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.gim.Fbar, choice = "bio", class = c(10,30,50))
+biomass_ang_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.ang.Fbar, choice = "bio", class = c(10,30,50))
 
 
 ###################FAZ. SÃO FRANCISCO#######################
@@ -532,45 +390,13 @@ dads.ang.Fsf<- separate_by_filo(bio.Fsf, choice = "ang")
 
 ###############classes DAP (Faz. SF)#############
 
-
-clas_gim_Fsf.10<-dads.gim.Fsf [dads.gim.Fsf$DAP<10,]
-g.smal_4=length(clas_gim_Fsf.10$DAP)
-clas_gim_Fsf.10.30<-dads.gim.Fsf [dads.gim.Fsf$DAP>=10 & dads.gim.Fsf$DAP<30,]
-g.med_4=length(clas_gim_Fsf.10.30$DAP)
-clas_gim_Fsf.30.50<-dads.gim.Fsf [dads.gim.Fsf$DAP>=30 & dads.gim.Fsf$DAP<50,]
-g.lar_4=length(clas_gim_Fsf.30.50$DAP)
-clas_gim_Fsf.50<-dads.gim.Fsf [dads.gim.Fsf$DAP>=50,]
-g.x.larg_4=length(clas_gim_Fsf.50$DAP)
-
-
-clas_ang_Fsf.10<-dads.ang.Fsf [dads.ang.Fsf$DAP<10,]
-smal_4=length(clas_ang_Fsf.10$DAP)
-clas_ang_Fsf.10.30<-dads.ang.Fsf [dads.ang.Fsf$DAP>=10 & dads.ang.Fsf$DAP<30,]
-med_4=length(clas_ang_Fsf.10.30$DAP)
-clas_ang_Fsf.30.50<-dads.ang.Fsf [dads.ang.Fsf$DAP>=30 & dads.ang.Fsf$DAP<50,]
-lar_4=length(clas_ang_Fsf.30.50$DAP)
-clas_ang_Fsf.50<-dads.ang.Fsf [dads.ang.Fsf$DAP>=50,]
-x.lar_4=length(clas_ang_Fsf.50$DAP)
-s.a_4=sum(smal_4,med_4,lar_4,x.lar_4)
-s.g_4=sum(g.smal_4,g.med_4,g.lar_4,g.x.larg_4)
-p.a_4=(c(smal_4,med_4,lar_4,x.lar_4)/s.a_4)*100
-p.g_4=(c(g.smal_4,g.med_4,g.lar_4,g.x.larg_4)/s.g_4)*100
-a.b.a_4=sum(dads.ang.Fsf$DAP)
-a.b.g_4=sum(dads.gim.Fsf$DAP)
-(c(a.b.a_4,a.b.g_4)/sum(a.b.a_4,a.b.g_4))*100
-
-
+ind_gim_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.gim.Fsf, class = c(10,30,50))
+ind_ang_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.ang.Fsf, class = c(10,30,50))
 
 ######Est.Altura######
 
 #Ang
 dads.ang.Fsf <- Estimating_higth_Ang(dads.ang.Fsf)
-a_4=27.188
-b_4=0.091
-c_4=0.738
-D_4=dads.ang.Fsf$DAP
-dads.ang.Fsf$Alt.E= a_4*(1-exp(-b_4*(D_4^c_4)))
-
 
 #Gim
 dads.gim.Fsf <- Estimating_higth_Gim(dads.gim.Fsf)
@@ -650,31 +476,8 @@ bio.Fsf =rbind (dads.ang.Fsf,dads.gim.Fsf)
 bio.gim.Fsf<-bio.Fsf[bio.Fsf$Filo=="Gim",]
 bio.ang.Fsf<-bio.Fsf[bio.Fsf$Filo!="Gim",]
 
-#View (bio.ang.bp)
-
-b.clas_gim_Fsf.10<-bio.gim.Fsf[bio.gim.Fsf$DAP<10,]
-b.g.smal_4=sum(b.clas_gim_Fsf.10$biom)
-b.clas_gim_Fsf.10.30<-bio.gim.Fsf[bio.gim.Fsf$DAP>=10 & bio.gim.Fsf$DAP<30,]
-b.g.med_4=sum(b.clas_gim_Fsf.10.30$biom)
-b.clas_gim_Fsf.30.50<-bio.gim.Fsf[bio.gim.Fsf$DAP>=30 & bio.gim.Fsf$DAP<50,]
-b.g.lar_4=sum(b.clas_gim_Fsf.30.50$biom)
-b.clas_gim_Fsf.50<-bio.gim.Fsf[bio.gim.Fsf$DAP>=50,]
-b.g.x.larg_4=sum(b.clas_gim_Fsf.50$biom)
-
-b.clas_ang_Fsf.10<-bio.ang.Fsf[bio.ang.Fsf$DAP<10,]
-b.smal_4=sum(b.clas_ang_Fsf.10$biom)
-b.clas_ang_Fsf.10.30<-bio.ang.Fsf[bio.ang.Fsf$DAP>=10 & bio.ang.Fsf$DAP<30,]
-b.med_4=sum(b.clas_ang_Fsf.10.30$biom)
-b.clas_ang_Fsf.30.50<-bio.ang.Fsf[bio.ang.Fsf$DAP>=30 & bio.ang.Fsf$DAP<50,]
-b.lar_4=sum(b.clas_ang_Fsf.30.50$biom)
-b.clas_ang_Fsf.50<-bio.ang.Fsf[bio.ang.Fsf$DAP>=50,]
-b.x.lar_4=sum(b.clas_ang_Fsf.50$biom)
-
-
-b.s.a_4=sum(bio.ang.Fsf$biom)
-b.s.g_4=sum(bio.gim.Fsf$biom)
-b.p.a_4=(c(b.smal_4,b.med_4,b.lar_4,b.x.lar_4)/b.s.a_4)*100
-b.p.g_4=(c(b.g.smal_4,b.g.med_4,b.g.lar_4,b.g.x.larg_4)/b.s.g_4)*100
+biomass_gim_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.gim.Fsf, choice = "bio", class = c(10,30,50))
+biomass_ang_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.ang.Fsf, choice = "bio", class = c(10,30,50))
 
 ###################ITABERÁ#################################
 
@@ -685,36 +488,9 @@ dads.ang.It<- separate_by_filo(bio.It, choice = "ang")
 dads.palm.It <- separate_by_filo(bio.It, choice = "palm")
 
 ###########classes DAP (IT)############
-
-
-clas_gim_It.10<-dads.gim.It [dads.gim.It$DAP<10,]
-g.smal_5=length(clas_gim_It.10$DAP)
-clas_gim_It.10.30<-dads.gim.It [dads.gim.It$DAP>=10 & dads.gim.It$DAP<30,]
-g.med_5=length(clas_gim_It.10.30$DAP)
-clas_gim_It.30.50<-dads.gim.It [dads.gim.It$DAP>=30 & dads.gim.It$DAP<50,]
-g.lar_5=length(clas_gim_It.30.50$DAP)
-clas_gim_It.50<-dads.gim.It [dads.gim.It$DAP>=50,]
-g.x.larg_5=length(clas_gim_It.50$DAP)
-
-
-clas_ang_It.10<-dads.ang.It [dads.ang.It$DAP<10,]
-smal_5=length(clas_ang_It.10$DAP)
-clas_ang_It.10.30<-dads.ang.It [dads.ang.It$DAP>=10 & dads.ang.It$DAP<30,]
-med_5=length(clas_ang_It.10.30$DAP)
-clas_ang_It.30.50<-dads.ang.It [dads.ang.It$DAP>=30 & dads.ang.It$DAP<50,]
-lar_5=length(clas_ang_It.30.50$DAP)
-clas_ang_It.50<-dads.ang.It [dads.ang.It$DAP>=50,]
-x.lar_5=length(clas_ang_It.50$DAP)
-s.a_5=sum(smal_5,med_5,lar_5,x.lar_5)
-s.g_5=sum(g.smal_5,g.med_5,g.lar_5,g.x.larg_5)
-p.a_5=(c(smal_5,med_5,lar_5,x.lar_5)/s.a_5)*100
-p.g_5=(c(g.smal_5,g.med_5,g.lar_5,g.x.larg_5)/s.g_5)*100
-a.b.a_5=sum(dads.ang.It$DAP)
-a.b.g_5=sum(dads.gim.It$DAP)
-(c(a.b.a_5,a.b.g_5)/sum(a.b.a_5,a.b.g_5))*100
-
-
-
+ind_gim_It_sep_by_DHB <- class_DBH_bio_ind(dads.gim.It, class = c(10,30,50))
+ind_ang_It_sep_by_DHB <- class_DBH_bio_ind(dads.ang.It, class = c(10,30,50))
+ind_palm_It_sep_by_DHB <- class_DBH_bio_ind(dads.palm.It, class = c(10,30,50))
 
 ##########Est.Altura (IT)##########
 
@@ -840,36 +616,14 @@ bio.It =rbind (dads.ang.It, dads.gim.It, dads.palm.It)
 ############DAP xBIO (IT)#########
 
 bio.gim.It<-bio.It[bio.It$Filo=="Gim",]
-bio.ang.It<-bio.It[bio.It$Filo!="Gim",]
+bio.ang.It<-bio.It[bio.It$Filo!="Gim" & bio.It$Filo!="Palm" ,]
+bio.palm.It<-bio.It[bio.It$Filo=="Palm" ,]
 
-#View (bio.ang.bp)
-
-b.clas_gim_It.10<-bio.gim.It[bio.gim.It$DAP<10,]
-b.g.smal_5=sum(b.clas_gim_It.10$biom)
-b.clas_gim_It.10.30<-bio.gim.It[bio.gim.It$DAP>=10 & bio.gim.It$DAP<30,]
-b.g.med_5=sum(b.clas_gim_It.10.30$biom)
-b.clas_gim_It.30.50<-bio.gim.It[bio.gim.It$DAP>=30 & bio.gim.It$DAP<50,]
-b.g.lar_5=sum(b.clas_gim_It.30.50$biom)
-b.clas_gim_It.50<-bio.gim.It[bio.gim.It$DAP>=50,]
-b.g.x.larg_5=sum(b.clas_gim_It.50$biom)
-
-b.clas_ang_It.10<-bio.ang.It[bio.ang.It$DAP<10,]
-b.smal_5=sum(b.clas_ang_It.10$biom)
-b.clas_ang_It.10.30<-bio.ang.It[bio.ang.It$DAP>=10 & bio.ang.It$DAP<30,]
-b.med_5=sum(b.clas_ang_It.10.30$biom)
-b.clas_ang_It.30.50<-bio.ang.It[bio.ang.It$DAP>=30 & bio.ang.It$DAP<50,]
-b.lar_5=sum(b.clas_ang_It.30.50$biom)
-b.clas_ang_It.50<-bio.ang.It[bio.ang.It$DAP>=50,]
-b.x.lar_5=sum(b.clas_ang_It.50$biom)
-
-
-b.s.a_5=sum(bio.ang.It$biom)
-b.s.g_5=sum(bio.gim.It$biom)
-b.p.a_5=(c(b.smal_5,b.med_5,b.lar_5,b.x.lar_5)/b.s.a_5)*100
-b.p.g_5=(c(b.g.smal_5,b.g.med_5,b.g.lar_5,b.g.x.larg_5)/b.s.g_5)*100
-
-
-
+biomass_gim_It_sep_by_DHB <- class_DBH_bio_ind(bio.gim.It, choice = "bio", class = c(10,30,50))
+biomass_ang_It_sep_by_DHB <- class_DBH_bio_ind(bio.ang.It,
+                                               choice = "bio",
+                                               class = c(10,30,50)) #checar!
+biomass_palm_It_sep_by_DHB <- class_DBH_bio_ind(bio.palm.It, choice = "bio", class = c(10,30,50))
 
 ############BARRA DO CHAPÉU##########
 
@@ -886,33 +640,9 @@ dads.palm.bc <- separate_by_filo(bio.BC, choice = "palm")
 
 ##########################classes DAP########################
 
-
-clas_gim_bc.10<-dads.gim.bc [dads.gim.bc$DAP<10,]
-g.smal_6=length(clas_gim_bc.10$DAP)
-clas_gim_bc.10.30<-dads.gim.bc [dads.gim.bc$DAP>=10 & dads.gim.bc$DAP<30,]
-g.med_6=length(clas_gim_bc.10.30$DAP)
-clas_gim_bc.30.50<-dads.gim.bc [dads.gim.bc$DAP>=30 & dads.gim.bc$DAP<50,]
-g.lar_6=length(clas_gim_bc.30.50$DAP)
-clas_gim_bc.50<-dads.gim.bc [dads.gim.bc$DAP>=50,]
-g.x.larg_6=length(clas_gim_bc.50$DAP)
-
-clas_ang_bc.10<-dads.ang.bc [dads.ang.bc$DAP<10,]
-smal_6=length(clas_ang_bc.10$DAP)
-clas_ang_bc.10.30<-dads.ang.bc [dads.ang.bc$DAP>=10 & dads.ang.bc$DAP<30,]
-med_6=length(clas_ang_bc.10.30$DAP)
-clas_ang_bc.30.50<-dads.ang.bc [dads.ang.bc$DAP>=30 & dads.ang.bc$DAP<50,]
-lar_6=length(clas_ang_bc.30.50$DAP)
-clas_ang_bc.50<-dads.ang.bc [dads.ang.bc$DAP>=50,]
-x.lar_6=length(clas_ang_bc.50$DAP)
-s.a_6=sum(smal_6,med_6,lar_6,x.lar_6)
-s.g_6=sum(g.smal_6,g.med_6,g.lar_6,g.x.larg_6)
-p.a_6=(c(smal_6,med_6,lar_6,x.lar_6)/s.a_6)*100
-p.g_6 =(c(g.smal_6,g.med_6,g.lar_6,g.x.larg_6)/s.g_6)*100
-a.b.a_6=sum(dads.ang.bc$DAP)
-a.b.g_6=sum(dads.gim.bc$DAP)
-(c(a.b.a_6,a.b.g_6)/sum(a.b.a_6,a.b.g_6))*100
-
-
+ind_gim_bc_sep_by_DHB <- class_DBH_bio_ind(dads.gim.bc, class = c(10,30,50))
+ind_ang_bc_sep_by_DHB <- class_DBH_bio_ind(dads.ang.bc, class = c(10,30,50))
+ind_palm_bc_sep_by_DHB <- class_DBH_bio_ind(dads.palm.bc, class = c(10,30,50))
 
 #####Est.Altura (BC)######
 #Ang
@@ -986,10 +716,6 @@ Dens.bc.2= getWoodDensity(genus=dads.gim.bc$Gen,
 #tail (Dens.bp.2)
 dads.gim.bc$DensM <- Dens.bc.2$meanWD
 dads.gim.bc$Lvl.D <- Dens.bc.2$levelWD
-#tail (Dens.bp.2)
-
-head (dads.palm.bc)
-head (dads.palm.It)
 
 Dens.bc.3= getWoodDensity(genus=dads.palm.bc$Gen,
                           species=dads.palm.bc$Spp,
@@ -1022,31 +748,10 @@ bio.bc =rbind (dads.ang.bc, dads.gim.bc, dads.palm.bc)
 ############DAP xBIO (BC)##############
 
 bio.gim.bc<-bio.bc[bio.bc$Filo=="Gim",]
-bio.ang.bc<-bio.bc[bio.bc$Filo!="Gim",]
-
+bio.ang.bc<-bio.bc[bio.bc$Filo!="Gim" & bio.bc$Filo!="Palm"  ,]
+bio.palm.bc<-bio.bc[bio.bc$Filo=="Palm",]
 #View (bio.ang.bp)
 
-b.clas_gim_bc.10<-bio.gim.bc[bio.gim.bc$DAP<10,]
-b.g.smal_6=sum(b.clas_gim_bc.10$biom)
-b.clas_gim_bc.10.30<-bio.gim.bc[bio.gim.bc$DAP>=10 & bio.gim.bc$DAP<30,]
-b.g.med_6=sum(b.clas_gim_bc.10.30$biom)
-b.clas_gim_bc.30.50<-bio.gim.bc[bio.gim.bc$DAP>=30 & bio.gim.bc$DAP<50,]
-b.g.lar_6=sum(b.clas_gim_bc.30.50$biom)
-b.clas_gim_bc.50<-bio.gim.bc[bio.gim.bc$DAP>=50,]
-b.g.x.larg_6=sum(b.clas_gim_bc.50$biom)
-
-b.clas_ang_bc.10<-bio.ang.bc[bio.ang.bc$DAP<10,]
-b.smal_6=sum(b.clas_ang_bc.10$biom)
-b.clas_ang_bc.10.30<-bio.ang.bc[bio.ang.bc$DAP>=10 & bio.ang.bc$DAP<30,]
-b.med_6=sum(b.clas_ang_bc.10.30$biom)
-b.clas_ang_bc.30.50<-bio.ang.bc[bio.ang.bc$DAP>=30 & bio.ang.bc$DAP<50,]
-b.lar_6=sum(b.clas_ang_bc.30.50$biom)
-b.clas_ang_bc.50<-bio.ang.bc[bio.ang.bc$DAP>=50,]
-b.x.lar_6=sum(b.clas_ang_bc.50$biom)
-
-
-b.s.a_6=sum(bio.ang.bc$biom)
-b.s.g_6=sum(bio.gim.bc$biom)
-b.p.a_6=(c(b.smal_6,b.med_6,b.lar_6,b.x.lar_6)/b.s.a_6)*100
-b.p.g_6=(c(b.g.smal_6,b.g.med_6,b.g.lar_6,b.g.x.larg_6)/b.s.g_6)*100
-
+biomass_gim_bc_sep_by_DHB <- class_DBH_bio_ind(bio.gim.bc, choice = "bio", class = c(10,30,50))
+biomass_ang_bc_sep_by_DHB <- class_DBH_bio_ind(bio.ang.bc, choice = "bio", class = c(10,30,50))
+biomass_palm_bc_sep_by_DHB <- class_DBH_bio_ind(bio.palm.bc, choice = "bio", class = c(10,30,50))
