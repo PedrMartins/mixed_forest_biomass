@@ -619,11 +619,15 @@ bio.gim.It<-bio.It[bio.It$Filo=="Gim",]
 bio.ang.It<-bio.It[bio.It$Filo!="Gim" & bio.It$Filo!="Palm" ,]
 bio.palm.It<-bio.It[bio.It$Filo=="Palm" ,]
 
-biomass_gim_It_sep_by_DHB <- class_DBH_bio_ind(bio.gim.It, choice = "bio", class = c(10,30,50))
+biomass_gim_It_sep_by_DHB <- class_DBH_bio_ind(bio.gim.It,
+                                               choice = "bio",
+                                               class = c(10,30,50))
 biomass_ang_It_sep_by_DHB <- class_DBH_bio_ind(bio.ang.It,
                                                choice = "bio",
                                                class = c(10,30,50)) #checar!
-biomass_palm_It_sep_by_DHB <- class_DBH_bio_ind(bio.palm.It, choice = "bio", class = c(10,30,50))
+biomass_palm_It_sep_by_DHB <- class_DBH_bio_ind(bio.palm.It,
+                                                choice = "bio",
+                                                class = c(10,30,50))
 
 ############BARRA DO CHAPÉU##########
 

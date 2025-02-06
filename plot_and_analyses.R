@@ -7,6 +7,7 @@
 ###Suplementar########
 
 source ("import_processing_biomass_data.R")
+source ("preparing_to_barplot.R")
 
 
 jpeg(filename = "Classe DAP_ind.jpg", width = 1050, height = 700, # function to save plots salva .jpg
@@ -15,11 +16,15 @@ jpeg(filename = "Classe DAP_ind.jpg", width = 1050, height = 700, # function to 
 
 par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bg= "white")
-color= colorRampPalette(c("lightgreen", "sandybrown"))
+color= colorRampPalette(c("sandybrown","lightgreen"))
 
-barplot (c(p.a_6[1],p.g_6[1],p.a_6[2],p.g_6[2],p.a_6[3],p.g_6[3],
-           p.a_6[4],p.g_6[4]), ylab="Individuals (%)",
-         col=color (2), ylim=c(0,70), main="Barra do Chapéu (MF1)")#bc
+barplot (c( ind_bc_num_gim[1],ind_bc_num_ang [1],
+            ind_bc_num_gim[2],ind_bc_num_ang [2],
+            ind_bc_num_gim[3],ind_bc_num_ang [3],
+            ind_bc_num_gim[4],ind_bc_num_ang [4]),
+         col=color (2), ylim=c(0,70),
+         main="Barra do Chapéu (MF1)",
+         ylab = "Individuals (%)")
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
@@ -31,15 +36,18 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
-barplot (c(p.a_5[1],p.g_5[1],p.a_5[2],p.g_5[2],p.a_5[3],p.g_5[3]
-           ,p.a_5[4],p.g_5[4]),
-         col=color (2), ylim=c(0,70),main="Itaberá (MF2)")#it
 
+barplot (c( ind_It_num_gim[1],ind_It_num_ang [1],
+            ind_It_num_gim[2],ind_It_num_ang [2],
+            ind_It_num_gim[3],ind_It_num_ang [3],
+            ind_It_num_gim[4],ind_It_num_ang [4]),
+         col=color (2), ylim=c(0,70),
+         main="Itaberá (MF2)")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -50,18 +58,19 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-barplot (c(p.a[1],p.g[1],p.a[2],p.g[2],p.a[3],p.g[3],p.a[4],p.g[4]),
+barplot (c( ind_cj_num_gim[1],ind_cj_num_ang [1],#,
+            ind_cj_num_gim[2],ind_cj_num_ang [2],
+            ind_cj_num_gim[3],ind_cj_num_ang [3],
+            ind_cj_num_gim[4],ind_cj_num_ang [4]),
          col=color (2), ylim=c(0,70),
          main="Campos do Jordão (MF3)")
 
-
-
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
@@ -71,40 +80,20 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-
-barplot (c(p.a_3[1],p.g_3[1],p.a_3[2],p.g_3[2],p.a_3[3],
-           p.g_3[3],p.a_3[4],p.g_3[4]),
-         col=color (2), ylim=c(0,70), ylab="Individuals (%)",
-         xlab="DBH Class (cm)",
-         main="Delfim Moreira \n Faz. Bart. (MF4)")#fb
-
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-barplot (c(p.a_4[1],p.g_4[1],p.a_4[2],p.g_4[2],p.a_4[3],
-           p.g_4[3],p.a_4[4],p.g_4[4]),
+barplot (c( ind_Fbar_num_gim[1],ind_Fbar_num_ang [1],#,
+            ind_Fbar_num_gim[2],ind_Fbar_num_ang [2],
+            ind_Fbar_num_gim[3],ind_Fbar_num_ang [3],
+            ind_Fbar_num_gim[4],ind_Fbar_num_ang [4]),
          col=color (2), ylim=c(0,70),
-         xlab="DBH Class (cm)",
-         main="Delfim Moreira \n Faz. São Fran. (MF5)")#fsf
+         main="Delfim Moreira \n Faz. Bart. (MF4)",
+         ylab = "Individuals (%)",
+         xlab="DBH Class (cm)")
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
@@ -116,16 +105,19 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-barplot (c(p.a_2[1],p.g_2[1],p.a_2[2],p.g_2[2],p.a_2[3],
-           p.g_2[3],p.a_2[4],p.g_2[4]),ylab="",
-         col=color (2),ylim=c(0,70),xlab="DBH Class (cm)",
-         main="Baependi (MF6)")#bp
+barplot (c( ind_Fsf_num_gim[1],ind_Fsf_num_ang [1],#,
+            ind_Fsf_num_gim[2],ind_Fsf_num_ang [2],
+            ind_Fsf_num_gim[3],ind_Fsf_num_ang [3],
+            ind_Fsf_num_gim[4],ind_Fsf_num_ang [4]),
+         col=color (2), ylim=c(0,70),
+         main="Delfim Moreira \n Faz. São Fran. (MF5)",
+         xlab="DBH Class (cm)")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -136,7 +128,30 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
+       ,col=color (2)
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
+
+barplot (c( ind_bp_num_gim[1],ind_bp_num_ang [1],#,
+            ind_bp_num_gim[2],ind_bp_num_ang [2],
+            ind_bp_num_gim[3],ind_bp_num_ang [3],
+            ind_bp_num_gim[4],ind_bp_num_ang [4]),
+         col=color (2), ylim=c(0,70),
+         main="Baependi (MF6)",
+         xlab="DBH Class (cm)")
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1.4,3.5,6,8.5))
+
+legend("topright" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
@@ -156,12 +171,15 @@ jpeg(filename = "Classe DAP_biomas.jpg", width = 1050, height = 700, # fun��
 par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bg="white")
 
-color= colorRampPalette(c("lightgreen", "sandybrown"))
+color= colorRampPalette(c("sandybrown","lightgreen"))
 
-barplot (c(b.p.a_6[1],b.p.g_6[1],b.p.a_6[2],b.p.g_6[2],b.p.a_6[3],b.p.g_6[3],
-           b.p.a_6[4],b.p.g_6[4]), ylab="Biomass %",
-         col=color (2), ylim=c(0,100), main="Barra do Chapéu (MF1)")#bc
-
+barplot (c( biom_bc_num_gim[1],biom_bc_num_ang[1],
+            biom_bc_num_gim[2],biom_bc_num_ang[2],
+            biom_bc_num_gim[3],biom_bc_num_ang[3],
+            biom_bc_num_gim[4],biom_bc_num_ang[4]),
+         col=color (2), ylim=c(0,100),
+         main="Barra do Chapéu (MF1)",
+         ylab = "Biomass (%)")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -172,17 +190,18 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topleft" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-
-barplot (c(b.p.a_5[1],b.p.g_5[1],b.p.a_5[2],b.p.g_5[2],b.p.a_5[3],b.p.g_5[3]
-           ,b.p.a_5[4],b.p.g_5[4]),
+barplot (c( biom_It_num_gim[1],biom_It_num_ang[1],
+            biom_It_num_gim[2],biom_It_num_ang[2],
+            biom_It_num_gim[3],biom_It_num_ang[3],
+            biom_It_num_gim[4],biom_It_num_ang[4]),
          col=color (2), ylim=c(0,100),
-         main="Itaberá (MF2)")#it
+         main="Itaberá (MF2)")
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
@@ -194,58 +213,19 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topleft" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-barplot (c(b.p.a[1],b.p.g[1],b.p.a[2],b.p.g[2],b.p.a[3],b.p.g[3],b.p.a[4],b.p.g[4]),
-         col=color (2), ylim=c(0,100), main="Campos do Jordão (MF3)")#cj
-
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-
-
-barplot (c(b.p.a_3[1],b.p.g_3[1],b.p.a_3[2],b.p.g_3[2],b.p.a_3[3],
-           b.p.g_3[3],b.p.a_3[4],b.p.g_3[4]),
-         col=color (2), ylim=c(0,100), ylab="Biomass %", xlab="DBH Class (cm)",
-         main="Delfim Moreira \n Faz. Bart. (MF4)")#fb
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-barplot (c(b.p.a_4[1],b.p.g_4[1],b.p.a_4[2],b.p.g_4[2],b.p.a_4[3],
-           b.p.g_4[3],b.p.a_4[4],b.p.g_4[4]),
+barplot (c( biom_cj_num_gim[1],biom_cj_num_ang [1],#,
+            biom_cj_num_gim[2],biom_cj_num_ang [2],
+            biom_cj_num_gim[3],biom_cj_num_ang [3],
+            biom_cj_num_gim[4],biom_cj_num_ang [4]),
          col=color (2), ylim=c(0,100),
-         xlab="DBH Class (cm)",
-         main="Delfim Moreira \n Faz. São Fran. (MF5)") #fsf
+         main="Campos do Jordão (MF3)")
+
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -256,16 +236,22 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topleft" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-barplot (c(b.p.a_2[1],b.p.g_2[1],b.p.a_2[2],b.p.g_2[2],b.p.a_2[3],
-           b.p.g_2[3],b.p.a_2[4],b.p.g_2[4]),
-         col=color (2), ylim=c(0,100),ylab="Biomass %", xlab="DBH Class (cm)",
-         main="Baependi (MF6)")#bp
+
+barplot (c( biom_Fbar_num_gim[1],biom_Fbar_num_ang [1],#,
+            biom_Fbar_num_gim[2],biom_Fbar_num_ang [2],
+            biom_Fbar_num_gim[3],biom_Fbar_num_ang [3],
+            biom_Fbar_num_gim[4],biom_Fbar_num_ang [4]),
+         col=color (2), ylim=c(0,100),
+         main="Delfim Moreira \n Faz. Bart. (MF4)",
+         ylab = "Biomass (%)",
+         xlab="DBH Class (cm)")
+
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -276,7 +262,53 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topleft" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms", "Gymnosperms") #texto a ser escrito
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
+       ,col=color (2)
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
+
+barplot (c( biom_Fsf_num_gim[1],biom_Fsf_num_ang [1],#,
+            biom_Fsf_num_gim[2],biom_Fsf_num_ang [2],
+            biom_Fsf_num_gim[3],biom_Fsf_num_ang [3],
+            biom_Fsf_num_gim[4],biom_Fsf_num_ang [4]),
+         col=color (2), ylim=c(0,100),
+         main="Delfim Moreira \n Faz. São Fran. (MF5)",
+         xlab="DBH Class (cm)")
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1.4,3.5,6,8.5))
+
+legend("topleft" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
+       ,col=color (2)
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
+
+barplot (c( biom_bp_num_gim[1],biom_bp_num_ang [1],#,
+            biom_bp_num_gim[2],biom_bp_num_ang [2],
+            biom_bp_num_gim[3],biom_bp_num_ang [3],
+            biom_bp_num_gim[4],biom_bp_num_ang [4]),
+         col=color (2), ylim=c(0,100),
+         main="Baependi (MF6)",
+         xlab="DBH Class (cm)")
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1.4,3.5,6,8.5))
+
+legend("topleft" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
