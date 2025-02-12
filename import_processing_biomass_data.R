@@ -167,6 +167,8 @@ bio.gim.cj<-bio.cj[bio.cj$Filo=="Gim",]
 bio.ang.cj <-bio.cj[bio.cj$Filo!="Gim",]
 #tail (bio.ang.cj)
 
+class_DBH_bio_ind  (bio.gim.cj)
+
 b.clas_gim_cj.10<-bio.gim.cj [bio.gim.cj$DAP<10,]
 b.g.smal=sum(b.clas_gim_cj.10$biom)
 b.clas_gim_cj.10.30<-bio.gim.cj [bio.gim.cj$DAP>=10 & bio.gim.cj$DAP<30,]
