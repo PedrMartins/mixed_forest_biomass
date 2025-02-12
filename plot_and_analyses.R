@@ -980,9 +980,13 @@ color <- colorRampPalette(c("sandybrown","lightgreen"))
 boxplot (biom/1000  ~ Distri, data=bio.bc,horizontal = FALSE,
          main="Barra do ChapÃ©u (MF1)",
          xlab =" ",
-         col = color(2), ylab= "log Biomass (Mg)",
+         col = color(2), ylab= " ",
          log="y", pch="*")
 
+mtext( #funï¿½ï¿½o plota textos nas ï¿½reas ao redor do grï¿½fico
+  "Log Biomass (Mg)", #primeiro argumento refere oa texto plotado
+  side= 2, #argumento localiza no grï¿½fico "1" abaixo
+  cex=1,line=4, las = 3)
 
 mtext( #funï¿½ï¿½o plota textos nas ï¿½reas ao redor do grï¿½fico
   c("temperate","tropical"), #primeiro argumento refere oa texto plotado
@@ -1017,10 +1021,13 @@ mtext( #funï¿½ï¿½o plota textos nas ï¿½reas ao redor do grï¿½fico
 boxplot (biom/1000  ~ Distri, data=bio.Fbar,horizontal = FALSE,
          main="Delfim Moreira \n Faz. Bartira (MF4)",
          xlab ="Phytogeographic distribution",
-         col = color(2), ylab= "Log Biomass (Mg)",
+         col = color(2), ylab= "",
          log="y", pch="*")
 
-
+mtext( #funï¿½ï¿½o plota textos nas ï¿½reas ao redor do grï¿½fico
+  "Log Biomass (Mg)", #primeiro argumento refere oa texto plotado
+  side= 2, #argumento localiza no grï¿½fico "1" abaixo
+  cex=1,line=4, las = 3)
 
 mtext( #funï¿½ï¿½o plota textos nas ï¿½reas ao redor do grï¿½fico
   c("temperate","tropical"), #primeiro argumento refere oa texto plotado
@@ -1153,7 +1160,7 @@ jpeg(filename = "boxplot_biomass_filo.jpg", width = 850, height = 500, # funï¿½ï
      units = "px", quality = 75,
      bg = "white")
 
-par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
+par(mfrow=c(2,3),mar=c(5,6,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
 
 
@@ -1166,7 +1173,7 @@ boxplot (biom/1000  ~ Filo, data=bio.bc,horizontal = FALSE,
          col = color(4), ylab= "",
          log ="y", pch ="*")
 mtext( #funï¿½ï¿½o plota textos nas ï¿½reas ao redor do grï¿½fico
-  c("Biomass (Mg)"), #primeiro argumento refere oa texto plotado
+  "Log Biomass (Mg)", #primeiro argumento refere oa texto plotado
   side= 2, #argumento localiza no grï¿½fico "1" abaixo
   cex=1,line=4, las=3)
 
@@ -1207,7 +1214,7 @@ boxplot (biom/1000  ~ Filo, data=bio.Fbar,horizontal = FALSE,
          log ="y", pch ="*")
 
 mtext( #funï¿½ï¿½o plota textos nas ï¿½reas ao redor do grï¿½fico
-  c("Biomass (Mg)"), #primeiro argumento refere oa texto plotado
+  c("Log Biomass (Mg)"), #primeiro argumento refere oa texto plotado
   side= 2, #argumento localiza no grï¿½fico "1" abaixo
   cex=1,line=4, las=3)
 
