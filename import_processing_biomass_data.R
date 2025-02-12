@@ -143,36 +143,8 @@ bio.gim.cj<-bio.cj[bio.cj$Filo=="Gim",]
 bio.ang.cj <-bio.cj[bio.cj$Filo!="Gim",]
 #tail (bio.ang.cj)
 
-<<<<<<< HEAD
-class_DBH_bio_ind  (bio.gim.cj)
-
-b.clas_gim_cj.10<-bio.gim.cj [bio.gim.cj$DAP<10,]
-b.g.smal=sum(b.clas_gim_cj.10$biom)
-b.clas_gim_cj.10.30<-bio.gim.cj [bio.gim.cj$DAP>=10 & bio.gim.cj$DAP<30,]
-b.g.med=sum(b.clas_gim_cj.10.30$biom)
-b.clas_gim_cj.30.50<-bio.gim.cj [bio.gim.cj$DAP>=30 & bio.gim.cj$DAP<50,]
-b.g.lar=sum(b.clas_gim_cj.30.50$biom)
-b.clas_gim_cj.50<-bio.gim.cj [bio.gim.cj$DAP>=50,]
-b.g.x.larg=sum(b.clas_gim_cj.50$biom)
-
-b.clas_ang_cj.10<-bio.ang.cj [bio.ang.cj$DAP<10,]
-b.smal=sum(b.clas_ang_cj.10$biom)
-b.clas_ang_cj.10.30<-bio.ang.cj [bio.ang.cj$DAP>=10 & bio.ang.cj$DAP<30,]
-b.med=sum(b.clas_ang_cj.10.30$biom)
-b.clas_ang_cj.30.50<-bio.ang.cj [bio.ang.cj$DAP>=30 & bio.ang.cj$DAP<50,]
-b.lar=sum(b.clas_ang_cj.30.50$biom)
-b.clas_ang_cj.50<-bio.ang.cj [bio.ang.cj$DAP>=50,]
-b.x.lar=sum(b.clas_ang_cj.50$biom)
-
-
-b.s.a=sum(bio.ang.cj$biom)
-b.s.g=sum(bio.gim.cj$biom)
-b.p.a=(c(b.smal,b.med,b.lar,b.x.lar)/b.s.a)*100
-b.p.g=(c(b.g.smal,b.g.med,b.g.lar,b.g.x.larg)/b.s.g)*100
-=======
 biomass_gim_cj_sep_by_DHB <- class_DBH_bio_ind (bio.gim.cj, class = c(10,30,50), choice = "bio" )
 biomass_ang_cj_sep_by_DHB <- class_DBH_bio_ind (bio.ang.cj, class = c(10,30,50), choice = "bio" )
->>>>>>> 8ffbd159e53f74d151c51ef3431dd23cda3eb26f
 
 #####################BAEPENDI###############################
 ###Limpeza dados

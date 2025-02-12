@@ -62,21 +62,10 @@ separate_by_filo <- function (x, choice = "ang"){
 
 
 ########### data separating by DBH#############
-<<<<<<< HEAD
-
-
-
-
-class_DBH_bio_ind <- function (x, choice = "bio",
-                               class =  c(10,20)){
-=======
-
-
-
 
 class_DBH_bio_ind <- function (x, choice = "ind",
                                class =  10){
->>>>>>> 8ffbd159e53f74d151c51ef3431dd23cda3eb26f
+
 
   site <-  x
   choices <- c ("ind","bio")
@@ -113,11 +102,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
     lower_bound <- class[i]
     upper_bound <- class[i + 1]
     if (is.na(upper_bound)==TRUE) {
-<<<<<<< HEAD
-      subset_data <- site[site$DAP < lower_bound,]
-=======
       subset_data <- site[site$DAP >= lower_bound,]
->>>>>>> 8ffbd159e53f74d151c51ef3431dd23cda3eb26f
       site_class_number=length(subset_data$DAP)
       site_all_number= length(site$DAP)
       site_class_percentage = (site_class_number/
@@ -183,11 +168,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
         lower_bound <- class[i]
         upper_bound <- class[i + 1]
         if (is.na(upper_bound)==TRUE) {
-<<<<<<< HEAD
-          subset_data <- site[site$DAP > lower_bound,]
-=======
           subset_data <- site[site$DAP >= lower_bound,]
->>>>>>> 8ffbd159e53f74d151c51ef3431dd23cda3eb26f
           site_class_biomass=sum(subset_data$biom)
           site_all_biomass= sum(site$biom)
           site_biomass_percentage = (site_class_biomass/
@@ -235,11 +216,8 @@ class_DBH_bio_ind <- function (x, choice = "ind",
 }
 
 
-<<<<<<< HEAD
 
-=======
 ########### data spp x site #############
->>>>>>> 8ffbd159e53f74d151c51ef3431dd23cda3eb26f
 
 site_spp = function(x, site = "cj"){
 
