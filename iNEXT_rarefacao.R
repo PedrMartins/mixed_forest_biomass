@@ -1,13 +1,5 @@
 source("function_for_iNEXT.R")
 
-install.packages('iNEXT')
-
-
-library(iNEXT)
-library(ggplot2)
-library(gridExtra)
-
-
 str (all_sites)
 class(all_sites)
 all_sites <- as.data.frame(all_sites)
