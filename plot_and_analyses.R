@@ -86,37 +86,14 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-barplot (c( ind_Fbar_num_gim[1],ind_Fbar_num_ang [1],#,
-            ind_Fbar_num_gim[2],ind_Fbar_num_ang [2],
-            ind_Fbar_num_gim[3],ind_Fbar_num_ang [3],
-            ind_Fbar_num_gim[4],ind_Fbar_num_ang [4]),
-         col=color (2), ylim=c(0,70),
-         main="Delfim Moreira \n Faz. Bart. (MF4)",
-         ylab = "Individuals (%)",
-         xlab="DBH Class (cm)")
-
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
 barplot (c( ind_Fsf_num_gim[1],ind_Fsf_num_ang [1],#,
             ind_Fsf_num_gim[2],ind_Fsf_num_ang [2],
             ind_Fsf_num_gim[3],ind_Fsf_num_ang [3],
             ind_Fsf_num_gim[4],ind_Fsf_num_ang [4]),
          col=color (2), ylim=c(0,70),
-         main="Delfim Moreira \n Faz. São Fran. (MF5)",
+         main="Delfim Moreira \n Faz. São Fran. (MF4)",
+         ylab = "Individuals (%)",
          xlab="DBH Class (cm)")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
@@ -133,6 +110,31 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
+
+barplot (c( ind_Fbar_num_gim[1],ind_Fbar_num_ang [1],#,
+            ind_Fbar_num_gim[2],ind_Fbar_num_ang [2],
+            ind_Fbar_num_gim[3],ind_Fbar_num_ang [3],
+            ind_Fbar_num_gim[4],ind_Fbar_num_ang [4]),
+         col=color (2), ylim=c(0,70),
+         main="Delfim Moreira \n Faz. Bart. (MF5)",
+         xlab="DBH Class (cm)")
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1.4,3.5,6,8.5))
+
+legend("topright" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
+       ,col=color (2)
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
+
 
 barplot (c( ind_bp_num_gim[1],ind_bp_num_ang [1],#,
             ind_bp_num_gim[2],ind_bp_num_ang [2],
@@ -242,16 +244,14 @@ legend("topleft" #fun��o adiciona um texto ao gr�fico,
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-
-barplot (c( biom_Fbar_num_gim[1],biom_Fbar_num_ang [1],#,
-            biom_Fbar_num_gim[2],biom_Fbar_num_ang [2],
-            biom_Fbar_num_gim[3],biom_Fbar_num_ang [3],
-            biom_Fbar_num_gim[4],biom_Fbar_num_ang [4]),
+barplot (c( biom_Fsf_num_gim[1],biom_Fsf_num_ang [1],#,
+            biom_Fsf_num_gim[2],biom_Fsf_num_ang [2],
+            biom_Fsf_num_gim[3],biom_Fsf_num_ang [3],
+            biom_Fsf_num_gim[4],biom_Fsf_num_ang [4]),
          col=color (2), ylim=c(0,100),
-         main="Delfim Moreira \n Faz. Bart. (MF4)",
+         main="Delfim Moreira \n Faz. São Fran. (MF4)",
          ylab = "Biomass (%)",
          xlab="DBH Class (cm)")
-
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -268,13 +268,15 @@ legend("topleft" #fun��o adiciona um texto ao gr�fico,
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-barplot (c( biom_Fsf_num_gim[1],biom_Fsf_num_ang [1],#,
-            biom_Fsf_num_gim[2],biom_Fsf_num_ang [2],
-            biom_Fsf_num_gim[3],biom_Fsf_num_ang [3],
-            biom_Fsf_num_gim[4],biom_Fsf_num_ang [4]),
+
+barplot (c( biom_Fbar_num_gim[1],biom_Fbar_num_ang [1],#,
+            biom_Fbar_num_gim[2],biom_Fbar_num_ang [2],
+            biom_Fbar_num_gim[3],biom_Fbar_num_ang [3],
+            biom_Fbar_num_gim[4],biom_Fbar_num_ang [4]),
          col=color (2), ylim=c(0,100),
-         main="Delfim Moreira \n Faz. São Fran. (MF5)",
+         main="Delfim Moreira \n Faz. Bart. (MF5)",
          xlab="DBH Class (cm)")
+
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -358,8 +360,8 @@ rownames(bio.podo.ara.pro) <- c("Araucaria","Podocarpus")
 colnames(bio.podo.ara.pro) <- c("Barra \n do Chapéu"="MF1"
                                 ,"Itaberá" = "MF2",
                                 "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF5",
-                                "Delfim Moreira \n Faz. Bart."="MF4",
+                                "Delfim Moreira \n Faz. São Fran."="MF4",
+                                "Delfim Moreira \n Faz. Bart."="MF5",
                                 "Baependi"="MF6"
                                 )
 bio.podo.ara.pro= as.matrix (bio.podo.ara.pro)
@@ -380,7 +382,8 @@ barplot (bio.podo.ara.pro, col=color (2), ylim=c(0,100),ylab="Biomass %")
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Araucaria","Podocarpus") #texto a ser escrito
+       ,legend= c (expression (italic ("Araucaria")),
+                   expression (italic ("Podocarpus"))) #texto a ser escrito
        ,col=color (2)
        ,cex=1.5		#tamanho da fonte
        , pch=c(15,15)
@@ -413,8 +416,8 @@ colnames(bio.podo.ara) <- c(
                               "Barra \n do Chapéu"="MF1"
                               ,"Itaberá" = "MF2",
                                 "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF5",
-                                "Delfim Moreira \n Faz. Bart."="MF4",
+                                "Delfim Moreira \n Faz. São Fran."="MF4",
+                                "Delfim Moreira \n Faz. Bart."="MF5",
                                 "Baependi"="MF6"
                                 )
 bio.gim= as.matrix (bio.podo.ara)
@@ -504,8 +507,8 @@ rownames(bio.tem.trop.pro) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
 colnames(bio.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
                                 ,"Itaberá" = "MF2",
                                 "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF5",
-                                "Delfim Moreira \n Faz. Bart."="MF4",
+                                "Delfim Moreira \n Faz. São Fran."="MF4",
+                                "Delfim Moreira \n Faz. Bart."="MF5",
                                 "Baependi"="MF6"
                                 )
 
@@ -531,8 +534,8 @@ rownames(bio.tem.trop.ab) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
 colnames(bio.tem.trop.ab) <- c("Barra \n do Chapéu"="MF1"
                                 ,"Itaberá" = "MF2",
                                 "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF5",
-                                "Delfim Moreira \n Faz. Bart."="MF4",
+                                "Delfim Moreira \n Faz. São Fran."="MF4",
+                                "Delfim Moreira \n Faz. Bart."="MF5",
                                 "Baependi"="MF6"
 )
 
@@ -558,7 +561,9 @@ barplot (bio.temp.trop, col=color (4),
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop") #texto a ser escrito
+       ,legend = c(expression(italic ("Araucaria")),
+                    expression(italic ("Podocarpus")),
+                    "Ang_Temp","Ang_Trop") #texto a ser escrito
        ,col=color (4)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
@@ -588,7 +593,9 @@ barplot (bio.tem.trop.ab, col=color (4),
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop") #texto a ser escrito
+       ,legend = c(expression(italic ("Araucaria")),
+                   expression(italic ("Podocarpus")),
+                   "Ang_Temp","Ang_Trop") #texto a ser escrito
        ,col=color (4)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
@@ -687,8 +694,8 @@ rownames(bio.filo.ab) <- c("Gimnosperma","Eudicotiledonia","Magnoliidea")
 colnames(bio.filo.ab) <- c("Barra \n do Chapéu"="MF1"
                             ,"Itaberá" = "MF2",
                             "Campos do Jordão"="MF3",
-                            "Delfim Moreira \n Faz. São Fran."="MF5",
-                            "Delfim Moreira \n Faz. Bart."="MF4",
+                            "Delfim Moreira \n Faz. São Fran."="MF4",
+                            "Delfim Moreira \n Faz. Bart."="MF5",
                             "Baependi"="MF6"
 )
 bio.filo.ab= as.matrix (bio.filo.ab)
@@ -896,7 +903,7 @@ boxplot (DensM ~ Distri, data=bio.bc,horizontal = FALSE,
            paste ("Wood density ", g.cm^-3)))
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
@@ -904,7 +911,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 boxplot (DensM ~ Distri, data=bio.It,horizontal = FALSE, main="Itaberá (MF2)",
          col = color(2), ylab= "", xlab=" ")
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
@@ -916,36 +923,38 @@ boxplot (DensM ~ Distri, data=bio.cj, horizontal = FALSE,
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1,2))
-
-boxplot (DensM ~ Distri, data=bio.Fbar,horizontal = FALSE,
-         main="Delfim Moreira \n Faz. Bartira (MF4)",
-         xlab ="Phytogeographic distribution",
-         col = color(2), ylab= expression (paste ("Wood density ", g.cm^-3)))
-
-
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
 
 
 boxplot (DensM ~ Distri, data=bio.Fsf,horizontal = FALSE,
-         main="Delfim Moreira \n Faz. S. Fran. (MF5)"
+         main="Delfim Moreira \n Faz. S. Fran. (MF4)"
          , xlab ="Phytogeographic distribution",
-         col = color(2), ylab= "")
+         col = color(2), ylab= expression (
+           paste ("Wood density ", g.cm^-3)))
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
+
+boxplot (DensM ~ Distri, data=bio.Fbar,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. Bartira (MF5)",
+         xlab ="Phytogeographic distribution",
+         col = color(2), ylab= " ")
+
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
 
 boxplot (DensM ~ Distri, data=bio.bp,horizontal = FALSE,
          main="Baependi(MF6)",
@@ -954,7 +963,7 @@ boxplot (DensM ~ Distri, data=bio.bp,horizontal = FALSE,
          )
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
@@ -962,9 +971,95 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 
 dev.off()
 ###################################################################################################
-###################################################################################################
 ################vioplot biomassa################################################
 
+
+jpeg(filename = "vioplot_biomass.jpg", width = 850, height = 500, # fun��o salva gr�ficos em .jpg
+     units = "px", quality = 75,
+     bg = "white")
+
+par(mfrow=c(2,3),mar=c(5,7,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
+    family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
+
+
+color <- colorRampPalette(c("sandybrown","lightgreen"))
+
+
+vioplot (biom/1000  ~ Distri, data=bio.bc,horizontal = FALSE,
+         main="Barra do Chapéu (MF1)",
+         xlab =" ",
+         col = color(2), ylab= "Biomass (Mg)", pch="*")
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+vioplot (biom/1000 ~ Distri, data=bio.It,horizontal = FALSE, main="Itaberá (MF2)",
+         xlab =" ",
+         col = color(2), ylab= "", pch="*")
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+vioplot (biom/1000  ~ Distri, data=bio.cj, horizontal = FALSE,
+         main="Campos do Jordão (MF3)", xlab =" ", pch="*",col = color(2),
+         ylab= " ")
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+
+vioplot (biom/1000  ~ Distri, data=bio.Fsf,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. S. Fran. (MF4)"
+         , xlab ="Phytogeographic distribution",
+         col = color(2), ylab= "Biomass (Mg)", pch="*")
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+
+vioplot (biom/1000  ~ Distri, data=bio.Fbar,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. Bartira (MF5)",
+         xlab ="Phytogeographic distribution",
+         col = color(2), ylab= "", pch="*")
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+
+vioplot (biom/1000 ~ Distri, data=bio.bp,horizontal = FALSE,
+         main="Baependi(MF6)",
+         xlab ="Phytogeographic distribution",
+         col = color(2), ylab= " ", pch="*")
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
+
+
+dev.off()
+
+################boxplot biomassa################################################
 
 jpeg(filename = "boxplot_biomass.jpg", width = 850, height = 500, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 75,
@@ -989,7 +1084,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=4, las = 3)
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
@@ -1001,7 +1096,7 @@ boxplot (biom/1000 ~ Distri, data=bio.It,horizontal = FALSE, main="Itaberá (MF2
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
@@ -1012,42 +1107,44 @@ boxplot (biom/1000  ~ Distri, data=bio.cj, horizontal = FALSE,
          log="y", pch="*")
 
 
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1,2))
 
-boxplot (biom/1000  ~ Distri, data=bio.Fbar,horizontal = FALSE,
-         main="Delfim Moreira \n Faz. Bartira (MF4)",
-         xlab ="Phytogeographic distribution",
-         col = color(2), ylab= "",
-         log="y", pch="*")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  "Log Biomass (Mg)", #primeiro argumento refere oa texto plotado
-  side= 2, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=4, las = 3)
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
 
 
 boxplot (biom/1000  ~ Distri, data=bio.Fsf,horizontal = FALSE,
-         main="Delfim Moreira \n Faz. S. Fran. (MF5)"
+         main="Delfim Moreira \n Faz. S. Fran. (MF4)"
          , xlab ="Phytogeographic distribution",
          col = color(2), ylab= " ",
          log ="y", pch="*")
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  "Log Biomass (Mg)", #primeiro argumento refere oa texto plotado
+  side= 2, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=4, las = 3)
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
 
+
+boxplot (biom/1000  ~ Distri, data=bio.Fbar,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. Bartira (MF5)",
+         xlab ="Phytogeographic distribution",
+         col = color(2), ylab= "",
+         log="y", pch="*")
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2))
 
 
 boxplot (biom/1000 ~ Distri, data=bio.bp,horizontal = FALSE,
@@ -1058,13 +1155,14 @@ boxplot (biom/1000 ~ Distri, data=bio.bp,horizontal = FALSE,
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("temperate","tropical"), #primeiro argumento refere oa texto plotado
+  c("Temperate","Tropical"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2))
 
 
 dev.off()
+
 
 ################################################################
 ################vioplot biomassa filo###########################
@@ -1088,7 +1186,7 @@ vioplot (biom/1000  ~ Filo, data=bio.bc,horizontal = FALSE,
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag", "palm"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag", "Palm"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3,4))
@@ -1098,7 +1196,7 @@ vioplot (biom/1000 ~ Filo, data=bio.It,horizontal = FALSE, main="Itaberá (MF2)"
          col = color(4), ylab= "")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag", "palm"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag", "Palm"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3,4))
@@ -1109,34 +1207,36 @@ vioplot (biom/1000  ~ Filo, data=bio.cj, horizontal = FALSE,
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1,2,3))
-
-vioplot (biom/1000  ~ Filo, data=bio.Fbar,horizontal = FALSE,
-         main="Delfim Moreira \n Faz. Bartira (MF4)",
-         xlab ="Phytogeographic distribution",
-         col = color(3), ylab= "Biomass (Mg)")
-
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3))
 
 vioplot (biom/1000  ~ Filo, data=bio.Fsf,horizontal = FALSE,
-         main="Delfim Moreira \n Faz. S. Fran. (MF5)"
+         main="Delfim Moreira \n Faz. S. Fran. (MF4)"
          , xlab ="Phytogeographic distribution",
-         col = color(3), ylab= " ")
+         col = color(3), ylab= "Biomass (Mg)")
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3))
+
+
+vioplot (biom/1000  ~ Filo, data=bio.Fbar,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. Bartira (MF5)",
+         xlab ="Phytogeographic distribution", ylab="",
+         col = color(3))
+
+
+mtext( #fun��o plota textos nas �reas ao redor do gr�fico
+  c("Eud","Gym","Mag"), #primeiro argumento refere oa texto plotado
+  side= 1, #argumento localiza no gr�fico "1" abaixo
+  cex=1,line=0.9,
+  at=c(1,2,3))
+
 
 vioplot (biom/1000 ~ Filo, data=bio.bp,horizontal = FALSE,
          main="Baependi(MF6)",
@@ -1146,7 +1246,7 @@ vioplot (biom/1000 ~ Filo, data=bio.bp,horizontal = FALSE,
 axis (2, at = seq (0,3,by=1))
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3))
@@ -1178,7 +1278,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=4, las=3)
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag", "palm"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag", "Palm"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3,4))
@@ -1190,7 +1290,7 @@ boxplot (biom/1000 ~ Filo, data=bio.It,
          log ="y", pch ="*")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag", "palm"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag", "Palm"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3,4))
@@ -1202,14 +1302,16 @@ boxplot (biom/1000  ~ Filo, data=bio.cj, horizontal = FALSE,
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3))
 
-boxplot (biom/1000  ~ Filo, data=bio.Fbar,horizontal = FALSE,
-         main="Delfim Moreira \n Faz. Bartira (MF4)",
-         xlab ="Phytogeographic distribution",
+
+
+boxplot (biom/1000  ~ Filo, data=bio.Fsf,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. S. Fran. (MF4)"
+         , xlab ="Phylogenetic Groups",
          col = color(3), ylab= " ",
          log ="y", pch ="*")
 
@@ -1219,27 +1321,28 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=4, las=3)
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3))
 
-boxplot (biom/1000  ~ Filo, data=bio.Fsf,horizontal = FALSE,
-         main="Delfim Moreira \n Faz. S. Fran. (MF5)"
-         , xlab ="Phytogeographic distribution",
+boxplot (biom/1000  ~ Filo, data=bio.Fbar,horizontal = FALSE,
+         main="Delfim Moreira \n Faz. Bartira (MF5)",
+         xlab ="Phylogenetic Groups",
          col = color(3), ylab= " ",
          log ="y", pch ="*")
 
 
+
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3))
 
 boxplot (biom/1000 ~ Filo, data=bio.bp,horizontal = FALSE,
          main="Baependi(MF6)",
-         xlab ="Phytogeographic distribution",
+         xlab ="Phylogenetic Groups",
          col = color(3), ylab= " ",
          log ="y", pch ="*")
 
@@ -1247,7 +1350,7 @@ boxplot (biom/1000 ~ Filo, data=bio.bp,horizontal = FALSE,
 #yaxt = "n",
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("eud","con","mag"), #primeiro argumento refere oa texto plotado
+  c("Eud","Gym","Mag"), #primeiro argumento refere oa texto plotado
   side= 1, #argumento localiza no gr�fico "1" abaixo
   cex=1,line=0.9,
   at=c(1,2,3))
@@ -1256,6 +1359,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 dev.off()
 
 
+####################################################
 ####################################################
 ############test analises###########
 bio.cj$biom
