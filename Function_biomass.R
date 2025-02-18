@@ -22,7 +22,9 @@ import_biomass_rawdata <-  function(site = NULL){
   site
 }
 
+
 ########### data processing function#############
+
 
 data_processing <-  function (x){
   c=100
@@ -64,7 +66,7 @@ separate_by_filo <- function (x, choice = "ang"){
 ########### data separating by DBH#############
 
 class_DBH_bio_ind <- function (x, choice = "ind",
-                               class =  10){
+                               class =  10, distribution=FALSE){
 
 
   site <-  x
@@ -75,6 +77,25 @@ class_DBH_bio_ind <- function (x, choice = "ind",
 
   if (choice==1) {
   if (length(class)==1) {
+    if (distribution==TRUE){
+      distri <- c("Temp", "Trop")
+      data_sep_dist <- data.frame()
+      for (i in distri){
+      tag <- i
+      site_sep_distri <- site[site$Distri=="Trop",]
+      site_class<-  site_sep_distri [site_sep_distri$DAP<class,]
+      site_class_number=length(site_class$DAP)
+      site_all_number= length(site$DAP)
+      site_class_percentage = (site_class_number/
+                                 site_all_number) *100
+      data_dap<- data.frame("Class_DAP"= paste (class, tag),
+                            "Ind_number"=as.numeric(site_class_number),
+                            "Ind_percentage"=as.numeric(site_class_percentage),
+                            "Total_ind"=as.numeric(site_all_number))
+
+      data_sep_dist <- rbind(data_dap,data_sep_dist)
+      }
+    }
   site_class<-  site [site$DAP<class,]
   site_class_number=length(site_class$DAP)
   site_all_number= length(site$DAP)
@@ -211,6 +232,8 @@ class_DBH_bio_ind <- function (x, choice = "ind",
   }
 
 
+
+
   return (result)
 
 }
@@ -242,3 +265,5 @@ site_spp = function(x, site = "cj"){
   tranpon_spp_count <- tranpon_spp_count |> relocate(id)
   return(tranpon_spp_count)
 }
+
+
