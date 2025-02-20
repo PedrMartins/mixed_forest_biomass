@@ -65,6 +65,9 @@ separate_by_filo <- function (x, choice = "ang"){
 
 ########### data separating by DBH#############
 
+site <- bio.bc
+class= c(10,20)
+
 class_DBH_bio_ind <- function (x, choice = "ind",
                                class =  10, distribution=FALSE){
 
@@ -82,30 +85,92 @@ class_DBH_bio_ind <- function (x, choice = "ind",
       data_sep_dist <- data.frame()
       for (i in distri){
       tag <- i
-      site_sep_distri <- site[site$Distri=="Trop",]
-      site_class<-  site_sep_distri [site_sep_distri$DAP<class,]
+      site_sep_distri <- site[site$Distri==i,]
+      site_class<-  site_sep_distri [site_sep_distri$DAP>class,]
       site_class_number=length(site_class$DAP)
       site_all_number= length(site$DAP)
       site_class_percentage = (site_class_number/
                                  site_all_number) *100
-      data_dap<- data.frame("Class_DAP"= paste (class, tag),
-                            "Ind_number"=as.numeric(site_class_number),
-                            "Ind_percentage"=as.numeric(site_class_percentage),
-                            "Total_ind"=as.numeric(site_all_number))
+      data_dap<- data.frame("Class_DAP_cm"= class,
+                            "Distri"= tag,
+                            "Ind_number"=site_class_number,
+                            "Ind_percentage"=site_class_percentage,
+                            "Total_ind"=site_all_number)
 
       data_sep_dist <- rbind(data_dap,data_sep_dist)
       }
-    }
+      data_dap <- data_sep_dist
+    }else{
   site_class<-  site [site$DAP<class,]
   site_class_number=length(site_class$DAP)
   site_all_number= length(site$DAP)
   site_class_percentage = (site_class_number/
                              site_all_number) *100
-  data_dap<- data.frame("Class_DAP"=class, "Ind_number"=site_class_number,
-             "Ind_percentage"=site_class_percentage,
-             "Total_ind"=site_all_number)
-
+  data_dap<- data.frame("Class_DAP"=class,
+                        "Ind_number"=site_class_number,
+                        "Ind_percentage"=site_class_percentage,
+                        "Total_ind"=site_all_number)
+}
 } else {
+  if (distribution==TRUE){
+    distri <- c("Temp", "Trop")
+    data_sep_dist <- data.frame()
+    for (i in distri){
+      tag <- i
+      site_sep_distri <- site[site$Distri==i,]
+      data_dap = data.frame()
+      for (j in seq_along(class)){
+        if (j==1){
+          site_class<-  site_sep_distri [site_sep_distri$DAP<class[1],]
+          site_class_number=length(site_class$DAP)
+          site_all_number= length(site$DAP)
+          site_class_percentage = (site_class_number/
+                                     site_all_number) *100
+          subset_data <- c(class[1], tag,
+                           site_class_number,
+                           site_class_percentage,
+                           site_all_number)
+
+        }else{
+        lower_bound <- class[j]
+        upper_bound <- class[j + 1]
+        if (is.na(upper_bound)==TRUE) {
+          subset_data <- site[site$DAP >= lower_bound,]
+          site_class_number=length(subset_data$DAP)
+          site_all_number= length(site$DAP)
+          site_class_percentage = (site_class_number/
+                                     site_all_number) *100
+          subset_data <- c(class[j], tag, site_class_number,
+                           site_class_percentage,
+                           site_all_number)
+
+        }else {
+          subset_data <- site[site$DAP >= lower_bound &
+                                site$DAP < upper_bound, ]
+          site_class_number=length(subset_data$DAP)
+          site_all_number= length(site$DAP)
+          site_class_percentage = (site_class_number/
+                                     site_all_number) *100
+          subset_data <- c(paste (class[j], class[i+1], sep= "_"),
+                           tag,
+                           site_class_number,
+                           site_class_percentage,
+                           site_all_number)
+        }
+        }
+        data_dap <- rbind(subset_data,data_dap)
+      }
+
+      data_sep_dist <- rbind(data_dap,data_sep_dist)
+
+    }
+    colnames(data_dap) <- c("Class_DAP", "Ind_number",
+                            "Ind_percentage",
+                            "Total_ind")
+
+    data_dap <- data_dap[order(data_dap$Class_DAP),]
+
+  }else{
   data_dap <- data.frame ()
   for (i in seq_along(class)) {
     if (i==1){
@@ -148,11 +213,11 @@ class_DBH_bio_ind <- function (x, choice = "ind",
     data_dap <- rbind(subset_data,data_dap)
 
   }
-  colnames(data_dap) <- c("Class_DAP", "Ind_number",
+  colnames(data_dap) <- c("Class_DAP", "Distri","Ind_number",
              "Ind_percentage",
              "Total_ind")
 
-  data_dap <- data_dap[order(data_dap$Class_DAP),]
+  data_dap <- data_dap[order(data_dap$Class_DAP),]}
   }
 
     result <- data_dap
@@ -239,7 +304,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
 }
 
 
-
+class_DBH_bio_ind (bio.bc, class = c(10,20), distribution = TRUE)
 ########### data spp x site #############
 
 site_spp = function(x, site = "cj"){
