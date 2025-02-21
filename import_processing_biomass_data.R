@@ -10,7 +10,7 @@ bio.bp<- import_biomass_rawdata (site="bp")
 bio.Fbar<- import_biomass_rawdata (site="fb")
 bio.Fsf<- import_biomass_rawdata (site="fsf")
 bio.It<- import_biomass_rawdata (site="it")
-bio.BC<- import_biomass_rawdata (site="bc")
+bio.bc<- import_biomass_rawdata (site="bc")
 
 ########data processing#######
 bio.cj <- data_processing (bio.cj)
@@ -18,7 +18,7 @@ bio.bp <- data_processing (bio.bp)
 bio.Fbar <- data_processing (bio.Fbar)
 bio.Fsf <- data_processing (bio.Fsf)
 bio.It <- data_processing (bio.It)
-bio.BC <- data_processing (bio.BC)
+bio.bc <- data_processing (bio.bc)
 
 ######CAMPOS DO JORDAO########
 
@@ -37,6 +37,10 @@ dads.ang.cj<- separate_by_filo (bio.cj, choice = ("ang"))
 
 ind_gim_cj_sep_by_DHB <- class_DBH_bio_ind (dads.gim.cj, class = c(10,30,50) )
 ind_ang_cj_sep_by_DHB <- class_DBH_bio_ind (dads.ang.cj, class = c(10,30,50) )
+ind_all_cj_sep_by_DHB <- class_DBH_bio_ind (bio.cj, class = c(10,30,50),
+                                     distribution = TRUE)
+
+
 
 ######Est.Altura / equation to estimate tree height (CJ)######
 
@@ -144,7 +148,8 @@ bio.ang.cj <-bio.cj[bio.cj$Filo!="Gim",]
 
 biomass_gim_cj_sep_by_DHB <- class_DBH_bio_ind (bio.gim.cj, class = c(10,30,50), choice = "bio" )
 biomass_ang_cj_sep_by_DHB <- class_DBH_bio_ind (bio.ang.cj, class = c(10,30,50), choice = "bio" )
-
+biomass_all_cj_sep_by_DHB <- class_DBH_bio_ind (bio.cj, class = c(10,30,50), choice = "bio",
+                                     distribution = TRUE)
 #####################BAEPENDI###############################
 ###Limpeza dados
 
@@ -156,7 +161,8 @@ dads.ang.bp<- separate_by_filo(bio.bp, choice = "ang")
 
 ind_gim_bp_sep_by_DHB <- class_DBH_bio_ind (dads.gim.bp, class = c(10,30,50) )
 ind_ang_bp_sep_by_DHB <- class_DBH_bio_ind (dads.ang.bp, class = c(10,30,50) )
-
+ind_all_bp_sep_by_DHB <- class_DBH_bio_ind (bio.bp, class = c(10,30,50),
+                                            distribution = TRUE)
 ############Est.Altura (BP) ########
 
 dads.ang.bp <- Estimating_higth_Ang (dads.ang.bp)
@@ -244,7 +250,8 @@ bio.ang.bp <-bio.bp[bio.bp$Filo!="Gim",]
 #View (bio.ang.bp)
 biomass_gim_bp_sep_by_DHB <- class_DBH_bio_ind(bio.gim.bp, choice = "bio", class = c(10,30,50))
 biomass_ang_bp_sep_by_DHB <- class_DBH_bio_ind(bio.ang.bp, choice = "bio", class = c(10,30,50))
-
+biomass_all_bp_sep_by_DHB <- class_DBH_bio_ind (bio.bp, class = c(10,30,50), choice = "bio",
+                                            distribution = TRUE)
 ###########FAZ. BARTIRA#######
 
 
@@ -257,6 +264,8 @@ dads.ang.Fbar<- separate_by_filo(bio.Fbar, choice = "ang")
 
 ind_gim_Fbar_sep_by_DHB <- class_DBH_bio_ind(dads.gim.Fbar, class = c(10,30,50))
 ind_ang_Fbar_sep_by_DHB <- class_DBH_bio_ind(dads.ang.Fbar, class = c(10,30,50))
+ind_all_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.Fbar, class = c(10,30,50),
+                                             distribution = TRUE)
 
 ########Est.Altura (Faz. Bart)######
 
@@ -376,6 +385,8 @@ bio.ang.Fbar<-bio.Fbar[bio.Fbar$Filo!="Gim",]
 
 biomass_gim_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.gim.Fbar, choice = "bio", class = c(10,30,50))
 biomass_ang_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.ang.Fbar, choice = "bio", class = c(10,30,50))
+biomass_all_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.Fbar, choice = "bio", class = c(10,30,50),
+                                                 distribution = TRUE)
 
 
 ###################FAZ. SÃO FRANCISCO#######################
@@ -391,6 +402,8 @@ dads.ang.Fsf<- separate_by_filo(bio.Fsf, choice = "ang")
 
 ind_gim_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.gim.Fsf, class = c(10,30,50))
 ind_ang_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.ang.Fsf, class = c(10,30,50))
+ind_all_Fsf_sep_by_DHB <- class_DBH_bio_ind(bio.Fsf, class = c(10,30,50),
+                                            distribution = TRUE)
 
 ######Est.Altura######
 
@@ -477,7 +490,8 @@ bio.ang.Fsf<-bio.Fsf[bio.Fsf$Filo!="Gim",]
 
 biomass_gim_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.gim.Fsf, choice = "bio", class = c(10,30,50))
 biomass_ang_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.ang.Fsf, choice = "bio", class = c(10,30,50))
-
+biomass_all_Fsf_sep_by_DHB <- class_DBH_bio_ind(bio.Fsf, choice = "bio", class = c(10,30,50),
+                                                distribution = TRUE)
 ###################ITABERÁ#################################
 
 ###Limpeza dados
@@ -490,6 +504,8 @@ dads.palm.It <- separate_by_filo(bio.It, choice = "palm")
 ind_gim_It_sep_by_DHB <- class_DBH_bio_ind(dads.gim.It, class = c(10,30,50))
 ind_ang_It_sep_by_DHB <- class_DBH_bio_ind(dads.ang.It, class = c(10,30,50))
 ind_palm_It_sep_by_DHB <- class_DBH_bio_ind(dads.palm.It, class = c(10,30,50))
+ind_all_It_sep_by_DHB <- class_DBH_bio_ind(bio.It, class = c(10,30,50),
+                                            distribution = TRUE)
 
 ##########Est.Altura (IT)##########
 
@@ -627,6 +643,10 @@ biomass_ang_It_sep_by_DHB <- class_DBH_bio_ind(bio.ang.It,
 biomass_palm_It_sep_by_DHB <- class_DBH_bio_ind(bio.palm.It,
                                                 choice = "bio",
                                                 class = c(10,30,50))
+biomass_all_It_sep_by_DHB <- class_DBH_bio_ind(bio.It,
+                                                choice = "bio",
+                                                class = c(10,30,50),
+                                               distribution = TRUE)
 
 ############BARRA DO CHAPÉU##########
 
@@ -634,9 +654,9 @@ biomass_palm_It_sep_by_DHB <- class_DBH_bio_ind(bio.palm.It,
 ###Limpeza dados
 
 
-dads.gim.bc<- separate_by_filo(bio.BC, choice = "gim")
-dads.ang.bc<- separate_by_filo(bio.BC, choice = "ang")
-dads.palm.bc <- separate_by_filo(bio.BC, choice = "palm")
+dads.gim.bc<- separate_by_filo(bio.bc, choice = "gim")
+dads.ang.bc<- separate_by_filo(bio.bc, choice = "ang")
+dads.palm.bc <- separate_by_filo(bio.bc, choice = "palm")
 
 #head (bio.BC)
 
@@ -646,7 +666,8 @@ dads.palm.bc <- separate_by_filo(bio.BC, choice = "palm")
 ind_gim_bc_sep_by_DHB <- class_DBH_bio_ind(dads.gim.bc, class = c(10,30,50))
 ind_ang_bc_sep_by_DHB <- class_DBH_bio_ind(dads.ang.bc, class = c(10,30,50))
 ind_palm_bc_sep_by_DHB <- class_DBH_bio_ind(dads.palm.bc, class = c(10,30,50))
-
+ind_all_bc_sep_by_DHB <- class_DBH_bio_ind(bio.bc, class = c(10,30,50),
+                                           distribution = TRUE)
 #####Est.Altura (BC)######
 #Ang
 dads.ang.bc <- Estimating_higth_Ang(dads.ang.bc)
@@ -758,4 +779,6 @@ bio.palm.bc<-bio.bc[bio.bc$Filo=="Palm",]
 biomass_gim_bc_sep_by_DHB <- class_DBH_bio_ind(bio.gim.bc, choice = "bio", class = c(10,30,50))
 biomass_ang_bc_sep_by_DHB <- class_DBH_bio_ind(bio.ang.bc, choice = "bio", class = c(10,30,50))
 biomass_palm_bc_sep_by_DHB <- class_DBH_bio_ind(bio.palm.bc, choice = "bio", class = c(10,30,50))
+biomass_all_bc_sep_by_DHB <- class_DBH_bio_ind(bio.bc, choice = "bio", class = c(10,30,50),
+                                                distribution = TRUE)
 

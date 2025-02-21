@@ -386,8 +386,9 @@ class_DBH_bio_ind <- function (x, choice = "ind",
   }
 
 
-
-
+  if (distribution==TRUE){result <- result %>%
+    mutate(across(-c(Class_DAP, Distri), as.numeric))}else{result <- result %>%
+      mutate(across(-c(Class_DAP), as.numeric))}
   return (result)
 
 }
