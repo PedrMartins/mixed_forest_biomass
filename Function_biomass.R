@@ -65,9 +65,6 @@ separate_by_filo <- function (x, choice = "ang"){
 
 ########### data separating by DBH#############
 
-site <- bio.bc
-class= c(10,20)
-
 class_DBH_bio_ind <- function (x, choice = "ind",
                                class =  10, distribution=FALSE){
 
@@ -76,6 +73,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
   choices <- c ("ind","bio")
   if (choice%in%choices==FALSE) {stop ("Speeled choice wrong. \n Use 'ind' or 'bio'")}
   choice <- match(choice, choices)
+
 
 
   if (choice==1) {
@@ -115,7 +113,9 @@ class_DBH_bio_ind <- function (x, choice = "ind",
   if (distribution==TRUE){
     distri <- c("Temp", "Trop")
     data_sep_dist <- data.frame()
+
     for (i in distri){
+
       tag <- i
       site_sep_distri <- site[site$Distri==i,]
       data_dap = data.frame()
@@ -130,12 +130,13 @@ class_DBH_bio_ind <- function (x, choice = "ind",
                            site_class_number,
                            site_class_percentage,
                            site_all_number)
+          data_dap <- rbind(subset_data,data_dap)
 
-        }else{
+        }
         lower_bound <- class[j]
         upper_bound <- class[j + 1]
         if (is.na(upper_bound)==TRUE) {
-          subset_data <- site[site$DAP >= lower_bound,]
+          subset_data <- site_sep_distri[site_sep_distri$DAP >= lower_bound,]
           site_class_number=length(subset_data$DAP)
           site_all_number= length(site$DAP)
           site_class_percentage = (site_class_number/
@@ -145,30 +146,31 @@ class_DBH_bio_ind <- function (x, choice = "ind",
                            site_all_number)
 
         }else {
-          subset_data <- site[site$DAP >= lower_bound &
-                                site$DAP < upper_bound, ]
+          subset_data <- site_sep_distri[site_sep_distri$DAP >= lower_bound &
+                                site_sep_distri$DAP < upper_bound, ]
           site_class_number=length(subset_data$DAP)
           site_all_number= length(site$DAP)
           site_class_percentage = (site_class_number/
                                      site_all_number) *100
-          subset_data <- c(paste (class[j], class[i+1], sep= "_"),
+          subset_data <- c(paste (class[j], class[j+1], sep= "_"),
                            tag,
                            site_class_number,
                            site_class_percentage,
                            site_all_number)
         }
-        }
+
         data_dap <- rbind(subset_data,data_dap)
+        colnames(data_dap) <- c("Class_DAP", "Distri","Ind_number",
+                                     "Ind_percentage",
+                                     "Total_ind")
       }
 
       data_sep_dist <- rbind(data_dap,data_sep_dist)
 
     }
-    colnames(data_dap) <- c("Class_DAP", "Ind_number",
-                            "Ind_percentage",
-                            "Total_ind")
 
-    data_dap <- data_dap[order(data_dap$Class_DAP),]
+
+    data_dap <- data_sep_dist[order(data_sep_dist$Class_DAP),]
 
   }else{
   data_dap <- data.frame ()
@@ -213,7 +215,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
     data_dap <- rbind(subset_data,data_dap)
 
   }
-  colnames(data_dap) <- c("Class_DAP", "Distri","Ind_number",
+  colnames(data_dap) <- c("Class_DAP","Ind_number",
              "Ind_percentage",
              "Total_ind")
 
@@ -225,6 +227,27 @@ class_DBH_bio_ind <- function (x, choice = "ind",
 
   if (choice==2){
     if (length(class)==1) {
+      if (distribution==TRUE){
+      distri <- c("Temp", "Trop")
+      data_sep_dist <- data.frame()
+      for (i in distri){
+        tag <- i
+        site_sep_distri <- site[site$Distri==i,]
+        site_class<-  site_sep_distri [site_sep_distri$DAP>class,]
+        site_class_biomass=sum(site_class$biom)
+        site_all_biomass= sum(site$biom)
+        site_biomass_percentage = (site_class_biomass/
+                                     site_all_biomass) *100
+        data_biomass<- data.frame("Class_DAP"=class,
+                                  "Distri"= tag,
+                                  "Biomass_ab"=site_class_biomass,
+                                  "Biomass_percentage"=site_biomass_percentage,
+                                  "Total_ind"=site_all_biomass)
+
+        data_sep_dist <- rbind(data_biomass,data_sep_dist)
+      }
+      data_biomass <- data_sep_dist
+    }else {
       site_class<-  site [site$DAP<class,]
       site_class_biomass=sum(site_class$biom)
       site_all_biomass= sum(site$biom)
@@ -233,8 +256,73 @@ class_DBH_bio_ind <- function (x, choice = "ind",
       data_biomass<- data.frame("Class_DAP"=class, "Biomass_ab"=site_class_biomass,
                             "Biomass_percentage"=site_biomass_percentage,
                             "Total_ind"=site_all_biomass)
-
+}
     } else {
+      if(distribution==TRUE){
+        distri <- c("Temp", "Trop")
+        data_sep_dist <- data.frame()
+        for (i in distri){
+          tag <- i
+          site_sep_distri <- site[site$Distri==i,]
+          data_biomass <- data.frame()
+          for (j in seq_along(class)){
+            if (j==1){
+              site_class<-  site_sep_distri [site_sep_distri$DAP<class [1],]
+              site_class_biomass=sum(site_class$biom)
+              site_all_biomass= sum(site$biom)
+              site_biomass_percentage = (site_class_biomass/
+                                           site_all_biomass) *100
+
+
+              subset_data_bio <- c(class[1], tag,
+                                   site_class_biomass,
+                                   site_biomass_percentage,
+                                   site_all_biomass)
+              data_biomass <- rbind(subset_data_bio,data_biomass)
+            }
+            lower_bound <- class[j]
+            upper_bound <- class[j + 1]
+            if (is.na(upper_bound)==TRUE) {
+              subset_data <- site_sep_distri[site_sep_distri$DAP >= lower_bound,]
+              site_class_biomass=sum(subset_data$biom)
+              site_all_biomass= sum(site$biom)
+              site_biomass_percentage = (site_class_biomass/
+                                           site_all_biomass) *100
+
+
+              subset_data_bio <- c(class[j], tag,
+                                   site_class_biomass,
+                                   site_biomass_percentage,
+                                   site_all_biomass)
+
+            }else {
+              subset_data <- site_sep_distri[site_sep_distri$DAP >= lower_bound &
+                                               site_sep_distri$DAP < upper_bound, ]
+              range (subset_data$DAP)
+              site_class_biomass=sum(subset_data$biom)
+              site_all_biomass= sum(site$biom)
+              site_biomass_percentage = (site_class_biomass/
+                                           site_all_biomass) *100
+
+
+              subset_data_bio <- c(paste (class[j], class[j+1], sep= "_"),
+                                   tag,
+                                   site_class_biomass,
+                                   site_biomass_percentage,
+                                   site_all_biomass)
+
+            }
+            data_biomass <- rbind(subset_data_bio,data_biomass)
+          }
+          colnames(data_biomass) <- c("Class_DAP",
+                                      "Distri",
+                                      "Biomass_ab",
+                                      "Biomass_percentage",
+                                      "Total_ind")
+          data_sep_dist <- rbind(data_biomass,data_sep_dist)
+        }
+        data_biomass <- data_sep_dist[order(data_sep_dist$Class_DAP),]
+    }else{
       data_biomass <- data.frame ()
       for (i in seq_along(class)) {
         if (i==1){
@@ -292,6 +380,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
       data_biomass <- data_biomass[order(data_biomass$Class_DAP),]
 
     }
+      }
 
     result <- data_biomass
   }
@@ -303,8 +392,6 @@ class_DBH_bio_ind <- function (x, choice = "ind",
 
 }
 
-
-class_DBH_bio_ind (bio.bc, class = c(10,20), distribution = TRUE)
 ########### data spp x site #############
 
 site_spp = function(x, site = "cj"){

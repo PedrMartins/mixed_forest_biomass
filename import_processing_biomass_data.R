@@ -99,7 +99,6 @@ dads.s.datset.cj$bino <- paste(dads.s.datset.cj$Gen,
 dens <- dads.s.datset.cj[!duplicated
                          (dads.s.datset.cj$bino),]
 dens <- arrange(dens,bino)
-head (dens)
 spp.n =count (dads.s.datset.cj,bino)
 spp.n <- arrange(spp.n,bino)
 
@@ -759,3 +758,4 @@ bio.palm.bc<-bio.bc[bio.bc$Filo=="Palm",]
 biomass_gim_bc_sep_by_DHB <- class_DBH_bio_ind(bio.gim.bc, choice = "bio", class = c(10,30,50))
 biomass_ang_bc_sep_by_DHB <- class_DBH_bio_ind(bio.ang.bc, choice = "bio", class = c(10,30,50))
 biomass_palm_bc_sep_by_DHB <- class_DBH_bio_ind(bio.palm.bc, choice = "bio", class = c(10,30,50))
+
