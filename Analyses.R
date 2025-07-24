@@ -1,3 +1,5 @@
+source("preparing_to_table.R")
+
 ############test analises###########
 bio.cj$biom
 
@@ -15,21 +17,16 @@ sqbio=sum(dqbio)
 ###########################################
 ### Estrutura ####
 
-cjsoma <- sum (count (bio.cj, Lvl.D) [2])
-Itsoma <- sum(count (bio.It, Lvl.D)[2])
-bcsoma <- sum (count (bio.bc, Lvl.D)[2])
-bpsoma <- sum (count (bio.bp, Lvl.D)[2])
-fsfsoma <- sum (count (bio.Fsf, Lvl.D)[2])
-fbarsoma <- sum (count (bio.Fbar, Lvl.D)[2])
+dens_table <- data.frame("Site"=c( rep ("MF1", 4), rep ("MF2", 3), rep ("MF3", 3), rep ("MF4", 3),
+                     rep ("MF5", 3),rep ("MF6", 3)),
+           "Lvl.Dens" = c(MF1_level_dens, MF2_level_dens, MF3_level_dens,
+                          MF4_level_dens, MF5_level_dens, MF6_level_dens),
+           "Wood_den_ab"= c(MF1_absolute, MF2_absolute, MF3_absolute,
+                            MF4_absolute, MF5_absolute, MF6_absolute),
+           "Wood_den(%)" = c (MF1[,1], MF2[,1],MF3[,1],MF4[,1],MF5[,1],MF6[,1])
+           )
 
-count (bio.cj, Lvl.D) [2]/cjsoma * 100
-count (bio.It, Lvl.D) [2]/Itsoma * 100
-count (bio.bc, Lvl.D) [2]/bcsoma * 100
-count (bio.bp, Lvl.D) [2]/bpsoma * 100
-count (bio.Fsf, Lvl.D) [2]/fsfsoma * 100
-count (bio.Fbar, Lvl.D) [2]/fbarsoma * 100
-
-
+#write.csv(dens_table, "dens_table.csv")
 
 range(bio.cj$biom) / 1000
 mean(bio.cj$biom) /1000
