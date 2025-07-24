@@ -15,7 +15,7 @@ dqbio=dbio^2
 sqbio=sum(dqbio)
 
 ###########################################
-### Estrutura ####
+### table lvl wood dens get ####
 
 dens_table <- data.frame("Site"=c( rep ("MF1", 4), rep ("MF2", 3), rep ("MF3", 3), rep ("MF4", 3),
                      rep ("MF5", 3),rep ("MF6", 3)),
@@ -27,6 +27,12 @@ dens_table <- data.frame("Site"=c( rep ("MF1", 4), rep ("MF2", 3), rep ("MF3", 3
            )
 
 #write.csv(dens_table, "dens_table.csv")
+#################table biomass and absolut number####
+
+write.csv(table_final_to_excel, "table_final_to_excel.csv")
+View(table_final_to_excel)
+
+##################
 
 range(bio.cj$biom) / 1000
 mean(bio.cj$biom) /1000
@@ -143,65 +149,6 @@ F_gs <- F_G[!duplicated  (F_G$Gen),]
 
 length(F_gs$n)
 
-cj=count (bio.cj, Gen, Spp, sort =TRUE)
-head (cj, 10)
-length (cj$Spp)
-length (cj$Spp)/length(All_g$n)
-
-diversity (cj$n)
-diversity (cj$n, "simpson")
-
-it=count (bio.It, Gen, Spp, sort =TRUE)
-head (it, 10)
-length (it$Spp)
-length (it$Spp)/length(All_g$n)
-
-
-diversity (it$n)
-diversity (it$n, "simpson")
-
-bc=count (bio.bc, Gen, Spp, sort =TRUE)
-head (bc, 10)
-length (bc$Spp)
-length (bc$Spp)/length(All_g$n)
-
-diversity (bc$n)
-diversity (bc$n, "simpson")
-
-bp=count (bio.bp, Gen, Spp, sort =TRUE)
-head (bp, 10)
-length (bp$Spp)
-length (bp$Spp)/length(All_g$n)
-
-
-diversity (bp$n)
-diversity (bp$n, "simpson")
-
-Fsf=count (bio.Fsf, Gen, Spp, sort =TRUE)
-head (Fsf, 10)
-length (Fsf$Spp)
-length (Fsf$Spp)/length(All_g$n)
-
-
-diversity (Fsf$n)
-diversity (Fsf$n, "simpson")
-
-Fbar=count (bio.Fbar, Gen, Spp, sort =TRUE)
-head (Fbar, 10)
-length (Fbar$Spp)
-length (Fbar$Spp)/length(All_g$n)
-
-
-diversity (Fbar$n)
-diversity (Fbar$n, "simpson")
-
-
-F_E=rbind (cj,it,bc,bp,Fsf,Fbar)
-G=count (F_E, Gen)
-G <- G[order (G$n),]
-F_es <- F_E[!duplicated  (paste(F_E$Gen,F_E$Spp)),]
-length(F_es$Gen)
-
 
 
 F1=count (bio.cj, Fam,  sort =TRUE)
@@ -243,17 +190,7 @@ palm |>
 
 ### soma de biomass
 
-result <- bio.cj %>%
-  group_by(Gen, Spp) %>%
-  summarise(
-    biomass_total = sum(biom),
-    .groups = "drop"
-  )
 
-View(result)
-
-list ("biomas"=result,
-      "spp_list"=cj)
 
 
 
