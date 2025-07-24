@@ -1,0 +1,274 @@
+############test analises###########
+bio.cj$biom
+
+chisq.test (bio.temp.trop)
+chisq.test (bio.tem.trop.pro)
+
+ang=sum(bio.temp.trop[c(3,4),])
+gim=sum(bio.temp.trop[c(1,2),])
+anova (ang,gim)
+med=mean (bio.temp.trop)
+dbio=bio.temp.trop-med
+dqbio=dbio^2
+sqbio=sum(dqbio)
+
+###########################################
+### Estrutura ####
+
+cjsoma <- sum (count (bio.cj, Lvl.D) [2])
+Itsoma <- sum(count (bio.It, Lvl.D)[2])
+bcsoma <- sum (count (bio.bc, Lvl.D)[2])
+bpsoma <- sum (count (bio.bp, Lvl.D)[2])
+fsfsoma <- sum (count (bio.Fsf, Lvl.D)[2])
+fbarsoma <- sum (count (bio.Fbar, Lvl.D)[2])
+
+count (bio.cj, Lvl.D) [2]/cjsoma * 100
+count (bio.It, Lvl.D) [2]/Itsoma * 100
+count (bio.bc, Lvl.D) [2]/bcsoma * 100
+count (bio.bp, Lvl.D) [2]/bpsoma * 100
+count (bio.Fsf, Lvl.D) [2]/fsfsoma * 100
+count (bio.Fbar, Lvl.D) [2]/fbarsoma * 100
+
+
+
+range(bio.cj$biom) / 1000
+mean(bio.cj$biom) /1000
+sum (bio.cj$biom) /1000
+
+range(bio.It$DAP)
+mean(bio.It$DAP)
+range(bio.It$biom)/ 1000
+mean(bio.It$biom)/ 1000
+sum (bio.It$biom) /1000
+
+
+range(bio.bc$DAP)
+mean(bio.bc$DAP)
+range(bio.bc$biom)/1000
+mean(bio.bc$biom)/1000
+sum (bio.bc$biom)/1000
+
+range(bio.bp$DAP)
+mean(bio.bp$DAP)
+range(bio.bp$biom)/1000
+mean(bio.bp$biom)/1000
+(sum (bio.bp$biom)/1000) / 0.5
+
+range(bio.Fsf$DAP)
+mean(bio.Fsf$DAP)
+range(bio.Fsf$biom)/1000
+mean(bio.Fsf$biom)/1000
+sum (bio.Fsf$biom)/1000
+
+range(bio.Fbar$DAP)
+mean(bio.Fbar$DAP)
+range(bio.Fbar$biom)/1000
+mean(bio.Fbar$biom)/1000
+sum(bio.Fbar$biom)/1000
+
+
+
+total_individuos <- sum (length (bio.cj$Spp),length(bio.It$Spp),length(bio.bc$Spp),
+                         length(bio.bp$Spp),length(bio.Fsf$Spp),length(bio.Fbar$Spp))
+
+individuos_campos <- length (bio.cj$Spp)
+individuos_itabera <- length (bio.It$Spp)
+individuos_barra <- length (bio.bc$Spp)
+individuos_baependi <- length (bio.bp$Spp)
+individuos_faz_saofrancisco <- length (bio.Fsf$Spp)
+individuos_faz_bartira <- length (bio.Fbar$Spp)
+
+(individuos_campos/total_individuos) * 100
+(individuos_itabera/total_individuos) * 100
+(individuos_barra/total_individuos) * 100
+(individuos_faz_bartira/total_individuos) * 100
+(individuos_faz_saofrancisco/total_individuos) * 100
+(individuos_baependi/total_individuos) * 100
+
+sum (bio.cj$biom)/1000
+sum(bio.It$biom)/1000
+sum (bio.bc$biom)/1000
+sum ((bio.bp$biom)/1000) /0.5
+sum (bio.Fsf$biom)/1000
+sum (bio.Fbar$biom)/1000
+
+head (bio.cj)
+summary (bio.Fbar)
+summary (bio.Fsf)
+summary (bio.bp)
+summary (bio.It)
+summary (bio.bc)
+
+
+g_cj=count (bio.cj, Gen, sort=TRUE)
+length (g_cj$Gen)
+length (g_cj$Gen)/length (all_g$n) *100
+
+g_it=count (bio.It, Gen, sort=TRUE)
+length (g_it$Gen)
+length (g_it$Gen)/length (all_g$n) *100
+
+g_bc=count (bio.bc, Gen, sort=TRUE)
+length (g_bc$Gen)
+length (g_bc$Gen)/length (all_g$n) *100
+
+
+g_Fbar=count (bio.Fbar, Gen, sort=TRUE)
+length (g_Fbar$Gen)
+length (g_Fbar$Gen)/length (all_g$n) *100
+
+
+g_Fsf=count (bio.Fsf, Gen, sort=TRUE)
+length (g_Fsf$Gen)
+length (g_Fsf$Gen)/length (all_g$n) *100
+
+
+g_bp=count (bio.bp, Gen, sort=TRUE)
+length (g_bp$Gen)
+length (g_bp$Gen)/length (all_g$n) *100
+
+F_G=rbind (g_cj,g_it,g_bc,g_bp,g_Fsf,g_Fbar)
+all_g=count (F_G, Gen)
+length (all_g$n)
+
+All=rbind (bio.cj,bio.It,bio.bc,bio.bp,bio.Fsf,bio.Fbar)
+
+All_g=count (All,Gen, Spp)
+
+All_g [order (All_g$n,decreasing = TRUE),]
+
+length(All_g$n)
+
+
+F_G[order (F_G$n, decreasing = TRUE),]
+
+F_gs <- F_G[!duplicated  (F_G$Gen),]
+
+length(F_gs$n)
+
+cj=count (bio.cj, Gen, Spp, sort =TRUE)
+head (cj, 10)
+length (cj$Spp)
+length (cj$Spp)/length(All_g$n)
+
+diversity (cj$n)
+diversity (cj$n, "simpson")
+
+it=count (bio.It, Gen, Spp, sort =TRUE)
+head (it, 10)
+length (it$Spp)
+length (it$Spp)/length(All_g$n)
+
+
+diversity (it$n)
+diversity (it$n, "simpson")
+
+bc=count (bio.bc, Gen, Spp, sort =TRUE)
+head (bc, 10)
+length (bc$Spp)
+length (bc$Spp)/length(All_g$n)
+
+diversity (bc$n)
+diversity (bc$n, "simpson")
+
+bp=count (bio.bp, Gen, Spp, sort =TRUE)
+head (bp, 10)
+length (bp$Spp)
+length (bp$Spp)/length(All_g$n)
+
+
+diversity (bp$n)
+diversity (bp$n, "simpson")
+
+Fsf=count (bio.Fsf, Gen, Spp, sort =TRUE)
+head (Fsf, 10)
+length (Fsf$Spp)
+length (Fsf$Spp)/length(All_g$n)
+
+
+diversity (Fsf$n)
+diversity (Fsf$n, "simpson")
+
+Fbar=count (bio.Fbar, Gen, Spp, sort =TRUE)
+head (Fbar, 10)
+length (Fbar$Spp)
+length (Fbar$Spp)/length(All_g$n)
+
+
+diversity (Fbar$n)
+diversity (Fbar$n, "simpson")
+
+
+F_E=rbind (cj,it,bc,bp,Fsf,Fbar)
+G=count (F_E, Gen)
+G <- G[order (G$n),]
+F_es <- F_E[!duplicated  (paste(F_E$Gen,F_E$Spp)),]
+length(F_es$Gen)
+
+
+
+F1=count (bio.cj, Fam,  sort =TRUE)
+length (F1$Fam)
+
+F2=count (bio.It, Fam, sort =TRUE)
+length (F2$Fam)
+
+F3=count (bio.bc, Fam,  sort =TRUE)
+length (F3$Fam)
+
+F4=count (bio.bp, Fam, sort =TRUE)
+length (F4$Fam)
+
+F5=count (bio.Fsf, Fam, sort =TRUE)
+length (F5$Fam)
+
+F6=count (bio.Fbar, Fam, sort =TRUE)
+length (F6$Fam)
+
+F_=rbind (F1,F2,F3,F4,F5,F6)
+
+F_fe=count (F_, Fam)
+F_fe <- F_fe[order (F_fe$n, decreasing = TRUE),]
+length(F_fe$Fam)
+
+F_s <- F_[!duplicated  (F_$Fam),]
+length(F_s$Fam)
+
+palm =bio.It [bio.It$Fam=="Arecaceae",]
+
+palm |>
+  group_by(Alt)|>
+  count (Spp)
+
+palm |>
+  group_by(DAP)|>
+  count (Spp)
+
+### soma de biomass
+
+result <- bio.cj %>%
+  group_by(Gen, Spp) %>%
+  summarise(
+    biomass_total = sum(biom),
+    .groups = "drop"
+  )
+
+View(result)
+
+list ("biomas"=result,
+      "spp_list"=cj)
+
+
+
+
+# Sort by biomass descending
+df <- result[order(-result$biomass_total), ]
+df$Species <- paste(df$Gen, df$Spp)
+
+# Top 5
+top5 <- df[1:10, ]
+
+# "Other" category sums the rest
+other <- data.frame(Species = "Other",
+                    biomass_total = sum(df$biomass_total[11:nrow(df)]))
+

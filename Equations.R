@@ -1,4 +1,3 @@
-
 Estimating_higth_Ang <-  function (x){
 
   #weibull equation
