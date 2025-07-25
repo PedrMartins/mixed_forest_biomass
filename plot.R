@@ -7,8 +7,8 @@
 ###Suplementar########
 
 source ("import_processing_biomass_data.R")
-source("Analyses.R")
-source ("preparing_to_barplot.R")
+source("Analyses_and_export_table.R")
+source ("processing_to_barplot.R")
 
 
 jpeg(filename = "Classe DAP_ind.jpg", width = 1050, height = 700, # function to save plots salva .jpg

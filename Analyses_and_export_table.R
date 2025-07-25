@@ -1,4 +1,4 @@
-source("preparing_to_table.R")
+# source("processing_to_table.R")
 
 ############test analises###########
 bio.cj$biom
