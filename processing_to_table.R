@@ -98,7 +98,7 @@ result_MF6$site <- rep("MF6", length(result_MF6$Gen))
  cj=count (bio.cj, Gen, Spp,Fam,  sort =TRUE)
  cj$site <- rep("MF3", length(cj$Gen))
  length (cj$Spp)
- length (cj$Spp)/length(All_g$n)
+ #length (cj$Spp)/length(All_g$n)
 
  diversity (cj$n)
  diversity (cj$n, "simpson")
@@ -106,7 +106,7 @@ result_MF6$site <- rep("MF6", length(result_MF6$Gen))
  it=count (bio.It, Gen, Spp,Fam,  sort =TRUE)
  it$site <- rep("MF2", length(it$Gen))
  length (it$Spp)
- length (it$Spp)/length(All_g$n)
+ #length (it$Spp)/length(All_g$n)
 
 
  diversity (it$n)
@@ -115,7 +115,7 @@ result_MF6$site <- rep("MF6", length(result_MF6$Gen))
  bc=count (bio.bc, Gen, Spp, Fam, sort =TRUE)
  bc$site <- rep("MF1", length(bc$Gen))
  length (bc$Spp)
- length (bc$Spp)/length(All_g$n)
+ #length (bc$Spp)/length(All_g$n)
 
  diversity (bc$n)
  diversity (bc$n, "simpson")
@@ -123,7 +123,7 @@ result_MF6$site <- rep("MF6", length(result_MF6$Gen))
  bp=count (bio.bp, Gen, Spp, Fam, sort =TRUE)
  bp$site <- rep("MF6", length(bp$Gen))
  length (bp$Spp)
- length (bp$Spp)/length(All_g$n)
+ #length (bp$Spp)/length(All_g$n)
 
 
  diversity (bp$n)
@@ -132,7 +132,7 @@ result_MF6$site <- rep("MF6", length(result_MF6$Gen))
  Fsf=count (bio.Fsf, Gen, Spp, Fam, sort =TRUE)
  Fsf$site <- rep("MF4", length(Fsf$Gen))
  length (Fsf$Spp)
- length (Fsf$Spp)/length(All_g$n)
+ #length (Fsf$Spp)/length(All_g$n)
 
 
  diversity (Fsf$n)
@@ -141,7 +141,7 @@ result_MF6$site <- rep("MF6", length(result_MF6$Gen))
  Fbar=count (bio.Fbar, Gen, Spp, Fam, sort =TRUE)
  Fbar$site <- rep("MF5", length(Fbar$Gen))
  length (Fbar$Spp)
- length (Fbar$Spp)/length(All_g$n)
+ #length (Fbar$Spp)/length(All_g$n)
 
 
  diversity (Fbar$n)
