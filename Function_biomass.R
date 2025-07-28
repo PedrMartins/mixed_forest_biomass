@@ -36,8 +36,21 @@ data_processing <-  function (x){
   site<- site[site$Filo!="Saman",]
   site[site$Filo=="Gem",8] <- "Gim"
   site [site$Fam=="Arecaceae",8] <- "Palm"
+  site [site$Gen == "Syagrus",5] <- "romanzoffiana"
+  site [str_starts(site$Fam,"Melastomata"),6] <- "Melastomataceae"
+  site [site$Gen == "Mollinedia" & str_starts(site$Spp,"argyr"), 5] <- "argyrogyna"
+  site [site$Gen == "Sebastiana",4] <- "Sebastiania"
+  site [site$Gen == "Cedrella",4] <- "Cedrela"
+  site [site$Gen == "Citronellla",4] <- "Citronella"
+  site [site$Gen == "Exostyles",6] <- "Fabaceae"
+  site [site$Gen == "Guapira",6] <- "Nyctaginaceae"
+  site [site$Gen == "Guazuma",6] <- "Malvaceae"
+  site [site$Gen == "Rapanea",6] <- "Primulaceae"
+  site [site$Gen == "Piptocarpha",5] <- "regnellii"
+  site [site$Gen == "Sapium",5] <- "glandulosum"
+  site [site$Gen == "Sorocea",5] <- "bonplandii"
+  site [site$Gen == "Trichilia",6] <- "Meliaceae"
   site
-
 }
 
 ########### data separating by phylo#############
