@@ -459,7 +459,45 @@ wood_dens_table <-  function (site, name="cj"){
 }
 
 
+############Biomass and species abundance##############
 
+biomas_and_individuals <- function (site, methods = "bio", name ="cj") {
+
+  if (methods == "bio"){
+    result <- site %>%
+      group_by(Gen, Spp) %>%
+      summarise(
+        biomass_total = sum(biom),
+        .groups = "drop"
+      )%>%
+      mutate(binom=paste(Gen, Spp, sep = "_"))
+    name_site <- switch (name,
+                         "bc"="MF1",
+                         "it"="MF2",
+                         "cj"="MF3",
+                         "Fsf"="MF4",
+                         "Fbar"="MF5",
+                         "bp"="MF6")
+    result$site <- rep(name_site, length(result$Gen))
+
+  }
+  if (methods == "ind") {
+    result=count (site, Gen, Spp,Fam,  sort =TRUE)
+    name_site <- switch (name,
+                         "bc"="MF1",
+                         "it"="MF2",
+                         "cj"="MF3",
+                         "Fsf"="MF4",
+                         "Fbar"="MF5",
+                         "bp"="MF6")
+    result$site <- rep(name_site, length(result$Gen))
+    result$binom <- paste(result$Gen,
+                          result$Spp,
+                          sep= "_")
+
+  }
+  result
+}
 
 
 

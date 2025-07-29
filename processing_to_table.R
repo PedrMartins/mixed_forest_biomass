@@ -9,144 +9,80 @@ Fbar_dens_table <- wood_dens_table (bio.Fbar, name = "Fbar")
 
 
 ################Biomass and species abundance######
-result_MF1 <- bio.bc %>%
-  group_by(Gen, Spp) %>%
-  summarise(
-    biomass_total = sum(biom),
-    .groups = "drop"
-  )%>%
-  mutate(binom=paste(Gen, Spp, sep = "_"))
-result_MF1$site <- rep("MF1", length(result_MF1$Gen))
 
-result_MF2 <- bio.It %>%
-  group_by(Gen, Spp) %>%
-  summarise(
-    biomass_total = sum(biom),
-    .groups = "drop"
-  )%>%
-  mutate(binom=paste(Gen, Spp, sep = "_"))
-result_MF2$site <- rep("MF2", length(result_MF2$Gen))
+MF1_ind_ab=biomas_and_individuals (bio.bc, methods = "ind" ,name = "bc")
+MF2_ind_ab=biomas_and_individuals (bio.It, methods = "ind" ,name = "it")
+MF3_ind_ab=biomas_and_individuals (bio.cj, methods = "ind" ,name = "cj")
+MF4_ind_ab=biomas_and_individuals (bio.Fsf, methods = "ind" ,name = "Fsf")
+MF5_ind_ab=biomas_and_individuals (bio.Fbar, methods = "ind" ,name = "Fbar")
+MF6_ind_ab=biomas_and_individuals (bio.bp, methods = "ind" ,name = "bp")
 
-result_MF3 <- bio.cj %>%
-  group_by(Gen, Spp) %>%
-  summarise(
-    biomass_total = sum(biom),
-    .groups = "drop"
-  )%>%
-  mutate(binom=paste(Gen, Spp, sep = "_"))
-result_MF3$site <- rep("MF3", length(result_MF3$Gen))
-
-result_MF4 <- bio.Fsf %>%
-  group_by(Gen, Spp) %>%
-  summarise(
-    biomass_total = sum(biom),
-    .groups = "drop"
-  )%>%
-  mutate(binom=paste(Gen, Spp, sep = "_"))
-result_MF4$site <- rep("MF4", length(result_MF4$Gen))
-
-result_MF5 <- bio.Fbar %>%
-  group_by(Gen, Spp) %>%
-  summarise(
-    biomass_total = sum(biom),
-    .groups = "drop"
-  )%>%
-  mutate(binom=paste(Gen, Spp, sep = "_"))
-result_MF5$site <- rep("MF5", length(result_MF5$Gen))
+species_number_absolute_site=rbind (MF1_ind_ab,
+                                    MF2_ind_ab,
+                                    MF3_ind_ab,
+                                    MF4_ind_ab,
+                                    MF5_ind_ab,
+                                    MF6_ind_ab)
 
 
+MF1_bio_ab=biomas_and_individuals (bio.bc, methods = "bio" ,name = "bc")
+MF2_bio_ab=biomas_and_individuals (bio.It, methods = "bio" ,name = "it")
+MF3_bio_ab=biomas_and_individuals (bio.cj, methods = "bio" ,name = "cj")
+MF4_bio_ab=biomas_and_individuals (bio.Fsf, methods = "bio" ,name = "Fsf")
+MF5_bio_ab=biomas_and_individuals (bio.Fbar, methods = "bio" ,name = "Fbar")
+MF6_bio_ab=biomas_and_individuals (bio.bp, methods = "bio" ,name = "bp")
 
-result_MF6 <- bio.bp %>%
-  group_by(Gen, Spp) %>%
-  summarise(
-    biomass_total = sum(biom),
-    .groups = "drop"
-  ) %>%
-  mutate(binom=paste(Gen, Spp, sep = "_"))
-result_MF6$site <- rep("MF6", length(result_MF6$Gen))
-
- all_sites_biomass_spp <- bind_rows(
-  result_MF1,
-  result_MF2,
-  result_MF3,
-  result_MF4,
-  result_MF5,
-  result_MF6
+all_sites_biomass_spp <- bind_rows(
+  MF1_bio_ab,
+  MF2_bio_ab,
+  MF3_bio_ab,
+  MF4_bio_ab,
+  MF5_bio_ab,
+  MF6_bio_ab
 )
 
+table_final_to_excel <- full_join(species_number_absolute_site, all_sites_biomass_spp,
+                                  join_by(binom,site))
+table_final_to_excel <- table_final_to_excel[,-c(1,2,7,8)]
+table_final_to_excel <- pivot_wider(table_final_to_excel, names_from =site,
+                                    values_from = c(biomass_total, n))
+table_final_trasnformed <- table_final_to_excel [,c(3:8)]/1000
+table_final_to_excel <- cbind(table_final_to_excel[,c(1,2,9:14)], table_final_trasnformed)
+table_final_to_excel <- table_final_to_excel[order (table_final_to_excel$Fam,
+                                                    table_final_to_excel$binom),]
 
 
- cj=count (bio.cj, Gen, Spp,Fam,  sort =TRUE)
- cj$site <- rep("MF3", length(cj$Gen))
- length (cj$Spp)
- #length (cj$Spp)/length(All_g$n)
 
- diversity (cj$n)
- diversity (cj$n, "simpson")
+Barra_do_chapeu_diversity <- list ( "Shannon"=diversity (MF1_ind_ab$n),
+                                    "Simpson"=diversity (MF1_ind_ab$n,
+                                                         "simpson"))
 
- it=count (bio.It, Gen, Spp,Fam,  sort =TRUE)
- it$site <- rep("MF2", length(it$Gen))
- length (it$Spp)
- #length (it$Spp)/length(All_g$n)
+Itabera_diversity <- list ("Shannon"=diversity (MF2_ind_ab$n),
+                           "Simpson"=diversity (MF2_ind_ab$n,
+                                      "simpson"))
 
+Campos_Jordao_diversity <- list ("Shannon"=diversity (MF3_ind_ab$n),
+                                 "Simpson"=diversity (MF3_ind_ab$n,
+                                      "simpson"))
 
- diversity (it$n)
- diversity (it$n, "simpson")
+Faz_Sao_Fran_diversity <- list ("Shannon"=diversity (MF4_ind_ab$n),
+                                "Simpson"=diversity (MF4_ind_ab$n,
+                                      "simpson"))
 
- bc=count (bio.bc, Gen, Spp, Fam, sort =TRUE)
- bc$site <- rep("MF1", length(bc$Gen))
- length (bc$Spp)
- #length (bc$Spp)/length(All_g$n)
+Faz_Bar_diversity <- list ("Shannon"=diversity (MF5_ind_ab$n),
+                           "Simpson"=diversity (MF5_ind_ab$n,
+                                      "simpson"))
 
- diversity (bc$n)
- diversity (bc$n, "simpson")
+Baependi_diversity <- list ("Shannon"=diversity (MF6_ind_ab$n),
+                            "Simpson"=diversity (MF6_ind_ab$n,
+                                      "simpson"))
 
- bp=count (bio.bp, Gen, Spp, Fam, sort =TRUE)
- bp$site <- rep("MF6", length(bp$Gen))
- length (bp$Spp)
- #length (bp$Spp)/length(All_g$n)
-
-
- diversity (bp$n)
- diversity (bp$n, "simpson")
-
- Fsf=count (bio.Fsf, Gen, Spp, Fam, sort =TRUE)
- Fsf$site <- rep("MF4", length(Fsf$Gen))
- length (Fsf$Spp)
- #length (Fsf$Spp)/length(All_g$n)
-
-
- diversity (Fsf$n)
- diversity (Fsf$n, "simpson")
-
- Fbar=count (bio.Fbar, Gen, Spp, Fam, sort =TRUE)
- Fbar$site <- rep("MF5", length(Fbar$Gen))
- length (Fbar$Spp)
- #length (Fbar$Spp)/length(All_g$n)
-
-
- diversity (Fbar$n)
- diversity (Fbar$n, "simpson")
-
-
- species_number_absolute_site=rbind (cj,it,bc,bp,Fsf,Fbar)
- species_number_absolute_site$binom <- paste(species_number_absolute_site$Gen,
-                                             species_number_absolute_site$Spp,
-                                             sep= "_")
  #G=count (F_E, Gen)
  #G <- G[order (G$n),]
  #F_es <- F_E[!duplicated  (paste(F_E$Gen,F_E$Spp)),]
  #length(F_es$Gen)
 
 
- table_final_to_excel <- full_join(species_number_absolute_site, all_sites_biomass_spp,
-                                   join_by(binom,site))
- table_final_to_excel <- table_final_to_excel[,-c(1,2,7,8)]
- table_final_to_excel <- pivot_wider(table_final_to_excel, names_from =site,
-                                     values_from = c(biomass_total, n))
- table_final_trasnformed <- table_final_to_excel [,c(3:8)]/1000
- table_final_to_excel <- cbind(table_final_to_excel[,c(1,2,9:14)], table_final_trasnformed)
- table_final_to_excel <- table_final_to_excel[order (table_final_to_excel$Fam,
-                                                     table_final_to_excel$binom),]
+
 
 
