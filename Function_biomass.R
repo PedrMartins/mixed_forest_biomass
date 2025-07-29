@@ -31,7 +31,6 @@ data_processing <-  function (x){
   site = x
   site$DAP <-  c(site$D) * c
   site<- site[site$DAP>=4.7,]
-
   site <- site [!str_ends(site$Gen,"aceae"),]
   site<- site[site$Filo!="Saman",]
   site[site$Filo=="Gem",8] <- "Gim"
@@ -50,6 +49,7 @@ data_processing <-  function (x){
   site [site$Gen == "Sapium",5] <- "glandulosum"
   site [site$Gen == "Sorocea",5] <- "bonplandii"
   site [site$Gen == "Trichilia",6] <- "Meliaceae"
+  site$Fam <- sub("-.*", "", site$Fam)
   site
 }
 

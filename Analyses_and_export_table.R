@@ -23,11 +23,12 @@ dens_table <- rbind(bc_dens_table,
                     Fsf_dens_table,
                     Fbar_dens_table,
                     bp_dens_table)
+#View (dens_table)
 
 #write.csv(dens_table, "dens_table.csv")
 #################table biomass and absolut number####
 
-write.csv(table_final_to_excel, "table_final_to_excel.csv")
+#write.csv(table_final_to_excel, "table_final_to_excel.csv")
 View(table_final_to_excel)
 
 ##################
