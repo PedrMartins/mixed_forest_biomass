@@ -17,14 +17,12 @@ sqbio=sum(dqbio)
 ###########################################
 ### table lvl wood dens get ####
 
-dens_table <- data.frame("Site"=c( rep ("MF1", 4), rep ("MF2", 3), rep ("MF3", 3), rep ("MF4", 3),
-                     rep ("MF5", 3),rep ("MF6", 3)),
-           "Lvl.Dens" = c(MF1_level_dens, MF2_level_dens, MF3_level_dens,
-                          MF4_level_dens, MF5_level_dens, MF6_level_dens),
-           "Wood_den_ab"= c(MF1_absolute, MF2_absolute, MF3_absolute,
-                            MF4_absolute, MF5_absolute, MF6_absolute),
-           "Wood_den(%)" = c (MF1[,1], MF2[,1],MF3[,1],MF4[,1],MF5[,1],MF6[,1])
-           )
+dens_table <- rbind(bc_dens_table,
+                    it_dens_table,
+                    cj_dens_table,
+                    Fsf_dens_table,
+                    Fbar_dens_table,
+                    bp_dens_table)
 
 #write.csv(dens_table, "dens_table.csv")
 #################table biomass and absolut number####

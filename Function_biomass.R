@@ -433,3 +433,33 @@ site_spp = function(x, site = "cj"){
 }
 
 
+########### data wood dens table  #############
+
+wood_dens_table <-  function (site, name="cj"){
+
+  site_name<- switch(name,
+                     "bc"="MF1",
+                     "it"="MF2",
+                     "cj"="MF3",
+                     "Fsf"="MF4",
+                     "Fbar"="MF5",
+                     "bp"="MF6"
+                     )
+
+  site_count<- count (site, Lvl.D)
+  site_soma <- sum (count (site, Lvl.D) [2])
+  site_percentage=count (site, Lvl.D) [2]/site_soma * 100
+  dens_table <- data.frame("Site"=site_name,
+                           "Lvl.Dens" = site_count [,1],
+                           "Wood_den_ab"= site_count [,2],
+                           "Wood_den_percentage" =site_percentage [,1] )
+  dens_table
+
+
+}
+
+
+
+
+
+
