@@ -5,7 +5,7 @@ source("Function_biomass.R")
 
 spp_site_campos_do_jordao <-  site_spp(bio.cj)
 spp_site_baependi <- site_spp(bio.bp, site="bp")
-spp_site_barra_do_chapeu<- site_spp(bio.BC, site = "bc")
+spp_site_barra_do_chapeu<- site_spp(bio.bc, site = "bc")
 spp_site_itabera<- site_spp(bio.It, site = "it")
 spp_site_Delfim_Faz_saoFrancisco<- site_spp(bio.Fsf, site = "fsf")
 spp_site_Delfim_Faz_bartira<- site_spp(bio.Fbar, site = "fb")
@@ -36,9 +36,11 @@ all_sites <- t (all_sites)
 
 all_sites <- as.data.frame(all_sites)
 
+head (all_sites)
+
 colnames(all_sites) <- c("bc"="MF1", "bp"="MF6",
-                         "cj"="MF3", "fb"="MF4"
-                         ,"fsf"="MF5", "it"="MF2")
+                         "cj"="MF3", "fb"="MF5"
+                         ,"fsf"="MF4", "it"="MF2")
 
 all_sites=all_sites|>
   relocate(MF2, .after =MF1)
