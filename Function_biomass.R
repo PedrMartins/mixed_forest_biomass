@@ -465,7 +465,7 @@ biomas_and_individuals <- function (site, methods = "bio", name ="cj") {
 
   if (methods == "bio"){
     result <- site %>%
-      group_by(Gen, Spp) %>%
+      group_by(Gen, Spp, Distri) %>%
       summarise(
         biomass_total = sum(biom),
         .groups = "drop"
@@ -498,6 +498,4 @@ biomas_and_individuals <- function (site, methods = "bio", name ="cj") {
   }
   result
 }
-
-
 
