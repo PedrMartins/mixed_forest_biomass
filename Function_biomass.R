@@ -102,7 +102,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
       site_all_number= length(site$DAP)
       site_class_percentage = (site_class_number/
                                  site_all_number) *100
-      data_dap<- data.frame("Class_DAP_cm"= class,
+      data_dap<- data.frame("Class_DAP"= class,
                             "Distri"= tag,
                             "Ind_number"=site_class_number,
                             "Ind_percentage"=site_class_percentage,
@@ -112,15 +112,27 @@ class_DBH_bio_ind <- function (x, choice = "ind",
       }
       data_dap <- data_sep_dist
     }else{
-  site_class<-  site [site$DAP<class,]
-  site_class_number=length(site_class$DAP)
-  site_all_number= length(site$DAP)
-  site_class_percentage = (site_class_number/
-                             site_all_number) *100
-  data_dap<- data.frame("Class_DAP"=class,
-                        "Ind_number"=site_class_number,
-                        "Ind_percentage"=site_class_percentage,
-                        "Total_ind"=site_all_number)
+      clado <- c("Gim", "Ang")
+      site$Filo[site$Filo %in% c("Eud", "Mag")] <- "Ang"
+      data_sep_dist <- data.frame()
+      for (i in clado){
+        tag <- i
+        site_sep_clado <- site[site$Filo==i,]
+
+        site_class<-  site_sep_clado [site_sep_clado$DAP>class,]
+        site_class_number=length(site_class$DAP)
+        site_all_number= length(site$DAP)
+        site_class_percentage = (site_class_number/
+                                   site_all_number) *100
+        data_dap<- data.frame("Class_DAP"= class,
+                              "Filo"= tag,
+                              "Ind_number"=site_class_number,
+                              "Ind_percentage"=site_class_percentage,
+                              "Total_ind"=site_all_number)
+
+        data_sep_dist <- rbind(data_dap,data_sep_dist)
+      }
+      data_dap <- data_sep_dist
 }
 } else {
   if (distribution==TRUE){
@@ -186,7 +198,9 @@ class_DBH_bio_ind <- function (x, choice = "ind",
     data_dap <- data_sep_dist[order(data_sep_dist$Class_DAP),]
 
   }else{
-  data_dap <- data.frame ()
+    clado <- c("Gim", "Ang")
+    site$Filo[site$Filo %in% c("Eud", "Mag")] <- "Ang"
+    data_dap <- data.frame ()
   for (i in seq_along(class)) {
     if (i==1){
       site_class<-  site [site$DAP<class[1],]
@@ -401,7 +415,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
 
   if (distribution==TRUE){result <- result %>%
     mutate(across(-c(Class_DAP, Distri), as.numeric))}else{result <- result %>%
-      mutate(across(-c(Class_DAP), as.numeric))}
+      mutate(across(-c(Class_DAP, Filo), as.numeric))}
   return (result)
 
 }
@@ -470,7 +484,7 @@ biomas_and_individuals <- function (site, methods = "bio", name ="cj") {
         biomass_total = sum(biom),
         .groups = "drop"
       )%>%
-      mutate(binom=paste(Gen, Spp, sep = "_"))
+      mutate(binom=paste(Gen, Spp, Distri, sep = "_"))
     name_site <- switch (name,
                          "bc"="MF1",
                          "it"="MF2",
