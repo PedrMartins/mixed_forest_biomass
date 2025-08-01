@@ -43,11 +43,12 @@ all_sites_biomass_spp <- bind_rows(
 
 table_final_to_excel <- full_join(species_number_absolute_site, all_sites_biomass_spp,
                                   join_by(binom,site))
+
 table_final_to_excel <- table_final_to_excel[,-c(1,2,7,8)]
 table_final_to_excel <- pivot_wider(table_final_to_excel, names_from =site,
                                     values_from = c(biomass_total, n))
-table_final_trasnformed <- table_final_to_excel [,c(3:8)]/1000
-table_final_to_excel <- cbind(table_final_to_excel[,c(1,2,9:14)], table_final_trasnformed)
+table_final_trasnformed <- table_final_to_excel [,c(4:9)]/1000
+table_final_to_excel <- cbind(table_final_to_excel[,c(1:3,10:15)], table_final_trasnformed)
 table_final_to_excel <- table_final_to_excel[order (table_final_to_excel$Fam,
                                                     table_final_to_excel$binom),]
 
