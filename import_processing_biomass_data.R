@@ -35,7 +35,7 @@ dads.ang.cj<- separate_by_filo (bio.cj, choice = ("ang"))
 ########DBH class/classes DAP (CJ)######
 #for DBH class < 10 cm / >= 10 to < 30
 #/ >= 30 to < 50 />= 50
-ind_gim_cj_sep_by_DHB <- class_DBH_bio_ind (bio.cj, class = 10 )
+#ind_gim_cj_sep_by_DHB <- class_DBH_bio_ind (bio.cj, class = 10 )
 
 ind_gim_cj_sep_by_DHB <- class_DBH_bio_ind (dads.gim.cj, class = c(10,30,50) )
 ind_ang_cj_sep_by_DHB <- class_DBH_bio_ind (dads.ang.cj, class = c(10,30,50) )

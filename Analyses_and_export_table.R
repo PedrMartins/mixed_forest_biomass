@@ -28,7 +28,9 @@ dens_table <- rbind(bc_dens_table,
 #write.csv(dens_table, "dens_table.csv")
 #################table biomass and absolut number####
 
-#write.csv(table_final_to_excel, "table_final_to_excel.csv")
+write.table(table_final_to_excel,
+            "table_final_to_excel2.csv",
+            sep ="\t", dec = ",")
 #View(table_final_to_excel)
 
 ##################
