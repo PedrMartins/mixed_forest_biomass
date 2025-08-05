@@ -32,17 +32,6 @@ dads.ang.cj<- separate_by_filo (bio.cj, choice = ("ang"))
 #View (dads.ang.cj)
 
 
-########DBH class/classes DAP (CJ)######
-#for DBH class < 10 cm / >= 10 to < 30
-#/ >= 30 to < 50 />= 50
-#ind_gim_cj_sep_by_DHB <- class_DBH_bio_ind (bio.cj, class = 10 )
-
-ind_gim_cj_sep_by_DHB <- class_DBH_bio_ind (dads.gim.cj, class = c(10,30,50) )
-ind_ang_cj_sep_by_DHB <- class_DBH_bio_ind (dads.ang.cj, class = c(10,30,50) )
-ind_all_cj_sep_by_DHB <- class_DBH_bio_ind (bio.cj, class = c(10,30,50),
-                                     distribution = TRUE)
-
-
 
 ######Est.Altura / equation to estimate tree height (CJ)######
 
@@ -142,15 +131,15 @@ dads.ang.cj$biom= (computeAGB(D=dads.ang.cj$DAP,
 
 bio.cj =rbind (dads.ang.cj,dads.gim.cj)
 
-############DAP x BIO (CJ)##########
+############DHB Classes##########
+#for DBH class < 10 cm / >= 10 to < 30
+#/ >= 30 to < 50 />= 50
 
-bio.gim.cj<-bio.cj[bio.cj$Filo=="Gim",]
-bio.ang.cj <-bio.cj[bio.cj$Filo!="Gim",]
-#tail (bio.ang.cj)
-
-biomass_gim_cj_sep_by_DHB <- class_DBH_bio_ind (bio.gim.cj, class = c(10,30,50), choice = "bio" )
-biomass_ang_cj_sep_by_DHB <- class_DBH_bio_ind (bio.ang.cj, class = c(10,30,50), choice = "bio" )
-biomass_all_cj_sep_by_DHB <- class_DBH_bio_ind (bio.cj, class = c(10,30,50), choice = "bio",
+ind_all_cj_sep_by_DHB_filo <- class_DBH_bio_ind (bio.cj, class =c(10,30,50))
+ind_all_cj_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.cj, class = c(10,30,50),
+                                            distribution = TRUE)
+biomass_all_cj_sep_by_DHB_filo <- class_DBH_bio_ind (bio.cj, class = c(10,30,50), choice = "bio" )
+biomass_all_cj_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.cj, class = c(10,30,50), choice = "bio",
                                      distribution = TRUE)
 #####################BAEPENDI###############################
 ###Limpeza dados
@@ -159,12 +148,7 @@ dads.gim.bp<- separate_by_filo(bio.bp, choice = "gim")
 dads.ang.bp<- separate_by_filo(bio.bp, choice = "ang")
 
 
-############classes DAP (BP)###########
 
-ind_gim_bp_sep_by_DHB <- class_DBH_bio_ind (dads.gim.bp, class = c(10,30,50) )
-ind_ang_bp_sep_by_DHB <- class_DBH_bio_ind (dads.ang.bp, class = c(10,30,50) )
-ind_all_bp_sep_by_DHB <- class_DBH_bio_ind (bio.bp, class = c(10,30,50),
-                                            distribution = TRUE)
 ############Est.Altura (BP) ########
 
 dads.ang.bp <- Estimating_higth_Ang (dads.ang.bp)
@@ -242,18 +226,18 @@ dads.ang.bp$biom= (computeAGB(D=dads.ang.bp$DAP,
 
 
 bio.bp =rbind (dads.ang.bp,dads.gim.bp)
-sum (bio.bp$biom)
 
-#########DAP xBIO (BP)########
 
-bio.gim.bp <-bio.bp[bio.bp$Filo=="Gim",]
-bio.ang.bp <-bio.bp[bio.bp$Filo!="Gim",]
+#########DHB Classes (BP)########
 
-#View (bio.ang.bp)
-biomass_gim_bp_sep_by_DHB <- class_DBH_bio_ind(bio.gim.bp, choice = "bio", class = c(10,30,50))
-biomass_ang_bp_sep_by_DHB <- class_DBH_bio_ind(bio.ang.bp, choice = "bio", class = c(10,30,50))
-biomass_all_bp_sep_by_DHB <- class_DBH_bio_ind (bio.bp, class = c(10,30,50), choice = "bio",
-                                            distribution = TRUE)
+
+ind_all_bp_sep_by_DHB_filo <- class_DBH_bio_ind (bio.bp, class =c(10,30,50))
+ind_all_bp_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.bp, class = c(10,30,50),
+                                                         distribution = TRUE)
+biomass_all_bp_sep_by_DHB_filo <- class_DBH_bio_ind (bio.bp, class = c(10,30,50), choice = "bio" )
+biomass_all_bp_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.bp, class = c(10,30,50), choice = "bio",
+                                                             distribution = TRUE)
+
 ###########FAZ. BARTIRA#######
 
 
@@ -262,12 +246,6 @@ biomass_all_bp_sep_by_DHB <- class_DBH_bio_ind (bio.bp, class = c(10,30,50), cho
 dads.gim.Fbar<- separate_by_filo(bio.Fbar, choice = "gim")
 dads.ang.Fbar<- separate_by_filo(bio.Fbar, choice = "ang")
 
-#########classes DAP (Faz. Bart)#########
-
-ind_gim_Fbar_sep_by_DHB <- class_DBH_bio_ind(dads.gim.Fbar, class = c(10,30,50))
-ind_ang_Fbar_sep_by_DHB <- class_DBH_bio_ind(dads.ang.Fbar, class = c(10,30,50))
-ind_all_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.Fbar, class = c(10,30,50),
-                                             distribution = TRUE)
 
 ########Est.Altura (Faz. Bart)######
 
@@ -378,17 +356,16 @@ dads.ang.Fbar$biom= (computeAGB(D=dads.ang.Fbar$DAP,
 bio.Fbar =rbind (dads.ang.Fbar,dads.gim.Fbar)
 
 
-######################DAP x BIO (Faz. Bart)#########
+######################DHB Classes (Faz. Bart)#########
 
-bio.gim.Fbar<-bio.Fbar[bio.Fbar$Filo=="Gim",]
-bio.ang.Fbar<-bio.Fbar[bio.Fbar$Filo!="Gim",]
 
-#View (bio.ang.bp)
+ind_all_Fbar_sep_by_DHB_filo <- class_DBH_bio_ind (bio.Fbar, class =c(10,30,50))
+ind_all_Fbar_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.Fbar, class = c(10,30,50),
+                                                         distribution = TRUE)
+biomass_all_Fbar_sep_by_DHB_filo <- class_DBH_bio_ind (bio.Fbar, class = c(10,30,50), choice = "bio" )
+biomass_all_Fbar_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.Fbar, class = c(10,30,50), choice = "bio",
+                                                             distribution = TRUE)
 
-biomass_gim_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.gim.Fbar, choice = "bio", class = c(10,30,50))
-biomass_ang_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.ang.Fbar, choice = "bio", class = c(10,30,50))
-biomass_all_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.Fbar, choice = "bio", class = c(10,30,50),
-                                                 distribution = TRUE)
 
 
 ###################FAZ. SÃO FRANCISCO#######################
@@ -399,13 +376,6 @@ biomass_all_Fbar_sep_by_DHB <- class_DBH_bio_ind(bio.Fbar, choice = "bio", class
 dads.gim.Fsf<- separate_by_filo(bio.Fsf, choice = "gim")
 dads.ang.Fsf<- separate_by_filo(bio.Fsf, choice = "ang")
 
-
-###############classes DAP (Faz. SF)#############
-
-ind_gim_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.gim.Fsf, class = c(10,30,50))
-ind_ang_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.ang.Fsf, class = c(10,30,50))
-ind_all_Fsf_sep_by_DHB <- class_DBH_bio_ind(bio.Fsf, class = c(10,30,50),
-                                            distribution = TRUE)
 
 ######Est.Altura######
 
@@ -485,15 +455,19 @@ bio.Fsf =rbind (dads.ang.Fsf,dads.gim.Fsf)
 
 
 
-##############DAP x BIO (Faz. SF)########
+##############DHB Classes (Faz. SF)########
 
-bio.gim.Fsf<-bio.Fsf[bio.Fsf$Filo=="Gim",]
-bio.ang.Fsf<-bio.Fsf[bio.Fsf$Filo!="Gim",]
 
-biomass_gim_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.gim.Fsf, choice = "bio", class = c(10,30,50))
-biomass_ang_Fsf_sep_by_DHB <- class_DBH_bio_ind(dads.ang.Fsf, choice = "bio", class = c(10,30,50))
-biomass_all_Fsf_sep_by_DHB <- class_DBH_bio_ind(bio.Fsf, choice = "bio", class = c(10,30,50),
-                                                distribution = TRUE)
+ind_all_Fsf_sep_by_DHB_filo <- class_DBH_bio_ind (bio.Fsf, class =c(10,30,50))
+ind_all_Fsf_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.Fsf, class = c(10,30,50),
+                                                           distribution = TRUE)
+biomass_all_Fsf_sep_by_DHB_filo <- class_DBH_bio_ind (bio.Fsf, class = c(10,30,50), choice = "bio" )
+biomass_all_Fsf_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.Fsf, class = c(10,30,50), choice = "bio",
+                                                               distribution = TRUE)
+
+
+
+
 ###################ITABERÁ#################################
 
 ###Limpeza dados
@@ -502,12 +476,6 @@ dads.gim.It<- separate_by_filo(bio.It, choice = "gim")
 dads.ang.It<- separate_by_filo(bio.It, choice = "ang")
 dads.palm.It <- separate_by_filo(bio.It, choice = "palm")
 
-###########classes DAP (IT)############
-ind_gim_It_sep_by_DHB <- class_DBH_bio_ind(dads.gim.It, class = c(10,30,50))
-ind_ang_It_sep_by_DHB <- class_DBH_bio_ind(dads.ang.It, class = c(10,30,50))
-ind_palm_It_sep_by_DHB <- class_DBH_bio_ind(dads.palm.It, class = c(10,30,50))
-ind_all_It_sep_by_DHB <- class_DBH_bio_ind(bio.It, class = c(10,30,50),
-                                            distribution = TRUE)
 
 ##########Est.Altura (IT)##########
 
@@ -630,25 +598,16 @@ dads.palm.It <- computeAGB_palm(dads.palm.It)
 bio.It =rbind (dads.ang.It, dads.gim.It, dads.palm.It)
 
 
-############DAP xBIO (IT)#########
+############DHB Classes (IT)#########
 
-bio.gim.It<-bio.It[bio.It$Filo=="Gim",]
-bio.ang.It<-bio.It[bio.It$Filo!="Gim" & bio.It$Filo!="Palm" ,]
-bio.palm.It<-bio.It[bio.It$Filo=="Palm" ,]
 
-biomass_gim_It_sep_by_DHB <- class_DBH_bio_ind(bio.gim.It,
-                                               choice = "bio",
-                                               class = c(10,30,50))
-biomass_ang_It_sep_by_DHB <- class_DBH_bio_ind(bio.ang.It,
-                                               choice = "bio",
-                                               class = c(10,30,50)) #checar!
-biomass_palm_It_sep_by_DHB <- class_DBH_bio_ind(bio.palm.It,
-                                                choice = "bio",
-                                                class = c(10,30,50))
-biomass_all_It_sep_by_DHB <- class_DBH_bio_ind(bio.It,
-                                                choice = "bio",
-                                                class = c(10,30,50),
-                                               distribution = TRUE)
+ind_all_it_sep_by_DHB_filo <- class_DBH_bio_ind (bio.It, class =c(10,30,50))
+ind_all_it_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.It, class = c(10,30,50),
+                                                          distribution = TRUE)
+biomass_all_it_sep_by_DHB_filo <- class_DBH_bio_ind (bio.It, class = c(10,30,50), choice = "bio" )
+biomass_all_it_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.It, class = c(10,30,50), choice = "bio",
+                                                              distribution = TRUE)
+
 
 ############BARRA DO CHAPÉU##########
 
@@ -663,13 +622,6 @@ dads.palm.bc <- separate_by_filo(bio.bc, choice = "palm")
 #head (bio.BC)
 
 
-##########################classes DAP########################
-
-ind_gim_bc_sep_by_DHB <- class_DBH_bio_ind(dads.gim.bc, class = c(10,30,50))
-ind_ang_bc_sep_by_DHB <- class_DBH_bio_ind(dads.ang.bc, class = c(10,30,50))
-ind_palm_bc_sep_by_DHB <- class_DBH_bio_ind(dads.palm.bc, class = c(10,30,50))
-ind_all_bc_sep_by_DHB <- class_DBH_bio_ind(bio.bc, class = c(10,30,50),
-                                           distribution = TRUE)
 #####Est.Altura (BC)######
 #Ang
 dads.ang.bc <- Estimating_higth_Ang(dads.ang.bc)
@@ -771,16 +723,12 @@ dads.palm.bc <- computeAGB_palm(dads.palm.bc)
 bio.bc =rbind (dads.ang.bc, dads.gim.bc, dads.palm.bc)
 
 
-############DAP xBIO (BC)##############
+############DHB Classes (BC)##############
 
-bio.gim.bc<-bio.bc[bio.bc$Filo=="Gim",]
-bio.ang.bc<-bio.bc[bio.bc$Filo!="Gim" & bio.bc$Filo!="Palm"  ,]
-bio.palm.bc<-bio.bc[bio.bc$Filo=="Palm",]
-#View (bio.ang.bp)
-
-biomass_gim_bc_sep_by_DHB <- class_DBH_bio_ind(bio.gim.bc, choice = "bio", class = c(10,30,50))
-biomass_ang_bc_sep_by_DHB <- class_DBH_bio_ind(bio.ang.bc, choice = "bio", class = c(10,30,50))
-biomass_palm_bc_sep_by_DHB <- class_DBH_bio_ind(bio.palm.bc, choice = "bio", class = c(10,30,50))
-biomass_all_bc_sep_by_DHB <- class_DBH_bio_ind(bio.bc, choice = "bio", class = c(10,30,50),
-                                                distribution = TRUE)
+ind_all_bc_sep_by_DHB_filo <- class_DBH_bio_ind (bio.bc, class =c(10,30,50))
+ind_all_bc_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.bc, class = c(10,30,50),
+                                                         distribution = TRUE)
+biomass_all_bc_sep_by_DHB_filo <- class_DBH_bio_ind (bio.bc, class = c(10,30,50), choice = "bio" )
+biomass_all_bc_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.bc, class = c(10,30,50), choice = "bio",
+                                                             distribution = TRUE)
 
