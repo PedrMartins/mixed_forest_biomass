@@ -6,6 +6,7 @@ pkg <- pkg[!pkg%in%installed.packages()]
 pkg
 install.packages (pkg)
 
+library(readxl)
 library (BIOMASS)
 library(tidyverse)
 library(dplyr)

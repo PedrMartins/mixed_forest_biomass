@@ -520,7 +520,7 @@ biomas_and_individuals <- function (site, methods = "bio", name ="cj") {
         biomass_total = sum(biom),
         .groups = "drop"
       )%>%
-      mutate(binom=paste(Gen, Spp, Distri, sep = "_"))
+      mutate(binom=paste(Gen, Spp, sep = "_"))
     name_site <- switch (name,
                          "bc"="MF1",
                          "it"="MF2",
@@ -532,7 +532,7 @@ biomas_and_individuals <- function (site, methods = "bio", name ="cj") {
 
   }
   if (methods == "ind") {
-    result=count (site, Gen, Spp,Fam,  sort =TRUE)
+    result=count (site, Gen, Spp,Fam,  Distri,sort =TRUE)
     name_site <- switch (name,
                          "bc"="MF1",
                          "it"="MF2",
