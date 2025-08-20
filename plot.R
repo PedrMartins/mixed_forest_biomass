@@ -7,7 +7,6 @@
 
 source ("import_processing_biomass_data.R")
 source("Analyses_and_export_table.R")
-source ("processing_to_barplot.R")
 
 ###DAP class porcentagem ind########
 
