@@ -3,26 +3,23 @@
 
 
 ############################################################
-###DAP class porcentagem ind########
 ###Suplementar########
 
 source ("import_processing_biomass_data.R")
 source("Analyses_and_export_table.R")
 source ("processing_to_barplot.R")
 
+###DAP class porcentagem ind########
 
-jpeg(filename = "Classe DAP_ind.jpg", width = 1050, height = 700, # function to save plots salva .jpg
+jpeg(filename = "Class_DAP_ind2.jpg", width = 1050, height = 700, # function to save plots salva .jpg
      units = "px", quality = 75,
      bg = "white")
 
 par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bg= "white")
-color= colorRampPalette(c("sandybrown","lightgreen"))
+color= colorRampPalette(c("lightgreen","sandybrown"))
 
-barplot (c( ind_bc_num_gim[1],ind_bc_num_ang [1],
-            ind_bc_num_gim[2],ind_bc_num_ang [2],
-            ind_bc_num_gim[3],ind_bc_num_ang [3],
-            ind_bc_num_gim[4],ind_bc_num_ang [4]),
+barplot (ind_all_bc_sep_by_DHB_filo$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Barra do Chapéu (MF1)",
          ylab = "Individuals (%)")
@@ -34,19 +31,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-barplot (c( ind_It_num_gim[1],ind_It_num_ang [1],
-            ind_It_num_gim[2],ind_It_num_ang [2],
-            ind_It_num_gim[3],ind_It_num_ang [3],
-            ind_It_num_gim[4],ind_It_num_ang [4]),
+barplot (ind_all_it_sep_by_DHB_filo$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Itaberá (MF2)")
 
@@ -56,19 +42,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-barplot (c( ind_cj_num_gim[1],ind_cj_num_ang [1],#,
-            ind_cj_num_gim[2],ind_cj_num_ang [2],
-            ind_cj_num_gim[3],ind_cj_num_ang [3],
-            ind_cj_num_gim[4],ind_cj_num_ang [4]),
+barplot (ind_all_cj_sep_by_DHB_filo$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Campos do Jordão (MF3)")
 
@@ -81,17 +56,14 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
+       ,c("Angiosperms","Gymnosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
 
-barplot (c( ind_Fsf_num_gim[1],ind_Fsf_num_ang [1],#,
-            ind_Fsf_num_gim[2],ind_Fsf_num_ang [2],
-            ind_Fsf_num_gim[3],ind_Fsf_num_ang [3],
-            ind_Fsf_num_gim[4],ind_Fsf_num_ang [4]),
+barplot (ind_all_Fsf_sep_by_DHB_filo$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Delfim Moreira \n Faz. São Fran. (MF4)",
          ylab = "Individuals (%)",
@@ -103,19 +75,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-barplot (c( ind_Fbar_num_gim[1],ind_Fbar_num_ang [1],#,
-            ind_Fbar_num_gim[2],ind_Fbar_num_ang [2],
-            ind_Fbar_num_gim[3],ind_Fbar_num_ang [3],
-            ind_Fbar_num_gim[4],ind_Fbar_num_ang [4]),
+barplot (ind_all_Fbar_sep_by_DHB_filo$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Delfim Moreira \n Faz. Bart. (MF5)",
          xlab="DBH Class (cm)")
@@ -127,20 +87,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-
-barplot (c( ind_bp_num_gim[1],ind_bp_num_ang [1],#,
-            ind_bp_num_gim[2],ind_bp_num_ang [2],
-            ind_bp_num_gim[3],ind_bp_num_ang [3],
-            ind_bp_num_gim[4],ind_bp_num_ang [4]),
+barplot (ind_all_bp_sep_by_DHB_filo$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Baependi (MF6)",
          xlab="DBH Class (cm)")
@@ -154,7 +102,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
+       ,c("Angiosperms","Gymnosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
@@ -166,19 +114,16 @@ dev.off()
 ###########DAP Class porcentage BIO########
 
 
-jpeg(filename = "Classe DAP_biomas.jpg", width = 1050, height = 700, # fun��o salva gr�ficos em .jpg
+jpeg(filename = "Class_DAP_biomas2.jpg", width = 1050, height = 700, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 95,
      bg = "white")
 
 par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bg="white")
 
-color= colorRampPalette(c("sandybrown","lightgreen"))
+color= colorRampPalette(c("lightgreen","sandybrown"))
 
-barplot (c( biom_bc_num_gim[1],biom_bc_num_ang[1],
-            biom_bc_num_gim[2],biom_bc_num_ang[2],
-            biom_bc_num_gim[3],biom_bc_num_ang[3],
-            biom_bc_num_gim[4],biom_bc_num_ang[4]),
+barplot (biomass_all_bc_sep_by_DHB_filo$Biomass_percentage,
          col=color (2), ylim=c(0,100),
          main="Barra do Chapéu (MF1)",
          ylab = "Biomass (%)")
@@ -189,19 +134,9 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-barplot (c( biom_It_num_gim[1],biom_It_num_ang[1],
-            biom_It_num_gim[2],biom_It_num_ang[2],
-            biom_It_num_gim[3],biom_It_num_ang[3],
-            biom_It_num_gim[4],biom_It_num_ang[4]),
+
+barplot (biomass_all_it_sep_by_DHB_filo$Biomass_percentage,
          col=color (2), ylim=c(0,100),
          main="Itaberá (MF2)")
 
@@ -212,19 +147,9 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-barplot (c( biom_cj_num_gim[1],biom_cj_num_ang [1],#,
-            biom_cj_num_gim[2],biom_cj_num_ang [2],
-            biom_cj_num_gim[3],biom_cj_num_ang [3],
-            biom_cj_num_gim[4],biom_cj_num_ang [4]),
+
+barplot (biomass_all_cj_sep_by_DHB_filo$Biomass_percentage,
          col=color (2), ylim=c(0,100),
          main="Campos do Jordão (MF3)")
 
@@ -238,16 +163,13 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topleft" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
+       ,c("Angiosperms","Gymnosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
-barplot (c( biom_Fsf_num_gim[1],biom_Fsf_num_ang [1],#,
-            biom_Fsf_num_gim[2],biom_Fsf_num_ang [2],
-            biom_Fsf_num_gim[3],biom_Fsf_num_ang [3],
-            biom_Fsf_num_gim[4],biom_Fsf_num_ang [4]),
+barplot (biomass_all_Fsf_sep_by_DHB_filo$Biomass_percentage,
          col=color (2), ylim=c(0,100),
          main="Delfim Moreira \n Faz. São Fran. (MF4)",
          ylab = "Biomass (%)",
@@ -259,20 +181,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-
-barplot (c( biom_Fbar_num_gim[1],biom_Fbar_num_ang [1],#,
-            biom_Fbar_num_gim[2],biom_Fbar_num_ang [2],
-            biom_Fbar_num_gim[3],biom_Fbar_num_ang [3],
-            biom_Fbar_num_gim[4],biom_Fbar_num_ang [4]),
+barplot (biomass_all_Fbar_sep_by_DHB_filo$Biomass_percentage,
          col=color (2), ylim=c(0,100),
          main="Delfim Moreira \n Faz. Bart. (MF5)",
          xlab="DBH Class (cm)")
@@ -284,19 +193,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-barplot (c( biom_bp_num_gim[1],biom_bp_num_ang [1],#,
-            biom_bp_num_gim[2],biom_bp_num_ang [2],
-            biom_bp_num_gim[3],biom_bp_num_ang [3],
-            biom_bp_num_gim[4],biom_bp_num_ang [4]),
+barplot (biomass_all_bp_sep_by_DHB_filo$Biomass_percentage,
          col=color (2), ylim=c(0,100),
          main="Baependi (MF6)",
          xlab="DBH Class (cm)")
@@ -310,7 +207,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topleft" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Gymnosperms","Angiosperms") #texto a ser escrito
+       ,c("Angiosperms","Gymnosperms") #texto a ser escrito
        ,col=color (2)
        ,cex=1.3		#tamanho da fonte
        , pch=c(15,15)
@@ -1357,9 +1254,9 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 
 
 dev.off()
+############ Biomass Distri DBH #####
 
-
-jpeg(filename = "biomass_distri_DHB.jpg",
+jpeg(filename = "biomass_distri_DHB2.jpg",
      width = 850, height = 500, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 75,
      bg = "white")
@@ -1369,7 +1266,7 @@ par(mfrow=c(2,3),mar=c(5,6,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
 
 color <- colorRampPalette(c("lightgreen","sandybrown"))
 
-barplot (biomass_all_bc_sep_by_DHB$Biomass_ab/1000,
+barplot (biomass_all_bc_sep_by_DHB_distribution$Biomass_ab/1000,
          col=color (2),
          main="Barra do Chapéu (MF1)",
          ylab = "Biomass (Mg)",
@@ -1381,16 +1278,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-barplot (biomass_all_It_sep_by_DHB$Biomass_ab/1000,
+barplot (biomass_all_it_sep_by_DHB_distribution$Biomass_ab/1000,
          col=color (2),
          main="Itaberá (MF2)",
          ylab = "",
@@ -1402,18 +1291,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-
-
-barplot(biomass_all_cj_sep_by_DHB$Biomass_ab/1000,
+barplot(biomass_all_cj_sep_by_DHB_distribution$Biomass_ab/1000,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Campos do Jordão (MF3)",
@@ -1438,7 +1317,7 @@ legend("topleft" #fun��o adiciona um texto ao gr�fico,
 
 
 
-barplot(biomass_all_Fsf_sep_by_DHB$Biomass_ab/1000,
+barplot(biomass_all_Fsf_sep_by_DHB_distribution$Biomass_ab/1000,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Delfim Moreira \nFaz. São Fran. (MF4)",
@@ -1453,17 +1332,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-
-barplot(biomass_all_Fbar_sep_by_DHB$Biomass_ab/1000,
+barplot(biomass_all_Fbar_sep_by_DHB_distribution$Biomass_ab/1000,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Delfim Moreira \nFaz. São Fran. (MF5)",
@@ -1478,17 +1347,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-
-barplot(biomass_all_bp_sep_by_DHB$Biomass_ab/1000,
+barplot(biomass_all_bp_sep_by_DHB_distribution$Biomass_ab/1000,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Baependi (MF6)",
@@ -1516,7 +1376,9 @@ legend("topleft" #fun��o adiciona um texto ao gr�fico,
 
 dev.off()
 
-jpeg(filename = "biomass_distri_DHB_percente.jpg",
+############Biomass Distri DBH percentage #####
+
+jpeg(filename = "biomass_distri_DHB_percente2.jpg",
      width = 850, height = 500, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 75,
      bg = "white")
@@ -1526,7 +1388,7 @@ par(mfrow=c(2,3),mar=c(5,6,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
 
 color <- colorRampPalette(c("lightgreen","sandybrown"))
 
-barplot (biomass_all_bc_sep_by_DHB$Biomass_percentage,
+barplot (biomass_all_bc_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2),
          main="Barra do Chapéu (MF1)",
          ylab = "Biomass (%)",
@@ -1538,16 +1400,9 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-barplot (biomass_all_It_sep_by_DHB$Biomass_percentage,
+
+barplot (biomass_all_it_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2),
          main="Itaberá (MF2)",
          ylab = "",
@@ -1559,18 +1414,9 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
 
-
-barplot(biomass_all_cj_sep_by_DHB$Biomass_percentage,
+barplot(biomass_all_cj_sep_by_DHB_distribution$Biomass_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Campos do Jordão (MF3)",
@@ -1595,7 +1441,7 @@ legend("topleft" #fun��o adiciona um texto ao gr�fico,
 
 
 
-barplot(biomass_all_Fsf_sep_by_DHB$Biomass_percentage,
+barplot(biomass_all_Fsf_sep_by_DHB_distribution$Biomass_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Delfim Moreira \nFaz. São Fran. (MF4)",
@@ -1610,17 +1456,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-
-barplot(biomass_all_Fbar_sep_by_DHB$Biomass_percentage,
+barplot(biomass_all_Fbar_sep_by_DHB_distribution$Biomass_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Delfim Moreira \nFaz. São Fran. (MF5)",
@@ -1635,17 +1472,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-
-barplot(biomass_all_bp_sep_by_DHB$Biomass_percentage,
+barplot(biomass_all_bp_sep_by_DHB_distribution$Biomass_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Baependi (MF6)",
@@ -1673,8 +1501,9 @@ legend("topleft" #fun��o adiciona um texto ao gr�fico,
 
 dev.off()
 
+################ Indivuidual distribution DBH #########
 
-jpeg(filename = "Ind_distri_DHB_percente.jpg",
+jpeg(filename = "Ind_distri_DHB_percente2.jpg",
      width = 850, height = 500, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 75,
      bg = "white")
@@ -1684,7 +1513,7 @@ par(mfrow=c(2,3),mar=c(5,6,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
 
 color <- colorRampPalette(c("lightgreen","sandybrown"))
 
-barplot (ind_all_bc_sep_by_DHB$Ind_percentage,
+barplot (ind_all_bc_sep_by_DHB_distribution$Ind_percentage,
          col=color (2),
          main="Barra do Chapéu (MF1)",
          ylab = "Individuals (%)", )
@@ -1695,16 +1524,9 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-barplot (ind_all_It_sep_by_DHB$Ind_percentage,
+
+barplot (ind_all_it_sep_by_DHB_distribution$Ind_percentage,
          col=color (2),
          main="Itaberá (MF2)",
          ylab = "",
@@ -1716,18 +1538,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-
-
-barplot(ind_all_cj_sep_by_DHB$Ind_percentage,
+barplot(ind_all_cj_sep_by_DHB_distribution$Ind_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Campos do Jordão (MF3)",
@@ -1752,7 +1564,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 
 
 
-barplot(ind_all_Fsf_sep_by_DHB$Ind_percentage,
+barplot(ind_all_Fsf_sep_by_DHB_distribution$Ind_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Delfim Moreira \nFaz. São Fran. (MF4)",
@@ -1767,17 +1579,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-
-barplot(ind_all_Fbar_sep_by_DHB$Ind_percentage,
+barplot(ind_all_Fbar_sep_by_DHB_distribution$Ind_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Delfim Moreira \nFaz. São Fran. (MF5)",
@@ -1792,17 +1595,8 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
 
-
-barplot(ind_all_bp_sep_by_DHB$Ind_percentage,
+barplot(ind_all_bp_sep_by_DHB_distribution$Ind_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         main = "Baependi (MF6)",
@@ -1830,7 +1624,7 @@ legend("topleft" #fun��o adiciona um texto ao gr�fico,
 
 dev.off()
 
-####### plot biomass species
+####### plot biomass species######
 # Final dataset for plotting
 plot_df <- rbind(top5[, c("Species", "biomass_total")], other)
 
@@ -1850,5 +1644,5 @@ bp <- barplot(
 )
 
 # Add labels on top of bars (only for top 5)
-text(bp[1:5], plot_df$biomass_total[1:5] + 500,  # position a bit above
-     labels = plot_df$Species[1:5], cex = 0.7, pos = 3
+#text(bp[1:5], plot_df$biomass_total[1:5] + 500,  # position a bit above
+#     labels = plot_df$Species[1:5], cex = 0.7, pos = 3
