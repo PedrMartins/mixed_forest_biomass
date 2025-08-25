@@ -1,9 +1,10 @@
 # source("processing_to_table.R")
 
 ############test analises###########
-bio.cj$biom
+contingency <- xtabs(Ind_percentage ~ Class_DAP + Filo,
+                     data = ind_all_it_sep_by_DHB_filo)
 
-chisq.test (bio.temp.trop)
+chisq.test (contingency)
 chisq.test (bio.tem.trop.pro)
 
 ang=sum(bio.temp.trop[c(3,4),])
