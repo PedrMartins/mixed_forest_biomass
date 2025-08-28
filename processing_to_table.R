@@ -54,16 +54,17 @@ table_final_to_excel <- table_final_to_excel[order (table_final_to_excel$Fam,
 
 #table_final_to_excel[is.na(table_final_to_excel)] <- "---"
 
-colnames(table_final_to_excel) <- c("Fam" ="Famyli", "Distri"="Fitogeography_origin", "binom"  = "Genus_and_species",
-                                    "n_MF1",             "n_MF2",
-                                    "n_MF3",             "n_MF4",
-                                    "n_MF5",             "n_MF6",
-                                    "biomass_total_MF1"= "biomass_total_MF1 (Mg)",
-                                    "biomass_total_MF2"= "biomass_total_MF2(Mg)",
-                                    "biomass_total_MF3"="biomass_total_MF3 (Mg)",
-                                    "biomass_total_MF4"="biomass_total_MF4 (Mg)",
-                                    "biomass_total_MF5"="biomass_total_MF5 (Mg)",
-                                    "biomass_total_MF6"="biomass_total_MF6 (Mg)")
+# colnames(table_final_to_excel) <- c("Fam" ="Famyli", "Distri"="Fitogeography_origin",
+#                                     "binom"  = "Genus_and_species",
+#                                     "n_MF1",             "n_MF2",
+#                                     "n_MF3",             "n_MF4",
+#                                     "n_MF5",             "n_MF6",
+#                                     "biomass_total_MF1"= "biomass_total_MF1 (Mg)",
+#                                     "biomass_total_MF2"= "biomass_total_MF2(Mg)",
+#                                     "biomass_total_MF3"="biomass_total_MF3 (Mg)",
+#                                     "biomass_total_MF4"="biomass_total_MF4 (Mg)",
+#                                     "biomass_total_MF5"="biomass_total_MF5 (Mg)",
+#                                     "biomass_total_MF6"="biomass_total_MF6 (Mg)")
 
 ################indice diversidade######
 
