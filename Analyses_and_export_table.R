@@ -1,8 +1,9 @@
 # source("processing_to_table.R")
 
 ############test analises###########
-contingency <- xtabs(Ind_percentage ~ Class_DAP + Filo,
-                     data = ind_all_it_sep_by_DHB_filo)
+cotingency <- xtabs(Distri ~ biomass_total_MF1 ,
+                     data = table_final_to_excel,
+                     na.rm= TRUE)
 
 chisq.test (contingency)
 chisq.test (bio.tem.trop.pro)

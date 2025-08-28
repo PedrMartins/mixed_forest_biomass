@@ -49,6 +49,10 @@ data_processing <-  function (x){
   site [site$Gen == "Sapium",5] <- "glandulosum"
   site [site$Gen == "Sorocea",5] <- "bonplandii"
   site [site$Gen == "Trichilia",6] <- "Meliaceae"
+  site [site$Gen == "Cordyline",6] <- "Asparagaceae"
+  site [site$Gen == "Cordyline" & site$Spp == "terminalis", 5] <- "fruticosa"
+  site$Distri[site$Gen == "Drimys" & site$Distri == "Trop"] <- "Temp"
+  site$Distri[site$Gen == "Styrax" & site$Distri == "Trop"] <- "Temp"
   site$Fam <- sub("-.*", "", site$Fam)
   site
 }
