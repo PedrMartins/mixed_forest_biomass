@@ -1,12 +1,22 @@
 # source("processing_to_table.R")
 
 ############test analises###########
-cotingency <- xtabs(Distri ~ biomass_total_MF1 ,
-                     data = table_final_to_excel,
+cotingency <- xtabs(biomass_total~site+Distri,
+                     data = table_final_to_anova,
                      na.rm= TRUE)
 
-chisq.test (contingency)
-chisq.test (bio.tem.trop.pro)
+head (table_final_to_excel)
+View (cotingency)
+summary (chisq.test (cotingency))
+
+summary (aov(biomass_total~site*Distri, data=table_final_to_anova))
+
+adonis2(table_to_permanova_biomass [,-1]~site ,
+         method = "euclidean",
+         data = table_to_permanova_biomass)
+
+biomass_all_bc_sep_by_DHB_filo
+names (table_to_permanova_biomass) [1]
 
 ang=sum(bio.temp.trop[c(3,4),])
 gim=sum(bio.temp.trop[c(1,2),])
