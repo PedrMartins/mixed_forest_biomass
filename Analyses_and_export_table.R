@@ -11,8 +11,23 @@ head (table_final_to_excel)
 View (cotingency)
 summary (chisq.test (cotingency))
 
-summary (aov(biomass_total~site*Distri, data=table_final_to_anova))
 
+#####resultado massa#####
+
+anova (aov(biomass_total~Distri, #diferença estatística dentro dos sites
+           data=MF6_bio_ab))
+
+anova (aov(biomass_total~site+Distri, #diferença entre os sites
+             data=table_final_to_anova))
+
+anova (aov(biomass_total~site, #diferença entre os sites
+           data=table_final_to_anova))
+
+anova (aov(biomass_total~Distri, #diferença entre os sites
+           data=table_final_to_anova))
+
+
+#######
 adonis2(table_to_permanova_biomass [,-1]~site ,
          method = "euclidean",
          data = table_to_permanova_biomass)
