@@ -41,17 +41,23 @@ all_sites_biomass_spp <- bind_rows(
   MF6_bio_ab
 )
 
-table_final_to_anova <- full_join(species_number_absolute_site, all_sites_biomass_spp,
+table_final_to_anova <- full_join(species_number_absolute_site,
+                                  all_sites_biomass_spp,
                                   join_by(binom,site,Distri))
 
 table_final_to_anova <- table_final_to_anova[,-c(1,2,8,9)]
-table_final_to_excel <- pivot_wider(table_final_to_anova, names_from =site,
-                                    values_from = c(biomass_total, n))
-table_to_permanova_biomass <- pivot_wider(table_final_to_excel, names_from =binom,
+table_final_to_anova$biomass_total<- table_final_to_anova [,6]/1000
+table_final_to_excel <- pivot_wider(table_final_to_anova,
+                                    names_from =site,
+                                    values_from = c(
+                                      biomass_total, n))
+table_to_permanova_biomass <- pivot_wider(table_final_to_excel,
+                                          names_from =binom,
                                           values_from = biomass_total)
 table_to_permanova_biomass <- table_to_permanova_biomass[, -c(1:5,7,8)]
 table_final_trasnformed <- table_final_to_excel [,c(4:9)]/1000
-table_final_to_excel <- cbind(table_final_to_excel[,c(1:3,10:15)], table_final_trasnformed)
+table_final_to_excel <- cbind(table_final_to_excel[,c(1:3,10:15)],
+                              table_final_trasnformed)
 table_final_to_excel <- table_final_to_excel[order (table_final_to_excel$Fam,
                                                     table_final_to_excel$binom),]
 

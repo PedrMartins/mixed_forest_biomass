@@ -5,6 +5,8 @@ cotingency <- xtabs(biomass_total~site+Distri,
                      data = table_final_to_anova,
                      na.rm= TRUE)
 
+aov()
+
 head (table_final_to_excel)
 View (cotingency)
 summary (chisq.test (cotingency))
@@ -20,7 +22,6 @@ names (table_to_permanova_biomass) [1]
 
 ang=sum(bio.temp.trop[c(3,4),])
 gim=sum(bio.temp.trop[c(1,2),])
-anova (ang,gim)
 med=mean (bio.temp.trop)
 dbio=bio.temp.trop-med
 dqbio=dbio^2
