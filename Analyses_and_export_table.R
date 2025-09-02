@@ -20,7 +20,7 @@ anova (aov(log(biomass_total)~Distri, #diferença estatística dentro dos sites
 anova (aov(sqrt (biomass_total)~site, #diferença entre os sites
              data=table_final_to_anova))
 
-anova (aov(sqrt(biomass_total)~Distri, #diferença entre os sites
+anova (aov(sqrt(biomass_total)~site, #diferença entre os sites
            data=table_final_to_anova))
 
 anova (aov(log(biomass_total)~Distri, #diferença entre os sites
