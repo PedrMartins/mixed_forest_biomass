@@ -137,34 +137,46 @@ summary (bio.bc)
 
 
 g_cj=count (bio.cj, Gen, sort=TRUE)
-length (g_cj$Gen)
+g_sXg_1 = count (bio.cj, Gen,Spp, sort=TRUE)
+length (g_sXg$Gen)
 length (g_cj$Gen)/length (all_g$n) *100
 
 g_it=count (bio.It, Gen, sort=TRUE)
+g_sXg_2 = count (bio.It, Gen,Spp, sort=TRUE)
+length (g_sXg$Gen)
 length (g_it$Gen)
 length (g_it$Gen)/length (all_g$n) *100
 
 g_bc=count (bio.bc, Gen, sort=TRUE)
+g_sXg_3 = count (bio.bc, Gen,Spp, sort=TRUE)
+length (g_sXg$Gen)
 length (g_bc$Gen)
 length (g_bc$Gen)/length (all_g$n) *100
 
 
 g_Fbar=count (bio.Fbar, Gen, sort=TRUE)
+g_sXg_4 = count (bio.Fbar, Gen,Spp, sort=TRUE)
+length (g_sXg$Gen)
 length (g_Fbar$Gen)
 length (g_Fbar$Gen)/length (all_g$n) *100
 
 
 g_Fsf=count (bio.Fsf, Gen, sort=TRUE)
+g_sXg_5 = count (bio.Fsf, Gen,Spp, sort=TRUE)
+length (g_sXg$Gen)
 length (g_Fsf$Gen)
 length (g_Fsf$Gen)/length (all_g$n) *100
 
 
 g_bp=count (bio.bp, Gen, sort=TRUE)
+g_sXg_6 = count (bio.bp, Gen,Spp, sort=TRUE)
+length (g_sXg$Gen)
 length (g_bp$Gen)
 length (g_bp$Gen)/length (all_g$n) *100
 
 F_G=rbind (g_cj,g_it,g_bc,g_bp,g_Fsf,g_Fbar)
-all_g=count (F_G, Gen)
+F_G=rbind (g_sXg_6,g_sXg_5,g_sXg_4,g_sXg_3,g_sXg_2,g_sXg_1)
+all_g=count (F_G, Gen, Spp)
 length (all_g$n)
 
 All=rbind (bio.cj,bio.It,bio.bc,bio.bp,bio.Fsf,bio.Fbar)
