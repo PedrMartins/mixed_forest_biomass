@@ -138,7 +138,8 @@ bio.cj =rbind (dads.ang.cj,dads.gim.cj)
 ind_all_cj_sep_by_DHB_filo <- class_DBH_bio_ind (bio.cj, class =c(10,30,50))
 ind_all_cj_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.cj, class = c(10,30,50),
                                             distribution = TRUE)
-biomass_all_cj_sep_by_DHB_filo <- class_DBH_bio_ind (bio.cj, class = c(10,30,50), choice = "bio" )
+biomass_all_cj_sep_by_DHB_filo <- class_DBH_bio_ind (bio.cj, class = c(10,30,50),
+                                                     choice = "bio" )
 biomass_all_cj_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.cj, class = c(10,30,50), choice = "bio",
                                      distribution = TRUE)
 #####################BAEPENDI###############################

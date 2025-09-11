@@ -51,6 +51,7 @@ data_processing <-  function (x){
   site [site$Gen == "Trichilia",6] <- "Meliaceae"
   site [site$Gen == "Cordyline",6] <- "Asparagaceae"
   site [site$Gen == "Cordyline" & site$Spp == "terminalis", 5] <- "fruticosa"
+  site$Filo [site$Filo == "Eudi"] <- "Eud"
   site$Distri[site$Gen == "Drimys" & site$Distri == "Trop"] <- "Temp"
   site$Distri[site$Gen == "Styrax" & site$Distri == "Trop"] <- "Temp"
   site$Fam <- sub("-.*", "", site$Fam)
@@ -209,6 +210,7 @@ class_DBH_bio_ind <- function (x, choice = "ind",
     data_sep_filo <- data.frame()
 
     for (i in clado){
+
 
       tag <- i
       site_sep_filo <- site[site$Filo==i,]
