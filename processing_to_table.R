@@ -51,19 +51,16 @@ table_final_to_excel <- pivot_wider(table_final_to_anova,
                                     names_from =site,
                                     values_from = c(
                                       biomass_total, n))
-table_to_permanova_biomass <- pivot_wider(table_final_to_excel,
+table_to_permanova_biomass <- pivot_wider(table_final_to_anova,
                                           names_from =binom,
                                           values_from = biomass_total)
 table_to_permanova_biomass <- table_to_permanova_biomass[, -c(1:5,7,8)]
-table_final_trasnformed <- table_final_to_excel [,c(4:9)]/1000
-table_final_to_excel <- cbind(table_final_to_excel[,c(1:3,10:15)],
-                              table_final_trasnformed)
 table_final_to_excel <- table_final_to_excel[order (table_final_to_excel$Fam,
                                                     table_final_to_excel$binom),]
 
 table_to_permanova_biomass[is.na(table_to_permanova_biomass)] <- 0
 table_final_to_anova[is.na(table_final_to_anova)] <- 0
-
+table_final_to_excel[is.na(table_final_to_excel)] <- 0
 # colnames(table_final_to_excel) <- c("Fam" ="Famyli", "Distri"="Fitogeography_origin",
 #                                     "binom"  = "Genus_and_species",
 #                                     "n_MF1",             "n_MF2",
