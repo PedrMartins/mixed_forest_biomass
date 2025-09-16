@@ -50,6 +50,7 @@ data_processing <-  function (x){
   site [site$Gen == "Sorocea",5] <- "bonplandii"
   site [site$Gen == "Trichilia",6] <- "Meliaceae"
   site [site$Gen == "Cordyline",6] <- "Asparagaceae"
+  site$Spp [site$Gen == "Mimosa"] <- "scabrella"
   site [site$Gen == "Cordyline" & site$Spp == "terminalis", 5] <- "fruticosa"
   site$Filo [site$Filo == "Eudi"] <- "Eud"
   site$Distri[site$Gen == "Drimys" & site$Distri == "Trop"] <- "Temp"
