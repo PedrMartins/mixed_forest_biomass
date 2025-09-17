@@ -767,16 +767,6 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-
 
 barplot(ind_all_Fsf_sep_by_DHB_distribution$Ind_percentage,
         las = 2, # Rotate x-axis labels for readability
