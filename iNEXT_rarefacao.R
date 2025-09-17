@@ -3,7 +3,7 @@ source("function_for_iNEXT.R")
 str (all_sites)
 class(all_sites)
 m= seq(1, 1000, by=50)
-rarefacaoRichiness = iNEXT (all_sites, q=0, size = m)
+rarefacaoRichiness = iNEXT (all_sites, q=0)
 rarefacaoShannon = iNEXT (all_sites, q=1, size = m)
 rarefacaoSimpson = iNEXT (all_sites, q=2, size = m)
 
