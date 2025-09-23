@@ -3,7 +3,7 @@ source("function_for_iNEXT.R")
 str (all_sites)
 class(all_sites)
 m= seq(1, 1000, by=50)
-rarefacaoRichiness = iNEXT (all_sites, q=0)
+rarefacaoRichiness = iNEXT (all_sites)
 rarefacaoShannon = iNEXT (all_sites, q=1)
 rarefacaoSimpson = iNEXT (all_sites, q=2)
 
@@ -12,12 +12,14 @@ gRichiness<- ggiNEXT (rarefacaoRichiness, type= 1) +
   theme(legend.position="right") +
   ylab("Species richiness")
 
-gShannon<- ggiNEXT (rarefacaoShannon, type= 1) +
+gShannon<- ggiNEXT (rarefacaoShannon, type= 1,
+                    facet.var = "Order.q") +
   theme_classic() +
   theme(legend.position="right") +
   ylab("Species diversity H'")
 
-gSimpson<- ggiNEXT (rarefacaoSimpson, type= 1) +
+gSimpson<- ggiNEXT (rarefacaoSimpson, type= 1,
+                    facet.var = "Order.q") +
   theme_classic() +
   theme(legend.position="right") +
   ylab("Species diversity 1/D")
