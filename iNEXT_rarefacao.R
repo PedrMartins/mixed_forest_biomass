@@ -28,3 +28,10 @@ ggsave ("rarefação_riqueza.jpg", gRichiness)
 ggsave ("rarefação_Shannon.jpg", gShannon)
 ggsave ("rarefação_Simpson.jpg", gSimpson)
 
+
+
+################indice diversidade######
+All_sites_richness <- ChaoRichness(all_sites)
+All_sites_Shannon<- ChaoShannon(all_sites)
+All_sites_Simpson <- ChaoSimpson(all_sites)
+

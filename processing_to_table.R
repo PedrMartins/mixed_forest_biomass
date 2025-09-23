@@ -75,24 +75,6 @@ table_final_to_excel[is.na(table_final_to_excel)] <- 0
 
 ################indice diversidade######
 
-Barra_do_chapeu_diversity <- list ( "Shannon"=diversity (MF1_ind_ab$n),
-                                    "Simpson"=diversity (MF1_ind_ab$n,
-                                                         "simpson"))
-Itabera_diversity <- list ("Shannon"=diversity (MF2_ind_ab$n),
-                           "Simpson"=diversity (MF2_ind_ab$n,
-                                      "simpson"))
-Campos_Jordao_diversity <- list ("Shannon"=diversity (MF3_ind_ab$n),
-                                 "Simpson"=diversity (MF3_ind_ab$n,
-                                      "simpson"))
-Faz_Sao_Fran_diversity <- list ("Shannon"=diversity (MF4_ind_ab$n),
-                                "Simpson"=diversity (MF4_ind_ab$n,
-                                      "simpson"))
-Faz_Bar_diversity <- list ("Shannon"=diversity (MF5_ind_ab$n),
-                           "Simpson"=diversity (MF5_ind_ab$n,
-                                      "simpson"))
-Baependi_diversity <- list ("Shannon"=diversity (MF6_ind_ab$n),
-                            "Simpson"=diversity (MF6_ind_ab$n,
-                                      "simpson"))
 
  #G=count (F_E, Gen)
  #G <- G[order (G$n),]
