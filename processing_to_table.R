@@ -73,8 +73,28 @@ table_final_to_excel[is.na(table_final_to_excel)] <- 0
 #                                     "biomass_total_MF5"="biomass_total_MF5 (Mg)",
 #                                     "biomass_total_MF6"="biomass_total_MF6 (Mg)")
 
-################indice diversidade######
+############structure##########
 
+MF1_fam_number <-  length(unique(MF1_ind_ab$Fam))
+MF1_gen_number <-  length(unique(MF1_ind_ab$Gen))
+
+MF2_fam_number <-  length(unique(MF2_ind_ab$Fam))
+MF2_gen_number <-  length(unique(MF2_ind_ab$Gen))
+
+MF3_fam_number <-  length(unique(MF3_ind_ab$Fam))
+MF3_gen_number <-  length(unique(MF3_ind_ab$Gen))
+
+MF4_fam_number <-  length(unique(MF4_ind_ab$Fam))
+MF4_gen_number <-  length(unique(MF4_ind_ab$Gen))
+
+MF5_fam_number <-  length(unique(MF5_ind_ab$Fam))
+MF5_gen_number <-  length(unique(MF5_ind_ab$Gen))
+
+MF6_fam_number <-  length(unique(MF6_ind_ab$Fam))
+MF6_gen_number <-  length(unique(MF6_ind_ab$Gen))
+
+all_fam <- length (unique (species_number_absolute_site$Fam))
+all_gen <- length (unique (species_number_absolute_site$Gen))
 
  #G=count (F_E, Gen)
  #G <- G[order (G$n),]
