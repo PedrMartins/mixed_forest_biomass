@@ -830,23 +830,155 @@ dev.off()
 
 ####### plot biomass species######
 # Final dataset for plotting
-plot_df <- rbind(top5[, c("Species", "biomass_total")], other)
+MF_top5 <- table_final_to_anova %>%
+  group_by(site) %>%
+  slice_max(biomass_total, n = 5, with_ties = FALSE) %>%
+  ungroup()
+MF1_top_5 <- MF_top5 [MF_top5$site == "MF1",]
+MF2_top_5 <- MF_top5 [MF_top5$site == "MF2",]
+MF3_top_5 <- MF_top5 [MF_top5$site == "MF3",]
+MF4_top_5 <- MF_top5 [MF_top5$site == "MF4",]
+MF5_top_5 <- MF_top5 [MF_top5$site == "MF5",]
+MF6_top_5 <- MF_top5 [MF_top5$site == "MF6",]
 
-# Colors
 color <- colorRampPalette(c("sandybrown", "lightgreen"))
-bar_colors <- color(nrow(plot_df))
 
-# Bar plot
-bp <- barplot(
-  plot_df$biomass_total,
-  names.arg = plot_df$Species,
-  las = 2,
-  col = bar_colors,
-  main = "Top 5 Species Biomass and Others",
-  ylab = "Biomass Total",
-  cex.names = 0.8
-)
 
-# Add labels on top of bars (only for top 5)
-#text(bp[1:5], plot_df$biomass_total[1:5] + 500,  # position a bit above
-#     labels = plot_df$Species[1:5], cex = 0.7, pos = 3
+jpeg(filename = "top5_species.jpg",
+     width = 850, height = 500, # fun��o salva gr�ficos em .jpg
+     units = "px", quality = 75,
+     bg = "white")
+
+par(mfrow=c(2,3),mar=c(5,6,3,2), cex.axis=1.3, cex.lab=2, mgp=c(3,1.3,0.3),
+    family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
+
+
+barplot(MF1_top_5$biomass_total,
+        ylim = c (0,range (MF1_top_5$biomass_total) [2]+10),
+        col = c ("lightgreen",
+                 "sandybrown",
+                 rep ("lightgreen",3)),
+        las = 2,                # Nomes na vertical
+        ylab = "Biomass Mg",
+        main= "MF1")
+
+labels <- c("M. ela", "A. ang","O. ela", "O. pub", "C. fis")
+
+text(x = c(0.7,2,3.1,4.3,5.5),
+     y = par("usr")[3] - 3,   # below the axis
+     labels = labels,
+     srt = 45,                # rotation angle
+     xpd = TRUE,              # allow text outside plot
+     adj = 1,                 # text alignment
+     cex = 2)
+
+
+barplot(MF2_top_5$biomass_total,
+        ylim = c (0,range (MF2_top_5$biomass_total) [2]+10),
+        col = c (rep ("lightgreen",3),
+                 "sandybrown",
+                 "lightgreen"),
+        las = 2,                # Nomes na vertical
+        cex.names = 0.8,        # Tamanho dos nomes
+        main= "MF2")
+
+labels <- c("P. rig", "M. ela","L. div", "A. ang", "M. nyc")
+
+text(x = c(0.7,2,3.1,4.3,5.5),
+     y = par("usr")[3] - 3,   # below the axis
+     labels = labels,
+     srt = 45,                # rotation angle
+     xpd = TRUE,              # allow text outside plot
+     adj = 1,                 # text alignment
+     cex = 2)
+
+
+barplot(MF3_top_5$biomass_total,
+        ylim = c (0,range (MF3_top_5$biomass_total) [2]+10),
+        col = c (rep ("sandybrown",3),
+                 rep ("lightgreen",2)),
+        las = 2,                # Nomes na vertical
+        cex.names = 0.8,        # Tamanho dos nomes
+        main= "MF3")
+
+labels <- c("P. lam", "A. ang","M. mie", "M. umb", "C. sel")
+
+text(x = c(0.7,2,3.1,4.3,5.5),
+     y = par("usr")[3] - 3,   # below the axis
+     labels = labels,
+     srt = 45,                # rotation angle
+     xpd = TRUE,              # allow text outside plot
+     adj = 1,                 # text alignment
+     cex = 2)
+
+
+barplot(MF4_top_5$biomass_total,
+        ylim = c (0,range (MF4_top_5$biomass_total) [2]+10),
+        col = c (rep ("sandybrown",4),
+                 rep ("lightgreen",1)),
+        las = 2,                # Nomes na vertical
+        cex.names = 0.8,        # Tamanho dos nomes
+        main= "MF4",               # Nomes na vertical
+        ylab = "Biomass Mg")
+
+labels <- c("A. ang", "P. lam","D. bra", "M. ruf", "C. sca")
+
+text(x = c(0.7,2,3.1,4.3,5.5),
+     y = par("usr")[3] - 3,   # below the axis
+     labels = labels,
+     srt = 45,                # rotation angle
+     xpd = TRUE,              # allow text outside plot
+     adj = 1,                 # text alignment
+     cex = 2)
+
+barplot(MF5_top_5$biomass_total,
+        ylim = c (0,range (MF5_top_5$biomass_total) [2]+10),
+        col = c ("lightgreen",
+                 "sandybrown",
+                 rep ("lightgreen",3)),
+        las = 2,                # Nomes na vertical
+        cex.names = 0.8,        # Tamanho dos nomes
+        main= "MF5",               # Nomes na vertical
+        ylab = "Biomass Mg")
+
+labels <- c("M. ela", "A. ang","S. rev", "L. pac", "S. ins")
+
+text(x = c(0.7,2,3.1,4.3,5.5),
+     y = par("usr")[3] - 3,   # below the axis
+     labels = labels,
+     srt = 45,                # rotation angle
+     xpd = TRUE,              # allow text outside plot
+     adj = 1,                 # text alignment
+     cex = 2)
+
+barplot(MF6_top_5$biomass_total,
+        ylim = c (0,range (MF6_top_5$biomass_total) [2]+11),
+        col = c (rep ("sandybrown",3),
+                 rep ("lightgreen",2)),
+        las = 2,                # Nomes na vertical
+        cex.names = 0.8,        # Tamanho dos nomes
+        main= "MF6",               # Nomes na vertical
+        ylab = "Biomass Mg")
+
+labels <- c("P. lam", "A. ang","M. bra", "M. umb", "P. reg")
+
+text(x = c(0.7,2,3.1,4.3,5.5),
+     y = par("usr")[3] - 3,   # below the axis
+     labels = labels,
+     srt = 45,                # rotation angle
+     xpd = TRUE,              # allow text outside plot
+     adj = 1,                 # text alignment
+     cex = 2)
+
+legend("topright" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,c("Trop","Temp") #texto a ser escrito
+       ,col= c ("lightgreen", "sandybrown")
+       ,cex=1.3		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
+
+dev.off()
+
+
