@@ -936,8 +936,7 @@ barplot(MF5_top_5$biomass_total,
                  rep ("lightgreen",3)),
         las = 2,                # Nomes na vertical
         cex.names = 0.8,        # Tamanho dos nomes
-        main= "MF5",               # Nomes na vertical
-        ylab = "Biomass Mg")
+        main= "MF5")
 
 labels <- c("M. ela", "A. ang","S. rev", "L. pac", "S. ins")
 
@@ -955,8 +954,7 @@ barplot(MF6_top_5$biomass_total,
                  rep ("lightgreen",2)),
         las = 2,                # Nomes na vertical
         cex.names = 0.8,        # Tamanho dos nomes
-        main= "MF6",               # Nomes na vertical
-        ylab = "Biomass Mg")
+        main= "MF6")
 
 labels <- c("P. lam", "A. ang","M. bra", "M. umb", "P. reg")
 
