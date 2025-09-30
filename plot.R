@@ -841,8 +841,6 @@ MF4_top_5 <- MF_top5 [MF_top5$site == "MF4",]
 MF5_top_5 <- MF_top5 [MF_top5$site == "MF5",]
 MF6_top_5 <- MF_top5 [MF_top5$site == "MF6",]
 
-color <- colorRampPalette(c("sandybrown", "lightgreen"))
-
 
 jpeg(filename = "top5_species.jpg",
      width = 850, height = 500, # fun��o salva gr�ficos em .jpg
@@ -973,9 +971,9 @@ text(x = c(0.7,2,3.1,4.3,5.5),
 legend("topright" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Trop","Temp") #texto a ser escrito
+       ,c("Tropical","Temperate") #texto a ser escrito
        ,col= c ("lightgreen", "sandybrown")
-       ,cex=1.3		#tamanho da fonte
+       ,cex=1.5		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
