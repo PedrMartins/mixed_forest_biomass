@@ -5,7 +5,7 @@ cotingency_MF1 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
                      data = biomass_all_bc_sep_by_DHB_distribution,
                      na.rm= TRUE)
 
-cotingency_MF2 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
+cotingency_MF2 <- xtabs(Biomass_percentage  ~Class_DAP + Distri,
                          data = biomass_all_it_sep_by_DHB_distribution,
                          na.rm= TRUE)
 
@@ -26,7 +26,6 @@ cotingency_MF6 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
                          na.rm= TRUE)
 
 
-View (cotingency)
 chisq.test (cotingency_MF1,
             simulate.p.value = T,
             B= 1000)
