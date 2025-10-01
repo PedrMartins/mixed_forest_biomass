@@ -1,34 +1,74 @@
-# source("processing_to_table.R")
+ source("processing_to_table.R")
 
 ############test analises###########
-cotingency <- xtabs(biomass_total~site+Distri,
-                     data = table_final_to_anova,
+cotingency_MF1 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
+                     data = biomass_all_bc_sep_by_DHB_distribution,
                      na.rm= TRUE)
 
-aov()
+cotingency_MF2 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
+                         data = biomass_all_it_sep_by_DHB_distribution,
+                         na.rm= TRUE)
 
-head (table_final_to_excel)
+cotingency_MF3 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
+                         data = biomass_all_cj_sep_by_DHB_distribution,
+                         na.rm= TRUE)
+
+cotingency_MF4 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
+                         data = biomass_all_Fsf_sep_by_DHB_distribution,
+                         na.rm= TRUE)
+
+cotingency_MF5 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
+                         data = biomass_all_Fbar_sep_by_DHB_distribution,
+                         na.rm= TRUE)
+
+cotingency_MF6 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
+                         data = biomass_all_bp_sep_by_DHB_distribution,
+                         na.rm= TRUE)
+
+
 View (cotingency)
-summary (chisq.test (cotingency))
+chisq.test (cotingency_MF1,
+            simulate.p.value = T,
+            B= 1000)
+
+chisq.test (cotingency_MF2,
+            simulate.p.value = T,
+            B= 1000)
+
+chisq.test (cotingency_MF3,
+            simulate.p.value = T,
+            B= 1000)
+
+chisq.test (cotingency_MF4,
+            simulate.p.value = T,
+            B= 1000)
+
+chisq.test (cotingency_MF5,
+            simulate.p.value = T,
+            B= 1000)
+
+chisq.test (cotingency_MF6,
+            simulate.p.value = T,
+            B= 1000)
 
 
 
 ### table lvl wood dens get ####
-
-dens_table <- rbind(bc_dens_table,
-                    it_dens_table,
-                    cj_dens_table,
-                    Fsf_dens_table,
-                    Fbar_dens_table,
-                    bp_dens_table)
+#
+# dens_table <- rbind(bc_dens_table,
+#                     it_dens_table,
+#                     cj_dens_table,
+#                     Fsf_dens_table,
+#                     Fbar_dens_table,
+#                     bp_dens_table)
 #View (dens_table)
 
 #write.csv(dens_table, "dens_table.csv")
 #################table biomass and absolut number####
-
-write.table(table_final_to_excel,
-            "table_final_to_excel.csv",
-            sep =",", dec = ".")
+#
+# write.table(table_final_to_excel,
+#             "table_final_to_excel.csv",
+#             sep =",", dec = ".")
 
 #View(table_final_to_excel)
 
@@ -103,108 +143,4 @@ summary (bio.bp)
 summary (bio.It)
 summary (bio.bc)
 
-g_sXg_1 = count (bio.cj, Gen,Spp, sort=TRUE)
-length (g_sXg_1$Gen)
-length (g_cj$Gen)/length (all_g$n) *100
-
-g_sXg_2 = count (bio.It, Gen,Spp, sort=TRUE)
-length (g_sXg_2$Gen)
-length (g_it$Gen)/length (all_g$n) *100
-
-g_sXg_3 = count (bio.bc, Gen,Spp, sort=TRUE)
-length (g_sXg_3$Gen)
-length (g_bc$Gen)/length (all_g$n) *100
-
-g_sXg_4 = count (bio.Fbar, Gen,Spp, sort=TRUE)
-length (g_sXg_3$Gen)
-length (g_Fbar_3$Gen)
-length (g_Fbar$Gen)/length (all_g$n) *100
-
-g_sXg_5 = count (bio.Fsf, Gen,Spp, sort=TRUE)
-length (g_sXg_5$Gen)
-length (g_Fsf$Gen)
-length (g_Fsf$Gen)/length (all_g$n) *100
-
-g_sXg_6 = count (bio.bp, Gen,Spp, sort=TRUE)
-length (g_sXg_6$Gen)
-length (g_bp$Gen)
-length (g_bp$Gen)/length (all_g$n) *100
-
-
-F_G=rbind (g_sXg_6,g_sXg_5,g_sXg_4,g_sXg_3,g_sXg_2,g_sXg_1)
-all_g=count (F_G, Gen)
-all_g_spp=count (F_G, Gen, Spp)
-length (all_g$n)
-
-All=rbind (bio.cj,bio.It,bio.bc,bio.bp,bio.Fsf,bio.Fbar)
-
-All_g=count (All,Gen, Spp)
-
-All_g [order (All_g$n,decreasing = TRUE),]
-
-length(All_g$n)
-
-
-F_G[order (F_G$n, decreasing = TRUE),]
-
-F_gs <- F_G[!duplicated  (F_G$Gen),]
-
-length(F_gs$n)
-
-
-
-F1=count (bio.cj, Fam,  sort =TRUE)
-length (F1$Fam)
-
-F2=count (bio.It, Fam, sort =TRUE)
-length (F2$Fam)
-
-F3=count (bio.bc, Fam,  sort =TRUE)
-length (F3$Fam)
-
-F4=count (bio.bp, Fam, sort =TRUE)
-length (F4$Fam)
-
-F5=count (bio.Fsf, Fam, sort =TRUE)
-length (F5$Fam)
-
-F6=count (bio.Fbar, Fam, sort =TRUE)
-length (F6$Fam)
-
-F_=rbind (F1,F2,F3,F4,F5,F6)
-
-F_fe=count (F_, Fam)
-F_fe <- F_fe[order (F_fe$n, decreasing = TRUE),]
-length(F_fe$Fam)
-
-F_s <- F_[!duplicated  (F_$Fam),]
-length(F_s$Fam)
-
-palm =bio.It [bio.It$Fam=="Arecaceae",]
-
-palm |>
-  group_by(Alt)|>
-  count (Spp)
-
-palm |>
-  group_by(DAP)|>
-  count (Spp)
-
-### soma de biomass
-
-
-
-
-
-
-# Sort by biomass descending
-df <- result[order(-result$biomass_total), ]
-df$Species <- paste(df$Gen, df$Spp)
-
-# Top 5
-top5 <- df[1:10, ]
-
-# "Other" category sums the rest
-other <- data.frame(Species = "Other",
-                    biomass_total = sum(df$biomass_total[11:nrow(df)]))
 

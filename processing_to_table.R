@@ -58,9 +58,9 @@ table_to_permanova_biomass <- table_to_permanova_biomass[, -c(1:5,7,8)]
 table_final_to_excel <- table_final_to_excel[order (table_final_to_excel$Fam,
                                                     table_final_to_excel$binom),]
 
-table_to_permanova_biomass[is.na(table_to_permanova_biomass)] <- 0
-table_final_to_anova[is.na(table_final_to_anova)] <- 0
-table_final_to_excel[is.na(table_final_to_excel)] <- 0
+# table_to_permanova_biomass[is.na(table_to_permanova_biomass)] <- 0
+# table_final_to_anova[is.na(table_final_to_anova)] <- 0
+# table_final_to_excel[is.na(table_final_to_excel)] <- 0
 # colnames(table_final_to_excel) <- c("Fam" ="Famyli", "Distri"="Fitogeography_origin",
 #                                     "binom"  = "Genus_and_species",
 #                                     "n_MF1",             "n_MF2",
