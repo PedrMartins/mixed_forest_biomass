@@ -1,6 +1,4 @@
 source("import_processing_biomass_data.R")
-source("Function_biomass.R")
-
 
 
 spp_site_campos_do_jordao <-  site_spp(bio.cj)
@@ -36,8 +34,6 @@ all_sites <- t (all_sites)
 
 all_sites <- as.data.frame(all_sites)
 
-head (all_sites)
-
 colnames(all_sites) <- c("bc"="MF1", "bp"="MF6",
                          "cj"="MF3", "fb"="MF5"
                          ,"fsf"="MF4", "it"="MF2")
@@ -46,5 +42,6 @@ all_sites=all_sites|>
   relocate(MF2, .after =MF1)
 all_sites=all_sites|>
   relocate(MF6, .after =MF5)
+
 
 
