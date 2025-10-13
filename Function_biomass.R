@@ -22,6 +22,9 @@ import_biomass_rawdata <-  function(site = NULL){
   site
 }
 
+process_data_raw - function (site = NULL) {
+
+}
 
 ########### data processing function#############
 
@@ -58,6 +61,11 @@ data_processing <-  function (x){
   site$Fam <- sub("-.*", "", site$Fam)
   site
 }
+
+process_data_raw - function (x) {
+
+}
+
 
 ########### data separating by phylo#############
 
