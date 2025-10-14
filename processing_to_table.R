@@ -96,10 +96,7 @@ MF6_gen_number <-  length(unique(MF6_ind_ab$Gen))
 all_fam <- length (unique (species_number_absolute_site$Fam))
 all_gen <- length (unique (species_number_absolute_site$Gen))
 
- #G=count (F_E, Gen)
- #G <- G[order (G$n),]
- #F_es <- F_E[!duplicated  (paste(F_E$Gen,F_E$Spp)),]
- #length(F_es$Gen)
+
 
 
 

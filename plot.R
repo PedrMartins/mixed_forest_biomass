@@ -6,22 +6,24 @@
 ###Suplementar########
 
 source ("import_processing_biomass_data.R")
-source("Analyses_and_export_table.R")
+source("processing_to_table.R")
+
 
 ###DAP class porcentagem ind########
 
-jpeg(filename = "Class_DAP_ind2.jpg", width = 1050, height = 700, # function to save plots salva .jpg
+jpeg(filename = "Class_DAP_ind_distribution.jpg", width = 1050, height = 700, # function to save plots salva .jpg
      units = "px", quality = 75,
      bg = "white")
 
-par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
+par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=2.5,
+    cex.main = 2,  mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bg= "white")
 color= colorRampPalette(c("lightgreen","sandybrown"))
 
-barplot (ind_all_bc_sep_by_DHB_filo$Ind_percentage,
+barplot (ind_all_bc_sep_by_DHB_distribution$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Barra do Chapéu (MF1)",
-         ylab = "Individuals (%)")
+         ylab = "Individuals (%)" )
 
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
@@ -31,7 +33,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   at=c(1.4,3.5,6,8.5))
 
 
-barplot (ind_all_it_sep_by_DHB_filo$Ind_percentage,
+barplot (ind_all_it_sep_by_DHB_distribution$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Itaberá (MF2)")
 
@@ -42,7 +44,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   at=c(1.4,3.5,6,8.5))
 
 
-barplot (ind_all_cj_sep_by_DHB_filo$Ind_percentage,
+barplot (ind_all_cj_sep_by_DHB_distribution$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Campos do Jordão (MF3)")
 
@@ -53,7 +55,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   at=c(1.4,3.5,6,8.5))
 
 
-barplot (ind_all_Fsf_sep_by_DHB_filo$Ind_percentage,
+barplot (ind_all_Fbar_sep_by_DHB_distribution$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Delfim Moreira \n São Francisco Farm (MF4)",
          ylab = "Individuals (%)",
@@ -65,7 +67,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-barplot (ind_all_Fbar_sep_by_DHB_filo$Ind_percentage,
+barplot (ind_all_Fsf_sep_by_DHB_distribution$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Delfim Moreira \n Bartira Farm (MF5)",
          xlab="DBH Class (cm)")
@@ -78,7 +80,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   at=c(1.4,3.5,6,8.5))
 
 
-barplot (ind_all_bp_sep_by_DHB_filo$Ind_percentage,
+barplot (ind_all_bp_sep_by_DHB_distribution$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Baependi (MF6)",
          xlab="DBH Class (cm)")
@@ -92,9 +94,9 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topleft" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms","Gymnosperms") #texto a ser escrito
+       ,c("Tropical","Temperate") #texto a ser escrito
        ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
+       ,cex=1.5		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
@@ -108,12 +110,13 @@ jpeg(filename = "Class_DAP_biomas2.jpg", width = 1050, height = 700, # fun��
      units = "px", quality = 95,
      bg = "white")
 
-par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
+par(mfrow=c(2,3),mar=c(5,5,3,2), cex.axis=1.3, cex.lab=2.5,
+    cex.main = 2, mgp=c(3,1.3,0.3),
     family="serif",las=1, tcl=0.3, bg="white")
 
 color= colorRampPalette(c("lightgreen","sandybrown"))
 
-barplot (biomass_all_bc_sep_by_DHB_filo$Biomass_percentage,
+barplot (biomass_all_bc_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2), ylim=c(0,60),
          main="Barra do Chapéu (MF1)",
          ylab = "Biomass (%)")
@@ -126,7 +129,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 
 
 
-barplot (biomass_all_it_sep_by_DHB_filo$Biomass_percentage,
+barplot (biomass_all_it_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2), ylim=c(0,60),
          main="Itaberá (MF2)")
 
@@ -139,7 +142,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 
 
 
-barplot (biomass_all_cj_sep_by_DHB_filo$Biomass_percentage,
+barplot (biomass_all_cj_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2), ylim=c(0,60),
          main="Campos do Jordão (MF3)")
 
@@ -151,7 +154,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   at=c(1.4,3.5,6,8.5))
 
 
-barplot (biomass_all_Fsf_sep_by_DHB_filo$Biomass_percentage,
+barplot (biomass_all_Fsf_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2), ylim=c(0,60),
          main="Delfim Moreira \nSão Francisco Farm (MF4)",
          ylab = "Biomass (%)",
@@ -163,7 +166,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-barplot (biomass_all_Fbar_sep_by_DHB_filo$Biomass_percentage,
+barplot (biomass_all_Fbar_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2), ylim=c(0,60),
          main="Delfim Moreira \nBartira Farm (MF5)",
          xlab="DBH Class (cm)")
@@ -175,7 +178,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   cex=1,line=0.9,
   at=c(1.4,3.5,6,8.5))
 
-barplot (biomass_all_bp_sep_by_DHB_filo$Biomass_percentage,
+barplot (biomass_all_bp_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2), ylim=c(0,60),
          main="Baependi (MF6)",
          xlab="DBH Class (cm)")
@@ -189,9 +192,9 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 legend("topleft" #fun��o adiciona um texto ao gr�fico,
        #arg 1� define a localiza��o, usa-se a fun��o locator para
        #adicionar de uma forma interativa
-       ,c("Angiosperms","Gymnosperms") #texto a ser escrito
+       ,c("Tropical","Temperate") #texto a ser escrito
        ,col=color (2)
-       ,cex=1.3		#tamanho da fonte
+       ,cex=1.5		#tamanho da fonte
        , pch=c(15,15)
        ,bty = "n") #tipo da fonte
 
@@ -322,6 +325,12 @@ trop.cj=sum(bio.trop.cj$biom)
 por.t.t.cj= (c(gim.temp.cj,ang.temp.cj,trop.cj)/
                sum(gim.temp.cj,ang.temp.cj,trop.cj)*100)
 
+ind.ang.temp.cj=length(bio.ang.temp.cj$biom)
+ind.gim.temp.cj=c(length(bio.gim.a_cj$biom),length(bio.gim.p_cj$biom))
+ind.trop.cj=length(bio.trop.cj$biom)
+ind.por.t.t.cj= (c(ind.gim.temp.cj,ind.ang.temp.cj,ind.trop.cj)/
+               sum(ind.gim.temp.cj,ind.ang.temp.cj,ind.trop.cj)*100)
+
 
 bio.ang.temp.bp <- bio.bp [bio.bp$Distri == "Temp" & bio.bp$Filo != "Gim",]
 bio.gim.a_bp <- bio.bp [bio.bp $Gen == "Araucaria",]
@@ -332,6 +341,13 @@ gim.temp.bp =c(sum(bio.gim.a_bp $biom),sum(bio.gim.p_bp $biom))
 trop.bp=sum(bio.trop.bp$biom)
 por.t.t.bp= (c(gim.temp.bp,ang.temp.bp,trop.bp)/
                sum(gim.temp.bp,ang.temp.bp,trop.bp)*100)
+
+ind.ang.temp.bp=length(bio.ang.temp.bp$biom)
+ind.gim.temp.bp=c(length(bio.gim.a_bp$biom),length(bio.gim.p_bp$biom))
+ind.trop.bp=length(bio.trop.bp$biom)
+ind.por.t.t.bp= (c(ind.gim.temp.bp,ind.ang.temp.bp,ind.trop.bp)/
+                   sum(ind.gim.temp.bp,ind.ang.temp.bp,ind.trop.bp)*100)
+
 
 
 
@@ -345,6 +361,14 @@ trop.Fsf=sum(bio.trop.Fsf$biom)
 por.t.t.Fsf= (c(gim.temp.Fsf,ang.temp.Fsf,trop.Fsf)/
                 sum(gim.temp.Fsf,ang.temp.Fsf,trop.Fsf)*100)
 
+ind.ang.temp.Fsf=length(bio.ang.temp.Fsf$biom)
+ind.gim.temp.Fsf=c(length(bio.gim.a_Fsf$biom),length(bio.gim.p_Fsf$biom))
+ind.trop.Fsf=length(bio.trop.Fsf$biom)
+ind.por.t.t.Fsf= (c(ind.gim.temp.Fsf,ind.ang.temp.Fsf,ind.trop.Fsf)/
+                   sum(ind.gim.temp.Fsf,ind.ang.temp.Fsf,ind.trop.Fsf)*100)
+
+
+
 bio.ang.temp.Fbar<- bio.Fbar[bio.Fbar$Distri == "Temp" & bio.Fbar$Filo != "Gim",]
 bio.gim.a_Fbar<- bio.Fbar[bio.Fbar$Gen == "Araucaria",]
 bio.gim.p_Fbar<- bio.Fbar[bio.Fbar$Gen == "Podocarpus",]
@@ -355,6 +379,13 @@ trop.Fbar=sum(bio.trop.Fbar$biom)
 por.t.t.Fbar= (c(gim.temp.Fbar,ang.temp.Fbar,trop.Fbar)/
                  sum(gim.temp.Fbar,ang.temp.Fbar,trop.Fbar)*100)
 
+ind.ang.temp.Fbar=length(bio.ang.temp.Fbar$biom)
+ind.gim.temp.Fbar=c(length(bio.gim.a_Fbar$biom),length(bio.gim.p_Fbar$biom))
+ind.trop.Fbar=length(bio.trop.Fbar$biom)
+ind.por.t.t.Fbar= (c(ind.gim.temp.Fbar,ind.ang.temp.Fbar,ind.trop.Fbar)/
+                   sum(ind.gim.temp.Fbar,ind.ang.temp.Fbar,ind.trop.Fbar)*100)
+
+
 bio.ang.temp.bc<- bio.bc[bio.bc$Distri == "Temp" & bio.bc$Filo != "Gim",]
 bio.gim.temp.bc<- bio.bc[bio.bc$Filo == "Gim",]
 bio.trop.bc<- bio.bc[bio.bc$Distri == "Trop",]
@@ -363,6 +394,12 @@ gim.temp.bc=sum(bio.gim.temp.bc$biom)
 trop.bc=sum(bio.trop.bc$biom)
 por.t.t.bc= (c(gim.temp.bc,0,ang.temp.bc,trop.bc)/
                sum(gim.temp.bc,ang.temp.bc,trop.bc)*100)
+
+ind.ang.temp.bc=length(bio.ang.temp.bc$biom)
+ind.gim.temp.bc=length(bio.gim.temp.bc$biom)
+ind.trop.bc=length(bio.trop.bc$biom)
+ind.por.t.t.bc= (c(ind.gim.temp.bc,0,ind.ang.temp.bc,ind.trop.bc)/
+                   sum(ind.gim.temp.bc,ind.ang.temp.bc,ind.trop.bc)*100)
 
 
 bio.ang.temp.It<- bio.It[bio.It$Distri == "Temp" & bio.It$Filo != "Gim",]
@@ -374,6 +411,13 @@ trop.It=sum(bio.trop.It$biom)
 por.t.t.It= (c(gim.temp.It,0,ang.temp.It,trop.It)/
                sum(gim.temp.It,ang.temp.It,trop.It)*100)
 
+ind.ang.temp.It=length(bio.ang.temp.It$biom)
+ind.gim.temp.It=length(bio.gim.temp.It$biom)
+ind.trop.It=length(bio.trop.It$biom)
+ind.por.t.t.It= (c(ind.gim.temp.It,0,ind.ang.temp.It,ind.trop.It)/
+                   sum(ind.gim.temp.It,ind.ang.temp.It,ind.trop.It)*100)
+
+
 bio.tem.trop.pro = data.frame(
   BC_SP=c(por.t.t.bc),
   IT_SP=c(por.t.t.It),
@@ -382,6 +426,16 @@ bio.tem.trop.pro = data.frame(
   FB_MG=c(por.t.t.Fbar),
   BP_MG=c(por.t.t.bp)
   )
+
+ind.tem.trop.pro = data.frame(
+  BC_SP=c(ind.por.t.t.bc),
+  IT_SP=c(ind.por.t.t.It),
+  CJ_SP=c(ind.por.t.t.cj),
+  FSF_MG=c(ind.por.t.t.Fsf),
+  FB_MG=c(ind.por.t.t.Fbar),
+  BP_MG=c(ind.por.t.t.bp)
+)
+
 
 
 rownames(bio.tem.trop.pro) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
@@ -392,6 +446,14 @@ colnames(bio.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
                                 "Delfim Moreira \n Faz. Bart."="MF5",
                                 "Baependi"="MF6"
                                 )
+rownames(ind.tem.trop.pro) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
+colnames(ind.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
+                                ,"Itaberá" = "MF2",
+                                "Campos do Jordão"="MF3",
+                                "Delfim Moreira \n Faz. São Fran."="MF4",
+                                "Delfim Moreira \n Faz. Bart."="MF5",
+                                "Baependi"="MF6"
+)
 
 #colnames(bio.tem.trop.pro) <- c("MF1","MF5",
 #                                "MF4","MF6",
@@ -399,6 +461,7 @@ colnames(bio.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
 
 
 bio.temp.trop= as.matrix (bio.tem.trop.pro)
+ind.temp.trop= as.matrix (ind.tem.trop.pro)
 
 ######
 
@@ -430,13 +493,17 @@ jpeg(filename = "biomas_temp__xtrop.jpg", width = 700, height = 900, # fun��
      units = "px", quality = 75,
      bg = "white")
 
-par(mfrow=c(1,1),mar=c(3,6,2,2), cex.axis=1, cex.lab=1.5, mgp=c(3.5,1.6,0),
+par(mfrow=c(1,2),mar=c(3,6,2,2), cex.axis=1, cex.lab=1.5, mgp=c(3.5,1.6,0),
     family="serif",las=1, tcl=0.3, bg="white")
 
 color <- colorRampPalette(c("sandybrown","lightgreen"))
 
 barplot (bio.temp.trop, col=color (4),
          ylim=c(0,120), ylab="Biomass %",
+         cex.lab= 2, cex.names = 2 )
+
+barplot (ind.temp.trop, col=color (4),
+         ylim=c(0,120), ylab="Individual %",
          cex.lab= 2, cex.names = 2 )
 
 
