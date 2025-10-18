@@ -367,8 +367,6 @@ ind.trop.Fsf=length(bio.trop.Fsf$biom)
 ind.por.t.t.Fsf= (c(ind.gim.temp.Fsf,ind.ang.temp.Fsf,ind.trop.Fsf)/
                    sum(ind.gim.temp.Fsf,ind.ang.temp.Fsf,ind.trop.Fsf)*100)
 
-
-
 bio.ang.temp.Fbar<- bio.Fbar[bio.Fbar$Distri == "Temp" & bio.Fbar$Filo != "Gim",]
 bio.gim.a_Fbar<- bio.Fbar[bio.Fbar$Gen == "Araucaria",]
 bio.gim.p_Fbar<- bio.Fbar[bio.Fbar$Gen == "Podocarpus",]
@@ -427,6 +425,15 @@ bio.tem.trop.pro = data.frame(
   BP_MG=c(por.t.t.bp)
   )
 
+bio.tem.trop = data.frame(
+  BC_SP=c(gim.temp.bc, 0, ang.temp.bc, trop.bc)/1000,
+  IT_SP=c(gim.temp.It, 0, ang.temp.It, trop.It)/1000,
+  CJ_SP=c(gim.temp.cj,ang.temp.cj,trop.cj)/1000,
+  FSF_MG=c(gim.temp.Fsf,ang.temp.Fsf,trop.Fsf)/1000,
+  FB_MG=c(gim.temp.Fbar,ang.temp.Fbar,trop.Fbar)/1000,
+  BP_MG=(c(gim.temp.bp,ang.temp.bp,trop.bp)/1000)/0.5
+)
+
 ind.tem.trop.pro = data.frame(
   BC_SP=c(ind.por.t.t.bc),
   IT_SP=c(ind.por.t.t.It),
@@ -434,6 +441,15 @@ ind.tem.trop.pro = data.frame(
   FSF_MG=c(ind.por.t.t.Fsf),
   FB_MG=c(ind.por.t.t.Fbar),
   BP_MG=c(ind.por.t.t.bp)
+)
+
+ind.tem.trop = data.frame(
+  BC_SP=c(ind.gim.temp.bc, 0, ind.ang.temp.bc, ind.trop.bc),
+  IT_SP=c(ind.gim.temp.It, 0, ind.ang.temp.It,ind.trop.It),
+  CJ_SP=c(ind.gim.temp.cj,ind.ang.temp.cj,ind.trop.cj),
+  FSF_MG=c(ind.gim.temp.Fsf,ind.ang.temp.Fsf,ind.trop.Fsf),
+  FB_MG=c(ind.gim.temp.Fbar,ind.ang.temp.Fbar,ind.trop.Fbar),
+  BP_MG=c(ind.gim.temp.bp,ind.ang.temp.bp,ind.trop.bp)/0.5
 )
 
 
@@ -455,27 +471,8 @@ colnames(ind.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
                                 "Baependi"="MF6"
 )
 
-#colnames(bio.tem.trop.pro) <- c("MF1","MF5",
-#                                "MF4","MF6",
-#                                "MF3","MF2")
-
-
-bio.temp.trop= as.matrix (bio.tem.trop.pro)
-ind.temp.trop= as.matrix (ind.tem.trop.pro)
-
-######
-
-bio.tem.trop.ab = data.frame(
-  BC_SP=c(gim.temp.bc, 0, ang.temp.bc, trop.bc)/1000,
-  IT_SP=c(gim.temp.It, 0, ang.temp.It, trop.It)/1000,
-  CJ_SP=c(gim.temp.cj, ang.temp.cj, trop.cj)/1000,
-  FSF_MG=c(gim.temp.Fsf, ang.temp.Fsf, trop.Fsf)/1000,
-  FB_MG=c(gim.temp.Fbar, ang.temp.Fbar, trop.Fbar)/1000,
-  BP_MG=(c(gim.temp.bp, ang.temp.bp, trop.bp)/1000)/0.5
-)
-
-rownames(bio.tem.trop.ab) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
-colnames(bio.tem.trop.ab) <- c("Barra \n do Chapéu"="MF1"
+rownames(ind.tem.trop) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
+colnames(ind.tem.trop) <- c("Barra \n do Chapéu"="MF1"
                                 ,"Itaberá" = "MF2",
                                 "Campos do Jordão"="MF3",
                                 "Delfim Moreira \n Faz. São Fran."="MF4",
@@ -483,27 +480,59 @@ colnames(bio.tem.trop.ab) <- c("Barra \n do Chapéu"="MF1"
                                 "Baependi"="MF6"
 )
 
-bio.tem.trop.ab= as.matrix (bio.tem.trop.ab)
+rownames(bio.tem.trop) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
+colnames(bio.tem.trop) <- c("Barra \n do Chapéu"="MF1"
+                                ,"Itaberá" = "MF2",
+                                "Campos do Jordão"="MF3",
+                                "Delfim Moreira \n Faz. São Fran."="MF4",
+                                "Delfim Moreira \n Faz. Bart."="MF5",
+                                "Baependi"="MF6"
+)
+
+#colnames(bio.tem.trop.pro) <- c("MF1","MF5",
+#                                "MF4","MF6",
+#                                "MF3","MF2")
+
+
+bio.temp.trop= as.matrix (bio.tem.trop.pro)
+ind.temp.trop= as.matrix (ind.tem.trop.pro)
+bio.temp= as.matrix (bio.tem.trop)
+ind.temp= as.matrix (ind.tem.trop)
 
 ##########biomas_temp__xtrop#########
 
 
 
-jpeg(filename = "biomas_temp__xtrop.jpg", width = 700, height = 900, # fun��o salva gr�ficos em .jpg
+jpeg(filename = "biomas_temp__xtrop.jpg", width = 1000,
+     height = 800, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 75,
      bg = "white")
 
-par(mfrow=c(1,2),mar=c(3,6,2,2), cex.axis=1, cex.lab=1.5, mgp=c(3.5,1.6,0),
-    family="serif",las=1, tcl=0.3, bg="white")
+par(mfrow=c(2,2),mar=c(3,6,2,2), cex.axis=1,
+    cex.lab=1.5, mgp=c(3.5,1.6,0),
+    family="serif",las=1, tcl=0.3,
+    bg="white", xpd = TRUE)
 
 color <- colorRampPalette(c("sandybrown","lightgreen"))
 
 barplot (bio.temp.trop, col=color (4),
-         ylim=c(0,120), ylab="Biomass %",
+         ylim=c(0,100), ylab="Biomass %",
          cex.lab= 2, cex.names = 2 )
+text("a", )
+
 
 barplot (ind.temp.trop, col=color (4),
-         ylim=c(0,120), ylab="Individual %",
+         ylim=c(0,100), ylab="Individual %",
+         cex.lab= 2, cex.names = 2 )
+
+barplot (bio.temp, col=color (4),
+         ylim=c(0,400),
+         ylab="Biomass Mg.ha",
+         cex.lab= 2, cex.names = 2 )
+
+barplot (ind.temp, col=color (4),
+         ylim=c(0,2500)
+         , ylab="Individual",
          cex.lab= 2, cex.names = 2 )
 
 
