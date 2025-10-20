@@ -26,33 +26,15 @@ barplot (ind_all_bc_sep_by_DHB_distribution$Ind_percentage,
          ylab = "Individuals (%)" )
 
 
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no grafico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
 
 barplot (ind_all_it_sep_by_DHB_distribution$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Itaberá (MF2)")
 
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
-
 
 barplot (ind_all_cj_sep_by_DHB_distribution$Ind_percentage,
          col=color (2), ylim=c(0,70),
          main="Campos do Jordão (MF3)")
-
-mtext( #fun��o plota textos nas �reas ao redor do gr�fico
-  c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
-  side= 1, #argumento localiza no gr�fico "1" abaixo
-  cex=1,line=0.9,
-  at=c(1.4,3.5,6,8.5))
 
 
 barplot (ind_all_Fbar_sep_by_DHB_distribution$Ind_percentage,
@@ -200,304 +182,9 @@ legend("topleft" #fun��o adiciona um texto ao gr�fico,
 
 dev.off()
 
-
-##########################
-###
-### bio gmin/ arauc#######
-
-dads.ara.cj<- dads.gim.cj [dads.gim.cj$Gen!="Podocarpus",]
-dads.pod.cj<- dads.gim.cj [dads.gim.cj$Gen!="Araucaria",]
-
-dads.ara.fb<- dads.gim.Fbar [dads.gim.Fbar$Gen!="Podocarpus",]
-dads.pod.fb<- dads.gim.Fbar [dads.gim.Fbar$Gen!="Araucaria",]
-
-dads.ara.fsf<- dads.gim.Fsf [dads.gim.Fsf$Gen!="Podocarpus",]
-dads.pod.fsf<- dads.gim.Fsf [dads.gim.Fsf$Gen!="Araucaria",]
-
-dads.ara.bp<- dads.gim.bp [dads.gim.bp$Gen!="Podocarpus",]
-dads.pod.bp<- dads.gim.bp [dads.gim.bp$Gen!="Araucaria",]
-
-
-#####################################
-########prop. arauc. podo#######
-
-
-bio.podo.ara.pro = data.frame(
-  BC_SP=c((sum(dads.gim.bc$biom)/sum(bio.bc$biom))*100,0),
-
-  IT_SP=c((sum(dads.gim.It$biom)/sum(bio.It$biom))*100,0),
-
-  CJ_SP=c((sum(dads.ara.cj$biom)/sum(bio.cj$biom))*100,(sum (dads.pod.cj$biom)/sum(bio.cj$biom))*100),
-
-  FSF_MG=c((sum(dads.ara.fsf$biom)/sum(bio.Fsf$biom))*100,(sum(dads.pod.fsf$biom)/sum(bio.Fsf$biom))*100),
-
-  FB_MG=c((sum(dads.ara.fb$biom)/sum(bio.Fbar$biom))*100,(sum(dads.pod.fb$biom)/sum(bio.Fbar$biom))*100),
-
-
-  BP_MG=c((sum(dads.ara.bp$biom)/sum(bio.bp$biom))*100,(sum(dads.pod.bp$biom)/sum(bio.bp$biom))*100)
-
-  )
-
-rownames(bio.podo.ara.pro) <- c("Araucaria","Podocarpus")
-colnames(bio.podo.ara.pro) <- c("Barra \n do Chapéu"="MF1"
-                                ,"Itaberá" = "MF2",
-                                "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF4",
-                                "Delfim Moreira \n Faz. Bart."="MF5",
-                                "Baependi"="MF6"
-                                )
-bio.podo.ara.pro= as.matrix (bio.podo.ara.pro)
-
-
-jpeg(filename = "biomas_arau_podo_prop.jpg", width = 850, height = 900, # fun��o salva gr�ficos em .jpg
-     units = "px", quality = 75,
-     bg = "white")
-
-par(mfrow=c(1,1), mar=c(3,6,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3.5,1.6,0),
-    family="serif",las=1, tcl=0.3, bg="white")
-
-color= colorRampPalette(c("rosybrown1", "sandybrown"))
-barplot (bio.podo.ara.pro, col=color (2),
-         ylim=c(0,100),ylab="Biomass %", cex.lab = 2.5,
-         cex.names = 2)
-
-
-
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,legend= c (expression (italic ("Araucaria")),
-                   expression (italic ("Podocarpus"))) #texto a ser escrito
-       ,col=color (2)
-       ,cex=2.5		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-#text(0.5,95 #fun��o adiciona um texto ao gr�fico,
-     #arg 1� define a localiza��o, usa-se a fun��o locator para
-     #adicionar de uma forma interativa
-#    ,"a" #texto a ser escrito
-#     ,cex=1.2		#tamanho da fonte
-#     , family = "mono") #tipo da fonte
-
-
-dev.off()
-
-
-######
-bio.podo.ara = data.frame(
-  BC_SP=c(sum(dads.gim.bc$biom)/1000,0),
-  IT_SP=c(sum(dads.gim.It$biom)/1000,0),
-  CJ_SP=c(sum(dads.ara.cj$biom)/1000,sum (dads.pod.cj$biom)/1000),
-  FSF_MG=c(sum(dads.ara.fsf$biom)/1000,sum(dads.pod.fsf$biom)/1000),
-  FB_MG=c(sum(dads.ara.fb$biom)/1000,sum(dads.pod.fb$biom)/1000),
-  BP_MG=(c(sum(dads.ara.bp$biom)/1000,sum(dads.pod.bp$biom)/1000))/0.5
-  )
-
-
-rownames(bio.podo.ara) <- c("Araucaria","Podocarpus")
-colnames(bio.podo.ara) <- c(
-                              "Barra \n do Chapéu"="MF1"
-                              ,"Itaberá" = "MF2",
-                                "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF4",
-                                "Delfim Moreira \n Faz. Bart."="MF5",
-                                "Baependi"="MF6"
-                                )
-bio.gim= as.matrix (bio.podo.ara)
-
-
-#####
-
-
-
 ########################################################################
 ######bio_filo#####
 ######bio_geral#####
-
-bio.ang.temp.cj <- bio.cj [bio.cj$Distri == "Temp" & bio.cj$Filo != "Gim",]
-bio.gim.a_cj <- bio.cj [bio.cj$Gen == "Araucaria",]
-bio.gim.p_cj <- bio.cj [bio.cj$Gen == "Podocarpus",]
-bio.trop.cj <- bio.cj [bio.cj$Distri == "Trop",]
-ang.temp.cj=sum(bio.ang.temp.cj$biom)
-gim.temp.cj=c(sum(bio.gim.a_cj$biom),sum(bio.gim.p_cj$biom))
-trop.cj=sum(bio.trop.cj$biom)
-por.t.t.cj= (c(gim.temp.cj,ang.temp.cj,trop.cj)/
-               sum(gim.temp.cj,ang.temp.cj,trop.cj)*100)
-
-ind.ang.temp.cj=length(bio.ang.temp.cj$biom)
-ind.gim.temp.cj=c(length(bio.gim.a_cj$biom),length(bio.gim.p_cj$biom))
-ind.trop.cj=length(bio.trop.cj$biom)
-ind.por.t.t.cj= (c(ind.gim.temp.cj,ind.ang.temp.cj,ind.trop.cj)/
-               sum(ind.gim.temp.cj,ind.ang.temp.cj,ind.trop.cj)*100)
-
-
-bio.ang.temp.bp <- bio.bp [bio.bp$Distri == "Temp" & bio.bp$Filo != "Gim",]
-bio.gim.a_bp <- bio.bp [bio.bp $Gen == "Araucaria",]
-bio.gim.p_bp <- bio.bp [bio.bp $Gen == "Podocarpus",]
-bio.trop.bp <- bio.bp [bio.bp$Distri == "Trop",]
-ang.temp.bp =sum(bio.ang.temp.bp $biom)
-gim.temp.bp =c(sum(bio.gim.a_bp $biom),sum(bio.gim.p_bp $biom))
-trop.bp=sum(bio.trop.bp$biom)
-por.t.t.bp= (c(gim.temp.bp,ang.temp.bp,trop.bp)/
-               sum(gim.temp.bp,ang.temp.bp,trop.bp)*100)
-
-ind.ang.temp.bp=length(bio.ang.temp.bp$biom)
-ind.gim.temp.bp=c(length(bio.gim.a_bp$biom),length(bio.gim.p_bp$biom))
-ind.trop.bp=length(bio.trop.bp$biom)
-ind.por.t.t.bp= (c(ind.gim.temp.bp,ind.ang.temp.bp,ind.trop.bp)/
-                   sum(ind.gim.temp.bp,ind.ang.temp.bp,ind.trop.bp)*100)
-
-
-
-
-bio.ang.temp.Fsf <- bio.Fsf [bio.Fsf$Distri == "Temp" & bio.Fsf$Filo != "Gim",]
-bio.gim.a_Fsf<- bio.Fsf [bio.Fsf$Gen == "Araucaria",]
-bio.gim.p_Fsf<- bio.Fsf [bio.Fsf$Gen == "Podocarpus",]
-bio.trop.Fsf<- bio.Fsf[bio.Fsf$Distri == "Trop",]
-ang.temp.Fsf=sum(bio.ang.temp.Fsf$biom)
-gim.temp.Fsf=c(sum(bio.gim.a_Fsf$biom),sum(bio.gim.p_Fsf$biom))
-trop.Fsf=sum(bio.trop.Fsf$biom)
-por.t.t.Fsf= (c(gim.temp.Fsf,ang.temp.Fsf,trop.Fsf)/
-                sum(gim.temp.Fsf,ang.temp.Fsf,trop.Fsf)*100)
-
-ind.ang.temp.Fsf=length(bio.ang.temp.Fsf$biom)
-ind.gim.temp.Fsf=c(length(bio.gim.a_Fsf$biom),length(bio.gim.p_Fsf$biom))
-ind.trop.Fsf=length(bio.trop.Fsf$biom)
-ind.por.t.t.Fsf= (c(ind.gim.temp.Fsf,ind.ang.temp.Fsf,ind.trop.Fsf)/
-                   sum(ind.gim.temp.Fsf,ind.ang.temp.Fsf,ind.trop.Fsf)*100)
-
-bio.ang.temp.Fbar<- bio.Fbar[bio.Fbar$Distri == "Temp" & bio.Fbar$Filo != "Gim",]
-bio.gim.a_Fbar<- bio.Fbar[bio.Fbar$Gen == "Araucaria",]
-bio.gim.p_Fbar<- bio.Fbar[bio.Fbar$Gen == "Podocarpus",]
-bio.trop.Fbar<- bio.Fbar[bio.Fbar$Distri == "Trop",]
-ang.temp.Fbar=sum(bio.ang.temp.Fbar$biom)
-gim.temp.Fbar=c(sum(bio.gim.a_Fbar$biom),sum(bio.gim.p_Fbar$biom))
-trop.Fbar=sum(bio.trop.Fbar$biom)
-por.t.t.Fbar= (c(gim.temp.Fbar,ang.temp.Fbar,trop.Fbar)/
-                 sum(gim.temp.Fbar,ang.temp.Fbar,trop.Fbar)*100)
-
-ind.ang.temp.Fbar=length(bio.ang.temp.Fbar$biom)
-ind.gim.temp.Fbar=c(length(bio.gim.a_Fbar$biom),length(bio.gim.p_Fbar$biom))
-ind.trop.Fbar=length(bio.trop.Fbar$biom)
-ind.por.t.t.Fbar= (c(ind.gim.temp.Fbar,ind.ang.temp.Fbar,ind.trop.Fbar)/
-                   sum(ind.gim.temp.Fbar,ind.ang.temp.Fbar,ind.trop.Fbar)*100)
-
-
-bio.ang.temp.bc<- bio.bc[bio.bc$Distri == "Temp" & bio.bc$Filo != "Gim",]
-bio.gim.temp.bc<- bio.bc[bio.bc$Filo == "Gim",]
-bio.trop.bc<- bio.bc[bio.bc$Distri == "Trop",]
-ang.temp.bc=sum(bio.ang.temp.bc$biom)
-gim.temp.bc=sum(bio.gim.temp.bc$biom)
-trop.bc=sum(bio.trop.bc$biom)
-por.t.t.bc= (c(gim.temp.bc,0,ang.temp.bc,trop.bc)/
-               sum(gim.temp.bc,ang.temp.bc,trop.bc)*100)
-
-ind.ang.temp.bc=length(bio.ang.temp.bc$biom)
-ind.gim.temp.bc=length(bio.gim.temp.bc$biom)
-ind.trop.bc=length(bio.trop.bc$biom)
-ind.por.t.t.bc= (c(ind.gim.temp.bc,0,ind.ang.temp.bc,ind.trop.bc)/
-                   sum(ind.gim.temp.bc,ind.ang.temp.bc,ind.trop.bc)*100)
-
-
-bio.ang.temp.It<- bio.It[bio.It$Distri == "Temp" & bio.It$Filo != "Gim",]
-bio.gim.temp.It<- bio.It[bio.It$Filo == "Gim",]
-bio.trop.It<- bio.It[bio.It$Distri == "Trop",]
-ang.temp.It=sum(bio.ang.temp.It$biom)
-gim.temp.It=sum(bio.gim.temp.It$biom)
-trop.It=sum(bio.trop.It$biom)
-por.t.t.It= (c(gim.temp.It,0,ang.temp.It,trop.It)/
-               sum(gim.temp.It,ang.temp.It,trop.It)*100)
-
-ind.ang.temp.It=length(bio.ang.temp.It$biom)
-ind.gim.temp.It=length(bio.gim.temp.It$biom)
-ind.trop.It=length(bio.trop.It$biom)
-ind.por.t.t.It= (c(ind.gim.temp.It,0,ind.ang.temp.It,ind.trop.It)/
-                   sum(ind.gim.temp.It,ind.ang.temp.It,ind.trop.It)*100)
-
-
-bio.tem.trop.pro = data.frame(
-  BC_SP=c(por.t.t.bc),
-  IT_SP=c(por.t.t.It),
-  CJ_SP=c(por.t.t.cj),
-  FSF_MG=c(por.t.t.Fsf),
-  FB_MG=c(por.t.t.Fbar),
-  BP_MG=c(por.t.t.bp)
-  )
-
-bio.tem.trop = data.frame(
-  BC_SP=c(gim.temp.bc, 0, ang.temp.bc, trop.bc)/1000,
-  IT_SP=c(gim.temp.It, 0, ang.temp.It, trop.It)/1000,
-  CJ_SP=c(gim.temp.cj,ang.temp.cj,trop.cj)/1000,
-  FSF_MG=c(gim.temp.Fsf,ang.temp.Fsf,trop.Fsf)/1000,
-  FB_MG=c(gim.temp.Fbar,ang.temp.Fbar,trop.Fbar)/1000,
-  BP_MG=(c(gim.temp.bp,ang.temp.bp,trop.bp)/1000)/0.5
-)
-
-ind.tem.trop.pro = data.frame(
-  BC_SP=c(ind.por.t.t.bc),
-  IT_SP=c(ind.por.t.t.It),
-  CJ_SP=c(ind.por.t.t.cj),
-  FSF_MG=c(ind.por.t.t.Fsf),
-  FB_MG=c(ind.por.t.t.Fbar),
-  BP_MG=c(ind.por.t.t.bp)
-)
-
-ind.tem.trop = data.frame(
-  BC_SP=c(ind.gim.temp.bc, 0, ind.ang.temp.bc, ind.trop.bc),
-  IT_SP=c(ind.gim.temp.It, 0, ind.ang.temp.It,ind.trop.It),
-  CJ_SP=c(ind.gim.temp.cj,ind.ang.temp.cj,ind.trop.cj),
-  FSF_MG=c(ind.gim.temp.Fsf,ind.ang.temp.Fsf,ind.trop.Fsf),
-  FB_MG=c(ind.gim.temp.Fbar,ind.ang.temp.Fbar,ind.trop.Fbar),
-  BP_MG=c(ind.gim.temp.bp,ind.ang.temp.bp,ind.trop.bp)/0.5
-)
-
-
-
-rownames(bio.tem.trop.pro) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
-colnames(bio.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
-                                ,"Itaberá" = "MF2",
-                                "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF4",
-                                "Delfim Moreira \n Faz. Bart."="MF5",
-                                "Baependi"="MF6"
-                                )
-rownames(ind.tem.trop.pro) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
-colnames(ind.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
-                                ,"Itaberá" = "MF2",
-                                "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF4",
-                                "Delfim Moreira \n Faz. Bart."="MF5",
-                                "Baependi"="MF6"
-)
-
-rownames(ind.tem.trop) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
-colnames(ind.tem.trop) <- c("Barra \n do Chapéu"="MF1"
-                                ,"Itaberá" = "MF2",
-                                "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF4",
-                                "Delfim Moreira \n Faz. Bart."="MF5",
-                                "Baependi"="MF6"
-)
-
-rownames(bio.tem.trop) <- c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop")
-colnames(bio.tem.trop) <- c("Barra \n do Chapéu"="MF1"
-                                ,"Itaberá" = "MF2",
-                                "Campos do Jordão"="MF3",
-                                "Delfim Moreira \n Faz. São Fran."="MF4",
-                                "Delfim Moreira \n Faz. Bart."="MF5",
-                                "Baependi"="MF6"
-)
-
-#colnames(bio.tem.trop.pro) <- c("MF1","MF5",
-#                                "MF4","MF6",
-#                                "MF3","MF2")
-
-
-bio.temp.trop= as.matrix (bio.tem.trop.pro)
-ind.temp.trop= as.matrix (ind.tem.trop.pro)
-bio.temp= as.matrix (bio.tem.trop)
-ind.temp= as.matrix (ind.tem.trop)
 
 ##########biomas_temp__xtrop#########
 
@@ -515,37 +202,33 @@ par(mfrow=c(2,2),mar=c(3,6,2,2), cex.axis=1,
 
 color <- colorRampPalette(c("sandybrown","lightgreen"))
 
-barplot (bio.temp.trop, col=color (4),
+barplot (bio.temp.trop, col=color (2),
          ylim=c(0,100), ylab="Biomass %",
          cex.lab= 2, cex.names = 2 )
-text("a", )
 
-
-barplot (ind.temp.trop, col=color (4),
+barplot (ind.temp.trop, col=color (2),
          ylim=c(0,100), ylab="Individual %",
          cex.lab= 2, cex.names = 2 )
 
-barplot (bio.temp, col=color (4),
+barplot (bio.temp/1000, col=color (2),
          ylim=c(0,400),
          ylab="Biomass Mg.ha",
          cex.lab= 2, cex.names = 2 )
 
-barplot (ind.temp, col=color (4),
+barplot (ind.temp, col=color (2),
          ylim=c(0,2500)
-         , ylab="Individual",
+         , ylab="Individual.ha",
          cex.lab= 2, cex.names = 2 )
 
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,legend = c(expression(italic ("Araucaria")),
-                    expression(italic ("Podocarpus")),
-                    "Temp.Ang","Trop.Ang") #texto a ser escrito
-       ,col=color (4)
-       ,cex=1.5		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n")
+# legend("topright" #fun��o adiciona um texto ao gr�fico,
+#        #arg 1� define a localiza��o, usa-se a fun��o locator para
+#        #adicionar de uma forma interativa
+#        ,legend = c("Temperate","Tropical") #texto a ser escrito
+#        ,col= c("sandybrown","lightgreen")
+#        ,cex=1.5		#tamanho da fonte
+#        , pch=c(15,15)
+#        ,bty = "n")
 
 
 dev.off()

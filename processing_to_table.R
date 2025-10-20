@@ -99,6 +99,96 @@ all_gen <- length (unique (species_number_absolute_site$Gen))
 
 
 
+############plot processing##########
 
+data_cj_sapareted <- separate_by_filo_distri(bio.cj, by ="filo")
+data_bp_sapareted <- separate_by_filo_distri(bio.bp, by ="filo")
+data_Fsf_sapareted <- separate_by_filo_distri(bio.Fsf, by ="filo")
+data_Fbar_sapareted <- separate_by_filo_distri(bio.Fbar, by ="filo")
+data_bc_sapareted <- separate_by_filo_distri(bio.bc, by ="filo")
+data_it_sapareted <- separate_by_filo_distri(bio.It, by ="filo")
+
+bio.tem.trop.pro = data.frame(
+  BC_SP=c(data_bc_sapareted[,2]),
+  IT_SP=c(data_it_sapareted[,2]),
+  CJ_SP=c(data_cj_sapareted[,2]),
+  FSF_MG=c(data_Fsf_sapareted[,2]),
+  FB_MG=c(data_Fbar_sapareted[,2]),
+  BP_MG=c(data_bp_sapareted[,2])
+)
+
+bio.tem.trop = data.frame(
+  BC_SP=c(data_bc_sapareted[,1]),
+  IT_SP=c(data_it_sapareted[,1]),
+  CJ_SP=c(data_cj_sapareted[,1]),
+  FSF_MG=c(data_Fsf_sapareted[,1]),
+  FB_MG=c(data_Fbar_sapareted[,1]),
+  BP_MG=c(data_bp_sapareted[,1]/0.5)
+)
+
+ind.tem.trop.pro = data.frame(
+  BC_SP=c(data_bc_sapareted[,4]),
+  IT_SP=c(data_it_sapareted[,4]),
+  CJ_SP=c(data_cj_sapareted[,4]),
+  FSF_MG=c(data_Fsf_sapareted[,4]),
+  FB_MG=c(data_Fbar_sapareted[,4]),
+  BP_MG=c(data_bp_sapareted[,4])
+)
+
+ind.tem.trop = data.frame(
+  BC_SP=c(data_bc_sapareted[,3]),
+  IT_SP=c(data_it_sapareted[,3]),
+  CJ_SP=c(data_cj_sapareted[,3]),
+  FSF_MG=c(data_Fsf_sapareted[,3]),
+  FB_MG=c(data_Fbar_sapareted[,3]),
+  BP_MG=c(data_bp_sapareted[,3]/0.5)
+)
+
+
+
+rownames(bio.tem.trop.pro) <- c("Tempearate Genera", "Tropical Genera")
+colnames(bio.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
+                                ,"Itaberá" = "MF2",
+                                "Campos do Jordão"="MF3",
+                                "Delfim Moreira \n Faz. São Fran."="MF4",
+                                "Delfim Moreira \n Faz. Bart."="MF5",
+                                "Baependi"="MF6"
+)
+rownames(ind.tem.trop.pro) <- c("Tempearate Genera", "Tropical Genera")
+colnames(ind.tem.trop.pro) <- c("Barra \n do Chapéu"="MF1"
+                                ,"Itaberá" = "MF2",
+                                "Campos do Jordão"="MF3",
+                                "Delfim Moreira \n Faz. São Fran."="MF4",
+                                "Delfim Moreira \n Faz. Bart."="MF5",
+                                "Baependi"="MF6"
+)
+
+rownames(ind.tem.trop) <- c("Tempearate Genera", "Tropical Genera")
+colnames(ind.tem.trop) <- c("Barra \n do Chapéu"="MF1"
+                            ,"Itaberá" = "MF2",
+                            "Campos do Jordão"="MF3",
+                            "Delfim Moreira \n Faz. São Fran."="MF4",
+                            "Delfim Moreira \n Faz. Bart."="MF5",
+                            "Baependi"="MF6"
+)
+
+rownames(bio.tem.trop) <- c("Tempearate Genera", "Tropical Genera")
+colnames(bio.tem.trop) <- c("Barra \n do Chapéu"="MF1"
+                            ,"Itaberá" = "MF2",
+                            "Campos do Jordão"="MF3",
+                            "Delfim Moreira \n Faz. São Fran."="MF4",
+                            "Delfim Moreira \n Faz. Bart."="MF5",
+                            "Baependi"="MF6"
+)
+
+#colnames(bio.tem.trop.pro) <- c("MF1","MF5",
+#                                "MF4","MF6",
+#                                "MF3","MF2")
+
+
+bio.temp.trop= as.matrix (bio.tem.trop.pro)
+ind.temp.trop= as.matrix (ind.tem.trop.pro)
+bio.temp= as.matrix (bio.tem.trop)
+ind.temp= as.matrix (ind.tem.trop)
 
 

@@ -65,7 +65,36 @@ data_processing <-  function (x){
 
 ########### data separating by phylo#############
 
-separate_by_filo <- function (x, choice = "ang"){
+separate_by_filo_distri <- function (x, choice = NULL, by = "filo" ){
+  if (by=="filo"){
+
+    site <- x
+
+    temp_genera <- site [site$Distri == "Temp",]
+    trop_genera <- site [site$Distri != "Temp",]
+    temp_genera_sum=sum(temp_genera$biom)
+    trop_genera_sum=sum(trop_genera$biom)
+    prop_distri= (c(temp_genera_sum,trop_genera_sum)/
+                   sum(temp_genera_sum,trop_genera_sum)*100)
+
+    temp_genera_ind=length(temp_genera$biom)
+    trop_genera_ind=length(trop_genera$biom)
+    prop_distri_ind= (c(temp_genera_ind,trop_genera_ind)/
+                       sum(temp_genera_ind,trop_genera_ind)*100)
+
+
+    data_distri <- data.frame(biomass_total=c(temp_genera_sum,trop_genera_sum),
+               biomass_percentage = prop_distri,
+               ind_total =  c(temp_genera_ind,trop_genera_ind),
+               ind_percentage = prop_distri_ind)
+
+    rownames(data_distri) <- c("Tempearate Genera", "Tropical Genera")
+
+    return(data_distri)
+
+
+
+  }else{
   site <- x
   filo = c("ang", "gim", "palm")
   filo = match(choice, filo)
@@ -81,7 +110,7 @@ separate_by_filo <- function (x, choice = "ang"){
     site<- site[site$Filo=="Palm",]
     return(site)
 
-  }
+  }}
 
 }
 

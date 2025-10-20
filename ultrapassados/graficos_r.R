@@ -22,10 +22,10 @@ source ("Biomass_calc.R")
 setwd("C:/Users/Pedro/caminho/para/salvar/plots")
 
 jpeg(filename = "Classe DAP_ind.jpg", width = 850, height = 500, # function to save plots salva .jpg
-     units = "px", quality = 75, 
+     units = "px", quality = 75,
      bg = "white", restoreConsole = TRUE)
 
-par(mfrow=c(2,3),mar=c(5,5,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),	
+par(mfrow=c(2,3),mar=c(5,5,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
 family="serif",las=1, tcl=0.3)
 
 
@@ -38,7 +38,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -58,7 +58,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -79,7 +79,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -101,7 +101,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -121,7 +121,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -140,7 +140,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -164,10 +164,10 @@ dev.off()
 x11()
 
 jpeg(filename = "Classe DAP_biomas.jpg", width = 850, height = 500, # fun��o salva gr�ficos em .jpg
-     units = "px", quality = 75, 
+     units = "px", quality = 75,
      bg = "white", restoreConsole = TRUE)
 
-par(mfrow=c(2,3),mar=c(5,5,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),	
+par(mfrow=c(2,3),mar=c(5,5,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
 family="serif",las=1, tcl=0.3)
 
 
@@ -180,7 +180,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -202,7 +202,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -223,7 +223,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -245,7 +245,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -265,7 +265,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -284,7 +284,7 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 	cex=1,line=0.9,
 	at=c(1.4,3.5,6,8.5))
 
-legend("topleft" #fun��o adiciona um texto ao gr�fico, 
+legend("topleft" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Angiosperma", "Gimnosperma") #texto a ser escrito
@@ -350,14 +350,14 @@ jpeg(filename = "biomas_arau__podo_prop.jpg", width = 800, height = 950, # fun�
      units = "px", quality = 75,
      bg = "white", restoreConsole = TRUE)
 
-par(mfrow=c(1,1), mar=c(3,5,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3.5,1.6,0),	
+par(mfrow=c(1,1), mar=c(3,5,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3.5,1.6,0),
 family="serif",las=1, tcl=0.3)
 
 
 barplot (bio.podo.ara.pro, col=c("grey31","grey77"), ylim=c(0,100),ylab="Biomassa %")
 
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Podocarpus","Araucaria") #texto a ser escrito
@@ -366,7 +366,7 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 	, pch=c(15,15)
 	,bty = "n") #tipo da fonte
 
-text(0.5,95 #fun��o adiciona um texto ao gr�fico, 
+text(0.5,95 #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,"a" #texto a ser escrito
@@ -392,7 +392,7 @@ colnames (bio.podo.ara)<- c("Campos \n do Jord�o","Delfim Moreira \n Faz. S�
 					"Delfim Moreira \n Faz. Bart.","Baependi","Barra \n do Chap�u",
 					"Itaber�")
 bio.gim= as.matrix (bio.podo.ara)
-barplot (bio.gim, col=c("grey61","grey85"), ylim=c(0,200), 
+barplot (bio.gim, col=c("grey61","grey85"), ylim=c(0,200),
 ylab=expression(Mg%.%ha^-1))
 #####
 
@@ -502,7 +502,7 @@ jpeg(filename = "biomas_temp__xtrop.jpg", width = 800, height = 1200, # fun��
      units = "px", quality = 75,
      bg = "white", restoreConsole = TRUE)
 
-par(mfrow=c(1,1),mar=c(3,5,2,2), cex.axis=1, cex.lab=1.5, mgp=c(3.5,1.6,0),	
+par(mfrow=c(1,1),mar=c(3,5,2,2), cex.axis=1, cex.lab=1.5, mgp=c(3.5,1.6,0),
 family="serif",las=1, tcl=0.3)
 
 color <- colorRampPalette(c("darkgreen","lightgreen"))
@@ -511,7 +511,7 @@ barplot (bio.temp.trop, col=color (4),
 	ylim=c(0,120), ylab="Biomass %")
 
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop") #texto a ser escrito
@@ -549,7 +549,7 @@ dev.off()
 #	,cex=1.3		#tamanho da fonte
 #	, pch=c(15,15)
 #	,bty = "n")
-#text(0.5,115 #fun��o adiciona um texto ao gr�fico, 
+#text(0.5,115 #fun��o adiciona um texto ao gr�fico,
 #			#arg 1� define a localiza��o, usa-se a fun��o locator para
 #			#adicionar de uma forma interativa
 #	,"b" #texto a ser escrito
@@ -633,7 +633,7 @@ jpeg(filename = "biomas_temp__xtrop.jpg", width = 800, height = 1200, # fun��
      units = "px", quality = 75,
      bg = "white", restoreConsole = TRUE)
 
-par(mfrow=c(1,1),mar=c(3,5,2,2), cex.axis=1, cex.lab=1.5, mgp=c(3.5,1.6,0),	
+par(mfrow=c(1,1),mar=c(3,5,2,2), cex.axis=1, cex.lab=1.5, mgp=c(3.5,1.6,0),
 family="serif",las=1, tcl=0.3)
 
 color <- colorRampPalette(c("darkgreen","lightgreen"))
@@ -642,7 +642,7 @@ barplot (bio.filo, col=color (4),
 	ylim=c(0,120), ylab="Biomass %")
 
 
-legend("topright" #fun��o adiciona um texto ao gr�fico, 
+legend("topright" #fun��o adiciona um texto ao gr�fico,
 			#arg 1� define a localiza��o, usa-se a fun��o locator para
 			#adicionar de uma forma interativa
 	,c("Araucaria","Podocarpus","Ang_Temp","Ang_Trop") #texto a ser escrito
@@ -669,8 +669,8 @@ dev.off()
 #### 8 = temperatura mês mais quente, 9= temp. mes mais frio, 16= mes chuvoso, 17 = mes seco
 
 #install.packages (c("lme4","bbmle"))
-library(lme4) 
-library(bbmle) 
+library(lme4)
+library(bbmle)
 
 
 
@@ -691,9 +691,9 @@ Biogim= c( sum(gim.temp.cj),sum(gim.temp.Fsf),sum(gim.temp.Fbar)
 Alt=as.numeric(c(dads.env [7,3],dads.env [2,3],dads.env [3,3],
 dads.env [8,3],dads.env [5,3],dads.env [6,3])),
 Prec=as.numeric(c(dads.env [7,15],dads.env [2,15],dads.env [3,15],
-dads.env [8,15],dads.env [5,15],dads.env [6,15])), 
+dads.env [8,15],dads.env [5,15],dads.env [6,15])),
 Temp= as.numeric(c(dads.env [7,4],dads.env [2,4],dads.env [3,4],
-dads.env [8,4],dads.env [5,4],dads.env [6,4])), 
+dads.env [8,4],dads.env [5,4],dads.env [6,4])),
 MS=as.numeric(c (dads.env [7,17],dads.env [2,17],dads.env [3,17],
 dads.env [8,17],dads.env [5,17],dads.env [6,17])),
 RD=as.numeric(c (dads.env [7,5],dads.env [2,5],dads.env [3,5],
@@ -785,7 +785,7 @@ jpeg(filename = "mat.cor_biomass.jpg", width = 1000, height = 1200, # fun��o
      units = "px", quality = 100,
      bg = "white", restoreConsole = TRUE)
 
-par(mfrow=c(1,1),mar=c(3,5,2,2), cex.axis=2, cex.lab=2.5, mgp=c(3.5,1.6,0),	
+par(mfrow=c(1,1),mar=c(3,5,2,2), cex.axis=2, cex.lab=2.5, mgp=c(3.5,1.6,0),
 family="serif",las=1, tcl=0.3)
 
 
@@ -800,10 +800,10 @@ dev.off()
 
 
 jpeg(filename = "Boxplot densmad.jpg", width = 850, height = 500, # fun��o salva gr�ficos em .jpg
-     units = "px", quality = 75, 
+     units = "px", quality = 75,
      bg = "white", restoreConsole = TRUE)
 
-par(mfrow=c(2,3),mar=c(5,5,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),	
+par(mfrow=c(2,3),mar=c(5,5,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
 family="serif",las=1, tcl=0.3)
 
 
@@ -920,7 +920,7 @@ F_gs <- F_G[!duplicated  (F_G$Gen),]
 
 length(F_gs$n)
 
-cj=count (bio.cj, Gen, Spp, sort =TRUE) 
+cj=count (bio.cj, Gen, Spp, sort =TRUE)
 head (cj)
 length (cj$Spp)
 diversity (cj$n)
@@ -959,7 +959,7 @@ diversity (Fbar$n, "simpson")
 
 F_E=rbind (cj,it,bc,bp,Fsf,Fbar)
 G=count (F_E, Gen)
-G <- G[order (G$n),] 
+G <- G[order (G$n),]
 F_es <- F_E[!duplicated  (paste(F_E$Gen,F_E$Spp)),]
 length(F_es$Gen)
 
@@ -975,7 +975,7 @@ F6=count (bio.Fbar, Fam, Gen, Spp, sort =TRUE)
 F_=rbind (F1,F2,F3,F4,F5,F6)
 
 F_fe=count (F_, Fam)
-F_fe <- F_fe[order (F_fe$n),] 
+F_fe <- F_fe[order (F_fe$n),]
 
 
 
@@ -983,6 +983,114 @@ sort (F_$Fam)
 
 F_s <- F_[!duplicated  (F_$Fam),]
 length(F_s$Fam)
+
+
+### bio gmin/ arauc#######
+
+dads.ara.cj<- dads.gim.cj [dads.gim.cj$Gen!="Podocarpus",]
+dads.pod.cj<- dads.gim.cj [dads.gim.cj$Gen!="Araucaria",]
+
+dads.ara.fb<- dads.gim.Fbar [dads.gim.Fbar$Gen!="Podocarpus",]
+dads.pod.fb<- dads.gim.Fbar [dads.gim.Fbar$Gen!="Araucaria",]
+
+dads.ara.fsf<- dads.gim.Fsf [dads.gim.Fsf$Gen!="Podocarpus",]
+dads.pod.fsf<- dads.gim.Fsf [dads.gim.Fsf$Gen!="Araucaria",]
+
+dads.ara.bp<- dads.gim.bp [dads.gim.bp$Gen!="Podocarpus",]
+dads.pod.bp<- dads.gim.bp [dads.gim.bp$Gen!="Araucaria",]
+
+
+#####################################
+########prop. arauc. podo#######
+
+
+bio.podo.ara.pro = data.frame(
+  BC_SP=c((sum(dads.gim.bc$biom)/sum(bio.bc$biom))*100,0),
+
+  IT_SP=c((sum(dads.gim.It$biom)/sum(bio.It$biom))*100,0),
+
+  CJ_SP=c((sum(dads.ara.cj$biom)/sum(bio.cj$biom))*100,(sum (dads.pod.cj$biom)/sum(bio.cj$biom))*100),
+
+  FSF_MG=c((sum(dads.ara.fsf$biom)/sum(bio.Fsf$biom))*100,(sum(dads.pod.fsf$biom)/sum(bio.Fsf$biom))*100),
+
+  FB_MG=c((sum(dads.ara.fb$biom)/sum(bio.Fbar$biom))*100,(sum(dads.pod.fb$biom)/sum(bio.Fbar$biom))*100),
+
+
+  BP_MG=c((sum(dads.ara.bp$biom)/sum(bio.bp$biom))*100,(sum(dads.pod.bp$biom)/sum(bio.bp$biom))*100)
+
+)
+
+rownames(bio.podo.ara.pro) <- c("Araucaria","Podocarpus")
+colnames(bio.podo.ara.pro) <- c("Barra \n do Chapéu"="MF1"
+                                ,"Itaberá" = "MF2",
+                                "Campos do Jordão"="MF3",
+                                "Delfim Moreira \n Faz. São Fran."="MF4",
+                                "Delfim Moreira \n Faz. Bart."="MF5",
+                                "Baependi"="MF6"
+)
+bio.podo.ara.pro= as.matrix (bio.podo.ara.pro)
+
+
+jpeg(filename = "biomas_arau_podo_prop.jpg", width = 850, height = 900, # fun��o salva gr�ficos em .jpg
+     units = "px", quality = 75,
+     bg = "white")
+
+par(mfrow=c(1,1), mar=c(3,6,2,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3.5,1.6,0),
+    family="serif",las=1, tcl=0.3, bg="white")
+
+color= colorRampPalette(c("rosybrown1", "sandybrown"))
+barplot (bio.podo.ara.pro, col=color (2),
+         ylim=c(0,100),ylab="Biomass %", cex.lab = 2.5,
+         cex.names = 2)
+
+
+
+legend("topleft" #fun��o adiciona um texto ao gr�fico,
+       #arg 1� define a localiza��o, usa-se a fun��o locator para
+       #adicionar de uma forma interativa
+       ,legend= c (expression (italic ("Araucaria")),
+                   expression (italic ("Podocarpus"))) #texto a ser escrito
+       ,col=color (2)
+       ,cex=2.5		#tamanho da fonte
+       , pch=c(15,15)
+       ,bty = "n") #tipo da fonte
+
+#text(0.5,95 #fun��o adiciona um texto ao gr�fico,
+#arg 1� define a localiza��o, usa-se a fun��o locator para
+#adicionar de uma forma interativa
+#    ,"a" #texto a ser escrito
+#     ,cex=1.2		#tamanho da fonte
+#     , family = "mono") #tipo da fonte
+
+
+dev.off()
+
+
+######
+bio.podo.ara = data.frame(
+  BC_SP=c(sum(dads.gim.bc$biom)/1000,0),
+  IT_SP=c(sum(dads.gim.It$biom)/1000,0),
+  CJ_SP=c(sum(dads.ara.cj$biom)/1000,sum (dads.pod.cj$biom)/1000),
+  FSF_MG=c(sum(dads.ara.fsf$biom)/1000,sum(dads.pod.fsf$biom)/1000),
+  FB_MG=c(sum(dads.ara.fb$biom)/1000,sum(dads.pod.fb$biom)/1000),
+  BP_MG=(c(sum(dads.ara.bp$biom)/1000,sum(dads.pod.bp$biom)/1000))/0.5
+)
+
+
+rownames(bio.podo.ara) <- c("Araucaria","Podocarpus")
+colnames(bio.podo.ara) <- c(
+  "Barra \n do Chapéu"="MF1"
+  ,"Itaberá" = "MF2",
+  "Campos do Jordão"="MF3",
+  "Delfim Moreira \n Faz. São Fran."="MF4",
+  "Delfim Moreira \n Faz. Bart."="MF5",
+  "Baependi"="MF6"
+)
+bio.gim= as.matrix (bio.podo.ara)
+
+
+#####
+
 
 
 
