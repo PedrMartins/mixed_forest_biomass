@@ -204,11 +204,11 @@ color <- colorRampPalette(c("sandybrown","lightgreen"))
 
 barplot (bio.temp.trop, col=color (2),
          ylim=c(0,100), ylab="Biomass %",
-         cex.lab= 2, cex.names = 2 )
+         cex.lab= 2, cex.names = 2 , xaxt="n")
 
 barplot (ind.temp.trop, col=color (2),
          ylim=c(0,100), ylab="Individual %",
-         cex.lab= 2, cex.names = 2 )
+         cex.lab= 2, cex.names = 2, xaxt="n" )
 
 barplot (bio.temp/1000, col=color (2),
          ylim=c(0,400),
@@ -233,39 +233,6 @@ barplot (ind.temp, col=color (2),
 
 dev.off()
 
-#############biomas_temp__xtrop_ab##############
-
-jpeg(filename = "biomas_temp__xtrop_ab.jpg", width = 700, height = 900, # fun��o salva gr�ficos em .jpg
-     units = "px", quality = 75,
-     bg = "white")
-
-par(mfrow=c(1,1),mar=c(3,6,2,2), cex.axis=1, cex.lab=1.5, mgp=c(3.5,1.6,0),
-    family="serif",las=1, tcl=0.3, bg="white")
-
-color <- colorRampPalette(c("sandybrown","lightgreen"))
-
-barplot (bio.tem.trop.ab, col=color (4),
-         ylim=c(0,350), ylab=expression(
-           paste (
-           "Biomass ", Mg.ha^-1)
-           ), cex.lab= 2, cex.names = 2
-         )
-
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,legend = c(expression(italic ("Araucaria")),
-                   expression(italic ("Podocarpus")),
-                   "Temp.Ang","Trop.Ang") #texto a ser escrito
-       ,col=color (4)
-       ,cex=1.5		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n")
-
-
-dev.off()
-
-###############################################################
 ############ Biomass Distri DBH #####
 
 jpeg(filename = "biomass_distri_DHB2.jpg",
@@ -273,8 +240,11 @@ jpeg(filename = "biomass_distri_DHB2.jpg",
      units = "px", quality = 75,
      bg = "white")
 
-par(mfrow=c(2,3),mar=c(5,6,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
-    family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
+par(mfrow=c(2,3),mar=c(5,6,3,2),
+    cex.axis=1.3, cex.lab=1.5,
+    mgp=c(3,1.3,0.3), family="serif",
+    las=1, tcl=0.3, bty = "n", xaxt="n")
+
 
 color <- colorRampPalette(c("lightgreen","sandybrown"))
 
@@ -386,8 +356,10 @@ jpeg(filename = "biomass_distri_DHB_percente2.jpg",
      units = "px", quality = 75,
      bg = "white")
 
-par(mfrow=c(2,3),mar=c(5,6,3,2), cex.axis=1.3, cex.lab=1.5, mgp=c(3,1.3,0.3),
-    family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
+par(mfrow=c(2,3),mar=c(5,6,3,2), cex.axis=1.3,
+    cex.lab=1.5, mgp=c(3,1.3,0.3),
+    family="serif",las=1, tcl=0.3,
+    bty = "n", xaxt="n")
 
 color <- colorRampPalette(c("lightgreen","sandybrown"))
 
