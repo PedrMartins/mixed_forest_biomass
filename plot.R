@@ -580,7 +580,7 @@ legend("topleft" #fun��o adiciona um texto ao gr�fico,
 dev.off()
 
 ####### plot biomass species######
-# Final dataset for plotting
+####### Final dataset for plotting ######
 MF_top5 <- table_final_to_anova %>%
   group_by(site) %>%
   slice_max(biomass_total, n = 5, with_ties = FALSE) %>%
@@ -599,7 +599,7 @@ jpeg(filename = "top5_species.jpg",
      bg = "white")
 
 par(mfrow=c(2,3),mar=c(5,6,3,2), cex.axis=1.3, cex.lab=2, mgp=c(3,1.3,0.3),
-    family="serif",las=1, tcl=0.3, bty = "n", xaxt="n")
+    family="serif",las=1, tcl=0.3, bty = "l", xaxt="n")
 
 
 barplot(MF1_top_5$biomass_total,
