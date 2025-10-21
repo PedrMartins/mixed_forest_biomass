@@ -65,7 +65,7 @@ data_processing <-  function (x){
 
 ########### data separating by phylo#############
 
-separate_by_filo_distri <- function (x, choice = NULL, by = "filo" ){
+separate_by_filo_distri <- function (x, choice = NULL, by = "n" ){
   if (by=="filo"){
 
     site <- x

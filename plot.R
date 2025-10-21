@@ -212,12 +212,12 @@ barplot (ind.temp.trop, col=color (2),
 
 barplot (bio.temp/1000, col=color (2),
          ylim=c(0,400),
-         ylab="Biomass Mg.ha",
+         ylab= expression("Biomass Mg·ha"^-1),
          cex.lab= 2, cex.names = 2 )
 
 barplot (ind.temp, col=color (2),
          ylim=c(0,2500)
-         , ylab="Individual.ha",
+         , ylab=expression ("Individual.ha"^-1),
          cex.lab= 2, cex.names = 2 )
 
 

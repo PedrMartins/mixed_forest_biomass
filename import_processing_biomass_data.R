@@ -25,8 +25,8 @@ bio.bc <- data_processing (bio.bc)
 
 ###Limpeza dados/processing data#######
 
-dads.gim.cj<- separate_by_filo (bio.cj, choice = ("gim"))#separa gimnosperma
-dads.ang.cj<- separate_by_filo (bio.cj, choice = ("ang"))
+dads.gim.cj<- separate_by_filo_distri (bio.cj, choice = "gim")#separa gimnosperma
+dads.ang.cj<- separate_by_filo_distri (bio.cj, choice = "ang")
 
 
 #View (dads.ang.cj)
@@ -145,8 +145,8 @@ biomass_all_cj_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.cj, class = c(1
 #####################BAEPENDI###############################
 ###Limpeza dados
 
-dads.gim.bp<- separate_by_filo(bio.bp, choice = "gim")
-dads.ang.bp<- separate_by_filo(bio.bp, choice = "ang")
+dads.gim.bp<- separate_by_filo_distri(bio.bp, choice = "gim")
+dads.ang.bp<- separate_by_filo_distri(bio.bp, choice = "ang")
 
 
 
@@ -244,8 +244,8 @@ biomass_all_bp_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.bp, class = c(1
 
 ###Limpeza dados
 
-dads.gim.Fbar<- separate_by_filo(bio.Fbar, choice = "gim")
-dads.ang.Fbar<- separate_by_filo(bio.Fbar, choice = "ang")
+dads.gim.Fbar<- separate_by_filo_distri(bio.Fbar, choice = "gim")
+dads.ang.Fbar<- separate_by_filo_distri(bio.Fbar, choice = "ang")
 
 
 ########Est.Altura (Faz. Bart)######
@@ -374,8 +374,8 @@ biomass_all_Fbar_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.Fbar, class =
 ###Limpeza dados
 
 
-dads.gim.Fsf<- separate_by_filo(bio.Fsf, choice = "gim")
-dads.ang.Fsf<- separate_by_filo(bio.Fsf, choice = "ang")
+dads.gim.Fsf<- separate_by_filo_distri(bio.Fsf, choice = "gim")
+dads.ang.Fsf<- separate_by_filo_distri(bio.Fsf, choice = "ang")
 
 
 ######Est.Altura######
@@ -473,9 +473,9 @@ biomass_all_Fsf_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.Fsf, class = c
 
 ###Limpeza dados
 
-dads.gim.It<- separate_by_filo(bio.It, choice = "gim")
-dads.ang.It<- separate_by_filo(bio.It, choice = "ang")
-dads.palm.It <- separate_by_filo(bio.It, choice = "palm")
+dads.gim.It<- separate_by_filo_distri(bio.It, choice = "gim")
+dads.ang.It<- separate_by_filo_distri(bio.It, choice = "ang")
+dads.palm.It <- separate_by_filo_distri(bio.It, choice = "palm")
 
 
 ##########Est.Altura (IT)##########
@@ -616,9 +616,9 @@ biomass_all_it_sep_by_DHB_distribution <- class_DBH_bio_ind (bio.It, class = c(1
 ###Limpeza dados
 
 
-dads.gim.bc<- separate_by_filo(bio.bc, choice = "gim")
-dads.ang.bc<- separate_by_filo(bio.bc, choice = "ang")
-dads.palm.bc <- separate_by_filo(bio.bc, choice = "palm")
+dads.gim.bc<- separate_by_filo_distri(bio.bc, choice = "gim")
+dads.ang.bc<- separate_by_filo_distri(bio.bc, choice = "ang")
+dads.palm.bc <- separate_by_filo_distri(bio.bc, choice = "palm")
 
 #head (bio.BC)
 
