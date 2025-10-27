@@ -16,6 +16,9 @@ MF3_ind_ab=biomas_and_individuals (bio.cj, methods = "ind" ,name = "cj")
 MF4_ind_ab=biomas_and_individuals (bio.Fsf, methods = "ind" ,name = "Fsf")
 MF5_ind_ab=biomas_and_individuals (bio.Fbar, methods = "ind" ,name = "Fbar")
 MF6_ind_ab=biomas_and_individuals (bio.bp, methods = "ind" ,name = "bp")
+MF6_ind_ab$n <- MF6_ind_ab$n/0.5
+
+
 
 species_number_absolute_site=rbind (MF1_ind_ab,
                                     MF2_ind_ab,
@@ -31,6 +34,7 @@ MF3_bio_ab=biomas_and_individuals (bio.cj, methods = "bio" ,name = "cj")
 MF4_bio_ab=biomas_and_individuals (bio.Fsf, methods = "bio" ,name = "Fsf")
 MF5_bio_ab=biomas_and_individuals (bio.Fbar, methods = "bio" ,name = "Fbar")
 MF6_bio_ab=biomas_and_individuals (bio.bp, methods = "bio" ,name = "bp")
+MF6_bio_ab$biomass_total <- MF6_bio_ab$biomass_total/0.5
 
 all_sites_biomass_spp <- bind_rows(
   MF1_bio_ab,
