@@ -4,7 +4,7 @@ source("function_for_iNEXT.R")
 rarefacaoRichiness = iNEXT (all_sites, q = c(0,1,2))
 
 
-ggiNEXT (rarefacaoRichiness, facet.var = "Order.q") +
+R_E_sites_mixedforest_by_ha <-  ggiNEXT (rarefacaoRichiness, facet.var = "Order.q") +
   theme_minimal() +
   facet_wrap(~Order.q, scale = "free", labeller = as_labeller(c(
     "0" = "Species richness",
