@@ -11,11 +11,15 @@ R_E_sites_mixedforest_by_ha <-  ggiNEXT (rarefacaoRichiness, facet.var = "Order.
     "1" = "Shannon diversity",
     "2" = "Simpson diversity"))) +
   labs(
-    x = "Sample Size",
-    y = "Estimated Diversity"
-  )
+    x = "Species diversity",
+    y = "Number of individuals"
+  ) + theme (legend.position = "bottom",
+             legend.text = element_text(size = 8))
 
-ggsave ("R_E_mixed_by_ha.jpg", R_E_sites_mixedforest_by_ha, width = 2000,
+ggsave ("R_E_mixed_by_ha.jpg",
+        R_E_sites_mixedforest_by_ha,
+        width = 2500,
+        height = 1500,
          units = "px")
 
 
