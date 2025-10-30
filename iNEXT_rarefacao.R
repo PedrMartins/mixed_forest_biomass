@@ -11,8 +11,8 @@ R_E_sites_mixedforest_by_ha <-  ggiNEXT (rarefacaoRichiness, facet.var = "Order.
     "1" = "Shannon diversity",
     "2" = "Simpson diversity"))) +
   labs(
-    x = "Species diversity",
-    y = "Number of individuals"
+    x = "Number of individuals",
+    y = "Species diversity"
   ) + theme (legend.position = "bottom",
              legend.text = element_text(size = 8))
 
