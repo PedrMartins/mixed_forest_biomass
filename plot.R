@@ -86,9 +86,8 @@ color <- colorRampPalette(c("lightgreen","sandybrown"))
 barplot (biomass_all_bc_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2),
          ylab = "Biomass (%)",
-         ylim = c(0,50))
-
-mtext("a", side= 3, line =1, adj = 1, cex = 1.5)
+         ylim = c(0,50),
+         main = "MF1")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -101,9 +100,9 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 barplot (biomass_all_it_sep_by_DHB_distribution$Biomass_percentage,
          col=color (2),
          ylab = "",
-         ylim = c(0,40))
+         ylim = c(0,40),
+         main = "MF2")
 
-mtext("b", side= 3, line =1, adj = 1, cex = 1.5)
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -117,9 +116,8 @@ barplot(biomass_all_cj_sep_by_DHB_distribution$Biomass_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         ylab = "",
-        ylim = c(0,50))
-
-mtext("c", side= 3, line =1, adj = 1, cex = 1.5)
+        ylim = c(0,50),
+        main = "MF3")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -133,10 +131,8 @@ barplot(biomass_all_Fsf_sep_by_DHB_distribution$Biomass_percentage,
         col = color (2),
         ylab = "Biomass (%)",
         xlab = "DBH Class (cm)",
-        ylim = c(0,40))
-
-
-mtext("d", side= 3, line =1, adj = 1, cex = 1.5)
+        ylim = c(0,40),
+        main = "MF4")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -150,9 +146,8 @@ barplot(biomass_all_Fbar_sep_by_DHB_distribution$Biomass_percentage,
         col = color (2),
         ylab = "",
         xlab = "DBH Class (cm)",
-        ylim = c(0,60))
-
-mtext("e", side= 3, line =1, adj = 1, cex = 1.5)
+        ylim = c(0,60),
+        main = "MF5")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -166,9 +161,8 @@ barplot(biomass_all_bp_sep_by_DHB_distribution$Biomass_percentage,
         col = color (2),
         ylab = "",
         xlab = "DBH Class (cm)",
-        ylim = c(0,40))
-
-mtext("f", side= 3, line =1, adj = 1, cex = 1.5)
+        ylim = c(0,40),
+        main = "MF6")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -205,9 +199,9 @@ color <- colorRampPalette(c("lightgreen","sandybrown"))
 barplot (ind_all_bc_sep_by_DHB_distribution$Ind_percentage,
          ylim = c(0,60),
          col=color (2),
-         ylab = "Individuals (%)")
+         ylab = "Individuals (%)",
+         main = "MF1")
 
-mtext("a", side= 3, line =1, adj = 1, cex = 1.5)
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -220,9 +214,10 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
 barplot (ind_all_it_sep_by_DHB_distribution$Ind_percentage,
          col=color (2),
          ylab = "",
-         ylim = c(0,60))
+         ylim = c(0,60),
+         main = "MF2")
 
-mtext("b", side= 3, line =1, adj = 1, cex = 1.5)
+
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -235,9 +230,8 @@ barplot(ind_all_cj_sep_by_DHB_distribution$Ind_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         ylab = " ",
-        ylim = c(0,35))
-
-mtext("c", side= 3, line =1, adj = 1, cex = 1.5)
+        ylim = c(0,35),
+        main = "MF3")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -251,9 +245,8 @@ barplot(ind_all_Fsf_sep_by_DHB_distribution$Ind_percentage,
         col = color (2),
         ylab = "Individuals (%)",
         xlab = "DBH Class (cm)",
-        ylim = c(0,35))
-
-mtext("d", side= 3, line =1, adj = 1, cex = 1.5)
+        ylim = c(0,35),
+        main = "MF4")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -267,9 +260,8 @@ barplot(ind_all_Fbar_sep_by_DHB_distribution$Ind_percentage,
         col = color (2),
         ylab = "",
         xlab = "DBH Class (cm)",
-        ylim = c(0,60))
-
-mtext("e", side= 3, line =1, adj = 1, cex = 1.5)
+        ylim = c(0,60),
+        main = "MF5")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -283,9 +275,8 @@ barplot(ind_all_bp_sep_by_DHB_distribution$Ind_percentage,
         col = color (2),
         ylab = "",
         xlab = "DBH Class (cm)",
-        ylim = c(0,30))
-
-mtext("f", side= 3, line =1, adj = 1, cex = 1.5)
+        ylim = c(0,30),
+        main = "MF6")
 
 mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   c("0-10", "10-30","30-50", ">50"), #primeiro argumento refere oa texto plotado
@@ -335,9 +326,8 @@ barplot(MF1_top_5$biomass_total,
                  "sandybrown",
                  rep ("lightgreen",3)),
         las = 2,                # Nomes na vertical
-        ylab = expression("Biomass Mg.ha"^-1))
-
-mtext("a", side= 3, line =1, adj = 1, cex = 1.5)
+        ylab = expression("Biomass Mg.ha"^-1),
+        main = "MF1")
 
 labels <- c( "M. ela", "A. ang" ,"O. ela", "O. pub" ,"C. fis")
 
@@ -356,9 +346,8 @@ barplot(MF2_top_5$biomass_total,
                  "sandybrown",
                  "lightgreen"),
         las = 2,                # Nomes na vertical
-        cex.names = 0.8)
-
-mtext("b", side= 3, line =1, adj = 1, cex = 1.5)
+        cex.names = 0.8,
+        main = "MF2")
 
 labels <- c("P. rig", "M. ela","L. div", "A. ang", "M. nyc")
 
@@ -376,9 +365,8 @@ barplot(MF3_top_5$biomass_total,
         col = c (rep ("sandybrown",3),
                  rep ("lightgreen",2)),
         las = 2,                # Nomes na vertical
-        cex.names = 0.8)
-
-mtext("c", side= 3, line =1, adj = 1, cex = 1.5)
+        cex.names = 0.8,
+        main = "MF3")
 
 labels <- c("P. lam", "A. ang","M. mie", "M. umb", "C. sel")
 
@@ -397,9 +385,8 @@ barplot(MF4_top_5$biomass_total,
                  "lightgreen"),
         las = 2,                # Nomes na vertical
         cex.names = 0.8,        # Tamanho dos nomes
-        ylab = expression("Biomass Mg.ha"^-1))
-
-mtext("d", side= 3, line =1, adj = 1, cex = 1.5)
+        ylab = expression("Biomass Mg.ha"^-1),
+        main = "MF4")
 
 labels <- c("A. ang", "P. lam","D. bra", "M. ruf", "C. sca")
 
@@ -417,9 +404,8 @@ barplot(MF5_top_5$biomass_total,
                  "sandybrown",
                  rep ("lightgreen",3)),
         las = 2,                # Nomes na vertical
-        cex.names = 0.8)
-
-mtext("e", side= 3, line =1, adj = 1, cex = 1.5)
+        cex.names = 0.8,
+        main = "MF5")
 
 labels <- c("M. ela", "A. ang","S. rev", "L. pac", "S. ins")
 
@@ -436,9 +422,8 @@ barplot(MF6_top_5$biomass_total,
         col = c (rep ("sandybrown",3),
                  rep ("lightgreen",2)),
         las = 2,                # Nomes na vertical
-        cex.names = 0.8)
-
-mtext("f", side= 3, line =1, adj = 1, cex = 1.5)
+        cex.names = 0.8,
+        main = "MF6")
 
 labels <- c("P. lam","A. ang","M. bra", "M. umb",  "p. reg")
 
@@ -494,9 +479,8 @@ barplot(MF1_top_5$n,
         col = c (rep ("lightgreen",4),
                  "sandybrown"),
         las = 2,                # Nomes na vertical
-        ylab = expression("Individual.ha"^-1))
-
-mtext("a", side= 3, line =1, adj = 1, cex = 1.5)
+        ylab = expression("Individual.ha"^-1),
+        main = "MF1")
 
 labels <- c("G. ulm", "M. ela","O. ela", "S. acu", "A. ang")
 
@@ -513,9 +497,8 @@ barplot(MF2_top_5$n,
         ylim = c (0,range (MF2_top_5$n) [2]+100),
         col = c (rep ("lightgreen",5)),
         las = 2,                # Nomes na vertical
-        cex.names = 0.8)
-
-mtext("b", side= 3, line =1, adj = 1, cex = 1.5)
+        cex.names = 0.8,
+        main = "MF2")
 
 labels <- c("S. bon", "E. lig","E. edu", "R. jas", "S. ram")
 
@@ -533,9 +516,9 @@ barplot(MF3_top_5$n,
         col = c (rep ("sandybrown",2),
                  rep ("lightgreen",3)),
         las = 2,                # Nomes na vertical
-        cex.names = 0.8)
+        cex.names = 0.8,
+        main = "MF3")
 
-mtext("c", side= 3, line =1, adj = 1, cex = 1.5)
 
 labels <- c("M. mir", "D. bra","M. har", "M. umb", "C. sel")
 
@@ -554,9 +537,8 @@ barplot(MF4_top_5$n,
                  rep ("lightgreen",4)),
         las = 2,                # Nomes na vertical
         cex.names = 0.8,        # Tamanho dos nomes
-        ylab = expression("Individual.ha"^-1))
-
-mtext("d", side= 3, line =1, adj = 1, cex = 1.5)
+        ylab = expression("Individual.ha"^-1),
+        main = "MF4")
 
 labels <- c("D. bra", "M. har","S. var", "C. sca", "M. umb")
 
@@ -572,9 +554,8 @@ barplot(MF5_top_5$n,
         ylim = c (0,range (MF5_top_5$n) [2]+150),
         col = c (rep ("lightgreen",5)),
         las = 2,                # Nomes na vertical
-        cex.names = 0.8)
-
-mtext("e", side= 3, line =1, adj = 1, cex = 1.5)
+        cex.names = 0.8,
+        main = "MF5")
 
 labels <- c("M. ela", "L. pac","M. lar", "E. plu", "O. pul")
 
@@ -593,9 +574,8 @@ barplot(MF6_top_5$n,
                  "sandybrown"
                  ,"lightgreen"),
         las = 2,                # Nomes na vertical
-        cex.names = 0.8)
-
-mtext("f", side= 3, line =1, adj = 1, cex = 1.5)
+        cex.names = 0.8,
+        main = "MF6")
 
 labels <- c("M. bra", "P. lam","M. umb", "A. ang", "M. lar")
 

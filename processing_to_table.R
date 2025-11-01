@@ -105,12 +105,12 @@ all_gen <- length (unique (species_number_absolute_site$Gen))
 
 ############plot processing##########
 
-data_cj_sapareted <- separate_by_filo_distri(bio.cj, by ="filo")
-data_bp_sapareted <- separate_by_filo_distri(bio.bp, by ="filo")
-data_Fsf_sapareted <- separate_by_filo_distri(bio.Fsf, by ="filo")
-data_Fbar_sapareted <- separate_by_filo_distri(bio.Fbar, by ="filo")
-data_bc_sapareted <- separate_by_filo_distri(bio.bc, by ="filo")
-data_it_sapareted <- separate_by_filo_distri(bio.It, by ="filo")
+data_cj_sapareted <- separate_by_filo_distri(bio.cj, by ="distri")
+data_bp_sapareted <- separate_by_filo_distri(bio.bp, by ="distri")
+data_Fsf_sapareted <- separate_by_filo_distri(bio.Fsf, by ="distri")
+data_Fbar_sapareted <- separate_by_filo_distri(bio.Fbar, by ="distri")
+data_bc_sapareted <- separate_by_filo_distri(bio.bc, by ="distri")
+data_it_sapareted <- separate_by_filo_distri(bio.It, by ="distri")
 
 bio.tem.trop.pro = data.frame(
   BC_SP=c(data_bc_sapareted[,2]),

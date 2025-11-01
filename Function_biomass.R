@@ -66,7 +66,7 @@ data_processing <-  function (x){
 ########### data separating by phylo#############
 
 separate_by_filo_distri <- function (x, choice = NULL, by = "n" ){
-  if (by=="filo"){
+  if (by=="distri"){
 
     site <- x
 
@@ -89,6 +89,39 @@ separate_by_filo_distri <- function (x, choice = NULL, by = "n" ){
                ind_percentage = prop_distri_ind)
 
     rownames(data_distri) <- c("Tempearate Genera", "Tropical Genera")
+
+    return(data_distri)
+
+
+
+  } else if (by=="filo"){
+
+      site <- x
+
+    gim <- site [site$Filo == "Gim",]
+    ang <- site [site$Filo != "Gim",]
+    ang_temp <- ang [ang$Distri == "Temp",]
+    ang_trop <- ang [ang$Distri != "Temp",]
+    gim_sum=sum(gim$biom)
+    ang_trop_sum=sum(ang_trop$biom)
+    ang_temp_sum=sum(ang_temp$biom)
+    prop_distri= (c(gim_sum,ang_temp_sum,ang_trop_sum)/
+                    sum(gim_sum,ang_temp_sum,ang_trop_sum)*100)
+
+    gim_ind=length(gim$biom)
+    ang_temp_ind=length(ang_temp$biom)
+    ang_trop_ind=length(ang_trop$biom)
+
+    prop_distri_ind= (c(gim_ind,ang_temp_ind,ang_trop_ind)/
+                        sum(gim_ind,ang_temp_ind,ang_trop_ind)*100)
+
+
+    data_distri <- data.frame(biomass_total=c(gim_sum, ang_temp_sum,ang_trop_sum),
+                              biomass_percentage = prop_distri,
+                              ind_total =  c(gim_ind,ang_temp_ind,ang_trop_ind),
+                              ind_percentage = prop_distri_ind)
+
+    rownames(data_distri) <- c("Gim", "Temperate angiosperms", "Tropical angiosperms")
 
     return(data_distri)
 
