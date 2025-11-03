@@ -465,6 +465,7 @@ MF5_top_5 <- MF_top5 [MF_top5$site == "MF5",]
 MF6_top_5 <- MF_top5 [MF_top5$site == "MF6",]
 
 
+
 jpeg(filename = "top5_species_ind.jpg",
      width = 850, height = 500, # fun��o salva gr�ficos em .jpg
      units = "px", quality = 75,
