@@ -5,25 +5,52 @@ cotingency_MF1 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
                      data = biomass_all_bc_sep_by_DHB_distribution,
                      na.rm= TRUE)
 
+cotingency_MF1 <- xtabs(Ind_percentage ~Class_DAP + Distri,
+                        data = ind_all_bc_sep_by_DHB_distribution,
+                        na.rm= TRUE)
+
 cotingency_MF2 <- xtabs(Biomass_percentage  ~Class_DAP + Distri,
                          data = biomass_all_it_sep_by_DHB_distribution,
                          na.rm= TRUE)
+
+cotingency_MF2 <- xtabs(Ind_percentage  ~Class_DAP + Distri,
+                        data = ind_all_it_sep_by_DHB_distribution,
+                        na.rm= TRUE)
+
 
 cotingency_MF3 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
                          data = biomass_all_cj_sep_by_DHB_distribution,
                          na.rm= TRUE)
 
+cotingency_MF3 <- xtabs(Ind_percentage  ~Class_DAP + Distri,
+                        data = ind_all_cj_sep_by_DHB_distribution,
+                        na.rm= TRUE)
+
+
+
 cotingency_MF4 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
                          data = biomass_all_Fsf_sep_by_DHB_distribution,
                          na.rm= TRUE)
+
+cotingency_MF4 <- xtabs(Ind_percentage ~Class_DAP + Distri,
+                        data = ind_all_Fsf_sep_by_DHB_distribution,
+                        na.rm= TRUE)
 
 cotingency_MF5 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
                          data = biomass_all_Fbar_sep_by_DHB_distribution,
                          na.rm= TRUE)
 
+cotingency_MF5 <- xtabs(Ind_percentage ~Class_DAP + Distri,
+                        data = ind_all_Fbar_sep_by_DHB_distribution,
+                        na.rm= TRUE)
+
 cotingency_MF6 <- xtabs(Biomass_percentage ~Class_DAP + Distri,
                          data = biomass_all_bp_sep_by_DHB_distribution,
                          na.rm= TRUE)
+
+cotingency_MF6 <- xtabs(Ind_percentage ~Class_DAP + Distri,
+                        data = ind_all_bp_sep_by_DHB_distribution,
+                        na.rm= TRUE)
 
 
 chisq.test (cotingency_MF1,
