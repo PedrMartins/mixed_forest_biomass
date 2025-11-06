@@ -130,7 +130,7 @@ barplot(biomass_all_Fsf_sep_by_DHB_distribution$Biomass_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         ylab = "Biomass (%)",
-        xlab = "DBH Class (cm)",
+        xlab = "",
         ylim = c(0,40),
         main = "MF4")
 
@@ -145,7 +145,7 @@ barplot(biomass_all_Fbar_sep_by_DHB_distribution$Biomass_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         ylab = "",
-        xlab = "DBH Class (cm)",
+        xlab = "",
         ylim = c(0,60),
         main = "MF5")
 
@@ -160,7 +160,7 @@ barplot(biomass_all_bp_sep_by_DHB_distribution$Biomass_percentage,
         las = 2, # Rotate x-axis labels for readability
         col = color (2),
         ylab = "",
-        xlab = "DBH Class (cm)",
+        xlab = "",
         ylim = c(0,40),
         main = "MF6")
 
@@ -169,17 +169,6 @@ mtext( #fun��o plota textos nas �reas ao redor do gr�fico
   side= 1, #argumento localiza no grafico "1" abaixo
   cex=1.5,line=0.9,
   at=c(1.4,3.5,6,8.5))
-
-legend("topleft" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col=color (2)
-       ,cex=1.5		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
-
-
 
 dev.off()
 
@@ -435,14 +424,7 @@ text(x = c(0.7,2,3.1,4.3,5.5),
      adj = 1,                 # text alignment
      cex = 2)
 
-legend("topright" #fun��o adiciona um texto ao gr�fico,
-       #arg 1� define a localiza��o, usa-se a fun��o locator para
-       #adicionar de uma forma interativa
-       ,c("Tropical","Temperate") #texto a ser escrito
-       ,col= c ("lightgreen", "sandybrown")
-       ,cex=1.5		#tamanho da fonte
-       , pch=c(15,15)
-       ,bty = "n") #tipo da fonte
+
 
 dev.off()
 
