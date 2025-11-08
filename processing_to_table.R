@@ -76,7 +76,7 @@ table_final_to_excel <- table_final_to_excel[order (table_final_to_excel$Fam,
 #                                     "biomass_total_MF4"="biomass_total_MF4 (Mg)",
 #                                     "biomass_total_MF5"="biomass_total_MF5 (Mg)",
 #                                     "biomass_total_MF6"="biomass_total_MF6 (Mg)")
-
+#
 ############structure##########
 
 MF1_fam_number <-  length(unique(MF1_ind_ab$Fam))
