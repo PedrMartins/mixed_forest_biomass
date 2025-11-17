@@ -42,6 +42,7 @@ data_processing <-  function (x){
   site [str_starts(site$Fam,"Melastomata"),6] <- "Melastomataceae"
   site [site$Gen == "Mollinedia" & str_starts(site$Spp,"argyr"), 5] <- "argyrogyna"
   site [site$Gen == "Sebastiana",4] <- "Sebastiania"
+  site [site$Gen == "Sebastiania"  & site$Spp == "klotzschiana", 4] <- "Gymnanthes"
   site [site$Gen == "Cedrella",4] <- "Cedrela"
   site [site$Gen == "Citronellla",4] <- "Citronella"
   site [site$Gen == "Exostyles",6] <- "Fabaceae"
@@ -54,11 +55,27 @@ data_processing <-  function (x){
   site [site$Gen == "Trichilia",6] <- "Meliaceae"
   site [site$Gen == "Cordyline",6] <- "Asparagaceae"
   site$Spp [site$Gen == "Mimosa"] <- "scabrella"
+  site$Spp [site$Gen == "Guatteria"] <- "australis"
+  site$Spp [site$Gen == "Gochnatia"] <- "polymorphum"
+  site [site$Gen == "Gochnatia",5] <- "Moquiniastrum"
+  site [site$Gen == "Pithecellobium", 4] <- "Abarema"
+  site [site$Gen == "Vernonia"  & site$Spp == "discolor", 4] <- "Vernonanthura"
+  site [site$Gen == "Cordia"  & site$Spp == "americana", 4] <- "Patagonula"
+  site [site$Gen == "Machaerium"  & site$Spp == "minutiflorum", 5] <- "stipitatum"
+  site [site$Gen == "Machaerium"  & site$Spp == "vestitum", 5] <- "brasiliense"
   site [site$Gen == "Cordyline" & site$Spp == "terminalis", 5] <- "fruticosa"
+  site [site$Gen == "Cinnamomum" & site$Spp != "sp.1", 4] <- "Aiouea"
+  site [site$Gen == "Aiouea" & site$Spp != "triplinerve", 5] <- "montana"
+  site [site$Gen == "Annona" & site$Spp == "rugulosa", 5] <- "emarginata"
+  site [site$Gen == "Ocotea" & site$Spp == "elegans", 5] <- "indecora"
+  site [site$Gen == "Persea" & site$Spp == "microneura", 4] <- "Cinnamomum"
+  site [site$Gen == "Cinnamomum" & site$Spp == "microneura", 5] <- "microneurum"
   site$Filo [site$Filo == "Eudi"] <- "Eud"
   site$Distri[site$Gen == "Drimys" & site$Distri == "Trop"] <- "Temp"
   site$Distri[site$Gen == "Styrax" & site$Distri == "Trop"] <- "Temp"
+
   site$Fam <- sub("-.*", "", site$Fam)
+
   site
 }
 
