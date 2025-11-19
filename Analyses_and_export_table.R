@@ -92,9 +92,15 @@ chisq.test (cotingency_MF6,
 #write.csv(dens_table, "dens_table.csv")
 #################table biomass and absolut number####
 #
-# write.table(table_final_to_excel,
-#             "table_final_to_excel.csv",
-#             sep =",", dec = ".")
+table_final_to_excel$Genus_and_species <- str_replace(table_final_to_excel$Genus_and_species, "_", " ")
+
+write.table(table_final_to_excel,
+            "table_final_to_excel_new_names.csv",
+            sep ="\t", dec = ",")
+
+new_names <-  get.taxa (table_final_to_excel$Genus_and_species)
+
+write.table(new_names,"new_names.csv",sep ="\t", dec = ",")
 
 #View(table_final_to_excel)
 
