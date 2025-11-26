@@ -43,6 +43,7 @@ data_processing <-  function (x){
   site [site$Gen == "Mollinedia" & str_starts(site$Spp,"argyr"), 5] <- "argyrogyna"
   site [site$Gen == "Sebastiana",4] <- "Sebastiania"
   site [site$Gen == "Sebastiania"  & site$Spp == "klotzschiana", 4] <- "Gymnanthes"
+  site [site$Gen == "Cordiera"  & site$Spp == "myricifolia", 5] <- "myrciifolia"
   site [site$Gen == "Cedrella",4] <- "Cedrela"
   site [site$Gen == "Citronellla",4] <- "Citronella"
   site [site$Gen == "Exostyles",6] <- "Fabaceae"

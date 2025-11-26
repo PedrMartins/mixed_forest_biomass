@@ -100,6 +100,7 @@ write.table(table_final_to_excel,
 
 new_names <-  get.taxa (table_final_to_excel$Genus_and_species)
 
+
 write.table(new_names,"new_names.csv",sep ="\t", dec = ",")
 
 #View(table_final_to_excel)
