@@ -172,7 +172,7 @@ dads.ang.bp$Lvl.D <- Dens.bp$levelWD
 
 
 #####inserindo densidade (Doutorado Gabriel
-#####Martocos Oliveira "Densidade da madeira
+##### Oliveira "Densidade da madeira
 #####em minas gerais")
 
 dads.ang.bp [dads.ang.bp$Gen == "Clethra",11] <- 0.404  # pg 49 linha 78
