@@ -54,20 +54,26 @@ slope <- terra::terrain(elev, v = "slope", unit = "degrees")
 slope_df <- as.data.frame(slope, xy = TRUE)
 
 names(slope_df) <- c("x", "y", "slope")
-# Crop to southeast bounding box
-bbox_se <- st_bbox(southeast_conifers)
 
-elev_crop <- crop(elev, ext(bbox_se))
-
-# Compute slope
-
-
-# Convert to data.frame for ggplot
-slope_df <- as.data.frame(slope, xy = TRUE)
 
 map_slope <-
-  ggplot(slope_df) +
-  geom_raster(aes(x = x, y = y, fill = slope)) +
-  scale_fill_viridis_c() +
-  geom_sf(data = southeast, fill = NA, color = "white") +
+  ggplot() +
+  geom_raster(
+    data = slope_df,
+    aes(x = x, y = y, fill = slope)
+  ) +
+  scale_fill_gradient2(low = "cyan",
+                       mid= "yellowgreen",
+                       high = "darkred",
+                       midpoint = 0)+
+  geom_sf(data = southeast_conifers, fill = NA,
+          color = "black") +
+  geom_sf(data = background_states, fill = NA,
+          color = "black") +
+  coord_sf(
+    xlim = c(-49, -42),
+    ylim = c(-26, -19),
+    expand = FALSE
+  )+
+
   theme_void()
