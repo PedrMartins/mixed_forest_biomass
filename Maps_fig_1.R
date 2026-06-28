@@ -43,16 +43,30 @@ map_se <-
 # Example elevation raster (replace with real data if needed)
 
 elev <- elevatr::get_elev_raster(southeast_conifers,
-                        z=7,
+                        z=10,
                         clip = "locations")
 
 elev <- terra::rast(elev)
 
+
+# Convert again
+slope_df <- as.data.frame(slope_crop, xy = TRUE)
+
 slope <- terra::terrain(elev, v = "slope", unit = "degrees")
 
+bbox <- st_bbox(c(
+  xmin = -49,
+  xmax = -42,
+  ymin = -26,
+  ymax = -19
+), crs = st_crs(southeast_conifers))
 
-slope_df <- as.data.frame(slope, xy = TRUE)
+# Crop raster
+slope_crop <- terra::crop(slope, terra::ext(bbox))
 
+
+slope_df <- as.data.frame(slope_crop, xy = TRUE)
+range(slope_df$slope)
 names(slope_df) <- c("x", "y", "slope")
 
 
