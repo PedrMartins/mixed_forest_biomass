@@ -27,6 +27,10 @@ species_number_absolute_site=rbind (MF1_ind_ab,
                                     MF5_ind_ab,
                                     MF6_ind_ab)
 
+matrix_NMDS_sites_biomass = pivot_wider(species_number_absolute_site,
+                                        names_from =site,
+                                        values_from = n)
+matrix_NMDS_sites_biomass[is.na(matrix_NMDS_sites_biomass)] <- 0
 
 MF1_bio_ab=biomas_and_individuals (bio.bc, methods = "bio" ,name = "bc")
 MF2_bio_ab=biomas_and_individuals (bio.It, methods = "bio" ,name = "it")

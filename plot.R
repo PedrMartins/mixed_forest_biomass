@@ -582,3 +582,33 @@ legend("topright" #fun��o adiciona um texto ao gr�fico,
 dev.off()
 
 
+
+
+#######NMDS #######
+#spp x Par
+
+par (mar = c(5,5,2,1)# margem
+     , cex.axis=1.5 # tamanho fonte eixos
+     , cex.lab=2 #tamanho fonte legenda
+     , cex.main=2.5 #tamanho fonte título
+     ,family="mono"# fonte da letra
+     , las=1,# orientação dos números eixo y
+     tcl=0.3# orientação traços do eixo
+     ,mgp=c(3,0.3,0))# distância do titulo, legenda e linha
+
+#NMDS spp x parcela
+#View(dads.sp)
+
+ordiplot(nmds_biomass$points, type = "t", cex=0.8,
+         choices=c(1,2)) # gráfico de ordenação NMDS
+s.col= colSums (NMDS_sites_biomass_stand)
+names=colnames (NMDS_sites_biomass_stand)
+gra.DCA = orditorp(nmds_biomass # objeto com o DCA
+                   , dis = "sp"# display só para espécies
+                   , lab=names # etiqueta com os nomes abreviados
+                   , priority=s.col # dá prioridade para os nomes pela soma das colunas
+                   , pcol = rgb (0,0,0,0.5) #colere os pontos do gráfico
+                   , pch=20  #símbolo dos pontos
+                   , cex=1
+                   , air=1)
+dev.off()

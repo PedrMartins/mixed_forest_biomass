@@ -177,3 +177,26 @@ summary (bio.It)
 summary (bio.bc)
 
 
+
+
+########NMDS########
+library (vegan)
+matrix_NMDS_sites_biomass <- as.data.frame(matrix_NMDS_sites_biomass)
+rownames(matrix_NMDS_sites_biomass) <- matrix_NMDS_sites_biomass$binom
+matrix_NMDS_sites_biomass <- matrix_NMDS_sites_biomass [,-c(1:5)]
+matrix_NMDS_sites_biomass <- t(matrix_NMDS_sites_biomass)
+
+NMDS_sites_biomass_stand = decostand(matrix_NMDS_sites_biomass,
+                                     method = "log" )
+NMDS_sites_biomass_dist = vegdist (NMDS_sites_biomass_stand)
+
+nmds_biomass <-  monoMDS (NMDS_sites_biomass_dist,			#argumento para os dados
+                      distance= "bray", #argumento define distancia
+                      trace=FALSE,
+                      engine="monoMDS",	#argumento define qual método de nmds será usado
+                      k=3,#argumento sobre as dimensões do nmds
+                      binary=FALSE,
+                      wascore=TRUE)
+#nmds_biomass$species <- wascores(nmds_biomass$points, NMDS_sites_biomass_stand, expand = TRUE)
+
+
