@@ -586,9 +586,9 @@ dev.off()
 
 #######NMDS #######
 
-fit <- envfit(nmds_biomass, NMDS_sites_biomass_stand, permutations = 999)
-
-fit
+fit <- envfit(nmds_biomass,
+              NMDS_sites_biomass_stand,
+              permutations = 999)
 
 species_df <- data.frame(scores(fit, display = "vectors"))
 species_df$Species <- rownames(species_df)
@@ -596,10 +596,6 @@ species_df$Species <- rownames(species_df)
 species_df$p_value <- fit$vectors$pvals
 
 species_df <- subset(species_df, p_value <= 0.05)
-
-
-
-library(ggplot2)
 
 site_df <- data.frame(
   scores(nmds_biomass, display = "sites"),
@@ -609,26 +605,37 @@ site_df <- data.frame(
 site_scores <- scores(nmds_biomass, display = "sites")
 species_scores <- wascores(site_scores, NMDS_sites_biomass_stand)
 
-
 ggplot() +
-  geom_point(
-    data = site_df,
-    aes(NMDS1, NMDS2),
-    size = 4,
-    colour = "dodgerblue3"
-  ) +
-  geom_text(
+  geom_text_repel(
     data = site_df,
     aes(NMDS1, NMDS2, label = Site),
-    nudge_y = 0.03
-  ) +
-  geom_text(
+    max.overlaps = Inf,
+    box.padding = 0.5,
+    point.padding = 0.3,
+    force = 2,
+    size = 6
+  )+
+  geom_text_repel(
     data = species_df,
     aes(NMDS1, NMDS2, label = Species),
+    max.overlaps = Inf,
+    box.padding = 0.5,
+    point.padding = 0.3,
+    force = 1,
     colour = "firebrick",
-    size = 3
-  ) +
+    nudge_x = 0.05,
+    nudge_y = 0.15,
+    size =3) +
   coord_equal() +
   theme_classic()
+  # ggsave(
+  #   filename = "NMDS_plot.png",
+  #   width = 8,
+  #   height = 6,
+  #   units = "in",
+  #   dpi = 300
+  # )
+
+
 
 
