@@ -180,8 +180,7 @@ summary (bio.bc)
 
 
 ########NMDS########
-
-set.seed(123)
+set.seed (123)
 matrix_NMDS_sites_biomass <- as.data.frame(matrix_NMDS_sites_biomass)
 rownames(matrix_NMDS_sites_biomass) <- matrix_NMDS_sites_biomass$binom
 matrix_NMDS_sites_biomass <- matrix_NMDS_sites_biomass [,-c(1:5)]

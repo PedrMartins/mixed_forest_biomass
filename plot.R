@@ -586,6 +586,7 @@ dev.off()
 
 #######NMDS #######
 
+set.seed (123)
 fit <- envfit(nmds_biomass,
               NMDS_sites_biomass_stand,
               permutations = 999)
